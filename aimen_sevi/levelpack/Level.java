@@ -22,7 +22,7 @@ private int[] palier;
   {
     if(succeded)
     {
-    return("Level : "+this.num+"\nStars :"+this.stars+"\nScore : "+this.score);
+    return("Level : "+this.num+"\nStars :"+this.stars+"\nScore : "+this.score+"\n");
     }
   }
 
