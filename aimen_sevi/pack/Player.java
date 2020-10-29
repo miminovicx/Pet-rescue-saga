@@ -46,7 +46,7 @@ public class Player
     this.coins = coins;
   }
 
-  Player(String nickName, int lifePoints, /*Booster[] boosters,*/ int coins)
+  public Player(String nickName, int lifePoints, /*Booster[] boosters,*/ int coins)
   {
     this.nickName = nickName;
     this.lifePoints = lifePoints;
@@ -54,7 +54,7 @@ public class Player
     this.coins = coins;
   }
 
-  String toString()
+  public String toString()
   {
     return ("Pseudo : " + this.nickName + "\n" +
             "Points de vie : " + this.lifePoints + "\n" +
