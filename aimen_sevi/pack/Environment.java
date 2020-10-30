@@ -1,4 +1,4 @@
-package aimen_sevi.levelpack;
+package pack;
 class Environment
 {
 
