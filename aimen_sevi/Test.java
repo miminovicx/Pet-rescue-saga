@@ -15,11 +15,6 @@ public class Test
   }
   public static void main(String[] args)
   {
-    squaredString("LevelTest");
-    Level lvl = new Level(0,1,2,0,false);
-    System.out.println(lvl);
-    System.out.println("-------------------------------------------------------");
-    System.out.println();
 
     squaredString("FieldElement Test");
     FieldElement element = new FieldElement(0,0);
@@ -37,6 +32,13 @@ public class Test
     //field.putElement(element2);
     //field.putElement(element3);
     System.out.print(field);
+    System.out.println("-------------------------------------------------------");
+    System.out.println();
+
+    squaredString("LevelTest");
+    int [] tab = {1000,1500,3000};
+    Level lvl = new Level(0,0,0,field,false, tab);
+    System.out.println(lvl);
     System.out.println("-------------------------------------------------------");
     System.out.println();
 

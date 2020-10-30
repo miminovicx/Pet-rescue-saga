@@ -52,6 +52,7 @@ public class Field
     int i = 0;
     int j = 0;
     String res = "";
+    res += "*".repeat(this.width * 4) + "\n" + "*";
     while (i < this.width)
     {
       while (j < this.height)
@@ -59,9 +60,10 @@ public class Field
         res += this.elements[i][j].toString() + ' ';
         j++;
       }
-      res += "\n";
+      res += "*\n";
       i++;
     }
+    res += "*".repeat(this.width * 3) + "\n" + "*";
     return (res);
   }
 }
