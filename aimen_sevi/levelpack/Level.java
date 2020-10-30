@@ -1,7 +1,7 @@
 package levelpack;
 public class Level
 {
-  private int id;
+  private static int id=1;
   private final int num;
   private int stars;
   private int score;
@@ -9,6 +9,7 @@ public class Level
   private Field field;
   private boolean succeded=true;
   private int[] palier;
+  private int animalsToRescue;
   public Level(int stars, int score, int lastScore, Field field, boolean succeded, int[] palier)
   {
     this.num = id;

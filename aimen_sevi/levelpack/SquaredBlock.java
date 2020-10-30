@@ -1,5 +1,5 @@
 package levelpack;
-class SquaredBlock extends FieldElement
+public class SquaredBlock extends Block
 {
   private boolean locked;
 

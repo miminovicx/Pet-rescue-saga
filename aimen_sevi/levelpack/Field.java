@@ -52,18 +52,17 @@ public class Field
     int i = 0;
     int j = 0;
     String res = "";
-    res += "*".repeat(this.width * 4) + "\n" + "*";
-    while (i < this.width)
+     res += "*".repeat(this.width * 4) + "\n" ;
+
+    for(i=0;i<this.width;i++)
     {
-      while (j < this.height)
+      for(j=0;j<this.height;j++)
       {
-        res += this.elements[i][j].toString() + ' ';
-        j++;
+        res += this.elements[i][j].toString() + " " ;
       }
-      res += "*\n";
-      i++;
-    }
-    res += "*".repeat(this.width * 3) + "\n" + "*";
+      res+="\n";
+      }
+      res += "*".repeat(this.width * 3) + "\n";
     return (res);
   }
 }

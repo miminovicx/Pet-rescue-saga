@@ -1,5 +1,5 @@
 package levelpack;
-class Block extends FieldElement
+public class Block extends FieldElement
 {
   private int color;
 
@@ -21,11 +21,11 @@ class Block extends FieldElement
 
   public String toString()
   {
-    swich(this.color)
+    switch(this.color)
     {
       case 0:
       {
-        return (" ");
+        return ("-");
       }
       case 1:
       {
@@ -47,6 +47,8 @@ class Block extends FieldElement
       {
         return ("P");
       }
+      default:
+        return ("");
     }
   }
 }
