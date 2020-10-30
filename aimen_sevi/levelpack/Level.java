@@ -1,30 +1,33 @@
 package levelpack;
 public class Level
 {
-private int num;
-private int stars;
-private int score;
-private int lastScore;
-//private Field field;
-private boolean succeded=true;
-//private int[] palier;
-  public Level(int num,int stars,int score,int lastScore/*,Field field*/,boolean succeded/*, int[] palier*/)
+  private int id;
+  private final int num;
+  private int stars;
+  private int score;
+  private int lastScore;
+  private Field field;
+  private boolean succeded=true;
+  private int[] palier;
+  public Level(int stars, int score, int lastScore, Field field, boolean succeded, int[] palier)
   {
-    this.num = num;
+    this.num = id;
     this.stars = stars;
     this.score = score;
     this.lastScore = lastScore;
-    //this.field = field;
+    this.field = field;
     this.succeded = succeded;
-    //this.palier = palier;
+    this.palier = palier;
+    id++;
   }
   public String toString()
   {
+    String res = "";
     if(succeded)
-    {
-    return("Level : "+this.num+"\nStars :"+this.stars+"\nObjectif : "+this.score+"\nLast score : "+this.lastScore);
-    }
-    return ("Level : "+this.num+"\nStars :"+this.stars+"\nObjectif : "+this.score);
+      res += "Level : " + this.num + "\nStars :" + this.stars + "\nObjectif : " + this.score + "\nLast score : " + this.lastScore + "\n\n";
+    else
+      res += "Level : " + this.num + "\nStars :" + this.stars + "\nObjectif : " + this.score + "\n\n");
+    res += this.field.toString();
+    return (res);
   }
-
 }
