@@ -1,5 +1,7 @@
-package aimen_sevi.levelpack;
-class Booster
+package pack;
+public abstract class Booster
 {
-
+  private String effect;
+  public boolean use()
+  {}
 }
