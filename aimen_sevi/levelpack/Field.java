@@ -1,5 +1,5 @@
-package aimen_sevi.levelpack;
-public class Field extends Level
+package levelpack;
+public class Field
 {
   private int width;
   private int height;
@@ -16,7 +16,7 @@ public class Field extends Level
     return (this.height);
   }
 
-  public FieldElement getElements()
+  public FieldElement[][] getElements()
   {
     return (this.elements);
   }
@@ -43,6 +43,10 @@ public class Field extends Level
     this.elements = new FieldElement[width][height];
   }
 
+  public void putElement(FieldElement element)
+  {
+    this.elements[element.getX()][element.getY()] = element;
+  }
   public String toString()
   {
     int i = 0;
@@ -53,8 +57,11 @@ public class Field extends Level
       while (j < this.height)
       {
         res += this.elements[i][j].toString() + ' ';
+        j++;
       }
       res += "\n";
+      i++;
     }
+    return (res);
   }
 }
