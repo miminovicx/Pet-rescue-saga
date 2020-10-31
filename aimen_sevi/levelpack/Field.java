@@ -105,17 +105,47 @@ public class Field
   //   j--;
   // }
   //   }
-  public void update ()
+  public void updateColumn (int a,int b,int k)
   {
-    for (int i = 0 ; i < this.height - 1 ; i++)
-    {
-      if(this.elements[i][0] instanceof Block)
-      {
-        if(this.elements[i + 1][0].getColor() == 0)
-        {
-          this.getDown(i,0);
-        }
-    }
-  }}
+    int i = a;
 
+    while (this.elements[i][k].getColor() != 0 && i != b)
+    // for (int i = 0 ; i < this.height - 1 ; i++)
+    // {
+    //   if(this.elements[i][0] instanceof Block)
+    //   {
+    //     if(this.elements[i + 1][0].getColor() == 0)
+    //     {
+    //       this.getDown(i,0);
+    //     }
+    // }
+    i++;
+    if(i != this.width)
+    {
+      for (int j = i - 1 ; j >= 0; j--)
+      {
+        this.getDown(j,k);
+      }
+    }
+
+  }
+
+  public void updateColumn2 (int k)
+  {
+    // a=0;
+    // b=this.width-1;
+    int i=0;
+    for(int s=3;s>=0;s--)
+    {
+    this.updateColumn(i,s,k);
+    i++;
+    }
+  }
+  public void update()
+  {
+    for(int i=0 ; i< this.width ; i++)
+    {
+      this.updateColumn2(i);
+    }
+  }
 }
