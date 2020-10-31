@@ -47,12 +47,19 @@ public class Field
   {
     this.elements[element.getX()][element.getY()] = element;
   }
+
+  public void removeElement(int x, int y)
+  {
+    this.elements[x][y] = this.elements[x][y].transform();
+  }
+
+
   public String toString()
   {
     int i = 0;
     int j = 0;
     String res = "";
-     res += "*".repeat(this.width * 4) + "\n" ;
+    res += "*".repeat(this.width * 4) + "\n" ;
 
     for(i=0;i<this.width;i++)
     {
@@ -61,8 +68,54 @@ public class Field
         res += this.elements[i][j].toString() + " " ;
       }
       res+="\n";
-      }
-      res += "*".repeat(this.width * 3) + "\n";
+    }
+    res += "*".repeat(this.width * 3) + "\n";
     return (res);
   }
+
+  public void swap(int x, int y, int x1, int y1)
+  {
+    FieldElement tmp = this.elements[x][y];
+    this.elements[x][y] = this.elements[x1][y1];
+    this.elements[x1][y1] = tmp;
+  }
+
+  public void getDown(int x, int y)
+  {
+    if (x + 1 < this.height)
+      this.swap(x,y,x + 1,y);
+  }
+
+  // public void update ()
+  // {
+  //   int j = 0;
+  //   while(this.elements[this.height-1][j].getColor()==0)
+  //   {
+  //   for(int i = this.height - 1; i > 0; i--)
+  //   {
+  //     j = i-1;
+  //     if(this.elements[i][0] instanceof Block)
+  //     {
+  //       if(this.elements[i][0].getColor() == 0)
+  //       {
+  //         this.swap(i, 0, i - 1, 0);
+  //       }
+  //     }
+  //   }
+  //   j--;
+  // }
+  //   }
+  public void update ()
+  {
+    for (int i = 0 ; i < this.height - 1 ; i++)
+    {
+      if(this.elements[i][0] instanceof Block)
+      {
+        if(this.elements[i + 1][0].getColor() == 0)
+        {
+          this.getDown(i,0);
+        }
+    }
+  }}
+
 }

@@ -35,4 +35,9 @@ public class Environment
   {
     return (this.player.toString() + Arrays.toString(this.levels));
   }
+
+  public Player createPlayer(String nickName)
+  {
+    return (new Player(nickName, 5, 0));
+  }
 }

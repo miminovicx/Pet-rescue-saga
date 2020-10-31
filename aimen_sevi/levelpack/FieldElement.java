@@ -1,5 +1,5 @@
 package levelpack;
-public class FieldElement
+public abstract class FieldElement
 {
   private int x;
   private int y;
@@ -13,27 +13,35 @@ public class FieldElement
   {
     return (this.y);
   }
-
-  public void setX(int x)
-  {
-    this.x = x;
-  }
-
-  public void setY(int y)
-  {
-    this.y = y;
-  }
-
+  //
+  // public void setX(int x)
+  // {
+  //   this.x = x;
+  // }
+  //
+  // public void setY(int y)
+  // {
+  //   this.y = y;
+  // }
+  //
   public FieldElement (int x, int y)
   {
     this.x = x;
     this.y = y;
   }
 
-  public String toString()
-  {
-    if(this == null)
-      return("NA");
-    return ("FE");
-  }
+  public abstract Block transform();
+  // {
+  //   return (null);
+  // }
+
+
+  public abstract String toString();
+  // {
+  //   if(this == null)
+  //     return("NA");
+  //   return ("FE");
+  // }
+
+  public abstract int getColor();
 }

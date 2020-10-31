@@ -29,26 +29,32 @@ public class Block extends FieldElement
       }
       case 1:
       {
-        return ("R");
+        return ("r");
       }
       case 2:
       {
-        return ("B");
+        return ("b");
       }
       case 3:
       {
-        return ("Y");
+        return ("y");
       }
       case 4:
       {
-        return ("G");
+        return ("g");
       }
       case 5:
       {
-        return ("P");
+        return ("p");
       }
       default:
         return ("");
     }
+  }
+
+  @Override
+  public Block transform()
+  {
+      return ( new Block ( this.getX() , this.getY() ,0));
   }
 }
