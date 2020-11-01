@@ -84,13 +84,14 @@ public class Test
 
     squaredString("Test remove");
     field.removeElement(0,0);
-    // System.out.println (field);
-    // System.out.println("-------------------------------------------------------");
     field.removeElement(1,0);
-    // System.out.println (field);
-    // System.out.println("-------------------------------------------------------");
     field.removeElement(2,0);
-     field.removeElement(3,0);
+    field.removeElement(3,0);
+    field.removeElement(0,3);
+    field.removeElement(1,3);
+    field.removeElement(2,3);
+    field.removeElement(3,3);
+    field.removeElement(1,2);
     // System.out.println (field);
     // System.out.println("-------------------------------------------------------");
     //field.removeElement(3,3);
