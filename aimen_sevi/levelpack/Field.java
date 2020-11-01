@@ -83,7 +83,7 @@ public class Field
   public void getDown(int x, int y)
   {
     if (x + 1 < this.height)
-      this.swap(x,y,x + 1,y);
+    this.swap(x,y,x + 1,y);
   }
 
   // public void update ()
@@ -105,47 +105,63 @@ public class Field
   //   j--;
   // }
   //   }
-  public void updateColumn (int a,int b,int k)
-  {
-    int i = a;
-
-    while (this.elements[i][k].getColor() != 0 && i != b)
-    // for (int i = 0 ; i < this.height - 1 ; i++)
-    // {
-    //   if(this.elements[i][0] instanceof Block)
-    //   {
-    //     if(this.elements[i + 1][0].getColor() == 0)
-    //     {
-    //       this.getDown(i,0);
-    //     }
-    // }
-    i++;
-    if(i != this.width)
-    {
-      for (int j = i - 1 ; j >= 0; j--)
-      {
-        this.getDown(j,k);
-      }
-    }
-
-  }
-
-  public void updateColumn2 (int k)
-  {
-    // a=0;
-    // b=this.width-1;
-    int i=0;
-    for(int s=3;s>=0;s--)
-    {
-    this.updateColumn(i,s,k);
-    i++;
-    }
-  }
+  // public void updateColumn (int a,int b,int k)
+  // {
+  //   int i = a;
+  //
+  //   while (this.elements[i][k].getColor() != 0 && i != b)
+  //   // for (int i = 0 ; i < this.height - 1 ; i++)
+  //   // {
+  //   //   if(this.elements[i][0] instanceof Block)
+  //   //   {
+  //   //     if(this.elements[i + 1][0].getColor() == 0)
+  //   //     {
+  //   //       this.getDown(i,0);
+  //   //     }
+  //   // }
+  //   i++;
+  //   if(i != this.width)
+  //   {
+  //     for (int j = i - 1 ; j >= 0; j--)
+  //     {
+  //       this.getDown(j,k);
+  //     }
+  //   }
+  //
+  // }
+  //
+  // public void updateColumn2 (int k)
+  // {
+  //   // a=0;
+  //   // b=this.width-1;
+  //   int i=0;
+  //   for(int s=3;s>=0;s--)
+  //   {
+  //   this.updateColumn(i,s,k);
+  //   i++;
+  //   }
+  // }
+  // public void update()
+  // {
+  //   for(int i=0 ; i< this.width ; i++)
+  //   {
+  //     this.updateColumn2(i);
+  //   }
+  // }
   public void update()
   {
-    for(int i=0 ; i< this.width ; i++)
+    for (int k = 0 ; k < height ; k ++)
     {
-      this.updateColumn2(i);
+      for(int j = height - 1 ;j > 0; j--)
+      {
+        for (int i = 0 ; i < width; i++)
+        {
+          if(this.elements[j][i].getColor() == 0)
+          {
+            this.getDown(j - 1, i);
+          }
+        }
+      }
     }
   }
 }
