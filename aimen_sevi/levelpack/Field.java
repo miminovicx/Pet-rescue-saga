@@ -163,5 +163,41 @@ public class Field
         }
       }
     }
+
+    this.moveColumns();
+  }
+
+  public boolean isEmpty(int k)
+  {
+      if(this.elements[width - 1][k].getColor() == 0) //si le dernier element de la colonne est vide apres update
+      {
+        return true;                                //donc toute la colonne est vide
+      }
+      else
+      {
+        return false;                               //sinon il y a un element au moins donc n'est pas vide
+      }
+  }
+
+  public void swipeColumn(int a, int b)
+  {
+    int temp;
+    for(int i = 0 ; i<width ; i++) //parcours chaque ligne
+    {
+      temp = this.elements[i][a].getColor();
+      this.elements[i][a].setColor(this.elements[i][b].getColor());
+      this.elements[i][b].setColor(temp);
+    }
+  }
+
+  public void moveColumns()
+  {
+    for(int j = 0 ; j < width - 1 ; j++) //doit parcourir chaque colonne
+    {
+      if(this.isEmpty(j))                //si la colonne est vide on la decale a droite
+      {
+        swipeColumn(j,j+1);
+      }
+    }
   }
 }

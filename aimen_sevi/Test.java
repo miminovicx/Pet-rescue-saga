@@ -86,14 +86,14 @@ public class Test
     field.removeElement(0,0);
     // System.out.println (field);
     // System.out.println("-------------------------------------------------------");
-    field.removeElement(1,1);
+    field.removeElement(1,0);
     // System.out.println (field);
     // System.out.println("-------------------------------------------------------");
-    field.removeElement(1,2);
-     field.removeElement(2,2);
+    field.removeElement(2,0);
+     field.removeElement(3,0);
     // System.out.println (field);
     // System.out.println("-------------------------------------------------------");
-     field.removeElement(3,3);
+    //field.removeElement(3,3);
     System.out.println (field);
     System.out.println("-------------------------------------------------------");
     System.out.println();
@@ -107,5 +107,14 @@ public class Test
     System.out.println (field);
     System.out.println("-------------------------------------------------------");
     System.out.println();
+
+    // squaredString("Test isEmpty");
+    // System.out.println(field.isEmpty(2));
+    // System.out.println("-------------------------------------------------------");
+    // System.out.println();
+
+    // squaredString("Test moveColumns");
+    // field.moveColumns();
+    // System.out.println(field);
    }
 }
