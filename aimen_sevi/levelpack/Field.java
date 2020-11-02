@@ -163,10 +163,10 @@ public class Field
         }
       }
     }
-    for(int k = 0 ; k < height ; k++)
-    {
-    this.moveColumns();
-    }
+    // for(int k = 0 ; k < height ; k++)
+    // {
+     this.moveColumns();
+    // }
   }
 
   public boolean isEmpty(int k)
@@ -181,10 +181,10 @@ public class Field
       }
   }
 
-  public void swipeColumn(int a, int b)
+  public void swapColumn(int a, int b)
   {
     int temp;
-    for(int i = 0 ; i<width ; i++) //parcours chaque ligne
+    for(int i = 0 ; i<width ; i++)                 //parcours chaque ligne
     {
       temp = this.elements[i][a].getColor();
       this.elements[i][a].setColor(this.elements[i][b].getColor());
@@ -194,12 +194,67 @@ public class Field
 
   public void moveColumns()
   {
-    for(int j = 0 ; j < width - 1 ; j++) //doit parcourir chaque colonne
+    for (int k = 0 ; k < height ; k++ )
     {
-      if(this.isEmpty(j))                //si la colonne est vide on la decale a droite
+      for(int j = 0 ; j < width - 1 ; j++)           //doit parcourir chaque colonne
       {
-        swipeColumn(j,j+1);
+        if(this.isEmpty(j))                          //si la colonne est vide on la decale a droite
+        {
+          swapColumn(j,j+1);
+        }
       }
     }
   }
+
+  public boolean deletable(int x , int y)
+  {
+    if ( this.elements[x][y] instanceof Block )
+    {
+      int a = x + 1 ;
+      int b = x - 1 ;
+      int c = y + 1 ;
+      int d = y - 1 ;
+      if(a < width)   //les conditions sont ici pour ne pas sortir des limites du tableau
+      {
+        if( this.elements[x][y].getColor() == this.elements[a][y].getColor() )
+        {
+          return true;
+        }
+      }
+      else if(b >= 0)
+      {
+        if( this.elements[x][y].getColor() == this.elements[b][y].getColor() )
+        {
+          return true;
+        }
+      }
+      else if(c < width)
+      {
+        if( this.elements[x][y].getColor() == this.elements[x][c].getColor() )
+        {
+          return true;
+        }
+      }
+      else if(d >= 0)
+      {
+        if( this.elements[x][y].getColor() == this.elements[x][d].getColor() )
+        {
+          return true;
+        }
+      }
+      else
+      {
+        return false;
+      }
+    }
+    return false;
+  }
+
+  // public void deleteGroup(FieldElement element)
+  // {
+  //   if(this.deletable)
+  //   {
+  //
+  //   }
+  // }
 }
