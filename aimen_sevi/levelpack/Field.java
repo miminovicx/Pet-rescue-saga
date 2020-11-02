@@ -163,8 +163,10 @@ public class Field
         }
       }
     }
-
+    for(int k = 0 ; k < height ; k++)
+    {
     this.moveColumns();
+    }
   }
 
   public boolean isEmpty(int k)
