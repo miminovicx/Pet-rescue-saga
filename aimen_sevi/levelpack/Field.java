@@ -86,68 +86,6 @@ public class Field
     this.swap(x,y,x + 1,y);
   }
 
-  // public void update ()
-  // {
-  //   int j = 0;
-  //   while(this.elements[this.height-1][j].getColor()==0)
-  //   {
-  //   for(int i = this.height - 1; i > 0; i--)
-  //   {
-  //     j = i-1;
-  //     if(this.elements[i][0] instanceof Block)
-  //     {
-  //       if(this.elements[i][0].getColor() == 0)
-  //       {
-  //         this.swap(i, 0, i - 1, 0);
-  //       }
-  //     }
-  //   }
-  //   j--;
-  // }
-  //   }
-  // public void updateColumn (int a,int b,int k)
-  // {
-  //   int i = a;
-  //
-  //   while (this.elements[i][k].getColor() != 0 && i != b)
-  //   // for (int i = 0 ; i < this.height - 1 ; i++)
-  //   // {
-  //   //   if(this.elements[i][0] instanceof Block)
-  //   //   {
-  //   //     if(this.elements[i + 1][0].getColor() == 0)
-  //   //     {
-  //   //       this.getDown(i,0);
-  //   //     }
-  //   // }
-  //   i++;
-  //   if(i != this.width)
-  //   {
-  //     for (int j = i - 1 ; j >= 0; j--)
-  //     {
-  //       this.getDown(j,k);
-  //     }
-  //   }
-  //
-  // }
-  //
-  // public void updateColumn2 (int k)
-  // {
-  //   // a=0;
-  //   // b=this.width-1;
-  //   int i=0;
-  //   for(int s=3;s>=0;s--)
-  //   {
-  //   this.updateColumn(i,s,k);
-  //   i++;
-  //   }
-  // }
-  // public void update()
-  // {
-  //   for(int i=0 ; i< this.width ; i++)
-  //   {
-  //     this.updateColumn2(i);
-  //   }
-  // }
   public void update()
   {
     for (int k = 0 ; k < height ; k ++)
@@ -163,10 +101,8 @@ public class Field
         }
       }
     }
-    // for(int k = 0 ; k < height ; k++)
-    // {
+
      this.moveColumns();
-    // }
   }
 
   public boolean isEmpty(int k)
@@ -208,49 +144,46 @@ public class Field
 
   public boolean deletable(int x , int y)
   {
-    if ( this.elements[x][y] instanceof Block )
+    if ( this.elements[x][y] instanceof Block ) //simpleBlock
     {
-      int a = x + 1 ;
-      int b = x - 1 ;
-      int c = y + 1 ;
-      int d = y - 1 ;
-      if(a < width)   //les conditions sont ici pour ne pas sortir des limites du tableau
+      int right = x + 1 ;
+      int left = x - 1 ;
+      int up = y + 1 ;
+      int down = y - 1 ;
+      if(right < width)   //les conditions sont ici pour ne pas sortir des limites du tableau
       {
-        if( this.elements[x][y].getColor() == this.elements[a][y].getColor() )
+        if( this.elements[x][y].getColor() == this.elements[right][y].getColor() )
         {
           return true;
         }
       }
-      else if(b >= 0)
+      if(left >= 0)
       {
-        if( this.elements[x][y].getColor() == this.elements[b][y].getColor() )
+        if( this.elements[x][y].getColor() == this.elements[left][y].getColor() )
         {
           return true;
         }
       }
-      else if(c < width)
+      if(up < width)
       {
-        if( this.elements[x][y].getColor() == this.elements[x][c].getColor() )
+        if( this.elements[x][y].getColor() == this.elements[x][up].getColor() )
         {
           return true;
         }
       }
-      else if(d >= 0)
+      if(down >= 0)
       {
-        if( this.elements[x][y].getColor() == this.elements[x][d].getColor() )
+        if( this.elements[x][y].getColor() == this.elements[x][down].getColor() )
         {
           return true;
         }
       }
-      else
-      {
-        return false;
-      }
+
     }
     return false;
   }
 
-  // public void deleteGroup(FieldElement element)
+  // public void move(FieldElement element)
   // {
   //   if(this.deletable)
   //   {

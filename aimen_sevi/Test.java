@@ -18,8 +18,8 @@ public class Test
   {
 
 
-    FieldElement element0  = new Block(0,0,1);       //creation des elements du field
-    FieldElement element1  = new Block(0,1,1);
+    FieldElement element0  = new Block(0,0,2);       //creation des elements du field
+    FieldElement element1  = new Block(0,1,2);
     FieldElement element2  = new Block(0,2,1);
     // FieldElement element3  = new Block(0,3,1);
     FieldElement element4  = new Block(1,0,1);
@@ -61,11 +61,19 @@ public class Test
     System.out.println("-------------------------------------------------------");
     System.out.println();
 
-    int x=0;
-    int y=1;
-    squaredString("Test deletable "+x+" "+y);
-    System.out.println ( field.deletable(x,y) );
 
+    squaredString("Test deletable ");
+    int k=1;
+    for(int i = 0 ; i< field.getWidth() ; i++)
+    {
+
+      for (int j = 0 ; j < field.getWidth() ;j++)
+      {
+        System.out.println ("bloc "+k+" "+field.deletable(i,j) );
+        k++;
+      }
+
+    }
     // squaredString("LevelTest");
     // int [] tab = {1000,1500,3000};
     // Level lvl = new Level(0,0,0,field,false, tab);
@@ -121,6 +129,6 @@ public class Test
     // squaredString("Test moveColumns");
     // field.moveColumns();
     // System.out.println(field);
-
+//if(this)
    }
 }
