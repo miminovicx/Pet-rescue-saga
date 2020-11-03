@@ -257,19 +257,19 @@ public class Field
     {
       int col = this.elements[x][y].getColor();
       removeElement(x,y);
-      if( (x+1 < width) && (this.elements[x][y].getColor() == this.elements[x+1][y].getColor()) )
+      if( (x+1 < width) && (col == this.elements[x+1][y].getColor()) )
       {
         move(x+1,y,true);
       }
-      if( (x-1 >= 0) && (this.elements[x][y].getColor() == this.elements[x-1][y].getColor()) )
+      if( (x-1 >= 0) && (col == this.elements[x-1][y].getColor()) )
       {
           move(x-1,y,true);
       }
-      if( (y+1 < width) && (this.elements[x][y].getColor() == this.elements[x][y+1].getColor()) )
+      if( (y+1 < width) && (col == this.elements[x][y+1].getColor()) )
       {
         move(x,y+1,true);
       }
-      if( (y-1 >= 0) && (this.elements[x][y].getColor() == this.elements[x-1][y].getColor()) )
+      if( (y-1 >= 0) && (col == this.elements[x-1][y].getColor()) )
       {
         move(x,y-1,true);
       }
