@@ -20,15 +20,15 @@ public class Test
 
     FieldElement element0  = new Block(0,0,2);       //creation des elements du field
     FieldElement element1  = new Block(0,1,2);
-    FieldElement element2  = new SquaredBlock(0,2,1);
+    FieldElement element2  = new Block(0,2,2);
     // FieldElement element3  = new Block(0,3,1);
-    FieldElement element4  = new Block(1,0,1);
-    FieldElement element5  = new Block(1,1,2);
-    FieldElement element6  = new Block(1,2,1);
+    FieldElement element4  = new Block(1,0,2);
+    FieldElement element5  = new Block(1,1,1);
+    FieldElement element6  = new Block(1,2,2);
     // FieldElement element7  = new Block(1,3,1);
-    FieldElement element8  = new Block(2,0,1);
-    FieldElement element9  = new Block(2,1,1);
-    FieldElement element10 = new Block(2,2,1);
+    FieldElement element8  = new Block(2,0,2);
+    FieldElement element9  = new Block(2,1,2);
+    FieldElement element10 = new Block(2,2,2);
     // FieldElement element11 = new Block(2,3,1);
     // FieldElement element12 = new Block(3,0,1);
     // FieldElement element13 = new Block(3,1,1);
@@ -62,16 +62,20 @@ public class Test
     System.out.println();
 
 
-    squaredString("Test deletable ");
-    int k=1;
-    for(int i = 0 ; i< field.getWidth() ; i++)
-    {
+    // squaredString("Test deletable ");
+    // int k=1;
+    // for(int i = 0 ; i< field.getWidth() ; i++)
+    // {
+    //
+    //   for (int j = 0 ; j < field.getWidth() ;j++)
+    //   {
+    //     System.out.println ("bloc "+k+" "+field.deletable(i,j) );
+    //     k++;
+    //   }
 
-      for (int j = 0 ; j < field.getWidth() ;j++)
-      {
-        System.out.println ("bloc "+k+" "+field.deletable(i,j) );
-        k++;
-      }
+      squaredString("Test elementsToRemove");
+      System.out.println(field.elementsToRemove(1,0));
+
 
     }
     // squaredString("LevelTest");
@@ -131,4 +135,3 @@ public class Test
     // System.out.println(field);
 //if(this)
    }
-}

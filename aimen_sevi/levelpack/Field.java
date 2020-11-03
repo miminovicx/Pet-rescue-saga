@@ -1,4 +1,5 @@
 package levelpack;
+import java.util.LinkedList;
 public class Field
 {
   private int width;
@@ -142,61 +143,107 @@ public class Field
     }
   }
 
-  public boolean deletable(int x , int y)
+  // public boolean deletable(int x , int y)
+  // {
+  //   if ( this.elements[x][y] instanceof SquaredBlock ) //SquaredBlock
+  //   {
+  //     return false;
+  //   }
+  //         //SimpleBlock
+  //     int up = x + 1 ;
+  //     int down = x - 1 ;
+  //     int right = y + 1 ;
+  //     int left = y - 1 ;
+  //     if(up < width)   //les conditions sont ici pour ne pas sortir des limites du tableau
+  //     {
+  //       if( this.elements[x][y].getColor() == this.elements[up][y].getColor() )
+  //       {
+  //         return true;
+  //       }
+  //     }
+  //     if(down >= 0)
+  //     {
+  //       if( this.elements[x][y].getColor() == this.elements[down][y].getColor() )
+  //       {
+  //         return true;
+  //       }
+  //     }
+  //     if(right < width)
+  //     {
+  //       if( this.elements[x][y].getColor() == this.elements[x][right].getColor() )
+  //       {
+  //         return true;
+  //       }
+  //     }
+  //     if(left >= 0)
+  //     {
+  //       if( this.elements[x][y].getColor() == this.elements[x][left].getColor() )
+  //       {
+  //         return true;
+  //       }
+  //     }
+  //     return false;
+  // }
+
+
+  public LinkedList elementsToRemove (int x , int y)
   {
-    if ( this.elements[x][y] instanceof SquaredBlock ) //SquaredBlock
+    LinkedList <FieldElement> list = new LinkedList();
+    int up = x + 1 ;
+    int down = x - 1 ;
+    int right = y + 1 ;
+    int left = y - 1 ;
+    if(up < width)   //les conditions sont ici pour ne pas sortir des limites du tableau
     {
-      return false;
+      if( this.elements[x][y].getColor() == this.elements[up][y].getColor() )
+      {
+        list.add(this.elements[up][y]);
     }
-    else      //SimpleBlock
+    if(down >= 0)
     {
-      int right = x + 1 ;
-      int left = x - 1 ;
-      int up = y + 1 ;
-      int down = y - 1 ;
-      if(right < width)   //les conditions sont ici pour ne pas sortir des limites du tableau
+      if( this.elements[x][y].getColor() == this.elements[down][y].getColor() )
       {
-        if( this.elements[x][y].getColor() == this.elements[right][y].getColor() )
-        {
-          return true;
-        }
+        list.add(this.elements[down][y]);
+        elementsToRemove(down,y);
       }
-      if(left >= 0)
+    }
+    if(right < width)
+    {
+      if( this.elements[x][y].getColor() == this.elements[x][right].getColor() )
       {
-        if( this.elements[x][y].getColor() == this.elements[left][y].getColor() )
-        {
-          return true;
-        }
+        list.add(this.elements[x][right]);
+        elementsToRemove(x,right);
       }
-      if(up < width)
+    }
+    if(left >= 0)
+    {
+      if( this.elements[x][y].getColor() == this.elements[x][left].getColor() )
       {
-        if( this.elements[x][y].getColor() == this.elements[x][up].getColor() )
-        {
-          return true;
-        }
+        list.add(this.elements[x][left]);
+        elementsToRemove(x,left);
       }
-      if(down >= 0)
-      {
-        if( this.elements[x][y].getColor() == this.elements[x][down].getColor() )
-        {
-          return true;
-        }
-      }
+    }
 
-    }
-    return false;
+
+
   }
-
-  public void move(int x , int y)
-  {
-    if(deletable(x,y)
-    {
-      removeElement
-
-
-
-
-
-    }
-  }
+  // public void move(int x , int y)
+  // {
+  //   // LinkedList removebleElements <FieldElement> = new LinkedList();
+  //   if( !deletable(x,y) )
+  //   {
+  //     return;
+  //   }
+  //   else
+  //   {
+  //       removeElement(x,y);
+  //       move(x + 1 , y);      //appel en haut
+  //       move(x - 1 , y);      //appel en bas
+  //       move(x , y + 1);      //appel a droite
+  //       move(x , y - 1);      //appel a gauche
+  //
+  //   }
+  // }
+  return list;
+}
 }
