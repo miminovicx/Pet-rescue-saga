@@ -74,7 +74,7 @@ public class Test
     //   }
 
       squaredString("Test f");
-      field.move(1,0,true);
+      field.move(0,0,true);
       System.out.println(field);
 
 

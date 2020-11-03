@@ -269,14 +269,14 @@ public class Field
       {
         move(x,y+1,true);
       }
-      if( (y-1 >= 0) && (col == this.elements[x-1][y].getColor()) )
+      if( (y-1 >= 0) && (col == this.elements[x][y-1].getColor()) )
       {
         move(x,y-1,true);
       }
-
-
-
-
+      else
+      {
+        return;
+      }
     }
   }
 }
