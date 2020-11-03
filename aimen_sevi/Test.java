@@ -20,7 +20,7 @@ public class Test
 
     FieldElement element0  = new Block(0,0,2);       //creation des elements du field
     FieldElement element1  = new Block(0,1,2);
-    FieldElement element2  = new Block(0,2,1);
+    FieldElement element2  = new SquaredBlock(0,2,1);
     // FieldElement element3  = new Block(0,3,1);
     FieldElement element4  = new Block(1,0,1);
     FieldElement element5  = new Block(1,1,2);

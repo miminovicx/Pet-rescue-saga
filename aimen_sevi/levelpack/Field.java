@@ -144,7 +144,11 @@ public class Field
 
   public boolean deletable(int x , int y)
   {
-    if ( this.elements[x][y] instanceof Block ) //simpleBlock
+    if ( this.elements[x][y] instanceof SquaredBlock ) //SquaredBlock
+    {
+      return false;
+    }
+    else      //SimpleBlock
     {
       int right = x + 1 ;
       int left = x - 1 ;
@@ -183,11 +187,16 @@ public class Field
     return false;
   }
 
-  // public void move(FieldElement element)
-  // {
-  //   if(this.deletable)
-  //   {
-  //
-  //   }
-  // }
+  public void move(int x , int y)
+  {
+    if(deletable(x,y)
+    {
+      removeElement
+
+
+
+
+
+    }
+  }
 }
