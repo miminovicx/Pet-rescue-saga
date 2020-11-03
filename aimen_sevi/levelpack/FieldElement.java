@@ -3,6 +3,7 @@ public abstract class FieldElement
 {
   private int x;
   private int y;
+  public boolean del = false;
 
   public int getX()
   {

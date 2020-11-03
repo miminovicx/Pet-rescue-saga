@@ -73,8 +73,9 @@ public class Test
     //     k++;
     //   }
 
-      squaredString("Test elementsToRemove");
-      System.out.println(field.elementsToRemove(1,0));
+      squaredString("Test f");
+      field.move(1,0,true);
+      System.out.println(field);
 
 
     }

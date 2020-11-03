@@ -186,47 +186,49 @@ public class Field
   // }
 
 
-  public LinkedList elementsToRemove (int x , int y)
-  {
-    LinkedList <FieldElement> list = new LinkedList();
-    int up = x + 1 ;
-    int down = x - 1 ;
-    int right = y + 1 ;
-    int left = y - 1 ;
-    if(up < width)   //les conditions sont ici pour ne pas sortir des limites du tableau
-    {
-      if( this.elements[x][y].getColor() == this.elements[up][y].getColor() )
-      {
-        list.add(this.elements[up][y]);
-    }
-    if(down >= 0)
-    {
-      if( this.elements[x][y].getColor() == this.elements[down][y].getColor() )
-      {
-        list.add(this.elements[down][y]);
-        elementsToRemove(down,y);
-      }
-    }
-    if(right < width)
-    {
-      if( this.elements[x][y].getColor() == this.elements[x][right].getColor() )
-      {
-        list.add(this.elements[x][right]);
-        elementsToRemove(x,right);
-      }
-    }
-    if(left >= 0)
-    {
-      if( this.elements[x][y].getColor() == this.elements[x][left].getColor() )
-      {
-        list.add(this.elements[x][left]);
-        elementsToRemove(x,left);
-      }
-    }
+  // public LinkedList elementsToRemove (int x , int y)
+  // {
+  //   LinkedList <FieldElement> list = new LinkedList();
+  //   int up = x + 1 ;
+  //   int down = x - 1 ;
+  //   int right = y + 1 ;
+  //   int left = y - 1 ;
+  //   if(up < width)   //les conditions sont ici pour ne pas sortir des limites du tableau
+  //   {
+  //     if( this.elements[x][y].getColor() == this.elements[up][y].getColor() )
+  //     {
+  //       list.add(this.elements[up][y]);
+  //   }
+  //   if(down >= 0)
+  //   {
+  //     if( this.elements[x][y].getColor() == this.elements[down][y].getColor() )
+  //     {
+  //       list.add(this.elements[down][y]);
+  //       elementsToRemove(down,y);
+  //     }
+  //   }
+  //   if(right < width)
+  //   {
+  //     if( this.elements[x][y].getColor() == this.elements[x][right].getColor() )
+  //     {
+  //       list.add(this.elements[x][right]);
+  //       elementsToRemove(x,right);
+  //     }
+  //   }
+  //   if(left >= 0)
+  //   {
+  //     if( this.elements[x][y].getColor() == this.elements[x][left].getColor() )
+  //     {
+  //       list.add(this.elements[x][left]);
+  //       elementsToRemove(x,left);
+  //     }
+  //   }
+  // return list;
+  // }
 
 
 
-  }
+  // }
   // public void move(int x , int y)
   // {
   //   // LinkedList removebleElements <FieldElement> = new LinkedList();
@@ -244,6 +246,37 @@ public class Field
   //
   //   }
   // }
-  return list;
-}
+
+  public void move(int x, int y,boolean delete)
+  {
+    if(!delete)
+    {
+      return;
+    }
+    else
+    {
+      int col = this.elements[x][y].getColor();
+      removeElement(x,y);
+      if( (x+1 < width) && (this.elements[x][y].getColor() == this.elements[x+1][y].getColor()) )
+      {
+        move(x+1,y,true);
+      }
+      if( (x-1 >= 0) && (this.elements[x][y].getColor() == this.elements[x-1][y].getColor()) )
+      {
+          move(x-1,y,true);
+      }
+      if( (y+1 < width) && (this.elements[x][y].getColor() == this.elements[x][y+1].getColor()) )
+      {
+        move(x,y+1,true);
+      }
+      if( (y-1 >= 0) && (this.elements[x][y].getColor() == this.elements[x-1][y].getColor()) )
+      {
+        move(x,y-1,true);
+      }
+
+
+
+
+    }
+  }
 }
