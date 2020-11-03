@@ -10,7 +10,7 @@ public class Level
   private boolean succeded=true;
   private int[] palier;
   private int animalsToRescue;
-  public Level(int stars, int score, int lastScore, Field field, boolean succeded, int[] palier)
+  public Level(int stars, int score, int lastScore, Field field, boolean succeded, int[] palier, int animalsToRescue)
   {
     this.num = id;
     this.stars = stars;
@@ -19,6 +19,7 @@ public class Level
     this.field = field;
     this.succeded = succeded;
     this.palier = palier;
+    this.animalsToRescue = animalsToRescue;
     id++;
   }
   public String toString()

@@ -143,47 +143,44 @@ public class Field
     }
   }
 
-  // public boolean deletable(int x , int y)
-  // {
-  //   if ( this.elements[x][y] instanceof SquaredBlock ) //SquaredBlock
-  //   {
-  //     return false;
-  //   }
-  //         //SimpleBlock
-  //     int up = x + 1 ;
-  //     int down = x - 1 ;
-  //     int right = y + 1 ;
-  //     int left = y - 1 ;
-  //     if(up < width)   //les conditions sont ici pour ne pas sortir des limites du tableau
-  //     {
-  //       if( this.elements[x][y].getColor() == this.elements[up][y].getColor() )
-  //       {
-  //         return true;
-  //       }
-  //     }
-  //     if(down >= 0)
-  //     {
-  //       if( this.elements[x][y].getColor() == this.elements[down][y].getColor() )
-  //       {
-  //         return true;
-  //       }
-  //     }
-  //     if(right < width)
-  //     {
-  //       if( this.elements[x][y].getColor() == this.elements[x][right].getColor() )
-  //       {
-  //         return true;
-  //       }
-  //     }
-  //     if(left >= 0)
-  //     {
-  //       if( this.elements[x][y].getColor() == this.elements[x][left].getColor() )
-  //       {
-  //         return true;
-  //       }
-  //     }
-  //     return false;
-  // }
+  public boolean deletable(int x , int y)
+  {
+    if ( this.elements[x][y] instanceof SquaredBlock || this.elements[x][y].getColor() == 0) //SquaredBlock
+    {
+      return false;
+    }
+          //SimpleBlock
+
+      if( x + 1 < width)   //les conditions sont ici pour ne pas sortir des limites du tableau
+      {
+        if( this.elements[x][y].getColor() == this.elements[x + 1][y].getColor() )
+        {
+          return true;
+        }
+      }
+      if(x - 1 >= 0)
+      {
+        if( this.elements[x][y].getColor() == this.elements[x - 1][y].getColor() )
+        {
+          return true;
+        }
+      }
+      if(y + 1 < width)
+      {
+        if( this.elements[x][y].getColor() == this.elements[x][y + 1].getColor() )
+        {
+          return true;
+        }
+      }
+      if(y - 1 >= 0)
+      {
+        if( this.elements[x][y].getColor() == this.elements[x][y - 1].getColor() )
+        {
+          return true;
+        }
+      }
+      return false;
+  }
 
 
   // public LinkedList elementsToRemove (int x , int y)
@@ -273,10 +270,33 @@ public class Field
       {
         move(x,y-1,true);
       }
-      else
+
+    }
+  }
+
+  public void remove(int x, int y)
+  {
+    if(this.deletable(x,y))
+    {
+      move(x,y,true);
+    }
+
+    move(x,y,false);
+
+  }
+
+  public boolean Lost1()     //end of game because there's no delete possible
+  {
+    boolean possible = false;
+    int i = 0;
+    int j = 0;
+    while(!possible && i < width)
+    {
+      while(!possible && j < width)
       {
-        return;
+        possible = this.deletable(i,j);
       }
     }
+    return possible;
   }
 }
