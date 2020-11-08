@@ -1,11 +1,12 @@
 package levelpack;
 import java.util.LinkedList;
+import levelpack.Level;
 public class Field
 {
   private int width;
   private int height;
   private FieldElement [][] elements;
-
+  public static int nbBlockSuppr = 0;
 
   public int getWidth()
   {
@@ -223,6 +224,7 @@ public class Field
 
   public void remove(int x, int y)
   {
+    nbBlockSuppr = 0;
     if(this.deletable(x,y))
     {
       move(x,y,true);

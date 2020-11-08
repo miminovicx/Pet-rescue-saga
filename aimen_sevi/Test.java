@@ -3,7 +3,7 @@ import levelpack.FieldElement;
 import pack.Player;
 import levelpack.Block;
 import levelpack.SquaredBlock;
-import levelpack.Animal;
+// import levelpack.Animal;
 import levelpack.Level;
 import levelpack.Field;
 public class Test
@@ -24,8 +24,8 @@ public class Test
     FieldElement element2  = new Block(0,2,2);
     // FieldElement element3  = new Block(0,3,1);
     FieldElement element4  = new Block(1,0,1);
-    FieldElement element5  = new Block(1,1,2);
-    FieldElement element6  = new Block(1,2,3);
+    FieldElement element5  = new Block(1,1,4);
+    FieldElement element6  = new Block(1,2,2);
     // FieldElement element7  = new Block(1,3,1);
     FieldElement element8  = new Block(2,0,4);
     FieldElement element9  = new Block(2,1,1);
@@ -73,7 +73,10 @@ public class Test
     //field.simplifySquared(0,1);
     // field.removeElement(0,2);
     System.out.println(field);
-
+    System.out.println(field.nbBlockSuppr);
+    field.remove(0,2);
+    System.out.println(field);
+    System.out.println(field.nbBlockSuppr);
 
    }
 }

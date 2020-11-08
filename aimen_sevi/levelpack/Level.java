@@ -10,7 +10,6 @@ public class Level
   private boolean succeded=true;
   private int[] palier;
   private int animalsToRescue;
-  public static int nbBlockSuppr = 0;
   public Level(int stars, int score, int lastScore, Field field, boolean succeded, int[] palier, int animalsToRescue)
   {
     this.num = id;
