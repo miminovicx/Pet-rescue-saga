@@ -19,9 +19,9 @@ public class Test
   {
 
 
-    FieldElement element0  = new Animal(0,0,0);       //creation des elements du field
+    FieldElement element0  = new Block(0,0,1);       //creation des elements du field
     FieldElement element1  = new Block(0,1,1);
-    FieldElement element2  = new Block(0,2,2);
+    FieldElement element2  = new SquaredBlock(0,2,2);
     // FieldElement element3  = new Block(0,3,1);
     FieldElement element4  = new Block(1,0,1);
     FieldElement element5  = new Block(1,1,2);
@@ -62,15 +62,16 @@ public class Test
     System.out.println("-------------------------------------------------------");
     System.out.println();
 
-    // squaredString("Test remove");
-    // field.remove(2,1);
+    //squaredString("Test remove");
+    // field.remove(0,0);
     // System.out.println(field);
     // field.update();
     // System.out.println(field);
 
-    System.out.println(field.Lost1());
+    //System.out.println(field.Lost1());
 
-
+    field.simplifySquared(0,1);
+    System.out.println(field);
 
 
     // squaredString("Test deletable ");
@@ -129,23 +130,6 @@ public class Test
     // System.out.println();
 
 
-    // squaredString("Test update");
-    // field.removeElement(0,2);
-    // System.out.println (field);
-    // System.out.println("-------------------------------------------------------");
-    // field.update();                     //updateGeneral
-    // System.out.println (field);         //affichage pour tester le update
-    // System.out.println("-------------------------------------------------------");
-    //
-    // System.out.println();
-    // squaredString("Test isEmpty");
-    // System.out.println(field.isEmpty(2));
-    // System.out.println("-------------------------------------------------------");
-    // System.out.println();
 
-    // squaredString("Test moveColumns");
-    // field.moveColumns();
-    // System.out.println(field);
-//if(this)
    }
 }

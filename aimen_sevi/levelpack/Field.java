@@ -254,6 +254,7 @@ public class Field
     {
       int col = this.elements[x][y].getColor();
       removeElement(x,y);
+      simplifySquared(x,y);
       if( (x+1 < width) && (col == this.elements[x+1][y].getColor()) )
       {
         move(x+1,y,true);
@@ -287,16 +288,40 @@ public class Field
 
   public boolean Lost1()     //end of game because there's no delete possible
   {
-    boolean possible = false;
     int i = 0;
     int j = 0;
-    while(!possible && i < width)
+    while(i < width)
     {
-      while(!possible && j < width)
+      while(j < width)
       {
-        possible = this.deletable(i,j);
+        if(this.deletable(i,j))
+        {
+        return false;
+        }
+        j++;
       }
+      i++;
     }
-    return possible;
+    return true;
+  }
+
+  public void simplifySquared(int x,int y)
+  {
+    if( (x+1 < width) && (this.elements[x+1][y] instanceof SquaredBlock ))
+    {
+      this.elements[x+1][y].transform();
+    }
+    if( (x-1 >= 0) && (this.elements[x-1][y] instanceof SquaredBlock))
+    {
+      this.elements[x-1][y].transform();
+    }
+    if( (y+1 < width) && (this.elements[x][y+1] instanceof SquaredBlock))
+    {
+      this.elements[x][y+1].transform();
+    }
+    if( (y-1 >= 0) && (this.elements[x][y-1] instanceof SquaredBlock))
+    {
+      this.elements[x][y-1].transform();
+    }
   }
 }
