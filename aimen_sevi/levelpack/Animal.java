@@ -1,9 +1,9 @@
 package levelpack;
-public class Animal extends Block
+public class Animal extends FieldElement
 {
-  public Animal(int x, int y, int color)
+  public Animal(int x, int y)
   {
-    super(x, y, color);
+    super(x, y);
   }
 
   public String toString()

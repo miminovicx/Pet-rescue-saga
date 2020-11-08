@@ -183,67 +183,6 @@ public class Field
   }
 
 
-  // public LinkedList elementsToRemove (int x , int y)
-  // {
-  //   LinkedList <FieldElement> list = new LinkedList();
-  //   int up = x + 1 ;
-  //   int down = x - 1 ;
-  //   int right = y + 1 ;
-  //   int left = y - 1 ;
-  //   if(up < width)   //les conditions sont ici pour ne pas sortir des limites du tableau
-  //   {
-  //     if( this.elements[x][y].getColor() == this.elements[up][y].getColor() )
-  //     {
-  //       list.add(this.elements[up][y]);
-  //   }
-  //   if(down >= 0)
-  //   {
-  //     if( this.elements[x][y].getColor() == this.elements[down][y].getColor() )
-  //     {
-  //       list.add(this.elements[down][y]);
-  //       elementsToRemove(down,y);
-  //     }
-  //   }
-  //   if(right < width)
-  //   {
-  //     if( this.elements[x][y].getColor() == this.elements[x][right].getColor() )
-  //     {
-  //       list.add(this.elements[x][right]);
-  //       elementsToRemove(x,right);
-  //     }
-  //   }
-  //   if(left >= 0)
-  //   {
-  //     if( this.elements[x][y].getColor() == this.elements[x][left].getColor() )
-  //     {
-  //       list.add(this.elements[x][left]);
-  //       elementsToRemove(x,left);
-  //     }
-  //   }
-  // return list;
-  // }
-
-
-
-  // }
-  // public void move(int x , int y)
-  // {
-  //   // LinkedList removebleElements <FieldElement> = new LinkedList();
-  //   if( !deletable(x,y) )
-  //   {
-  //     return;
-  //   }
-  //   else
-  //   {
-  //       removeElement(x,y);
-  //       move(x + 1 , y);      //appel en haut
-  //       move(x - 1 , y);      //appel en bas
-  //       move(x , y + 1);      //appel a droite
-  //       move(x , y - 1);      //appel a gauche
-  //
-  //   }
-  // }
-
   public void move(int x, int y,boolean delete)
   {
     if(!delete)
@@ -252,26 +191,33 @@ public class Field
     }
     else
     {
-      int col = this.elements[x][y].getColor();
-      removeElement(x,y);
-      simplifySquared(x,y);
-      if( (x+1 < width) && (col == this.elements[x+1][y].getColor()) )
+      if(this.elements[x][y] instanceof SquaredBlock) //a defaut d'avoir une classe SimpleBlock
       {
-        move(x+1,y,true);
+        return;
       }
-      if( (x-1 >= 0) && (col == this.elements[x-1][y].getColor()) )
+      else
       {
-          move(x-1,y,true);
-      }
-      if( (y+1 < width) && (col == this.elements[x][y+1].getColor()) )
-      {
-        move(x,y+1,true);
-      }
-      if( (y-1 >= 0) && (col == this.elements[x][y-1].getColor()) )
-      {
-        move(x,y-1,true);
-      }
+        int col = this.elements[x][y].getColor();
+        removeElement(x,y);
 
+        if( (x+1 < width) && (col == this.elements[x+1][y].getColor()) )
+        {
+          move(x+1,y,true);
+        }
+        if( (x-1 >= 0) && (col == this.elements[x-1][y].getColor()) )
+        {
+            move(x-1,y,true);
+        }
+        if( (y+1 < width) && (col == this.elements[x][y+1].getColor()) )
+        {
+          move(x,y+1,true);
+        }
+        if( (y-1 >= 0) && (col == this.elements[x][y-1].getColor()) )
+        {
+          move(x,y-1,true);
+        }
+        simplifySquared(x,y);
+      }
     }
   }
 
