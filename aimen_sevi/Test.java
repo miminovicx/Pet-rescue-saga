@@ -21,15 +21,15 @@ public class Test
 
     FieldElement element0  = new Block(0,0,1);       //creation des elements du field
     FieldElement element1  = new Block(0,1,1);
-    FieldElement element2  = new SquaredBlock(0,2,2);
+    FieldElement element2  = new Block(0,2,2);
     // FieldElement element3  = new Block(0,3,1);
-    FieldElement element4  = new SquaredBlock(1,0,1);
-    FieldElement element5  = new SquaredBlock(1,1,2);
-    FieldElement element6  = new SquaredBlock(1,2,3);
+    FieldElement element4  = new Block(1,0,1);
+    FieldElement element5  = new Block(1,1,2);
+    FieldElement element6  = new Block(1,2,3);
     // FieldElement element7  = new Block(1,3,1);
-    FieldElement element8  = new SquaredBlock(2,0,4);
-    FieldElement element9  = new SquaredBlock(2,1,1);
-    FieldElement element10 = new SquaredBlock(2,2,4);
+    FieldElement element8  = new Block(2,0,4);
+    FieldElement element9  = new Block(2,1,1);
+    FieldElement element10 = new Block(2,2,4);
     // FieldElement element11 = new Block(2,3,1);
     // FieldElement element12 = new Block(3,0,1);
     // FieldElement element13 = new Block(3,1,1);

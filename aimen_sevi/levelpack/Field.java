@@ -199,7 +199,7 @@ public class Field
       {
         int col = this.elements[x][y].getColor();
         removeElement(x,y);
-
+        nbBlockSuppr++;
         if( (x+1 < width) && (col == this.elements[x+1][y].getColor()) )
         {
           move(x+1,y,true);
