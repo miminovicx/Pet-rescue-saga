@@ -71,64 +71,8 @@ public class Test
     //System.out.println(field.Lost1());
 
     field.simplifySquared(0,1);
-    System.out.println(field);
-
-
-    // squaredString("Test deletable ");
-    // int k=1;
-    // for(int i = 0 ; i< field.getWidth() ; i++)
-    // {
-    //
-    //   for (int j = 0 ; j < field.getWidth() ;j++)
-    //   {
-    //     System.out.println ("bloc "+k+" "+field.deletable(i,j) );
-    //     k++;
-    //   }
-    // }
-    //
-    //   squaredString("Test f");
-    //   field.move(1,1,false);
-    //   System.out.println(field);
-
-
-
-    // squaredString("LevelTest");
-    // int [] tab = {1000,1500,3000};
-    // Level lvl = new Level(0,0,0,field,false, tab);
-    // System.out.println(lvl);
-    // System.out.println("-------------------------------------------------------");
-    // System.out.println();
-
-    // squaredString("Player Test");
-    // Player player = new Player("Sevi", 5, 100);
-    // System.out.print(player);
-    // System.out.println("-------------------------------------------------------");
-    // System.out.println();
-    //
-    // squaredString("Environment Test");
-    // Environment environment = new Environment(player,tab);
-    // System.out.println(environment);
-    // System.out.println("-------------------------------------------------------");
-    // System.out.println();
-
-
-    // squaredString("Test remove");
-    // field.removeElement(0,0);             //suppression de quelques blocs
-    // field.removeElement(1,0);
-    // field.removeElement(2,0);
-    // field.removeElement(3,0);
     // field.removeElement(0,2);
-    // field.removeElement(1,2);
-    // field.removeElement(2,2);
-    // field.removeElement(3,2);
-    //field.removeElement(1,2);
-    // System.out.println (field);
-    // System.out.println("-------------------------------------------------------");
-    //field.removeElement(3,3);
-    // System.out.println (field);         //test du remove
-    // System.out.println("-------------------------------------------------------");
-    // System.out.println();
-
+    System.out.println(field);
 
 
    }

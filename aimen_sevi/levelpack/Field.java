@@ -309,19 +309,19 @@ public class Field
   {
     if( (x+1 < width) && (this.elements[x+1][y] instanceof SquaredBlock ))
     {
-      this.elements[x+1][y].transform();
+      this.removeElement(x+1,y);
     }
     if( (x-1 >= 0) && (this.elements[x-1][y] instanceof SquaredBlock))
     {
-      this.elements[x-1][y].transform();
+      this.removeElement(x-1,y);
     }
     if( (y+1 < width) && (this.elements[x][y+1] instanceof SquaredBlock))
     {
-      this.elements[x][y+1].transform();
+      this.removeElement(x,y+1);
     }
     if( (y-1 >= 0) && (this.elements[x][y-1] instanceof SquaredBlock))
     {
-      this.elements[x][y-1].transform();
+      this.removeElement(x,y-1);
     }
   }
 }
