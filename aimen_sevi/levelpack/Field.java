@@ -1,6 +1,7 @@
 package levelpack;
 import java.util.LinkedList;
 import levelpack.Level;
+import levelpack.Animal;
 public class Field
 {
   private int width;
@@ -270,6 +271,26 @@ public class Field
     if( (y-1 >= 0) && (this.elements[x][y-1] instanceof SquaredBlock))
     {
       this.removeElement(x,y-1);
+    }
+  }
+
+  public void updateFinal(int x, int y)
+  {
+    this.remove(x,y);
+    this.update();
+    this.moveColumns();
+  }
+
+  public void saveAnimal()
+  {
+    for(int j=0; j < width ; j++)
+    {
+      if(this.elements[width - 1][j] instanceof Animal)
+      {
+        // removeAnimal(width - 1,j);
+        this.elements[width-1][j]= new Block(width-1,j,0);
+        //animalsSaved ++
+      }
     }
   }
 }

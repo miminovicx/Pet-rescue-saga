@@ -3,7 +3,7 @@ import levelpack.FieldElement;
 import pack.Player;
 import levelpack.Block;
 import levelpack.SquaredBlock;
-// import levelpack.Animal;
+import levelpack.Animal;
 import levelpack.Level;
 import levelpack.Field;
 public class Test
@@ -19,12 +19,12 @@ public class Test
   {
 
 
-    FieldElement element0  = new Block(0,0,1);       //creation des elements du field
+    FieldElement element0  = new Animal(0,0);       //creation des elements du field
     FieldElement element1  = new Block(0,1,1);
     FieldElement element2  = new Block(0,2,2);
     // FieldElement element3  = new Block(0,3,1);
     FieldElement element4  = new Block(1,0,1);
-    FieldElement element5  = new Block(1,1,4);
+    FieldElement element5  = new Block(1,1,1);
     FieldElement element6  = new Block(1,2,2);
     // FieldElement element7  = new Block(1,3,1);
     FieldElement element8  = new Block(2,0,4);
@@ -63,7 +63,7 @@ public class Test
     System.out.println();
 
     //squaredString("Test remove");
-     field.remove(0,0);
+     // field.remove(0,0);
     // System.out.println(field);
     // field.update();
     // System.out.println(field);
@@ -71,12 +71,15 @@ public class Test
     //System.out.println(field.Lost1());
 
     //field.simplifySquared(0,1);
-    // field.removeElement(0,2);
+    field.updateFinal(1,1);
     System.out.println(field);
-    System.out.println(field.nbBlockSuppr);
-    field.remove(0,2);
+    field.updateFinal(2,0);
+    field.saveAnimal();
     System.out.println(field);
-    System.out.println(field.nbBlockSuppr);
+    // System.out.println(field.nbBlockSuppr);
+    // field.remove(0,2);
+    // System.out.println(field);
+    // System.out.println(field.nbBlockSuppr);
 
    }
 }

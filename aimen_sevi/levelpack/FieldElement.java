@@ -30,21 +30,12 @@ public abstract class FieldElement
     this.x = x;
     this.y = y;
   }
-  public abstract void setColor(int color);
+  public void setColor(int color) {};
 
-
-  public abstract Block transform();
-  // {
-  //   return (null);
-  // }
+  public Block transform(){return null;}
 
 
   public abstract String toString();
-  // {
-  //   if(this == null)
-  //     return("NA");
-  //   return ("FE");
-  // }
 
-  public abstract int getColor();
+  public int getColor(){return -1;}
 }

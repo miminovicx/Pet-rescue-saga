@@ -1,7 +1,7 @@
 package levelpack;
 public class SquaredBlock extends Block
 {
-  private boolean locked = true;
+  //private boolean locked = true;
 
   // public boolean getLocked()
   // {
