@@ -7,7 +7,7 @@ public class Level
   private int score;
   private int lastScore;
   private Field field;
-  private boolean succeded=true;
+  private boolean succeded = true;
   private int[] palier;
   private int animalsToRescue;
   public Level(int stars, int score, int lastScore, Field field, boolean succeded, int[] palier, int animalsToRescue)
@@ -22,6 +22,7 @@ public class Level
     this.animalsToRescue = animalsToRescue;
     id++;
   }
+  
   public String toString()
   {
     String res = "";

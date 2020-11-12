@@ -2,6 +2,7 @@ package levelpack;
 import java.util.LinkedList;
 import levelpack.Level;
 import levelpack.Animal;
+import java.lang.Math;
 public class Field
 {
   private int width;
@@ -292,5 +293,9 @@ public class Field
         //animalsSaved ++
       }
     }
+  }
+  public int scoreComputation(int deletedBlocks)
+  {
+    return (10 * (int)Math.pow(deletedBlocks,2));
   }
 }

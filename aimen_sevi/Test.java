@@ -80,6 +80,6 @@ public class Test
     // field.remove(0,2);
     // System.out.println(field);
     // System.out.println(field.nbBlockSuppr);
-
+System.out.println(field.scoreComputation(field.nbBlockSuppr));
    }
 }
