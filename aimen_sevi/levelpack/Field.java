@@ -8,7 +8,8 @@ public class Field
   private int width;
   private int height;
   private FieldElement [][] elements;
-  public static int nbBlockSuppr = 0;
+  public static int nbBlockSuppr; //=0
+  public static int animalsSaved = 0;
 
   public int getWidth()
   {
@@ -280,6 +281,7 @@ public class Field
     this.remove(x,y);
     this.update();
     this.moveColumns();
+    this.saveAnimal();
   }
 
   public void saveAnimal()
@@ -290,7 +292,7 @@ public class Field
       {
         // removeAnimal(width - 1,j);
         this.elements[width-1][j]= new Block(width-1,j,0);
-        //animalsSaved ++
+        animalsSaved ++;
       }
     }
   }

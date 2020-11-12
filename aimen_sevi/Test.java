@@ -19,16 +19,16 @@ public class Test
   {
 
 
-    FieldElement element0  = new Animal(0,0);       //creation des elements du field
-    FieldElement element1  = new Block(0,1,1);
-    FieldElement element2  = new Block(0,2,2);
+    FieldElement element0  = new Block(0,0,1);       //creation des elements du field
+    FieldElement element1  = new Block(0,1,2);
+    FieldElement element2  = new Block(0,2,3);
     // FieldElement element3  = new Block(0,3,1);
-    FieldElement element4  = new Block(1,0,1);
-    FieldElement element5  = new Block(1,1,1);
-    FieldElement element6  = new Block(1,2,2);
+    FieldElement element4  = new Block(1,0,3);
+    FieldElement element5  = new Block(1,1,2);
+    FieldElement element6  = new Block(1,2,1);
     // FieldElement element7  = new Block(1,3,1);
     FieldElement element8  = new Block(2,0,4);
-    FieldElement element9  = new Block(2,1,1);
+    FieldElement element9  = new Block(2,1,2);
     FieldElement element10 = new Block(2,2,4);
     // FieldElement element11 = new Block(2,3,1);
     // FieldElement element12 = new Block(3,0,1);
@@ -37,10 +37,10 @@ public class Test
     // FieldElement element15 = new Block(3,3,1);
 
 
-    System.out.println("-------------------------------------------------------");
-    System.out.println();
+    // System.out.println("-------------------------------------------------------");
+    // System.out.println();
 
-    squaredString("Field Test");
+    // squaredString("Field Test");
     Field field = new Field(3,3);
     field.putElement(element0);             //ajout des elements au tableau
     field.putElement(element1);
@@ -58,9 +58,9 @@ public class Test
     // field.putElement(element13);
     // field.putElement(element14);
     // field.putElement(element15);
-    System.out.println(field);          //test de l'affichage du field apres ajout des elements
-    System.out.println("-------------------------------------------------------");
-    System.out.println();
+    // System.out.println(field);          //test de l'affichage du field apres ajout des elements
+    // System.out.println("-------------------------------------------------------");
+    // System.out.println();
 
     //squaredString("Test remove");
      // field.remove(0,0);
@@ -71,15 +71,18 @@ public class Test
     //System.out.println(field.Lost1());
 
     //field.simplifySquared(0,1);
-    field.updateFinal(1,1);
-    System.out.println(field);
-    field.updateFinal(2,0);
-    field.saveAnimal();
-    System.out.println(field);
+    // field.updateFinal(1,1);
+    // System.out.println(field);
+    // field.updateFinal(2,0);
+    // field.saveAnimal();
+    // System.out.println(field);
     // System.out.println(field.nbBlockSuppr);
     // field.remove(0,2);
     // System.out.println(field);
     // System.out.println(field.nbBlockSuppr);
 System.out.println(field.scoreComputation(field.nbBlockSuppr));
+int[] tab = {100,300,500};
+Level niveau = new Level(0, 0, 0, field, false, tab, 2);
+niveau.play();
    }
 }
