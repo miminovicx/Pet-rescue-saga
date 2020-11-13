@@ -239,21 +239,33 @@ public class Field
 
   public boolean Lost1()     //end of game because there's no delete possible
   {
-    int i = 0;
-    int j = 0;
-    while(i < width)
+    // int i = 0;
+    // int j = 0;
+    boolean found = false;
+    // while(i < width && found == false)
+    // {
+    //   while(j < width && found == false)
+    //   {
+    //     if(this.deletable(i,j) == true)
+    //     {
+    //     found = true; //il y a une combinaison possible
+    //     }
+    //     j++;
+    //   }
+    //   i++;
+    // }
+
+    for(int i = 0; i<width && found!=true;i++)
     {
-      while(j < width)
+      for(int j = 0; j<width && found!=true;j++)
       {
-        if(this.deletable(i,j))
-        {
-        return false;
-        }
-        j++;
+        if(this.deletable(i,j) == true)
+            {
+            found = true; //il y a une combinaison possible
+            }
       }
-      i++;
     }
-    return true;
+    return !found;
   }
 
   public void simplifySquared(int x,int y)

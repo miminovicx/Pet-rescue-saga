@@ -20,16 +20,16 @@ public class Test
 
 
     FieldElement element0  = new Block(0,0,1);       //creation des elements du field
-    FieldElement element1  = new Block(0,1,2);
-    FieldElement element2  = new Block(0,2,3);
+    FieldElement element1  = new Block(0,1,1);
+    FieldElement element2  = new Block(0,2,1);
     // FieldElement element3  = new Block(0,3,1);
-    FieldElement element4  = new Block(1,0,3);
-    FieldElement element5  = new Block(1,1,2);
-    FieldElement element6  = new Block(1,2,1);
+    FieldElement element4  = new Block(1,0,2);
+    FieldElement element5  = new Block(1,1,1);
+    FieldElement element6  = new Block(1,2,3);
     // FieldElement element7  = new Block(1,3,1);
     FieldElement element8  = new Block(2,0,4);
     FieldElement element9  = new Block(2,1,2);
-    FieldElement element10 = new Block(2,2,4);
+    FieldElement element10 = new Block(2,2,2);
     // FieldElement element11 = new Block(2,3,1);
     // FieldElement element12 = new Block(3,0,1);
     // FieldElement element13 = new Block(3,1,1);
@@ -63,14 +63,14 @@ public class Test
     // System.out.println();
 
     //squaredString("Test remove");
-     // field.remove(0,0);
+     // field.remove(2,2);
     // System.out.println(field);
-    // field.update();
+    // field.updateFinal(2,2);
     // System.out.println(field);
-
-    //System.out.println(field.Lost1());
-
-    //field.simplifySquared(0,1);
+    // //
+    // System.out.println(field.Lost1());
+    // System.out.println(field.deletable(1,1));
+    // field.simplifySquared(0,1);
     // field.updateFinal(1,1);
     // System.out.println(field);
     // field.updateFinal(2,0);

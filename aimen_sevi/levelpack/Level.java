@@ -37,12 +37,11 @@ public class Level
       coordonnees = this.react();
       this.field.updateFinal(coordonnees[0], coordonnees[1]);
       //this.score += field.scoreComputation(field.nbBlockSuppr);
-      this.field.update();
+      // this.field.update();
       System.out.println(this.field);
-      System.out.println(this.field.deletable(2,1));
+      System.out.println(this.field.Lost1());
 
-    }
-    while(!this.field.Lost1()); //&& this.field.animalsSaved < animalsToRescue); //&& score < objectif
+    }while(this.field.Lost1()==false); //&& this.field.animalsSaved < animalsToRescue); //&& score < objectif
   }
 
   private int [] react()
