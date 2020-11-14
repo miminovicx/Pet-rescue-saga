@@ -1,4 +1,7 @@
 package pack;
+/**
+ * Classe représentant le joueur
+ */
 public class Player
 {
   private String nickName;

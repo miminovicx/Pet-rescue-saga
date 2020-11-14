@@ -1,4 +1,7 @@
 package levelpack;
+/**
+ * Classe abstraite representant un élément du plateau
+ */
 public abstract class FieldElement
 {
   private int x;
@@ -14,17 +17,7 @@ public abstract class FieldElement
   {
     return (this.y);
   }
-  //
-  // public void setX(int x)
-  // {
-  //   this.x = x;
-  // }
-  //
-  // public void setY(int y)
-  // {
-  //   this.y = y;
-  // }
-  //
+  
   public FieldElement (int x, int y)
   {
     this.x = x;

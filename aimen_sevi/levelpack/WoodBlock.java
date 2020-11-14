@@ -8,5 +8,5 @@ class WoodBlock extends FieldElement
 
   public String toString()
   {
-      return ("\");
+      return ("\\");
   }
