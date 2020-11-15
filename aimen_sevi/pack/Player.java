@@ -5,6 +5,7 @@ import java.io.*;
  */
 public class Player implements java.io.Serializable
 {
+  //private static final long serialVersionUID = 544354344438484l;
   private String nickName;
   private int lifePoints;
   //private Booster [] boosters;
