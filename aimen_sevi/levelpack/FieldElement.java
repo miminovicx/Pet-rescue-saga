@@ -17,14 +17,28 @@ public abstract class FieldElement
   {
     return (this.y);
   }
-  
+  /**
+   * Construit un objet de type FieldElement
+   * @method FieldElement
+   * @param  x            abscisse
+   * @param  y            ordonée
+   */
   public FieldElement (int x, int y)
   {
     this.x = x;
     this.y = y;
   }
+  /**
+   * Cette méthode permet de changer la couleur d'un FieldElement
+   * @method setColor
+   * @param  color    la nouvelle couleur
+   */
   public void setColor(int color) {};
-
+  /**
+   * Cette méthode permet transformer un FieldElement
+   * @method transform
+   * @return un objet de type Block
+   */
   public Block transform(){return null;}
 
 

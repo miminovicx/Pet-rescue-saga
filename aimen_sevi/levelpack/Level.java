@@ -91,6 +91,18 @@ public class Level
     System.out.println(res);
   }
   /**
+   * Cette méthode affiche un message si le niveau est gagné
+   * @method win
+   */
+  public void win()
+  {
+    String res = "";
+    res += "*********************\n";
+    res += "*\tGAGNÉ\t    *\n*Score  : " + this.score + "       *\n*Animaux sauvé : " + this.field.animalsSaved + "/" +this.animalsToRescue;
+    res += "*\n*********************";
+    System.out.println(res);
+  }
+  /**
    * Cette méthode permet d'afficher un niveau
    * @method toString
    * @return chaîne affiché lorsque l'on un niveau avec System.out.println()
