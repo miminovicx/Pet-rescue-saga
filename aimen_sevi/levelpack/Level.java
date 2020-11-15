@@ -6,6 +6,7 @@ import java.util.Scanner;
  */
 public class Level implements java.io.Serializable
 {
+  private static final long serialVersionUID = 42l;
   private static int id=1;
   private final int num;
   private int stars;
@@ -139,16 +140,17 @@ public class Level implements java.io.Serializable
     }
   }
   /**
-   * Cette méthode permet d'utiliser un niveau sauvegardé dans le disque
+   * [use description]
    * @method use
-   * @return      un objet de type Level qui correspond au fichier
+   * @param  path [description]
+   * @return      [description]
    */
-  public  Level use()
+  public  static Level use(String path)
   {
     Level level = null;
     try
     {
-      FileInputStream fileIn = new FileInputStream("../Data/Levels/level_"+ this.num + ".ser");
+      FileInputStream fileIn = new FileInputStream(path);
       ObjectInputStream in = new ObjectInputStream(fileIn);
       level = (Level) in.readObject();
       in.close();
@@ -156,7 +158,7 @@ public class Level implements java.io.Serializable
     }
     catch (IOException i)
     {
-      throw new IllegalArgumentException(String.format("Couldn't read level at : %s","../Data/Levels/level_"+ this.num + ".ser"), i);
+      throw new IllegalArgumentException(String.format("Couldn't read level at : %s", path), i);
     }
     catch (ClassNotFoundException e)
     {

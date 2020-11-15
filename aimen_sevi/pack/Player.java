@@ -100,7 +100,7 @@ public class Player implements java.io.Serializable
    * @param  path chemin du fichier dans lequel le joueur est sauvegardé
    * @return      un objet de type jouer qui correspond au fichier
    */
-  public  Player use(String path)
+  public  static Player use(String path)
   {
     Player player = null;
     try
