@@ -1,5 +1,5 @@
 package pack;
-public class Pliers extends Booster
+public class Spring extends Booster
 {
   String effect = "Supprime ligne";
   @Override
