@@ -1,9 +1,10 @@
 package levelpack;
+import java.io.*;
 import java.util.Scanner;
 /**
  * Classe représentant un niveau
  */
-public class Level
+public class Level implements java.io.Serializable
 {
   private static int id=1;
   private final int num;
@@ -14,7 +15,7 @@ public class Level
   private boolean succeded = true;
   private int[] palier;
   private int animalsToRescue;
-  private Scanner sc;
+  private transient Scanner sc;
   /**
    * Consructeur d'un niveau
    * @method Level
@@ -116,5 +117,52 @@ public class Level
       res += "Level : " + this.num + "\nStars :" + this.stars + "\nObjectif : " + this.score + "\n\n";
     res += this.field.toString();
     return (res);
+  }
+  /**
+   * Cette méthode permet de rendre les niveaux persistants
+   * @method save
+   */
+  public void save()
+  {
+    String filePath = "../Data/Levels/level_"+ this.num + ".ser";
+    try
+    {
+      FileOutputStream fileOut = new FileOutputStream(filePath);
+      ObjectOutputStream out = new ObjectOutputStream(fileOut);
+      out.writeObject(this);
+      out.close();
+      fileOut.close();
+    }
+    catch (IOException i)
+    {
+      i.printStackTrace();
+    }
+  }
+  /**
+   * Cette méthode permet d'utiliser un niveau sauvegardé dans le disque
+   * @method use
+   * @return      un objet de type Level qui correspond au fichier
+   */
+  public  Level use()
+  {
+    Level level = null;
+    try
+    {
+      FileInputStream fileIn = new FileInputStream("../Data/Levels/level_"+ this.num + ".ser");
+      ObjectInputStream in = new ObjectInputStream(fileIn);
+      level = (Level) in.readObject();
+      in.close();
+      fileIn.close();
+    }
+    catch (IOException i)
+    {
+      throw new IllegalArgumentException(String.format("Couldn't read level at : %s","../Data/Levels/level_"+ this.num + ".ser"), i);
+    }
+    catch (ClassNotFoundException e)
+    {
+      throw new IllegalArgumentException("This litterally cannot happen. What have you done ???", e);
+    }
+    level.sc= new Scanner(System.in);
+    return (level);
   }
 }

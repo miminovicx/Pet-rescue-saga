@@ -6,7 +6,7 @@ import java.lang.Math;
 /**
  * Classe représentant le plateau de jeu
  */
-public class Field
+public class Field implements java.io.Serializable
 {
   private int width;
   private int height;

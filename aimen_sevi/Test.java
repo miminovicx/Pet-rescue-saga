@@ -80,9 +80,16 @@ public class Test
     // field.remove(0,2);
     // System.out.println(field);
     // System.out.println(field.nbBlockSuppr);
-System.out.println(field.scoreComputation(field.nbBlockSuppr));
-int[] tab = {100,300,500};
-Level niveau = new Level(0, 0, 0, field, false, tab, 2);
-niveau.play();
+// System.out.println(field.scoreComputation(field.nbBlockSuppr));
+ int[] tab = {100,300,500};
+ Level niveau = new Level(0, 0, 0, field, false, tab, 2);
+// niveau.play();
+Player joueur = new Player("sese",5,200);
+joueur.save();
+niveau.save();
+Player joueur2 = joueur.use("../Data/player.ser");
+Level niv = niveau.use();
+niv.play();
+//System.out.println(joueur2);
    }
 }

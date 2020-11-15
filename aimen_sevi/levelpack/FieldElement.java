@@ -2,7 +2,7 @@ package levelpack;
 /**
  * Classe abstraite representant un élément du plateau
  */
-public abstract class FieldElement
+public abstract class FieldElement implements java.io.Serializable
 {
   private int x;
   private int y;
