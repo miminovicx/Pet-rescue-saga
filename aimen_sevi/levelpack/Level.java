@@ -53,7 +53,7 @@ public class Level
 
       coordonnees = this.react();
       this.field.updateFinal(coordonnees[0], coordonnees[1]);
-      //this.score += field.scoreComputation(field.nbBlockSuppr);
+      this.score += field.scoreComputation(field.nbBlockSuppr);
       // this.field.update();
       System.out.println(this.field);
 
@@ -85,8 +85,8 @@ public class Level
   public void lost()
   {
     String res = "";
-    res += "***********************\n";
-    res += "*\tPERDU\t*\n*Score  : " + this.score + "*\n*Animaux sauvé : " + this.field.animalsSaved + "/" +this.animalsToRescue;
+    res += "*********************\n";
+    res += "*\tPERDU\t    *\n*Score  : " + this.score + "       *\n*Animaux sauvé : " + this.field.animalsSaved + "/" +this.animalsToRescue;
     res += "*\n*********************";
     System.out.println(res);
   }
