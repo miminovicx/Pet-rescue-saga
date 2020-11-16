@@ -11,7 +11,7 @@ public class Animal extends FieldElement
 
   public String toString()
   {
-      return ("A*");
+      return ("a");
   }
   /**
    * Cette méthode supprime un animal

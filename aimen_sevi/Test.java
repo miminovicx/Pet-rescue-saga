@@ -18,78 +18,62 @@ public class Test
   public static void main(String[] args)
   {
 
-
     FieldElement element0  = new Block(0,0,1);       //creation des elements du field
     FieldElement element1  = new Block(0,1,1);
     FieldElement element2  = new Block(0,2,1);
-    // FieldElement element3  = new Block(0,3,1);
-    FieldElement element4  = new Block(1,0,2);
-    FieldElement element5  = new Block(1,1,1);
-    FieldElement element6  = new Block(1,2,3);
-    // FieldElement element7  = new Block(1,3,1);
-    FieldElement element8  = new Block(2,0,4);
-    FieldElement element9  = new Block(2,1,2);
-    FieldElement element10 = new Block(2,2,2);
-    // FieldElement element11 = new Block(2,3,1);
-    // FieldElement element12 = new Block(3,0,1);
-    // FieldElement element13 = new Block(3,1,1);
-    // FieldElement element14 = new Block(3,2,1);
-    // FieldElement element15 = new Block(3,3,1);
+    FieldElement element3  = new Block(1,0,2);
+    FieldElement element4  = new Block(1,1,1);
+    FieldElement element5  = new Block(1,2,3);
+    FieldElement element6  = new Block(2,0,3);
+    FieldElement element7  = new Block(2,1,2);
+    FieldElement element8 = new Block(2,2,2);
+    Field field1 = new Field(3,3);
+    field1.putElement(element0);             //ajout des elements au tableau
+    field1.putElement(element1);
+    field1.putElement(element2);
+    field1.putElement(element3);
+    field1.putElement(element4);
+    field1.putElement(element5);
+    field1.putElement(element6);
+    field1.putElement(element7);
+    field1.putElement(element8);
+    int[] paliers = {100,200,400};
 
 
-    // System.out.println("-------------------------------------------------------");
-    // System.out.println();
+    FieldElement elementa  = new Block(0,0,2);       //creation des elements du field
+    FieldElement elementb  = new Block(0,1,2);
+    FieldElement elementc  = new Animal(0,2);
+    FieldElement elementd  = new Block(1,0,4);
+    FieldElement elemente  = new Block(1,1,2);
+    FieldElement elementf  = new Block(1,2,1);
+    FieldElement elementg  = new Block(2,0,1);
+    FieldElement elementh  = new Block(2,1,3);
+    FieldElement elementi  = new Block(2,2,3);
 
-    // squaredString("Field Test");
-    Field field = new Field(3,3);
-    field.putElement(element0);             //ajout des elements au tableau
-    field.putElement(element1);
-    field.putElement(element2);
-    // field.putElement(element3);
-    field.putElement(element4);
-    field.putElement(element5);
-    field.putElement(element6);
-    // field.putElement(element7);
-    field.putElement(element8);
-    field.putElement(element9);
-    field.putElement(element10);
-    // field.putElement(element11);
-    // field.putElement(element12);
-    // field.putElement(element13);
-    // field.putElement(element14);
-    // field.putElement(element15);
-    // System.out.println(field);          //test de l'affichage du field apres ajout des elements
-    // System.out.println("-------------------------------------------------------");
-    // System.out.println();
+    Field field2 = new Field(3,3);
+    field2.putElement(elementa);             //ajout des elements au tableau
+    field2.putElement(elementb);
+    field2.putElement(elementc);
+    field2.putElement(elementd);
+    field2.putElement(elemente);
+    field2.putElement(elementf);
+    field2.putElement(elementg);
+    field2.putElement(elementh);
+    field2.putElement(elementi);
 
-    //squaredString("Test remove");
-     // field.remove(2,2);
-    // System.out.println(field);
-    // field.updateFinal(2,2);
-    // System.out.println(field);
-    // //
-    // System.out.println(field.Lost1());
-    // System.out.println(field.deletable(1,1));
-    // field.simplifySquared(0,1);
-    // field.updateFinal(1,1);
-    // System.out.println(field);
-    // field.updateFinal(2,0);
-    // field.saveAnimal();
-    // System.out.println(field);
-    // System.out.println(field.nbBlockSuppr);
-    // field.remove(0,2);
-    // System.out.println(field);
-    // System.out.println(field.nbBlockSuppr);
-// System.out.println(field.scoreComputation(field.nbBlockSuppr));
+    Level level1 = new Level(0, 0 , 0 , field1, false, paliers, 1);
+    Level level2 = new Level(0, 0 , 0 , field2, false, paliers, 1);
+
+  level2.play();
   //int[] tab = {100,300,500};
   //Level niveau = new Level(0, 0, 0, field, false, tab, 2);
 // niveau.play();
-Player joueur = new Player("sese",5,200);
-joueur.save();
-//niveau.save();
-Player joueur2 = Player.use("../Data/player.ser");
-Level niv = Level.use("../Data/Levels/level_1.ser");
-niv.play();
+// Player joueur = new Player("sese",5,200);
+// joueur.save();
+// //niveau.save();
+// Player joueur2 = Player.use("../Data/player.ser");
+// Level niv = Level.use("../Data/Levels/level_1.ser");
+// niv.play();
 //System.out.println(joueur2);
    }
 }

@@ -1,6 +1,7 @@
 package levelpack;
 import java.io.*;
 import java.util.Scanner;
+import levelpack.Field;
 /**
 * Classe représentant un niveau
 */
@@ -60,10 +61,14 @@ public class Level implements java.io.Serializable
       System.out.println(this.field);
 
     }
-    while(!this.field.Lost0()); //&& this.field.animalsSaved < animalsToRescue); //&& score < objectif
-    if(this.field.Lost0())
+    while(/*!this.Lost0() ||*/ !this.Won0());
+    if(this.Lost0())
     {
       this.lost();
+    }
+    if(this.Won0())
+    {
+      this.win();
     }
   }
   /**
@@ -174,11 +179,11 @@ public class Level implements java.io.Serializable
   public boolean Lost1()     //end of game because there's no delete possible
   {
     boolean found = false;
-    for(int i = 0; i<width && found!=true;i++)
+    for(int i = 0; i<this.field.getWidth() && found!=true;i++)
     {
-      for(int j = 0; j<width && found!=true;j++)
+      for(int j = 0; j<this.field.getWidth() && found!=true;j++)
       {
-        if(this.deletable(i,j) == true)
+        if(this.field.deletable(i,j) == true)
         {
           found = true; //il y a une combinaison possible
         }
@@ -202,7 +207,7 @@ public class Level implements java.io.Serializable
   */
   public boolean Lost3()
   {
-    return(this.animalsSaved < this.animalsToRescue);
+    return(this.field.animalsSaved < this.animalsToRescue);
   }
 
   /**
@@ -211,7 +216,7 @@ public class Level implements java.io.Serializable
   */
   public boolean Lost0()
   {
-    return (this.Lost1() && this.Lost2() && this.Lost3());
+    return ( this.Lost1() && ( this.Lost2() || this.Lost3() ) );
   }
 
   /**
@@ -220,6 +225,10 @@ public class Level implements java.io.Serializable
   */
   public boolean Won0()
   {
-    return !Lost0();
+    if(this.field.animalsSaved == this.animalsToRescue && score >= palier[0] )
+    {
+      return true;
+    }
+    return false;
   }
 }
