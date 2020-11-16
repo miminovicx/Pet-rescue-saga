@@ -1,4 +1,4 @@
-package aimen_sevi.levelpack;
+package levelpack;
 /**
  * Cette classe représente un block bonus c'est à dire un bloc qui multiplie par deux le score lorsque il est supprimé
  */
