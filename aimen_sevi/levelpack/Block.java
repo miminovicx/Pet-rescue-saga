@@ -44,6 +44,10 @@ public class Block extends FieldElement
   {
     switch(this.color)
     {
+      case -1:
+      {
+        return ("A");
+      }
       case 0:
       {
         return ("-");

@@ -61,7 +61,7 @@ public class Level implements java.io.Serializable
       System.out.println(this.field);
 
     }
-    while(/*!this.Lost0() ||*/ !this.Won0());
+    while(!this.Lost0() && !this.Won0());
     if(this.Lost0())
     {
       this.lost();

@@ -2,17 +2,17 @@ package levelpack;
 /**
  * Classe représentant les animaux que l'on doit sauver
  */
-public class Animal extends FieldElement
+public class Animal extends Block
 {
   public Animal(int x, int y)
   {
-    super(x, y);
+    super(x, y, -1);
   }
 
-  public String toString()
-  {
-      return ("a");
-  }
+  // public String toString()
+  // {
+  //     return ("A");
+  // }
   /**
    * Cette méthode supprime un animal
    * @method removeAnimal

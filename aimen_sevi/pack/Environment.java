@@ -13,6 +13,13 @@ public class Environment
     this.player = player;
   }
 
+  public Environment()
+  {
+    this.levels = null;
+    this.player = null;
+  }
+
+
   public Level[] getLevels()
   {
     return (this.levels);
@@ -41,26 +48,24 @@ public class Environment
    * Cette méthode recupère le joueur sauvegardé ou en crée un nouveau
    * @method createPlayer
    * @param  nickName     pseudo du joueur
-   * @return              le joueur sauvegardé si il'y en a un ou un nouveau sinon
    */
-  public Player createPlayer(String nickName)
+  public void createPlayer(String nickName)
   {
     String path = "../Data/"+ nickName + ".ser";
     File donnee = new File(path);
     if (donnee.exists())
     {
-      return (Player.use(path));
+      this.player = Player.use(path);
     }
-    return (new Player(nickName, 5, 0));
+    this.player = new Player(nickName, 5, 0);
   }
   /**
    * Cette méthode initialise le tableau des niveaux
    * @method fillLevelTab
-   * @return tableau des niveaux
    */
-  public Level[] fillLevelTab()
+  public void fillLevelTab()
   {
-    String dataDirectoryPath = "../Data/Levels";
+    String dataDirectoryPath = "../Data/Levels/";
     File dataDirectory = new File(dataDirectoryPath);
     Level [] levels;
     if(dataDirectory.exists())
@@ -69,11 +74,15 @@ public class Environment
       {
         File [] savedLevels = dataDirectory.listFiles();
         levels = new Level[savedLevels.length];
+        // System.out.println(Arrays.toString(levels));
         for (int i = 0; i < savedLevels.length;i++)
         {
           levels[i] = Level.use(dataDirectoryPath + savedLevels[i].getName());
+          // System.out.println(savedLevels[i]);
+          // System.out.println(Arrays.toString(levels));
         }
-        return (levels);
+        // System.out.println(Arrays.toString(levels));
+        this.levels = levels;
       }
       else
       {
@@ -86,6 +95,5 @@ public class Environment
       System.err.println("Le repertoire de savegarde n'existe pas");
       System.exit(1);
     }
-    return (null);
   }
 }

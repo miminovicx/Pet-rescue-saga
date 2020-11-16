@@ -378,7 +378,7 @@ public class Field implements java.io.Serializable
   {
     for(int j=0; j < width ; j++)
     {
-      if(this.elements[width - 1][j] instanceof Animal)
+      if(this.elements[width - 1][j].getColor() == -1)
       {
         // removeAnimal(width - 1,j);
         this.elements[width-1][j] = new Block(width-1,j,0);
