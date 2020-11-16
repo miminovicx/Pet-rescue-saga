@@ -18,6 +18,7 @@ public class Level implements java.io.Serializable
   private int[] palier;
   private int animalsToRescue;
   private transient Scanner sc;
+  private boolean unlocked;
   /**
   * Consructeur d'un niveau
   * @method Level
@@ -40,6 +41,7 @@ public class Level implements java.io.Serializable
     this.palier = palier;
     this.animalsToRescue = animalsToRescue;
     this.sc = new Scanner(System.in);
+    this.unlocked = unlocked;
     id++;
   }
   /**
@@ -48,27 +50,34 @@ public class Level implements java.io.Serializable
   */
   public void play()
   {
-    System.out.println(this);
-
-    int[] coordonnees;
-    do
+    if(unlocked)
     {
+      System.out.println(this);
 
-      coordonnees = this.react();
-      this.field.updateFinal(coordonnees[0], coordonnees[1]);
-      this.score += field.scoreComputation(field.nbBlockSuppr);
-      // this.field.update();
-      System.out.println(this.field);
+      int[] coordonnees;
+      do
+      {
 
+        coordonnees = this.react();
+        this.field.updateFinal(coordonnees[0], coordonnees[1]);
+        this.score += field.scoreComputation(field.nbBlockSuppr);
+        // this.field.update();
+        System.out.println(this.field);
+
+      }while(!this.Lost0() && !this.Won0());
+      if(this.Lost0())
+      {
+        this.lost();
+      }
+      if(this.Won0())
+      {
+        this.succeded = true;
+        this.win();
+      }
     }
-    while(!this.Lost0() && !this.Won0());
-    if(this.Lost0())
+    else
     {
-      this.lost();
-    }
-    if(this.Won0())
-    {
-      this.win();
+      System.out.println("Indisponible");
     }
   }
   /**
