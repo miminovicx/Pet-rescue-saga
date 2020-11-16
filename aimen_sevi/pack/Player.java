@@ -81,7 +81,7 @@ public class Player implements java.io.Serializable
    */
   public void save()
   {
-    String filePath = "../Data/player.ser";
+    String filePath = "../Data/" + this.nickName + ".ser";
     try
     {
       FileOutputStream fileOut = new FileOutputStream(filePath);
