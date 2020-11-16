@@ -2,8 +2,8 @@ package levelpack;
 import java.io.*;
 import java.util.Scanner;
 /**
- * Classe représentant un niveau
- */
+* Classe représentant un niveau
+*/
 public class Level implements java.io.Serializable
 {
   private static final long serialVersionUID = 42l;
@@ -18,16 +18,16 @@ public class Level implements java.io.Serializable
   private int animalsToRescue;
   private transient Scanner sc;
   /**
-   * Consructeur d'un niveau
-   * @method Level
-   * @param  stars           nobre d'étoiles (entre 0 et 3)
-   * @param  score           score du niveau
-   * @param  lastScore       dérnier score (si le niveau n'a jamais été joué cette attribut vaut 0)
-   * @param  field           plateau de jeu du niveau
-   * @param  succeded        booléen permetant de savoir si on a déjà gagné le niveau
-   * @param  palier          tableau de trois entiers représentant chacun un objectif à atteindre pour avoir des étoiles
-   * @param  animalsToRescue le nombre d'animaux qui doivent être sauvé pour réussir le niveau
-   */
+  * Consructeur d'un niveau
+  * @method Level
+  * @param  stars           nobre d'étoiles (entre 0 et 3)
+  * @param  score           score du niveau
+  * @param  lastScore       dérnier score (si le niveau n'a jamais été joué cette attribut vaut 0)
+  * @param  field           plateau de jeu du niveau
+  * @param  succeded        booléen permetant de savoir si on a déjà gagné le niveau
+  * @param  palier          tableau de trois entiers représentant chacun un objectif à atteindre pour avoir des étoiles
+  * @param  animalsToRescue le nombre d'animaux qui doivent être sauvé pour réussir le niveau
+  */
   public Level(int stars, int score, int lastScore, Field field, boolean succeded, int[] palier, int animalsToRescue)
   {
     this.num = id;
@@ -42,9 +42,9 @@ public class Level implements java.io.Serializable
     id++;
   }
   /**
-   * Cette méthode permet de jouer un niveau
-   * @method play
-   */
+  * Cette méthode permet de jouer un niveau
+  * @method play
+  */
   public void play()
   {
     System.out.println(this);
@@ -60,17 +60,17 @@ public class Level implements java.io.Serializable
       System.out.println(this.field);
 
     }
-    while(this.field.Lost1()==false); //&& this.field.animalsSaved < animalsToRescue); //&& score < objectif
-    if(this.field.Lost1())
+    while(!this.field.Lost0()); //&& this.field.animalsSaved < animalsToRescue); //&& score < objectif
+    if(this.field.Lost0())
     {
       this.lost();
     }
   }
   /**
-   * Cette méthode permet de demander les coordonnees de la case à jouer
-   * @method react
-   * @return tableau de deux entiers le premier étant l'abscisse et le second étant l'ordonée
-   */
+  * Cette méthode permet de demander les coordonnees de la case à jouer
+  * @method react
+  * @return tableau de deux entiers le premier étant l'abscisse et le second étant l'ordonée
+  */
   private int [] react()
   {
     int [] coordonnees = new int[2];
@@ -81,9 +81,9 @@ public class Level implements java.io.Serializable
     return (coordonnees);
   }
   /**
-   * Cette méthode affiche un message si le niveau est perdu
-   * @method lost
-   */
+  * Cette méthode affiche un message si le niveau est perdu
+  * @method lost
+  */
   public void lost()
   {
     String res = "";
@@ -93,9 +93,9 @@ public class Level implements java.io.Serializable
     System.out.println(res);
   }
   /**
-   * Cette méthode affiche un message si le niveau est gagné
-   * @method win
-   */
+  * Cette méthode affiche un message si le niveau est gagné
+  * @method win
+  */
   public void win()
   {
     String res = "";
@@ -105,24 +105,24 @@ public class Level implements java.io.Serializable
     System.out.println(res);
   }
   /**
-   * Cette méthode permet d'afficher un niveau
-   * @method toString
-   * @return chaîne affiché lorsque l'on un niveau avec System.out.println()
-   */
+  * Cette méthode permet d'afficher un niveau
+  * @method toString
+  * @return chaîne affiché lorsque l'on un niveau avec System.out.println()
+  */
   public String toString()
   {
     String res = "";
     if(succeded)
-      res += "Level : " + this.num + "\nStars :" + this.stars + "\nObjectif : " + this.score + "\nLast score : " + this.lastScore + "\n\n";
+    res += "Level : " + this.num + "\nStars :" + this.stars + "\nObjectif : " + this.score + "\nLast score : " + this.lastScore + "\n\n";
     else
-      res += "Level : " + this.num + "\nStars :" + this.stars + "\nObjectif : " + this.score + "\n\n";
+    res += "Level : " + this.num + "\nStars :" + this.stars + "\nObjectif : " + this.score + "\n\n";
     res += this.field.toString();
     return (res);
   }
   /**
-   * Cette méthode permet de rendre les niveaux persistants
-   * @method save
-   */
+  * Cette méthode permet de rendre les niveaux persistants
+  * @method save
+  */
   public void save()
   {
     String filePath = "../Data/Levels/level_"+ this.num + ".ser";
@@ -140,11 +140,11 @@ public class Level implements java.io.Serializable
     }
   }
   /**
-   * [use description]
-   * @method use
-   * @param  path [description]
-   * @return      [description]
-   */
+  * [use description]
+  * @method use
+  * @param  path [description]
+  * @return      [description]
+  */
   public  static Level use(String path)
   {
     Level level = null;
@@ -166,5 +166,60 @@ public class Level implements java.io.Serializable
     }
     level.sc= new Scanner(System.in);
     return (level);
+  }
+  /**
+  * Cette methode permet de savoir si on a encore des combinaisons possibles
+  * @return vrai si il n'y a plus d'élément que l'on peut supprimé
+  */
+  public boolean Lost1()     //end of game because there's no delete possible
+  {
+    boolean found = false;
+    for(int i = 0; i<width && found!=true;i++)
+    {
+      for(int j = 0; j<width && found!=true;j++)
+      {
+        if(this.deletable(i,j) == true)
+        {
+          found = true; //il y a une combinaison possible
+        }
+      }
+    }
+    return (!found);
+  }
+
+  /**
+  * Cette methode permet de savoir si on a atteint le score minimal pour gagner le niveau
+  * @return vrai si on a pas atteint l'objectif
+  */
+  public boolean Lost2()
+  {
+    return (this.score < palier[0]);
+  }
+
+  /**
+  * Cette methode permet de savoir si on a sauvé assez d'animaux
+  * @return vrai si on n'a pas sauvé assez d'animaux
+  */
+  public boolean Lost3()
+  {
+    return(this.animalsSaved < this.animalsToRescue);
+  }
+
+  /**
+  * Cette methode permet de savoir si on a perdu
+  * @return vrai si on a perdu
+  */
+  public boolean Lost0()
+  {
+    return (this.Lost1() && this.Lost2() && this.Lost3());
+  }
+
+  /**
+  * Cette methode permet de savoir si on a gagné
+  * @return vrai si on a gagné
+  */
+  public boolean Won0()
+  {
+    return !Lost0();
   }
 }
