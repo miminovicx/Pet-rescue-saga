@@ -83,6 +83,20 @@ public class Environment
         }
         // System.out.println(Arrays.toString(levels));
         this.levels = levels;
+        for(int i=0; i < levels.length ; i++)
+        {
+            int index = i;
+            for (int j = i + 1; j < levels.length; j++)
+            {
+                 if (levels[j].getNum() < levels[index].getNum()){
+                      index = j;
+                 }
+            }
+
+            Level min = levels[index];
+            levels[index] = levels[i];
+            levels[i] = min;
+        }
       }
       else
       {
@@ -95,12 +109,14 @@ public class Environment
       System.err.println("Le repertoire de savegarde n'existe pas");
       System.exit(1);
     }
+
+
   }
 
   public String displayLevels()
   {
     String s = "";
-    for(int i = levels.length - 1; i >= 0 ; i--)
+    for(int i = 0; i < levels.length ; i++)
     {
       if(levels[i].getUnlocked())
       {
@@ -126,13 +142,20 @@ public class Environment
       {
         this.player.setLifePoints(this.player.getLifePoints() - 1);
       }
+    }else
+    {
+      System.out.println("Niveau verrouillé");
     }
   }
+
   public static void unlock(int a)
   {
-    if(a>0)
-    {
-      levels[a-1].setUnlocked(true);
-    }
+    if(a < levels.length)
+     levels[a].setUnlocked(true);
+  }
+
+  public void chooseLevel()
+  {
+    this.play(player.getScanner().nextInt());
   }
 }

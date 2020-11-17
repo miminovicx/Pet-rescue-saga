@@ -1,5 +1,6 @@
 package pack;
 import java.io.*;
+import java.util.Scanner;
 /**
  * Classe représentant le joueur
  */
@@ -10,6 +11,7 @@ public class Player implements java.io.Serializable
   private int lifePoints;
   //private Booster [] boosters;
   private int coins;
+  private transient Scanner scan;
 
   public  String getNickName()
   {
@@ -21,6 +23,10 @@ public class Player implements java.io.Serializable
     return (this.lifePoints);
   }
 
+  public Scanner getScanner()
+  {
+    return (this.scan);
+  }
   // public Booster [] getBoosters()
   // {
   //   return (this.boosters);
@@ -57,6 +63,7 @@ public class Player implements java.io.Serializable
     this.lifePoints = lifePoints;
     //this.boosters = boosters;
     this.coins = coins;
+    this.scan = new Scanner(System.in);
   }
   /**
    * Cette méthode permet de récuperer les points de vie
@@ -120,6 +127,7 @@ public class Player implements java.io.Serializable
     {
       throw new IllegalArgumentException("This litterally cannot happen. What have you done ???", e);
     }
+    player.scan = new Scanner(System.in);
     return (player);
   }
 }

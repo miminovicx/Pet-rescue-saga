@@ -17,7 +17,7 @@ public class Test
   }
   public static void main(String[] args)
   {
-
+    //
     // FieldElement element0  = new Block(0,0,1);       //creation des elements du field
     // FieldElement element1  = new Block(0,1,1);
     // FieldElement element2  = new Block(0,2,1);
@@ -37,7 +37,7 @@ public class Test
     // field1.putElement(element6);
     // field1.putElement(element7);
     // field1.putElement(element8);
-    // int[] paliers = {200,300,400};
+    // int[] paliers = {20,300,400};
     // //
     // //
     // FieldElement elementa  = new Block(0,0,2);       //creation des elements du field
@@ -62,24 +62,21 @@ public class Test
     // field2.putElement(elementi);
     //
     // Level level1 = new Level(0, 0 , 0 , field2, false, paliers, 1);
-    // level1.unlocked = true;
+    // level1.setUnlocked(true);
     // level1.save();
     //
     // Level level2 = new Level(0, 0 , 0 , field1, false, paliers, 1);
-    // level2.unlocked = false;
+    // level2.setUnlocked(false);
     // level2.save();
 
 
-    Level niveau1 = Level.use("../Data/Levels/level_1.ser");
-    Level niveau2 = Level.use("../Data/Levels/level_2.ser");
+    // Level niveau1 = Level.use("../Data/Levels/level_1.ser");
+    // Level niveau2 = Level.use("../Data/Levels/level_2.ser");
     Environment env = new Environment();
     env.fillLevelTab();
-    env.createPlayer("sese");
+    env.createPlayer("aim");
     System.out.println(env);
-    env.play(0);
-    env.getLevels()[0].setScore(10000);
-    System.out.println(env);
-    // env.getLevels()[1].play();
-    System.out.println(env);
+    env.chooseLevel();
+    // env.play(0);
    }
 }
