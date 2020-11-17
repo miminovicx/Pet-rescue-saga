@@ -37,53 +37,37 @@ public class Test
     // field1.putElement(element6);
     // field1.putElement(element7);
     // field1.putElement(element8);
-    // int[] paliers = {200,300,400};
+    int[] paliers = {200,300,400};
     //
     //
-    // FieldElement elementa  = new Block(0,0,2);       //creation des elements du field
-    // FieldElement elementb  = new Block(0,1,2);
-    // FieldElement elementc  = new Animal(0,2);
-    // FieldElement elementd  = new Block(1,0,4);
-    // FieldElement elemente  = new Block(1,1,2);
-    // FieldElement elementf  = new Block(1,2,1);
-    // FieldElement elementg  = new Block(2,0,1);
-    // FieldElement elementh  = new Block(2,1,3);
-    // FieldElement elementi  = new Block(2,2,3);
-    //
-    // Field field2 = new Field(3,3);
-    // field2.putElement(elementa);             //ajout des elements au tableau
-    // field2.putElement(elementb);
-    // field2.putElement(elementc);
-    // field2.putElement(elementd);
-    // field2.putElement(elemente);
-    // field2.putElement(elementf);
-    // field2.putElement(elementg);
-    // field2.putElement(elementh);
-    // field2.putElement(elementi);
-    //
-    // Level level1 = new Level(0, 0 , 0 , field1, false, paliers, 1);
-    // Level level2 = new Level(0, 0 , 0 , field2, false, paliers, 1);
+    FieldElement elementa  = new Block(0,0,2);       //creation des elements du field
+    FieldElement elementb  = new Block(0,1,2);
+    FieldElement elementc  = new Animal(0,2);
+    FieldElement elementd  = new Block(1,0,4);
+    FieldElement elemente  = new Block(1,1,2);
+    FieldElement elementf  = new Block(1,2,1);
+    FieldElement elementg  = new Block(2,0,1);
+    FieldElement elementh  = new Block(2,1,3);
+    FieldElement elementi  = new Block(2,2,3);
 
+    Field field2 = new Field(3,3);
+    field2.putElement(elementa);             //ajout des elements au tableau
+    field2.putElement(elementb);
+    field2.putElement(elementc);
+    field2.putElement(elementd);
+    field2.putElement(elemente);
+    field2.putElement(elementf);
+    field2.putElement(elementg);
+    field2.putElement(elementh);
+    field2.putElement(elementi);
+
+    // Level level1 = new Level(0, 0 , 0 , field2, false, paliers, 1);
+    // level1.unlocked = true;
     // level1.save();
-    // level2.save();
-    Player joueur = Player.use("../Data/player.ser");
-    Level leveln = Level.use("../Data/Levels/level_1.ser");
-    Level levelm = Level.use("../Data/Levels/level_2.ser");
-    Level[] levelss = {levelm , leveln};
-    // Environment environment = new Environment(joueur,levels);
-    Environment environment = new Environment();
-    environment.createPlayer("sese");
-    // environment.setLevels(levelss);
-    environment.fillLevelTab();
-    System.out.println(environment);
-    // Level leveln = Level.use("../Data/Levels/level_2.ser");
-    // leveln.play();
-// Player joueur = new Player("sese",5,200);
-// joueur.save();
-// //niveau.save();
-// Player joueur2 = Player.use("../Data/player.ser");
-// Level niv = Level.use("../Data/Levels/level_1.ser");
-// niv.play();
-//System.out.println(joueur2);
+    Level niveau = Level.use("../Data/Levels/level_1.ser");
+    Environment env = new Environment();
+    env.fillLevelTab();
+    env.createPlayer("sese");
+    System.out.println(env);
    }
 }

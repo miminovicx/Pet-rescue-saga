@@ -18,7 +18,7 @@ public class Level implements java.io.Serializable
   private int[] palier;
   private int animalsToRescue;
   private transient Scanner sc;
-  private boolean unlocked;
+  public boolean unlocked;
   /**
   * Consructeur d'un niveau
   * @method Level
@@ -44,6 +44,12 @@ public class Level implements java.io.Serializable
     this.unlocked = unlocked;
     id++;
   }
+
+  public int getNum()
+  {
+    return (this.num) ;
+  }
+
   /**
   * Cette méthode permet de jouer un niveau
   * @method play
@@ -240,4 +246,6 @@ public class Level implements java.io.Serializable
     }
     return false;
   }
+
+
 }

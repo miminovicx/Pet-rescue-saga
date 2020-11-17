@@ -317,21 +317,21 @@ public class Field implements java.io.Serializable
    * @method Lost1
    * @return vrai si il n'y a plus d'élément que l'on peut supprimé
    */
-  public boolean Lost1()     //end of game because there's no delete possible
-  {
-    boolean found = false;
-    for(int i = 0; i<width && found!=true;i++)
-    {
-      for(int j = 0; j<width && found!=true;j++)
-      {
-        if(this.deletable(i,j) == true)
-            {
-            found = true; //il y a une combinaison possible
-            }
-      }
-    }
-    return !found;
-  }
+  // public boolean Lost1()     //end of game because there's no delete possible
+  // {
+  //   boolean found = false;
+  //   for(int i = 0; i<width && found!=true;i++)
+  //   {
+  //     for(int j = 0; j<width && found!=true;j++)
+  //     {
+  //       if(this.deletable(i,j) == true)
+  //           {
+  //           found = true; //il y a une combinaison possible
+  //           }
+  //     }
+  //   }
+  //   return !found;
+  // }
   /**
    * Cette méthode permet de transformer les blocks grillagés en blocks simples
    * @method simplifySquared

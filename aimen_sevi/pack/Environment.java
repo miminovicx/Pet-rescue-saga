@@ -42,7 +42,7 @@ public class Environment
 
   public String toString()
   {
-    return (this.player.toString() + Arrays.toString(this.levels));
+    return (this.player.toString() + displayLevels());
   }
   /**
    * Cette méthode recupère le joueur sauvegardé ou en crée un nouveau
@@ -95,5 +95,22 @@ public class Environment
       System.err.println("Le repertoire de savegarde n'existe pas");
       System.exit(1);
     }
+  }
+
+  public String displayLevels()
+  {
+    String s = "";
+    for(int i = 0; i < levels.length ; i++)
+    {
+      if(levels[i].unlocked)
+      {
+        s += levels[i].getNum() + "\n";
+      }
+      else
+      {
+        s +="*\n";
+      }
+    }
+    return s;
   }
 }
