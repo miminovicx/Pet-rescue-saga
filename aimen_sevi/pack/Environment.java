@@ -5,7 +5,7 @@ import java.io.File;
 public class Environment
 {
   private Player player;
-  private Level[] levels;
+  private static Level[] levels;
 
   public Environment (Player player , Level [] levels)
   {
@@ -20,9 +20,9 @@ public class Environment
   }
 
 
-  public Level[] getLevels()
+  public static Level[] getLevels()
   {
-    return (this.levels);
+    return (levels);
   }
 
   public Player getPlayer()
@@ -100,7 +100,7 @@ public class Environment
   public String displayLevels()
   {
     String s = "";
-    for(int i = 0; i < levels.length ; i++)
+    for(int i = levels.length - 1; i >= 0 ; i--)
     {
       if(levels[i].unlocked)
       {
@@ -112,5 +112,13 @@ public class Environment
       }
     }
     return s;
+  }
+
+  public static void unlock(int a)
+  {
+    if(a>0)
+    {
+      levels[a-1].unlocked = true;
+    }
   }
 }

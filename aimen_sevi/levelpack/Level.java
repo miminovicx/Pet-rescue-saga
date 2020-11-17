@@ -2,6 +2,7 @@ package levelpack;
 import java.io.*;
 import java.util.Scanner;
 import levelpack.Field;
+import pack.Environment;
 /**
 * Classe représentant un niveau
 */
@@ -54,9 +55,9 @@ public class Level implements java.io.Serializable
   * Cette méthode permet de jouer un niveau
   * @method play
   */
-  public void play()
+  public boolean play()
   {
-    if(unlocked)
+    if(this.unlocked)
     {
       System.out.println(this);
 
@@ -77,14 +78,17 @@ public class Level implements java.io.Serializable
       }
       if(this.Won0())
       {
+        Environment.unlock(this.getNum());
         this.succeded = true;
         this.win();
+        return true;
       }
     }
     else
     {
       System.out.println("Indisponible");
     }
+    return false;
   }
   /**
   * Cette méthode permet de demander les coordonnees de la case à jouer
@@ -236,7 +240,7 @@ public class Level implements java.io.Serializable
 
   /**
   * Cette methode permet de savoir si on a gagné
-  * @return vrai si on a gagné
+  * @return vrai si on a gagnLevelé
   */
   public boolean Won0()
   {
@@ -247,5 +251,14 @@ public class Level implements java.io.Serializable
     return false;
   }
 
+  public void setScore(int s)
+  {
+    this.score = s;
+  }
+  // public stavoid unlock(int a)
+  // {
+  //   Level[] l = Environment.getLevels();
+  //
+  // }
 
 }
