@@ -76,10 +76,10 @@ public class Test
     env.fillLevelTab();
     env.createPlayer("sese");
     System.out.println(env);
-    // env.getLevels()[0].setScore(10000);
-    env.getLevels()[0].play();
+    env.play(0);
+    env.getLevels()[0].setScore(10000);
     System.out.println(env);
-    env.getLevels()[1].play();
+    // env.getLevels()[1].play();
     System.out.println(env);
    }
 }

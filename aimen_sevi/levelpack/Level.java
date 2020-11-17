@@ -19,7 +19,7 @@ public class Level implements java.io.Serializable
   private int[] palier;
   private int animalsToRescue;
   private transient Scanner sc;
-  public boolean unlocked;
+  private boolean unlocked;
   /**
   * Consructeur d'un niveau
   * @method Level
@@ -51,11 +51,26 @@ public class Level implements java.io.Serializable
     return (this.num) ;
   }
 
+  public boolean getSucceded()
+  {
+    return (this.succeded);
+  }
+
+  public boolean getUnlocked()
+  {
+    return (this.unlocked);
+  }
+
+  public void setUnlocked(boolean unlocked)
+  {
+    this.unlocked = unlocked;
+  }
+
   /**
   * Cette méthode permet de jouer un niveau
   * @method play
   */
-  public boolean play()
+  public void play()
   {
     if(this.unlocked)
     {
@@ -81,14 +96,13 @@ public class Level implements java.io.Serializable
         Environment.unlock(this.getNum());
         this.succeded = true;
         this.win();
-        return true;
       }
     }
     else
     {
       System.out.println("Indisponible");
     }
-    return false;
+    this.succeded = false;
   }
   /**
   * Cette méthode permet de demander les coordonnees de la case à jouer

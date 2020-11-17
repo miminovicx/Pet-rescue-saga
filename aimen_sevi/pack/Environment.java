@@ -102,7 +102,7 @@ public class Environment
     String s = "";
     for(int i = levels.length - 1; i >= 0 ; i--)
     {
-      if(levels[i].unlocked)
+      if(levels[i].getUnlocked())
       {
         s += levels[i].getNum() + "\n";
       }
@@ -113,12 +113,26 @@ public class Environment
     }
     return s;
   }
-
+  public void play(int i)
+  {
+    if (this.player.getLifePoints() > 0 && this.levels[i].getUnlocked())
+    {
+      this.levels[i].play();
+      if(this.levels[i].getSucceded())
+      {
+        unlock(i + 1);
+      }
+      else
+      {
+        this.player.setLifePoints(this.player.getLifePoints() - 1);
+      }
+    }
+  }
   public static void unlock(int a)
   {
     if(a>0)
     {
-      levels[a-1].unlocked = true;
+      levels[a-1].setUnlocked(true);
     }
   }
 }
