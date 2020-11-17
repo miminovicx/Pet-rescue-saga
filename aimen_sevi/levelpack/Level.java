@@ -14,7 +14,8 @@ public class Level implements java.io.Serializable
   private int stars;
   private int score;
   private int lastScore;
-  private Field field;
+  private  Field field; //
+  private transient Field fieldCopy;
   private boolean succeded = true;
   private int[] palier;
   private int animalsToRescue;
@@ -38,6 +39,7 @@ public class Level implements java.io.Serializable
     this.score = score;
     this.lastScore = lastScore;
     this.field = field;
+    //this.playingField = field;
     this.succeded = succeded;
     this.palier = palier;
     this.animalsToRescue = animalsToRescue;
@@ -79,7 +81,7 @@ public class Level implements java.io.Serializable
       int[] coordonnees;
       do
       {
-
+        this.fieldCopy = this.field;
         coordonnees = this.react();
         this.field.updateFinal(coordonnees[0], coordonnees[1]);
         this.score += field.scoreComputation(field.nbBlockSuppr);
@@ -102,7 +104,8 @@ public class Level implements java.io.Serializable
     {
       System.out.println("Indisponible");
     }
-    this.succeded = false;
+    this.field = this.fieldCopy;
+    //this.save();
   }
   /**
   * Cette méthode permet de demander les coordonnees de la case à jouer

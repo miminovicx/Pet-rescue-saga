@@ -77,6 +77,6 @@ public class Test
     env.createPlayer("aim");
     System.out.println(env);
     env.chooseLevel();
-    // env.play(0);
+    System.out.println(env.getLevels()[0]);
    }
 }
