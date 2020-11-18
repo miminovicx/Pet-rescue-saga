@@ -156,6 +156,6 @@ public class Environment
 
   public void chooseLevel()
   {
-    this.play(player.getScanner().nextInt());
+    this.play(player.getScanner().nextInt() - 1);
   }
 }

@@ -96,7 +96,11 @@ public class Level implements java.io.Serializable
       if(this.Won0())
       {
         Environment.unlock(this.getNum());
-        this.succeded = true;
+        Level toSave = Level.use("../Data/Levels/level_" + this.id + ".ser");
+        toSave.succeded = true;
+        toSave.lastScore = this.score;
+        toSave.save();
+        //this.succeded = true;
         this.win();
       }
     }
@@ -104,7 +108,7 @@ public class Level implements java.io.Serializable
     {
       System.out.println("Indisponible");
     }
-    this.field = this.fieldCopy;
+    // this.field = this.fieldCopy;
     //this.save();
   }
   /**
