@@ -46,10 +46,10 @@ public class Environment
     return (this.player.toString() + displayLevels());
   }
   /**
-   * Cette méthode recupère le joueur sauvegardé ou en crée un nouveau
-   * @method createPlayer
-   * @param  nickName     pseudo du joueur
-   */
+  * Cette méthode recupère le joueur sauvegardé ou en crée un nouveau
+  * @method createPlayer
+  * @param  nickName     pseudo du joueur
+  */
   public void createPlayer(String nickName)
   {
     String path = "../Data/"+ nickName + ".ser";
@@ -61,9 +61,9 @@ public class Environment
     this.player = new Player(nickName, 5, 0);
   }
   /**
-   * Cette méthode initialise le tableau des niveaux
-   * @method fillLevelTab
-   */
+  * Cette méthode initialise le tableau des niveaux
+  * @method fillLevelTab
+  */
   public void fillLevelTab()
   {
     String dataDirectoryPath = "../Data/Levels/";
@@ -86,17 +86,17 @@ public class Environment
         this.levels = levels;
         for(int i=0; i < levels.length ; i++)
         {
-            int index = i;
-            for (int j = i + 1; j < levels.length; j++)
-            {
-                 if (levels[j].getNum() < levels[index].getNum()){
-                      index = j;
-                 }
+          int index = i;
+          for (int j = i + 1; j < levels.length; j++)
+          {
+            if (levels[j].getNum() < levels[index].getNum()){
+              index = j;
             }
+          }
 
-            Level min = levels[index];
-            levels[index] = levels[i];
-            levels[i] = min;
+          Level min = levels[index];
+          levels[index] = levels[i];
+          levels[i] = min;
         }
       }
       else
@@ -170,7 +170,11 @@ public class Environment
   public static void unlock(int a)
   {
     if(a < levels.length)
-     levels[a].setUnlocked(true);
+    {
+
+      levels[a].setUnlocked(true);
+      levels[a].save();
+    }
   }
 
   public void chooseLevel()
