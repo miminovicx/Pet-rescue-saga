@@ -2,6 +2,7 @@ package pack;
 import levelpack.Level;
 import java.util.Arrays;
 import java.io.File;
+import java.util.Scanner;
 public class Environment
 {
   private Player player;
@@ -129,23 +130,41 @@ public class Environment
     }
     return s;
   }
+
   public void play(int i)
   {
-    if (this.player.getLifePoints() > 0 && this.levels[i].getUnlocked())
+    String rep;
+    Scanner reponse = new Scanner(System.in);
+    do
     {
-      this.levels[i].play();
-      if(this.levels[i].getSucceded())
+      System.out.println("Voulez-vous jouer le niveau " + (i + 1) + " ? (o/n)");
+      rep = reponse.nextLine();
+    }
+    while (rep.charAt(0) != 'o' && rep.charAt(0) != 'n');
+    if(rep.charAt(0) == 'o')
+    {
+      if (this.player.getLifePoints() > 0 && this.levels[i].getUnlocked())
       {
-        unlock(i + 1);
+        this.levels[i].play();
+        if(this.levels[i].getSucceded())
+        {
+          unlock(i + 1);
+        }
+        else
+        {
+          this.player.setLifePoints(this.player.getLifePoints() - 1);
+        }
       }
       else
       {
-        this.player.setLifePoints(this.player.getLifePoints() - 1);
+        System.out.println("Niveau verrouillé");
       }
-    }else
-    {
-      System.out.println("Niveau verrouillé");
     }
+    else
+    {
+      this.chooseLevel();
+    }
+
   }
 
   public static void unlock(int a)
@@ -156,6 +175,7 @@ public class Environment
 
   public void chooseLevel()
   {
+    System.out.print("veuillez choisir un niveau à jouer : ");
     this.play(player.getScanner().nextInt() - 1);
   }
 }

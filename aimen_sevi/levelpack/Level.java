@@ -81,7 +81,7 @@ public class Level implements java.io.Serializable
       int[] coordonnees;
       do
       {
-        this.fieldCopy = this.field;
+
         coordonnees = this.react();
         this.field.updateFinal(coordonnees[0], coordonnees[1]);
         this.score += field.scoreComputation(field.nbBlockSuppr);
@@ -97,10 +97,11 @@ public class Level implements java.io.Serializable
       {
         Environment.unlock(this.getNum());
         Level toSave = Level.use("../Data/Levels/level_" + this.id + ".ser");
+        this.succeded = true;
         toSave.succeded = true;
         toSave.lastScore = this.score;
         toSave.save();
-        //this.succeded = true;
+
         this.win();
       }
     }
