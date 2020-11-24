@@ -1,0 +1,9 @@
+-regeneration de vie dans la gameLoop
+-meilleur affichage Environment (affichage des niveau a choisir)
+-ecrire et générer la doc
+-plateau caché
+-éléments immobile
+-boosters
+-reorganisation des packages
+-séparation des Environment en fonction des joueurs
+-GUI
