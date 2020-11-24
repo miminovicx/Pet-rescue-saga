@@ -1,4 +1,5 @@
 import pack.Environment;
+import pack.Launcher;
 import levelpack.FieldElement;
 import pack.Player;
 import levelpack.Block;
@@ -6,6 +7,8 @@ import levelpack.SquaredBlock;
 import levelpack.Animal;
 import levelpack.Level;
 import levelpack.Field;
+import java.util.TimerTask;
+import java.util.Timer;
 public class Test
 {
   public static void squaredString(String str)
@@ -70,13 +73,30 @@ public class Test
     // level2.save();
 
 
-    Level niveau1 = Level.use("../Data/Levels/level_1.ser");
-    Level niveau2 = Level.use("../Data/Levels/level_2.ser");
-    Environment env = new Environment();
-    env.fillLevelTab();
-    env.createPlayer("aim");
-    System.out.println(env);
-    env.chooseLevel();
+    // Level niveau1 = Level.use("../Data/Levels/level_1.ser");
+    // Level niveau2 = Level.use("../Data/Levels/level_2.ser");
+    // Environment env = new Environment();
+    // env.createPlayer("aim");
+    // Player playerTst = Player.use("../Data/aim.ser");
+    // env.setPlayer(playerTst);
+    // env.fillLevelTab();
+    // System.out.println(env);
+    //env.chooseLevel();
+    //System.out.println(env.getPlayer());
     // System.out.println(env.getLevels()[0]);
+    // System.out.println(env.getPlayer());
+    // env.getPlayer().setLifePoints(0);
+    // Timer t = new Timer();
+    // t.schedule(new TimerTask()
+    // {
+    //   @Override
+    //   public void run()
+    //   {
+    //     env.getPlayer().heal();
+    //     System.out.println(env.getPlayer());
+    //   }
+    // } , 0, 10000);
+    //System.out.println(playerTst);
+    Launcher.gameLoop();
    }
 }

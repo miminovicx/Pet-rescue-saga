@@ -85,17 +85,19 @@ public class Level implements java.io.Serializable
         coordonnees = this.react();
         this.field.updateFinal(coordonnees[0], coordonnees[1]);
         this.score += field.scoreComputation(field.nbBlockSuppr);
-        // this.field.update();
         System.out.println(this.field);
 
-      }while(!this.Lost0() && !this.Won0());
+      }
+      while(!this.Lost0() && !this.Won0());
       if(this.Lost0())
       {
+        Level toSave = Level.use("../Data/Levels/level_" + this.id + ".ser");
+        toSave.lastScore = this.score;
+        toSave.save();
         this.lost();
       }
       if(this.Won0())
       {
-        //Environment.unlock(this.getNum());
         Level toSave = Level.use("../Data/Levels/level_" + this.id + ".ser");
         this.succeded = true;
         toSave.succeded = true;
@@ -104,13 +106,12 @@ public class Level implements java.io.Serializable
 
         this.win();
       }
+
     }
     else
     {
       System.out.println("Indisponible");
     }
-    // this.field = this.fieldCopy;
-    //this.save();
   }
   /**
   * Cette méthode permet de demander les coordonnees de la case à jouer
@@ -158,10 +159,10 @@ public class Level implements java.io.Serializable
   public String toString()
   {
     String res = "";
-    if(succeded)
+    //if(succeded)
     res += "Level : " + this.num + "\nStars :" + this.stars + "\nObjectif : " + this.score + "\nLast score : " + this.lastScore + "\n\n";
-    else
-    res += "Level : " + this.num + "\nStars :" + this.stars + "\nObjectif : " + this.score + "\n\n";
+    // else
+    // res += "Level : " + this.num + "\nStars :" + this.stars + "\nObjectif : " + this.score + "\n\n";
     res += this.field.toString();
     return (res);
   }

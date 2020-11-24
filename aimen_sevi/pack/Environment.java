@@ -56,9 +56,14 @@ public class Environment
     File donnee = new File(path);
     if (donnee.exists())
     {
-      this.player = Player.use(path);
+      // this.player = Player.use(path);
+      this.setPlayer(Player.use(path));
     }
-    this.player = new Player(nickName, 5, 0);
+    else
+    {
+      this.player = new Player(nickName, 5, 0);
+    }
+
   }
   /**
   * Cette méthode initialise le tableau des niveaux
@@ -153,12 +158,14 @@ public class Environment
         else
         {
           this.player.setLifePoints(this.player.getLifePoints() - 1);
+          this.player.save();
         }
       }
       else
       {
         System.out.println("Niveau verrouillé");
       }
+
     }
     else
     {
