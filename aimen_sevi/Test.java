@@ -38,8 +38,8 @@ public class Test
     // field1.putElement(element7);
     // field1.putElement(element8);
     // int[] paliers = {20,300,400};
-    // //
-    // //
+    // // //
+    // // //
     // FieldElement elementa  = new Block(0,0,2);       //creation des elements du field
     // FieldElement elementb  = new Block(0,1,2);
     // FieldElement elementc  = new Animal(0,2);
@@ -60,23 +60,23 @@ public class Test
     // field2.putElement(elementg);
     // field2.putElement(elementh);
     // field2.putElement(elementi);
-    //
+    // //
     // Level level1 = new Level(0, 0 , 0 , field2, false, paliers, 1);
     // level1.setUnlocked(true);
     // level1.save();
-    //
+    // //
     // Level level2 = new Level(0, 0 , 0 , field1, false, paliers, 1);
     // level2.setUnlocked(false);
     // level2.save();
 
 
-    // Level niveau1 = Level.use("../Data/Levels/level_1.ser");
-    // Level niveau2 = Level.use("../Data/Levels/level_2.ser");
+    Level niveau1 = Level.use("../Data/Levels/level_1.ser");
+    Level niveau2 = Level.use("../Data/Levels/level_2.ser");
     Environment env = new Environment();
     env.fillLevelTab();
     env.createPlayer("aim");
     System.out.println(env);
     env.chooseLevel();
-    System.out.println(env.getLevels()[0]);
+    // System.out.println(env.getLevels()[0]);
    }
 }
