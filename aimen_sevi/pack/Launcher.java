@@ -5,68 +5,44 @@ import java.io.File;
 import java.util.Scanner;
 import java.util.TimerTask;
 import java.util.Timer;
+import java.util.Date;
 public class Launcher
 {
   static Scanner ans = new Scanner(System.in);
   public static void gameLoop()
   {
+    System.out.print("Pseudo : ");
+    String pseudo;
+    pseudo = ans.nextLine();
 
-    //affichage menu
-    menu();
-    // char answer;
-    // answer = ans.nextLine().charAt(0);
-    // switch(answer)
-    // {
-    //   case '1' :
-    //   //jouer
-    //   break;
-    //   case '2' :
-    //   //help
-    //   break;
-    //   case '3' :
-    //   System.exit(0);
-    //   break;
-    //   default :
-    //   //rappel methode
-    //   break;
-    // }
+    menu(pseudo);
 
-    // Environment env = new Environment();
-    // do
-    // {
-    //   env.fillLevelTab();
-    //   env.createPlayer("aim");
-    //   env.chooseLevel();
-    //   System.out.print("Voulez-vous continuer le jeu?(o/n)");
-    //   answer = ans.next().charAt(0);
-    // }
-    // while(answer == 'o');
-    // System.out.println("À la prochaine...");
-    // System.exit(0);
+
+
   }
 
-  public static void menu()
+  public static void menu(String pseudo)
   {
     System.out.println("*******MENU********");
     System.out.println("1- Jouer");
     System.out.println("2- Aide");
     System.out.println("3- Quitter");
-    choose();
+    choose(pseudo);
   }
 
-  public static void choose()
+  public static void choose(String pseudo)
   {
     char answer;
     answer = ans.nextLine().charAt(0);
     switch(answer)
     {
       case '1' :
-      play();
+      play(pseudo);
       break;
 
       case '2' :
       System.out.println("HELP MEEEEEEE");
-      choose();
+      choose(pseudo);
       break;
 
       case '3' :
@@ -74,33 +50,35 @@ public class Launcher
       break;
 
       default :
-      choose();okok
+      choose(pseudo);
       break;
     }
   }
 
-  public static Environment initialiseEnv()
+  public static Environment initialiseEnv(String pseudo)
   {
     Environment env = new Environment();
-    System.out.print("Pseudo : ");
-    String answer;
-    answer = ans.nextLine();
-    env.createPlayer(answer);
+    // System.out.print("Pseudo : ");
+    // String answer;
+    // answer = ans.nextLine();
+    env.createPlayer(pseudo);
     env.fillLevelTab();
+    // lifeRegenerator(env);
     return (env);
   }
 
-  public static void play()
+  public static void play(String pseudo)
   {
-    Environment env = initialiseEnv();
+    Environment env = initialiseEnv(pseudo);
     // System.out.println()
     System.out.println(env);
     env.chooseLevel();
-    menuContinuer();
+    System.out.println(env.getPlayer());
+    menuContinuer(pseudo);
     // menu();
   }
 
-  public static void menuContinuer()
+  public static void menuContinuer(String pseudo)
   {
     char answer;
     do
@@ -112,26 +90,33 @@ public class Launcher
 
     if(answer == 'o')
     {
-      play();
+      play(pseudo);
     }
     else
     {
-      menu();
+      menu(pseudo);
     }
 
   }
 
-  public static void lifeRegenerator()
-  {
-    Timer t = new Timer();
-    t.schedule(new TimerTask()
-    {
-      @Override
-      public void run()
-      {
-        env.getPlayer().heal();
-        System.out.println(env.getPlayer());
-      }
-    } , 0, 10000);
-  }
+  // public static void lifeRegenerator(Environment env)
+  // {
+  //   Date date = new Date();
+  //   Timer t = new Timer();
+  //   t.schedule(new TimerTask()
+  //   {
+  //     @Override
+  //     public void run()
+  //     {
+  //       // env.getPlayer().heal();
+  //       // System.out.println(env.getPlayer().getLifePoints());
+  //       if(env.getPlayer().getLifePoints() < 5)
+  //       {
+  //         env.getPlayer().setLifePoints(env.getPlayer().getLifePoints() + 1);
+  //         // System.out.println("Vie ajoutée" + env.getPlayer().getLifePoints());
+  //       }
+  //
+  //     }
+  //   } , date, 199000);  //toutes les 30s
+  // }
 }
