@@ -93,18 +93,20 @@ public class Level implements java.io.Serializable
       {
         Level toSave = Level.use("../Data/Levels/level_" + this.id + ".ser");
         toSave.lastScore = this.score;
-        toSave.save();
         this.lost();
+        toSave.field.animalsSaved = 0 ;
+        toSave.save();
+
       }
       if(this.Won0())
       {
         Level toSave = Level.use("../Data/Levels/level_" + this.id + ".ser");
         this.succeded = true;
         toSave.succeded = true;
+        this.win();
+        toSave.field.animalsSaved = 0 ;
         toSave.lastScore = this.score;
         toSave.save();
-
-        this.win();
       }
 
     }

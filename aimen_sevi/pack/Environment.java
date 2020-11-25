@@ -126,11 +126,11 @@ public class Environment
     {
       if(levels[i].getUnlocked())
       {
-        s += levels[i].getNum() + "\n";
+        s += levels[i].getNum() + " ";
       }
       else
       {
-        s +="*\n";
+        s += levels[i].getNum() + "*";
       }
     }
     return s;
@@ -142,7 +142,7 @@ public class Environment
     Scanner reponse = new Scanner(System.in);
     do
     {
-      System.out.println("Voulez-vous jouer le niveau " + (i + 1) + " ? (o/n)");
+      System.out.print("Voulez-vous jouer le niveau " + (i + 1) + " ? (o/n) ");
       rep = reponse.nextLine();
     }
     while (rep.charAt(0) != 'o' && rep.charAt(0) != 'n');
