@@ -32,16 +32,18 @@ public class Field implements java.io.Serializable
   }
   /**
   *Méthode pour obtenir le tableau des éléments du plateau
-  *@return la hauteur du plateau
+  *@return l'ensemble des elements sous forme de tableau
   */
   public FieldElement[][] getElements()
   {
     return (this.elements);
   }
+
   /**
-  *Méthode pour obtenir le tableau des éléments du plateau
-  *@param width hauteur du plateau
-  */
+   * Met à jour la longueur du plateau
+   * @method setWidth
+   * @param  width    nouvelle largeur
+   */
   public void setWidth(int width)
   {
     this.width = width;
@@ -59,7 +61,7 @@ public class Field implements java.io.Serializable
   /**
    * Met à jour le tableau des éléments
    * @method setElements
-   * @param  [][]elements [description]
+   * @param  [][]elements nouveau tableau
    */
   public void setElements(FieldElement [][]elements)
   {
@@ -87,7 +89,7 @@ public class Field implements java.io.Serializable
     this.elements[element.getX()][element.getY()] = element;
   }
   /**
-   * Enlève un élément au plateau
+   * Enlève un élément du plateau
    * @method removeElement
    * @param  x             abscisse de l'élément a enlever
    * @param  y             ordonnée de l'élément a enlever
@@ -120,7 +122,7 @@ public class Field implements java.io.Serializable
     return (res);
   }
   /**
-   * Cette méthode permet d'échanger deux élément
+   * Cette méthode permet d'échanger deux éléments
    * @method swap
    * @param  x    abscisse du premier élément
    * @param  y    ordonnée du premier élément
@@ -187,7 +189,7 @@ public class Field implements java.io.Serializable
    * Cette methode permet d'échanger deux colonnes
    * @method swapColumn
    * @param  a          coordonné de la première colonne
-   * @param  b          coordonné de la première colonne
+   * @param  b          coordonné de la deuxieme colonne
    */
   public void swapColumn(int a, int b)
   {
@@ -262,7 +264,12 @@ public class Field implements java.io.Serializable
       return false;
   }
 
-
+  /**
+   * Cette methode permet de supprimer un ensemble de blocs
+   * @param x      [abscisse du bloc choisi]
+   * @param y      [ordonnée du bloc choisi]
+   * @param delete [boolean pour l'appel recursif]
+   */
   public void move(int x, int y,boolean delete)
   {
     if(!delete)
@@ -301,6 +308,11 @@ public class Field implements java.io.Serializable
     }
   }
 
+  /**
+   * Cette methode permet de supprimer les elements s'ils sont supprimables
+   * @param x [abscisse]
+   * @param y [ordonnée]
+   */
   public void remove(int x, int y)
   {
     nbBlockSuppr = 0;
@@ -312,31 +324,12 @@ public class Field implements java.io.Serializable
     move(x,y,false);
 
   }
+
   /**
-   * Cette méthode permet de savoir si on a perdu
-   * @method Lost1
-   * @return vrai si il n'y a plus d'élément que l'on peut supprimé
-   */
-  // public boolean Lost1()     //end of game because there's no delete possible
-  // {
-  //   boolean found = false;
-  //   for(int i = 0; i<width && found!=true;i++)
-  //   {
-  //     for(int j = 0; j<width && found!=true;j++)
-  //     {
-  //       if(this.deletable(i,j) == true)
-  //           {
-  //           found = true; //il y a une combinaison possible
-  //           }
-  //     }
-  //   }
-  //   return !found;
-  // }
-  /**
-   * Cette méthode permet de transformer les blocks grillagés en blocks simples
+   * Cette méthode permet de transformer les blocs grillagés en blocs simples
    * @method simplifySquared
-   * @param  x               [description]
-   * @param  y               [description]
+   * @param  x               [abscisse]
+   * @param  y               [ordonnée]
    */
   public void simplifySquared(int x,int y)
   {
@@ -360,8 +353,8 @@ public class Field implements java.io.Serializable
   /**
    * Cette méthode permet de mettre à jour le plateau
    * @method updateFinal
-   * @param  x           [description]
-   * @param  y           [description]
+   * @param  x           [abscisse]
+   * @param  y           [ordonnée]
    */
   public void updateFinal(int x, int y)
   {
@@ -387,9 +380,9 @@ public class Field implements java.io.Serializable
     }
   }
   /**
-   * Cette méthode permet de calculer le score à partir du nombre de blocks supprimmés
+   * Cette méthode permet de calculer le score à partir du nombre de blocs supprimmés
    * @method scoreComputation
-   * @param  deletedBlocks    le nombre de blocks supprimés
+   * @param  deletedBlocks    le nombre de blocs supprimés
    * @return                  le nombre de points gagnés
    */
   public int scoreComputation(int deletedBlocks)

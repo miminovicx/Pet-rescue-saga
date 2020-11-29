@@ -41,8 +41,17 @@ public abstract class FieldElement implements java.io.Serializable
    */
   public Block transform(){return null;}
 
-
+  /**
+   * Méthode déstinée à afficher un FieldElement ( à redéfinir dans les sous-classes)
+   * @method toString
+   * @return la chaîne qui décrit l'élément
+   */
   public abstract String toString();
 
+  /**
+   * Méthode permettant de connaître la couleur d'un FieldElement
+   * @method getColor
+   * @return [-1]
+   */
   public int getColor(){return -1;}
 }

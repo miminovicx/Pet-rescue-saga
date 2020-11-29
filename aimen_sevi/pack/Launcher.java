@@ -6,9 +6,16 @@ import java.util.Scanner;
 import java.util.TimerTask;
 import java.util.Timer;
 import java.util.Date;
+/**
+ * Classe permettant de démarrer le programme
+ */
 public class Launcher
 {
   static Scanner ans = new Scanner(System.in);
+  /**
+   * Cette méthode représente la gameLoop (boucle pricipale du jeu)
+   * @method gameLoop
+   */
   public static void gameLoop()
   {
     System.out.print("Pseudo : ");
@@ -21,6 +28,10 @@ public class Launcher
 
   }
 
+  /**
+   * Cette methode affiche le menu principal du jeu
+   * @param pseudo le pseudo du joueur
+   */
   public static void menu(String pseudo)
   {
     System.out.println("*******MENU********");
@@ -30,6 +41,10 @@ public class Launcher
     choose(pseudo);
   }
 
+  /**
+   * Cette methode permet de prendre un choix du menu
+   * @param pseudo pseudo du joueur
+   */
   public static void choose(String pseudo)
   {
     char answer;
@@ -55,6 +70,11 @@ public class Launcher
     }
   }
 
+ /**
+  * Cette methode initialise l'environnement
+  * @param  pseudo pseudo du joueur
+  * @return        l'environnement de jeu avec le tableau des niveaux initialisé
+  */
   public static Environment initialiseEnv(String pseudo)
   {
     Environment env = new Environment();
@@ -67,6 +87,10 @@ public class Launcher
     return (env);
   }
 
+  /**
+   * Cette methode permet de jouer au jeu
+   * @param pseudo pseudo du joueur qui joue
+   */
   public static void play(String pseudo)
   {
     Environment env = initialiseEnv(pseudo);
@@ -78,6 +102,10 @@ public class Launcher
     // menu();
   }
 
+  /**
+   * Cette methode permet de demander si on veut continuer de jouer
+   * @param pseudo pseudo du joueur qui joue
+   */
   public static void menuContinuer(String pseudo)
   {
     char answer;

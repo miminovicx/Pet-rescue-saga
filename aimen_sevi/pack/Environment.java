@@ -3,44 +3,74 @@ import levelpack.Level;
 import java.util.Arrays;
 import java.io.File;
 import java.util.Scanner;
+/**
+ * Classe représentant l'Environment dans lequel évolue le jouer
+ */
 public class Environment
 {
   private Player player;
   private static Level[] levels;
-
+  /**
+   * Constructeur d'un Environment
+   * @method Environment
+   * @param  player      joueur qui evolue dans l'environnement
+   * @param  levels      ensemble des niveaux constituant l'environnement
+   */
   public Environment (Player player , Level [] levels)
   {
     this.levels = levels;
     this.player = player;
   }
-
+  /**
+   * Constructeur par défaut d'un environnement
+   * @method Environment
+   */
   public Environment()
   {
     this.levels = null;
     this.player = null;
   }
-
-
+  /**
+   * Getteur qui permet d'obtenir l'ensemble des niveaux
+   * @method getLevels
+   * @return l'ensemble des niveaux sous forme de tableau
+   */
   public static Level[] getLevels()
   {
     return (levels);
   }
-
+  /**
+   * Getteur qui permet d'obtenir le joueur lié à l'environnement
+   * @method getPlayer
+   * @return le joueur lié à l'environnement
+   */
   public Player getPlayer()
   {
     return (this.player);
   }
-
+  /**
+   * Setteur qui permet de spécifier un tableau de niveaux qui constiuera l'environnement
+   * @method setLevels
+   * @param  levels    le nouveau tableau de niveaux
+   */
   public void setLevels(Level[] levels)
   {
     this.levels = levels;
   }
-
+  /**
+   * Setteur qui permet de spécifier un joueur qui évoluera dans l'environnement
+   * @method setPlayer
+   * @param  player    le nouveau joueur qui évoluera dans l'environnement
+   */
   public void setPlayer(Player player)
   {
     this.player = player;
   }
-
+  /**
+   * Méthode permettant d'afficher l'environnement
+   * @method toString
+   * @return la chaîne qui sera affchée
+   */
   public String toString()
   {
     return (this.player.toString() + displayLevels());
@@ -61,7 +91,7 @@ public class Environment
     }
     else
     {
-      this.player = new Player(nickName, 5, 0);
+      this.player = new Player(nickName, 5);
     }
 
   }
@@ -118,7 +148,11 @@ public class Environment
 
 
   }
-
+  /**
+   * Cette méthode permet d'afficher l'ensemble des niveaux
+   * @method displayLevels
+   * @return chaîne affichée
+   */
   public String displayLevels()
   {
     String s = "";
@@ -135,7 +169,11 @@ public class Environment
     }
     return s;
   }
-
+  /**
+   * Méthode permettant de jouer un niveau
+   * @method play
+   * @param  i    le numéro du niveau que l'on souhaite jouer
+   */
   public void play(int i)
   {
     String rep;
@@ -173,7 +211,11 @@ public class Environment
     }
 
   }
-
+  /**
+   * Cette méthode permet de déverrouiller un niveau
+   * @method unlock
+   * @param  a      numéro du niveau à déverrouiller
+   */
   public static void unlock(int a)
   {
     if(a < levels.length)
@@ -183,7 +225,10 @@ public class Environment
       levels[a].save();
     }
   }
-
+  /**
+   * Cette méhode permet de choisir le niveau que l'on veut jouer elle permet de gérer le décalage par rappot aux indices du tableau
+   * @method chooseLevel
+   */
   public void chooseLevel()
   {
     System.out.print("veuillez choisir un niveau à jouer : ");

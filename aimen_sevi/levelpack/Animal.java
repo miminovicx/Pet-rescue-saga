@@ -8,11 +8,7 @@ public class Animal extends Block
   {
     super(x, y, -1);
   }
-
-  // public String toString()
-  // {
-  //     return ("A");
-  // }
+  
   /**
    * Cette méthode supprime un animal
    * @method removeAnimal

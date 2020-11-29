@@ -9,60 +9,67 @@ public class Player implements java.io.Serializable
   //private static final long serialVersionUID = 544354344438484l;
   private String nickName;
   private int lifePoints;
-  //private Booster [] boosters;
-  private int coins;
+
+
   private transient Scanner scan;
 
+/**
+ * Cette methode permet de recuperer le pseudo du joueur
+ * @return le pseudo du joueur
+ */
   public  String getNickName()
   {
     return (this.nickName);
   }
 
+  /**
+   * Cette methode permet de recuperer le nombre de vies du joueur
+   * @return nombre de vies du joueur
+   */
   public int getLifePoints()
   {
     return (this.lifePoints);
   }
 
+  /**
+   * Cette methode permet de recuperer le scanner
+   * @return un scanner
+   */
   public Scanner getScanner()
   {
     return (this.scan);
   }
-  // public Booster [] getBoosters()
-  // {
-  //   return (this.boosters);
-  // }
 
-  public int getCoins()
-  {
-    return (this.coins);
-  }
-
+  /**
+   * Cette methode permet de donner un pseudo au joueur
+   * @param nickName pseudo du joueur
+   */
   public  void setNickName(String nickName)
   {
     this.nickName = nickName;
   }
 
+  /**
+   * Cette methode permet d'initialiser le nombre de vies du joueur
+   * @param lifePoints le nombre de vies
+   */
   public void setLifePoints(int lifePoints)
   {
     this.lifePoints = lifePoints;
   }
 
-  // public void setBoosters(Booster [] boosters)
-  // {
-  //   this.boosters = boosters;
-  // }
 
-  public void setCoins(int coins)
-  {
-    this.coins = coins;
-  }
 
-  public Player(String nickName, int lifePoints, /*Booster[] boosters,*/ int coins)
+
+/**
+ * Constructeur de Player
+ * @param nickName   pseudo du joueur
+ * @param lifePoints nombre de vies du joueur
+ */
+  public Player(String nickName, int lifePoints)
   {
     this.nickName = nickName;
     this.lifePoints = lifePoints;
-    //this.boosters = boosters;
-    this.coins = coins;
     this.scan = new Scanner(System.in);
   }
   /**
@@ -76,11 +83,14 @@ public class Player implements java.io.Serializable
       this.lifePoints++;
     }
   }
+  /**
+   * Cette methode permet d'afficher le joueur
+   * @return le pseudo et le nombre de points de vies du joueur
+   */
   public String toString()
   {
     return ("Pseudo : " + this.nickName + "\n" +
-            "Points de vie : " + this.lifePoints + "\n" +
-            "Pièces de monaie : " + this.coins + "\n");
+            "Points de vie : " + this.lifePoints + "\n");
   }
   /**
    * Cette méthode permet de rendre le joueur persistant

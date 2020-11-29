@@ -48,21 +48,37 @@ public class Level implements java.io.Serializable
     id++;
   }
 
+  /**
+   * Cette methode permet d'obtenir le numero du niveau
+   * @return num du niveau
+   */
   public int getNum()
   {
     return (this.num) ;
   }
 
+  /**
+   * Cette methode permet de savoir si un niveau est gagné
+   * @return succeded
+   */
   public boolean getSucceded()
   {
     return (this.succeded);
   }
 
+  /**
+   * Cette methode permet de savoir si le niveau est deverouille
+   * @return unlocked
+   */
   public boolean getUnlocked()
   {
     return (this.unlocked);
   }
 
+ /**
+  * Cette methode permet de verouiller ou de deverouiller un niveau
+  * @param unlocked true si on veut deverouiller et false si on veut verouiller
+  */
   public void setUnlocked(boolean unlocked)
   {
     this.unlocked = unlocked;
@@ -189,10 +205,10 @@ public class Level implements java.io.Serializable
     }
   }
   /**
-  * [use description]
+  * Cette methode permet de recuperer un niveau depuis le disque
   * @method use
-  * @param  path [description]
-  * @return      [description]
+  * @param  path le chemin dans lequel se trouve le niveau
+  * @return      le niveau sauvegardé sous forme d'objet
   */
   public  static Level use(String path)
   {
@@ -276,14 +292,14 @@ public class Level implements java.io.Serializable
     return false;
   }
 
+ /**
+  * Cette methode d'initialiser le score du niveau
+  * @param s le score
+  */
   public void setScore(int s)
   {
     this.score = s;
   }
-  // public stavoid unlock(int a)
-  // {
-  //   Level[] l = Environment.getLevels();
-  //
-  // }
+  
 
 }
