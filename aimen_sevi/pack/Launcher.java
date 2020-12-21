@@ -57,12 +57,12 @@ public class Launcher
       break;
 
       case '2' :
-      System.out.println("Régles du jeu :\nVous devez sauvez les animaux ! Pour celà il faut faire exploser les blocs en dessous");
-      System.out.println("Vous pouvez faire exploser un ou plusieurs blocs s'ils sont deux ou plus à être voisins ayant la même couleur");
-      System.out.println("Vous avez gagné si vous avez sauvé tout les animaux et avez atteint le score objectif");
-      System.out.println("Le jeu s'arrête si vous avez gagné ou s'il n'y a plus de blocs à exploser");
-      System.out.println("A chaque niveau gagné, vous déverrouiller le suivant");
-      System.out.println("Vous avez un nombre d'étoiles pour chaque niveau gagné selon votre score");
+      System.out.println("\033[1mRégles du jeu :\033[0m\nVous devez \033[1msauver les animaux ! \033[0mPour cela il faut faire exploser les blocs \033[1men dessous\033[0m");
+      System.out.println("Vous pouvez faire exploser \033[1mun ou plusieurs blocs\033[0m de la \033[1mmême couleur\033[0m s'ils sont deux ou plus à être voisins.");
+      System.out.println("Vous avez \033[1mgagné\033[0m si vous avez \033[1msauvé tous les animaux\033[0m et avez atteint le \033[1mscore objectif.\033[0m");
+      System.out.println("Le jeu \033[1ms'arrête\033[0m si vous avez \033[1mgagné\033[0m ou s'il n'y a \033[1mplus de blocs à exploser\033[0m");
+      System.out.println("A chaque niveau gagné, vous \033[1mdéverrouiller le suivant\033[0m");
+      System.out.println("Vous avez un nombre d'\033[1métoiles\033[0m pour chaque niveau gagné \033[1mselon votre score\033[0m");
       System.out.println("Une vie vous est otée à chaque fois que vous perdez");
       choose(pseudo);
       break;
