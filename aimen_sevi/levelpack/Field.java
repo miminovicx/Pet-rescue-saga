@@ -11,7 +11,7 @@ public class Field implements java.io.Serializable
   //private static final long serialVersionUID = 51335434354l;
   private int width;
   private int height;
-  private FieldElement [][] elements;
+  public FieldElement [][] elements;
   public static int nbBlockSuppr; //=0
   public static int animalsSaved = 0;
 /**
@@ -70,8 +70,8 @@ public class Field implements java.io.Serializable
   /**
    * Constructeur du plateau
    * @method Field
-   * @param  width  largeur
-   * @param  height hauteur
+   * @param  width  hauteur
+   * @param  height largeur
    */
   public Field(int width, int height)
   {
@@ -143,7 +143,7 @@ public class Field implements java.io.Serializable
  */
   public void getDown(int x, int y)
   {
-    if (x + 1 < this.height)
+    if (x + 1 < this.width) //c'etait height
     this.swap(x,y,x + 1,y);
   }
   /**
@@ -152,11 +152,11 @@ public class Field implements java.io.Serializable
    */
   public void update()
   {
-    for (int k = 0 ; k < height ; k ++)
+    for (int k = 0 ; k < width ; k ++) //etait height
     {
-      for(int j = height - 1 ;j > 0; j--)
+      for(int j = width - 1 ;j > 0; j--) //etait height
       {
-        for (int i = 0 ; i < width; i++)
+        for (int i = 0 ; i < height; i++) //etait width
         {
           if(this.elements[j][i].getColor() == 0)
           {
@@ -207,7 +207,7 @@ public class Field implements java.io.Serializable
    */
   public void moveColumns()
   {
-    for (int k = 0 ; k < height ; k++ )
+    for (int k = 0 ; k < height ; k++ )  //c'etait width
     {
       for(int j = 0 ; j < width - 1 ; j++)           //doit parcourir chaque colonne
       {
@@ -247,7 +247,7 @@ public class Field implements java.io.Serializable
           return true;
         }
       }
-      if(y + 1 < width)
+      if(y + 1 < height) //width
       {
         if( this.elements[x][y].getColor() == this.elements[x][y + 1].getColor() )
         {
@@ -295,7 +295,7 @@ public class Field implements java.io.Serializable
         {
             move(x-1,y,true);
         }
-        if( (y+1 < width) && (col == this.elements[x][y+1].getColor()) )
+        if( (y+1 < height) && (col == this.elements[x][y+1].getColor()) )
         {
           move(x,y+1,true);
         }
@@ -341,7 +341,7 @@ public class Field implements java.io.Serializable
     {
       this.removeElement(x-1,y);
     }
-    if( (y+1 < width) && (this.elements[x][y+1] instanceof SquaredBlock))
+    if( (y+1 < height) && (this.elements[x][y+1] instanceof SquaredBlock))
     {
       this.removeElement(x,y+1);
     }
@@ -369,7 +369,7 @@ public class Field implements java.io.Serializable
    */
   public void saveAnimal()
   {
-    for(int j=0; j < width ; j++)
+    for(int j=0; j < height ; j++) //etait width
     {
       if(this.elements[width - 1][j].getColor() == -1)
       {

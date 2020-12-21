@@ -21,26 +21,26 @@ public class Test
   public static void main(String[] args)
   {
     //
-    // FieldElement element0  = new Block(0,0,1);       //creation des elements du field
-    // FieldElement element1  = new Block(0,1,1);
+    FieldElement element0  = new Block(0,0,1);       //creation des elements du field
+    FieldElement element1  = new Block(0,1,1);
     // FieldElement element2  = new Block(0,2,1);
-    // FieldElement element3  = new Block(1,0,2);
-    // FieldElement element4  = new Block(1,1,1);
+    FieldElement element3  = new Block(1,0,2);
+    FieldElement element4  = new Block(1,1,1);
     // FieldElement element5  = new Block(1,2,3);
-    // FieldElement element6  = new Block(2,0,3);
-    // FieldElement element7  = new Block(2,1,2);
+    FieldElement element6  = new Block(2,0,3);
+    FieldElement element7  = new Block(2,1,2);
     // FieldElement element8 = new Block(2,2,2);
-    // Field field1 = new Field(3,3);
-    // field1.putElement(element0);             //ajout des elements au tableau
-    // field1.putElement(element1);
+    Field field1 = new Field(3,2);
+    field1.putElement(element0);             //ajout des elements au tableau
+    field1.putElement(element1);
     // field1.putElement(element2);
-    // field1.putElement(element3);
-    // field1.putElement(element4);
+    field1.putElement(element3);
+    field1.putElement(element4);
     // field1.putElement(element5);
-    // field1.putElement(element6);
-    // field1.putElement(element7);
+    field1.putElement(element6);
+    field1.putElement(element7);
     // field1.putElement(element8);
-    // int[] paliers = {20,300,400};
+    int[] paliers = {20,300,400};
     // // //
     // // //
     // FieldElement elementa  = new Block(0,0,2);       //creation des elements du field
@@ -75,6 +75,10 @@ public class Test
 
     // Level niveau1 = Level.use("../Data/Levels/level_1.ser");
     // Level niveau2 = Level.use("../Data/Levels/level_2.ser");
+    // Level niveauTest = new Level(0, 0 , 0 , field1, false, paliers, 1);
+    // niveauTest.setUnlocked(true);
+    // niveauTest.save();
+    // Level niveauTest = Level.use("../Data/Levels/level_1.ser");
     // Environment env = new Environment();
     // env.createPlayer("aim");
     // Player playerTst = Player.use("../Data/aim.ser");
@@ -98,5 +102,8 @@ public class Test
     // } , 0, 10000);
     //System.out.println(playerTst);
     Launcher.gameLoop();
+    // System.out.println(field1);
+    // System.out.println(field1.getWidth());
+    // System.out.println(field1.getHeight());
    }
 }

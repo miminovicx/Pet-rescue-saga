@@ -241,7 +241,7 @@ public class Level implements java.io.Serializable
     boolean found = false;
     for(int i = 0; i<this.field.getWidth() && found!=true;i++)
     {
-      for(int j = 0; j<this.field.getWidth() && found!=true;j++)
+      for(int j = 0; j<this.field.getHeight() && found!=true;j++)
       {
         if(this.field.deletable(i,j) == true)
         {
@@ -300,6 +300,6 @@ public class Level implements java.io.Serializable
   {
     this.score = s;
   }
-  
+
 
 }

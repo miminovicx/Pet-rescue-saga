@@ -7,3 +7,4 @@
 -reorganisation des packages
 -séparation des Environment en fonction des joueurs
 -GUI
+#width nbr de lignes
