@@ -389,4 +389,46 @@ public class Field implements java.io.Serializable
   {
     return (10 * (int)Math.pow(deletedBlocks,2));
   }
+
+  // public String affichage()
+  // {
+  //   String res = "";
+  //   int min = this.onVerra();
+  //   for(int i = min; i < (min + this.intervalle);i++)
+  //   {
+  //       for(int j=0; j<this.height ; j++)
+  //       {
+  //         res += this.elements[i][j].toString() + " " ;
+  //       }
+  //
+  //     }
+  //     return res;
+  // }
+  //
+  // public boolean lineIsEmpty(int a)
+  // {
+  //   for(int i=0; i < this.height; i++)
+  //   {
+  //     if(this.elements[a][i].getColor() != 0)
+  //     {
+  //       return false;
+  //     }
+  //   }
+  //   return true;
+  // }
+  //
+  // public int onVerra()
+  // {
+  //   int i = 0;
+  //   boolean empty = true;
+  //   while(i < this.width - intervalle && this.lineIsEmpty(i))
+  //   {
+  //     i++;
+  //   }
+  // }
+
+
+
+
+  //A TEEEEEESSSTEEEEEERRRRRRRR
 }

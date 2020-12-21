@@ -21,6 +21,7 @@ public class Level implements java.io.Serializable
   private int animalsToRescue;
   private transient Scanner sc;
   private boolean unlocked;
+
   /**
   * Consructeur d'un niveau
   * @method Level

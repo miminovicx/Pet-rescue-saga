@@ -201,7 +201,14 @@ public class Environment
       }
       else
       {
-        System.out.println("Niveau verrouillé");
+        if (this.player.getLifePoints() == 0)
+        {
+          System.out.println("Vous n'avez pas assez de vie pour jouer");
+        }
+        if(!this.levels[i].getUnlocked())
+        {
+          System.out.println("Niveau verrouillé");
+        }
       }
 
     }
@@ -229,9 +236,21 @@ public class Environment
    * Cette méhode permet de choisir le niveau que l'on veut jouer elle permet de gérer le décalage par rappot aux indices du tableau
    * @method chooseLevel
    */
+  // public void chooseLevel()
+  // {
+  //   System.out.print("veuillez choisir un niveau à jouer : ");
+  //   this.play(player.getScanner().nextInt() - 1);
+  // }
   public void chooseLevel()
   {
+    int n = 0;
     System.out.print("veuillez choisir un niveau à jouer : ");
-    this.play(player.getScanner().nextInt() - 1);
+    n = player.getScanner().nextInt();
+    while ((n <= 0) || (n > 5)) //5 correspond au nombre de niveaux
+    {
+      System.out.print("Niveau indisponible\nVeuillez choisir un autre niveau à jouer : ");
+      n = player.getScanner().nextInt();
+    }
+    this.play(n - 1);
   }
 }

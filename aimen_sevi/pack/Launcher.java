@@ -48,6 +48,7 @@ public class Launcher
   public static void choose(String pseudo)
   {
     char answer;
+    System.out.println("Que-faire ?");
     answer = ans.nextLine().charAt(0);
     switch(answer)
     {
@@ -56,12 +57,31 @@ public class Launcher
       break;
 
       case '2' :
-      System.out.println("HELP MEEEEEEE");
+      System.out.println("Régles du jeu :\nVous devez sauvez les animaux ! Pour celà il faut faire exploser les blocs en dessous");
+      System.out.println("Vous pouvez faire exploser un ou plusieurs blocs s'ils sont deux ou plus à être voisins ayant la même couleur");
+      System.out.println("Vous avez gagné si vous avez sauvé tout les animaux et avez atteint le score objectif");
+      System.out.println("Le jeu s'arrête si vous avez gagné ou s'il n'y a plus de blocs à exploser");
+      System.out.println("A chaque niveau gagné, vous déverrouiller le suivant");
+      System.out.println("Vous avez un nombre d'étoiles pour chaque niveau gagné selon votre score");
+      System.out.println("Une vie vous est otée à chaque fois que vous perdez");
       choose(pseudo);
       break;
 
       case '3' :
-      System.exit(0);
+      char rep;
+      do {
+        System.out.println("Voulez-vous vraiment quitter ? (o/n)");
+        rep = ans.nextLine().charAt(0);
+      } while (rep != 'o' && rep != 'n');
+      if(rep == 'o')
+      {
+        System.out.println("A bientot ;)");
+        System.exit(0);
+      }
+      else
+      {
+        choose(pseudo);
+      }
       break;
 
       default :
