@@ -42,6 +42,14 @@ public class Field implements java.io.Serializable
   }
 
   /**
+   * Méthode pour obtenir la valeur de l'intervalle
+   * @return la valeur de l'intervalle
+   */
+  public int getIntervalle()
+  {
+    return this.intervalle;
+  }
+  /**
    * Met à jour la longueur du plateau
    * @method setWidth
    * @param  width    nouvelle largeur
@@ -399,10 +407,16 @@ public class Field implements java.io.Serializable
    */
   public String toString()
   {
-    String res = "";
+    String res = " ";
+    for(int i = 0; i < this.height; i++)
+    {
+      res += " " + String.valueOf(i);
+    }
+    res += "\n" ;
     int min = this.firstLineToDisplay();
     for(int i = min; i < (min + this.intervalle);i++)
     {
+        res += String.valueOf(i) + " ";
         for(int j=0; j<this.height ; j++)
         {
           res += this.elements[i][j].toString() + " " ;

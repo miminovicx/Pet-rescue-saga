@@ -143,11 +143,12 @@ public class Level implements java.io.Serializable
     int a;
     int b;
     do {
-      System.out.format("veuillez donner un x entre 0 et %d\n",this.field.getWidth() - 1);
+      System.out.format("veuillez donner un x entre %d et %d : ", this.field.firstLineToDisplay() , ( this.field.firstLineToDisplay() + this.field.getIntervalle() ) );
       a = sc.nextInt();
-      System.out.format("veuillez donner un y entre 0 et %d\n",this.field.getHeight() - 1);
+      System.out.format("veuillez donner un y entre 0 et %d : ",this.field.getHeight() - 1);
       b = sc.nextInt();
-    } while ((a < 0) || (a > this.field.getWidth() - 1) || (b < 0) || (b > this.field.getHeight() - 1));
+    } while ((a < this.field.firstLineToDisplay() ) || (a > this.field.getWidth() - 1) || (b < 0) || (b > this.field.getHeight() - 1));
+      System.out.println(""); //laisse une ligne vide
     coordonnees[0] = a;
     coordonnees[1] = b;
     return (coordonnees);

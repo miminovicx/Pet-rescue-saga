@@ -12,16 +12,16 @@ import java.util.Date;
 public class Launcher
 {
   static Scanner ans = new Scanner(System.in);
+  
   /**
    * Cette méthode représente la gameLoop (boucle pricipale du jeu)
    * @method gameLoop
    */
   public static void gameLoop()
   {
-    System.out.print("Pseudo : ");
+    System.out.print("BONJOUR !\nPseudo : ");
     String pseudo;
     pseudo = ans.nextLine();
-
     menu(pseudo);
 
 
