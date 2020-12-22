@@ -11,9 +11,10 @@ public class Field implements java.io.Serializable
   //private static final long serialVersionUID = 51335434354l;
   private int width;
   private int height;
-  public FieldElement [][] elements;
+  private FieldElement [][] elements;
   public static int nbBlockSuppr; //=0
   public static int animalsSaved = 0;
+  private int intervalle = 2;
 /**
 *Méthode pour obtenir la largeur du plateau
 *@return la largeur du plateau
@@ -103,24 +104,24 @@ public class Field implements java.io.Serializable
    * @method toString
    * @return la chaîne affiché
    */
-  public String toString()
-  {
-    int i = 0;
-    int j = 0;
-    String res = "";
-    res += "*".repeat(this.width * 4) + "\n" ;
-
-    for(i=0;i<this.width;i++)
-    {
-      for(j=0;j<this.height;j++)
-      {
-        res += this.elements[i][j].toString() + " " ;
-      }
-      res+="\n";
-    }
-    res += "*".repeat(this.width * 3) + "\n";
-    return (res);
-  }
+  // public String toString()
+  // {
+  //   int i = 0;
+  //   int j = 0;
+  //   String res = "";
+  //   res += "*".repeat(this.width * 4) + "\n" ;
+  //
+  //   for(i=0;i<this.width;i++)
+  //   {
+  //     for(j=0;j<this.height;j++)
+  //     {
+  //       res += this.elements[i][j].toString() + " " ;
+  //     }
+  //     res+="\n";
+  //   }
+  //   res += "*".repeat(this.width * 3) + "\n";
+  //   return (res);
+  // }
   /**
    * Cette méthode permet d'échanger deux éléments
    * @method swap
@@ -390,45 +391,46 @@ public class Field implements java.io.Serializable
     return (10 * (int)Math.pow(deletedBlocks,2));
   }
 
-  // public String affichage()
-  // {
-  //   String res = "";
-  //   int min = this.onVerra();
-  //   for(int i = min; i < (min + this.intervalle);i++)
-  //   {
-  //       for(int j=0; j<this.height ; j++)
-  //       {
-  //         res += this.elements[i][j].toString() + " " ;
-  //       }
+  public String toString()
+  {
+    String res = "";
+    int min = this.firstLineToDisplay();
+    for(int i = min; i < (min + this.intervalle);i++)
+    {
+        for(int j=0; j<this.height ; j++)
+        {
+          res += this.elements[i][j].toString() + " " ;
+        }
+        res+="\n";
+      }
+      return res;
+
+  }
   //
-  //     }
-  //     return res;
-  // }
+  public boolean lineIsEmpty(int a)
+  {
+    for(int i=0; i < this.height; i++)
+    {
+      if(this.elements[a][i].getColor() != 0)
+      {
+        return false;
+      }
+    }
+    return true;
+  }
   //
-  // public boolean lineIsEmpty(int a)
-  // {
-  //   for(int i=0; i < this.height; i++)
-  //   {
-  //     if(this.elements[a][i].getColor() != 0)
-  //     {
-  //       return false;
-  //     }
-  //   }
-  //   return true;
-  // }
-  //
-  // public int onVerra()
-  // {
-  //   int i = 0;
-  //   boolean empty = true;
-  //   while(i < this.width - intervalle && this.lineIsEmpty(i))
-  //   {
-  //     i++;
-  //   }
-  // }
+  public int firstLineToDisplay()
+  {
+    int i = 0;
+    boolean empty = true;
+    while(i < this.width - intervalle && this.lineIsEmpty(i))
+    {
+      i++;
+    }
+    return i;
+  }
 
 
 
 
-  //A TEEEEEESSSTEEEEEERRRRRRRR
 }

@@ -64,7 +64,7 @@ public class Test
     // field2.putElement(elementh);
     // field2.putElement(elementi);
     // //
-    // Level level1 = new Level(0, 0 , 0 , field2, false, paliers, 1);
+    // Level level1 = new Level(0, 0 , 0 , field1, false, paliers, 1);
     // level1.setUnlocked(true);
     // level1.save();
     // //
@@ -102,6 +102,9 @@ public class Test
     // } , 0, 10000);
     //System.out.println(playerTst);
     Launcher.gameLoop();
+
+    // System.out.println(field1.affichage());
+
     // System.out.println(field1);
     // System.out.println(field1.getWidth());
     // System.out.println(field1.getHeight());
