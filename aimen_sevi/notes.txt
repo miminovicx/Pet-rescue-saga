@@ -1,7 +1,7 @@
 -regeneration de vie dans la gameLoop
 -meilleur affichage Environment (affichage des niveaux a choisir)
 -ecrire et générer la doc
--plateau caché
+-plateau caché !!!! DONE !!!! 
 -éléments immobiles
 -boosters
 -reorganisation des packages

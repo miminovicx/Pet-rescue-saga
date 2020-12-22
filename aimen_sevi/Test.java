@@ -43,33 +43,33 @@ public class Test
     int[] paliers = {20,300,400};
     // // //
     // // //
-    // FieldElement elementa  = new Block(0,0,2);       //creation des elements du field
-    // FieldElement elementb  = new Block(0,1,2);
-    // FieldElement elementc  = new Animal(0,2);
-    // FieldElement elementd  = new Block(1,0,4);
-    // FieldElement elemente  = new Block(1,1,2);
-    // FieldElement elementf  = new Block(1,2,1);
-    // FieldElement elementg  = new Block(2,0,1);
-    // FieldElement elementh  = new Block(2,1,3);
-    // FieldElement elementi  = new Block(2,2,3);
+    FieldElement elementa  = new Block(0,0,2);       //creation des elements du field
+    FieldElement elementb  = new Block(0,1,2);
+    FieldElement elementc  = new Animal(0,2);
+    FieldElement elementd  = new Block(1,0,2);
+    FieldElement elemente  = new Block(1,1,2);
+    FieldElement elementf  = new Block(1,2,2);
+    FieldElement elementg  = new Block(2,0,2);
+    FieldElement elementh  = new Block(2,1,2);
+    FieldElement elementi  = new Block(2,2,2);
     //
-    // Field field2 = new Field(3,3);
-    // field2.putElement(elementa);             //ajout des elements au tableau
-    // field2.putElement(elementb);
-    // field2.putElement(elementc);
-    // field2.putElement(elementd);
-    // field2.putElement(elemente);
-    // field2.putElement(elementf);
-    // field2.putElement(elementg);
-    // field2.putElement(elementh);
-    // field2.putElement(elementi);
+    Field field2 = new Field(3,3);
+    field2.putElement(elementa);             //ajout des elements au tableau
+    field2.putElement(elementb);
+    field2.putElement(elementc);
+    field2.putElement(elementd);
+    field2.putElement(elemente);
+    field2.putElement(elementf);
+    field2.putElement(elementg);
+    field2.putElement(elementh);
+    field2.putElement(elementi);
     // //
     // Level level1 = new Level(0, 0 , 0 , field1, false, paliers, 1);
     // level1.setUnlocked(true);
     // level1.save();
     // //
-    // Level level2 = new Level(0, 0 , 0 , field1, false, paliers, 1);
-    // level2.setUnlocked(false);
+    // Level level2 = new Level(0, 0 , 0 , field2, false, paliers, 1);
+    // level2.setUnlocked(true);
     // level2.save();
 
 

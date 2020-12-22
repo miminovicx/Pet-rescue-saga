@@ -243,14 +243,14 @@ public class Field implements java.io.Serializable
     }
           //SimpleBlock
 
-      if( x + 1 < width)   //les conditions sont ici pour ne pas sortir des limites du tableau
+      if( x + 1 < (this.firstLineToDisplay() + this.intervalle))   //les conditions sont ici pour ne pas sortir des limites du tableau
       {
         if( this.elements[x][y].getColor() == this.elements[x + 1][y].getColor() )
         {
           return true;
         }
       }
-      if(x - 1 >= 0)
+      if(x - 1 >= this.firstLineToDisplay())
       {
         if( this.elements[x][y].getColor() == this.elements[x - 1][y].getColor() )
         {
@@ -297,11 +297,11 @@ public class Field implements java.io.Serializable
         int col = this.elements[x][y].getColor();
         removeElement(x,y);
         nbBlockSuppr++;
-        if( (x+1 < width) && (col == this.elements[x+1][y].getColor()) )
+        if( (x+1 < (this.firstLineToDisplay() + this.intervalle) ) && (col == this.elements[x+1][y].getColor()) )
         {
           move(x+1,y,true);
         }
-        if( (x-1 >= 0) && (col == this.elements[x-1][y].getColor()) )
+        if( (x-1 >= this.firstLineToDisplay() ) && (col == this.elements[x-1][y].getColor()) )
         {
             move(x-1,y,true);
         }
@@ -343,11 +343,11 @@ public class Field implements java.io.Serializable
    */
   public void simplifySquared(int x,int y)
   {
-    if( (x+1 < width) && (this.elements[x+1][y] instanceof SquaredBlock ))
+    if( (x+1 < (this.firstLineToDisplay() + this.intervalle)) && (this.elements[x+1][y] instanceof SquaredBlock ))
     {
       this.removeElement(x+1,y);
     }
-    if( (x-1 >= 0) && (this.elements[x-1][y] instanceof SquaredBlock))
+    if( (x-1 >= this.firstLineToDisplay() ) && (this.elements[x-1][y] instanceof SquaredBlock))
     {
       this.removeElement(x-1,y);
     }

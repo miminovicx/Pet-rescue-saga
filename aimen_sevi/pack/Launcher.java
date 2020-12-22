@@ -12,7 +12,7 @@ import java.util.Date;
 public class Launcher
 {
   static Scanner ans = new Scanner(System.in);
-  
+
   /**
    * Cette méthode représente la gameLoop (boucle pricipale du jeu)
    * @method gameLoop
@@ -70,7 +70,7 @@ public class Launcher
       case '3' :
       char rep;
       do {
-        System.out.println("Voulez-vous vraiment quitter ? (o/n)");
+        System.out.print("Voulez-vous vraiment quitter ? (o/n) ");
         rep = ans.nextLine().charAt(0);
       } while (rep != 'o' && rep != 'n');
       if(rep == 'o')
