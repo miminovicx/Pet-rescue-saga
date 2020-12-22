@@ -14,7 +14,8 @@ public class Field implements java.io.Serializable
   private FieldElement [][] elements;
   public static int nbBlockSuppr; //=0
   public static int animalsSaved = 0;
-  private int intervalle = 2;
+  private int intervalle = 2;  //represente le nombre de lignes a afficher
+
 /**
 *Méthode pour obtenir la largeur du plateau
 *@return la largeur du plateau
@@ -391,6 +392,11 @@ public class Field implements java.io.Serializable
     return (10 * (int)Math.pow(deletedBlocks,2));
   }
 
+  /**
+   * Méthode qui affiche un plateau
+   * @method toString
+   * @return la chaîne affiché
+   */
   public String toString()
   {
     String res = "";
@@ -406,7 +412,12 @@ public class Field implements java.io.Serializable
       return res;
 
   }
-  //
+
+  /**
+   * Cette methode teste si la ligne entrée en parametre est vide
+   * @param  a  la ligne a verifier
+   * @return   true si la ligne est vide
+   */
   public boolean lineIsEmpty(int a)
   {
     for(int i=0; i < this.height; i++)
@@ -418,7 +429,11 @@ public class Field implements java.io.Serializable
     }
     return true;
   }
-  //
+
+  /**
+   * Cette methode permet de savoir quelle est la premiere ligne a afficher
+   * @return la ligne a afficher en premier
+   */
   public int firstLineToDisplay()
   {
     int i = 0;

@@ -140,10 +140,16 @@ public class Level implements java.io.Serializable
   private int [] react()
   {
     int [] coordonnees = new int[2];
-    System.out.format("veuillez donner un x entre 0 et %d\n",this.field.getWidth() - 1);
-    coordonnees[0] = sc.nextInt();
-    System.out.format("veuillez donner un y entre 0 et %d\n",this.field.getHeight() - 1);
-    coordonnees[1] = sc.nextInt();
+    int a;
+    int b;
+    do {
+      System.out.format("veuillez donner un x entre 0 et %d\n",this.field.getWidth() - 1);
+      a = sc.nextInt();
+      System.out.format("veuillez donner un y entre 0 et %d\n",this.field.getHeight() - 1);
+      b = sc.nextInt();
+    } while ((a < 0) || (a > this.field.getWidth() - 1) || (b < 0) || (b > this.field.getHeight() - 1));
+    coordonnees[0] = a;
+    coordonnees[1] = b;
     return (coordonnees);
   }
   /**

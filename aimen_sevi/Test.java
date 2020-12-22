@@ -64,9 +64,9 @@ public class Test
     // field2.putElement(elementh);
     // field2.putElement(elementi);
     // //
-    // Level level1 = new Level(0, 0 , 0 , field1, false, paliers, 1);
-    // level1.setUnlocked(true);
-    // level1.save();
+    Level level1 = new Level(0, 0 , 0 , field1, false, paliers, 1);
+    level1.setUnlocked(true);
+    level1.save();
     // //
     // Level level2 = new Level(0, 0 , 0 , field1, false, paliers, 1);
     // level2.setUnlocked(false);
