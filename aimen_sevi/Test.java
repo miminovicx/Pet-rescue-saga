@@ -45,11 +45,11 @@ public class Test
     // // //
     FieldElement elementa  = new Block(0,0,2);       //creation des elements du field
     FieldElement elementb  = new Block(0,1,2);
-    FieldElement elementc  = new Animal(0,2);
+    FieldElement elementc  = new Block(0,2,3);
     FieldElement elementd  = new Block(1,0,2);
-    FieldElement elemente  = new Block(1,1,2);
-    FieldElement elementf  = new Block(1,2,2);
-    FieldElement elementg  = new Block(2,0,2);
+    FieldElement elemente  = new Block(1,1,3);
+    FieldElement elementf  = new Block(1,2,3);
+    FieldElement elementg  = new Block(2,0,3);
     FieldElement elementh  = new Block(2,1,2);
     FieldElement elementi  = new Block(2,2,2);
     //
@@ -64,14 +64,17 @@ public class Test
     field2.putElement(elementh);
     field2.putElement(elementi);
     // //
-    // Level level1 = new Level(0, 0 , 0 , field1, false, paliers, 1);
-    // level1.setUnlocked(true);
-    // level1.save();
-    // //
-    // Level level2 = new Level(0, 0 , 0 , field2, false, paliers, 1);
+    // Level level2 = new Level(0, 0 , 0 , field1, false, paliers, 1);
     // level2.setUnlocked(true);
     // level2.save();
+    // //
+    // Level level1 = new Level(0, 0 , 0 , field2, false, paliers, 1);
+    // level1.setUnlocked(true);
+    // level1.save();
 
+    // Level level2 = new Level(0, 0 , 0 , field1, false, paliers, 1);
+    // level2.setUnlocked(false);
+    // level2.save();
 
     // Level niveau1 = Level.use("../Data/Levels/level_1.ser");
     // Level niveau2 = Level.use("../Data/Levels/level_2.ser");
@@ -101,8 +104,10 @@ public class Test
     //   }
     // } , 0, 10000);
     //System.out.println(playerTst);
-    Launcher.gameLoop();
-
+    // Launcher.gameLoop();
+    System.out.println(field2);
+    System.out.println(field2.nbBlocksASuppr(1,2));
+        System.out.println(field2);
     // System.out.println(field1.affichage());
 
     // System.out.println(field1);

@@ -459,6 +459,195 @@ public class Field implements java.io.Serializable
     return i;
   }
 
+  public int nbBlocksASupprAux(int x, int y, int nbBlocks,boolean delete, int col)
+  {
+    // if(deletable(x,y))
+    // {
+          Field temp = new Field(this.width , this.height);
+          temp.elements = this.elements;
+          // int col = 2;
+          // if(temp.elements[x][y] instanceof SquaredBlock) //a defaut d'avoir une classe SimpleBlock
+          // {
+          //   return 0;
+          // }
+          // else
+          // {
+          //   int col = temp.elements[x][y].getColor();
+          //   temp.removeElement(x,y);
+          //   if( (x+1 < (temp.firstLineToDisplay() + temp.intervalle) ) && (col == temp.elements[x+1][y].getColor()) )
+          //   {
+          //     if( (x-1 >= temp.firstLineToDisplay() ) && (col == temp.elements[x-1][y].getColor()) )
+          //     {
+          //       if( (y+1 < height) && (col == temp.elements[x][y+1].getColor()) )
+          //       {
+          //         if( (y-1 >= 0) && (col == temp.elements[x][y-1].getColor()) )
+          //         {
+          //           return (nbBlocksASupprAux(x-1,y,nbBlocks+1) + nbBlocksASupprAux(x+1,y,nbBlocks+1) + nbBlocksASupprAux(x,y+1,nbBlocks+1) + nbBlocksASupprAux(x,y-1,nbBlocks+1) );
+          //         }
+          //         return (nbBlocksASupprAux(x-1,y,nbBlocks+1) + nbBlocksASupprAux(x+1,y,nbBlocks+1) + nbBlocksASupprAux(x,y+1,nbBlocks+1) );
+          //       }
+          //       return ( nbBlocksASupprAux(x-1,y,nbBlocks+1) + nbBlocksASupprAux(x+1,y,nbBlocks+1) );
+          //     }
+          //     else if( (y+1 < height) && (col == temp.elements[x][y+1].getColor()) )
+          //     {
+          //       if( (y-1 >= 0) && (col == temp.elements[x][y-1].getColor()) )
+          //       {
+          //         return (nbBlocksASupprAux(x+1,y,nbBlocks+1) + nbBlocksASupprAux(x,y+1,nbBlocks+1) + nbBlocksASupprAux(x,y-1,nbBlocks+1) );
+          //       }
+          //       return (nbBlocksASupprAux(x+1,y,nbBlocks+1) + nbBlocksASupprAux(x,y+1,nbBlocks+1) );
+          //     }
+          //     else if( (y-1 >= 0) && (col == temp.elements[x][y-1].getColor()) )
+          //     {
+          //       return (nbBlocksASupprAux(x+1,y,nbBlocks+1) + nbBlocksASupprAux(x,y-1,nbBlocks+1) );
+          //     }
+          //     else
+          //     {
+          //       return ( nbBlocksASupprAux(x+1,y,nbBlocks+1) );
+          //     }
+          //
+          //   }
+          //   else if( (x-1 >= temp.firstLineToDisplay() ) && (col == temp.elements[x-1][y].getColor()) )
+          //   {
+          //     if( (y+1 < height) && (col == temp.elements[x][y+1].getColor()) )
+          //     {
+          //       if( (y-1 >= 0) && (col == temp.elements[x][y-1].getColor()) )
+          //       {
+          //         return (nbBlocksASupprAux(x-1,y,nbBlocks+1) + nbBlocksASupprAux(x,y+1,nbBlocks+1) + nbBlocksASupprAux(x,y-1,nbBlocks+1) );
+          //       }
+          //       else if( (y-1 >= 0) && (col == temp.elements[x][y-1].getColor()) )
+          //       {
+          //         return (nbBlocksASupprAux(x-1,y,nbBlocks+1) + nbBlocksASupprAux(x,y-1,nbBlocks+1));
+          //       }
+          //       else
+          //       {
+          //         return (nbBlocksASupprAux(x-1,y,nbBlocks+1) + nbBlocksASupprAux(x,y+1,nbBlocks+1) );
+          //       }
+          //     }
+          //     else
+          //     {
+          //       return ( nbBlocksASupprAux(x-1,y,nbBlocks+1) );
+          //     }
+          //   }
+          //   else if( (y+1 < height) && (col == temp.elements[x][y+1].getColor()) )
+          //   {
+          //     if( (y-1 >= 0) && (col == temp.elements[x][y-1].getColor()) )
+          //     {
+          //       return ( nbBlocksASupprAux(x,y+1,nbBlocks+1) + nbBlocksASupprAux(x,y-1,nbBlocks+1) );
+          //     }
+          //     return ( nbBlocksASupprAux(x,y+1,nbBlocks+1) );
+          //   }
+          //   else if( (y-1 >= 0) && (col == temp.elements[x][y-1].getColor()) )
+          //   {
+          //     return ( nbBlocksASupprAux(x,y-1,nbBlocks+1) );
+          //   }
+          //   else
+          //   {
+          //     return nbBlocks + 1;
+          //   }
+          //   return nbBlocks;
+          // }
+    // }
+    // return nbBlocks;
+  // }
+
+
+
+
+
+
+  if(!delete)
+  {
+    return nbBlocks;
+  }
+  else
+  {
+
+
+      temp.removeElement(x,y);
+      if( (x+1 < (temp.firstLineToDisplay() + temp.intervalle) ) && (col == temp.elements[x+1][y].getColor()) )
+      {
+        if( (x-1 >= temp.firstLineToDisplay() ) && (col == temp.elements[x-1][y].getColor()) )
+        {
+          if( (y+1 < height) && (col == temp.elements[x][y+1].getColor()) )
+          {
+            if( (y-1 >= 0) && (col == temp.elements[x][y-1].getColor()) )
+            {
+              return (nbBlocksASupprAux(x-1,y,nbBlocks+1,true,col) + nbBlocksASupprAux(x+1,y,nbBlocks+1,true,col) + nbBlocksASupprAux(x,y+1,nbBlocks+1,true,col) + nbBlocksASupprAux(x,y-1,nbBlocks+1,true,col) );
+            }
+            return (nbBlocksASupprAux(x-1,y,nbBlocks+1,true,col) + nbBlocksASupprAux(x+1,y,nbBlocks+1,true,col) + nbBlocksASupprAux(x,y+1,nbBlocks+1,true,col) );
+          }
+          return ( nbBlocksASupprAux(x-1,y,nbBlocks+1,true,col) + nbBlocksASupprAux(x+1,y,nbBlocks+1,true,col) );
+        }
+        else if( (y+1 < height) && (col == temp.elements[x][y+1].getColor()) )
+        {
+          if( (y-1 >= 0) && (col == temp.elements[x][y-1].getColor()) )
+          {
+            return (nbBlocksASupprAux(x+1,y,nbBlocks+1,true,col) + nbBlocksASupprAux(x,y+1,nbBlocks+1,true,col) + nbBlocksASupprAux(x,y-1,nbBlocks+1,true,col) );
+          }
+          return (nbBlocksASupprAux(x+1,y,nbBlocks+1,true,col) + nbBlocksASupprAux(x,y+1,nbBlocks+1,true,col) );
+        }
+        else if( (y-1 >= 0) && (col == temp.elements[x][y-1].getColor()) )
+        {
+          return (nbBlocksASupprAux(x+1,y,nbBlocks+1,true,col) + nbBlocksASupprAux(x,y-1,nbBlocks+1,true,col) );
+        }
+        else
+        {
+          return ( nbBlocksASupprAux(x+1,y,nbBlocks+1,true,col) );
+        }
+
+      }
+      else if( (x-1 >= temp.firstLineToDisplay() ) && (col == temp.elements[x-1][y].getColor()) )
+      {
+        if( (y+1 < height) && (col == temp.elements[x][y+1].getColor()) )
+        {
+          if( (y-1 >= 0) && (col == temp.elements[x][y-1].getColor()) )
+          {
+            return (nbBlocksASupprAux(x-1,y,nbBlocks+1,true,col) + nbBlocksASupprAux(x,y+1,nbBlocks+1,true,col) + nbBlocksASupprAux(x,y-1,nbBlocks+1,true,col) );
+          }
+          else if( (y-1 >= 0) && (col == temp.elements[x][y-1].getColor()) )
+          {
+            return (nbBlocksASupprAux(x-1,y,nbBlocks+1,true,col) + nbBlocksASupprAux(x,y-1,nbBlocks+1,true,col));
+          }
+          else
+          {
+            return (nbBlocksASupprAux(x-1,y,nbBlocks+1,true,col) + nbBlocksASupprAux(x,y+1,nbBlocks+1,true,col) );
+          }
+        }
+        else
+        {
+          return ( nbBlocksASupprAux(x-1,y,nbBlocks+1,true,col) );
+        }
+      }
+      else if( (y+1 < height) && (col == temp.elements[x][y+1].getColor()) )
+      {
+        if( (y-1 >= 0) && (col == temp.elements[x][y-1].getColor()) )
+        {
+          return ( nbBlocksASupprAux(x,y+1,nbBlocks+1,true,col) + nbBlocksASupprAux(x,y-1,nbBlocks+1,true,col) );
+        }
+        return ( nbBlocksASupprAux(x,y+1,nbBlocks+1,true,col) );
+      }
+      else if( (y-1 >= 0) && (col == temp.elements[x][y-1].getColor()) )
+      {
+        return ( nbBlocksASupprAux(x,y-1,nbBlocks+1,true,col) );
+      }
+      else
+      {
+        return (nbBlocks + 1)/2;
+      }
+    }
+
+  }
+
+  public int nbBlocksASuppr(int x, int y)
+  {
+    return nbBlocksASupprAux(x,y,0,this.deletable(x,y),this.elements[x][y].getColor());
+  }
+
+
+
+
+
+
 
 
 
