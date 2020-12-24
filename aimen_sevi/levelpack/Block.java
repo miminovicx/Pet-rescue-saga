@@ -5,6 +5,15 @@ package levelpack;
 public class Block extends FieldElement
 {
   private int color;
+  public static final String ANSI_RESET = "\u001B[0m";
+  public static final String ANSI_BLACK = "\u001B[30m";
+  public static final String ANSI_RED = "\u001B[31m";
+  public static final String ANSI_GREEN = "\u001B[32m";
+  public static final String ANSI_YELLOW = "\u001B[33m";
+  public static final String ANSI_BLUE = "\u001B[34m";
+  public static final String ANSI_PURPLE = "\u001B[35m";
+  public static final String ANSI_CYAN = "\u001B[36m";
+  public static final String ANSI_WHITE = "\u001B[37m";
   /**
    * Cette méthode permet d'obtenir la couleur d'un bloc
    * @method getColor
@@ -54,23 +63,23 @@ public class Block extends FieldElement
       }
       case 1:
       {
-        return ("r");
+        return (ANSI_RED + "r" + ANSI_RESET);
       }
       case 2:
       {
-        return ("b");
+        return (ANSI_BLUE + "b" + ANSI_RESET);
       }
       case 3:
       {
-        return ("y");
+        return (ANSI_YELLOW + "y" + ANSI_RESET);
       }
       case 4:
       {
-        return ("g");
+        return (ANSI_GREEN + "g" + ANSI_RESET);
       }
       case 5:
       {
-        return ("p");
+        return (ANSI_PURPLE + "p" + ANSI_RESET);
       }
       default:
         return ("");
