@@ -1,10 +1,19 @@
 -regeneration de vie dans la gameLoop
--meilleur affichage Environment (affichage des niveaux a choisir)
--ecrire et générer la doc
--plateau caché !!!! DONE !!!! 
 -éléments immobiles
 -boosters
 -reorganisation des packages
 -séparation des Environment en fonction des joueurs
--GUI
-#width nbr de lignes
+
+
+
+-GUI :
+  -afficher le niveau qu'on doit jouer
+  -recuperer la case du tableau en fct de la case sur laquelle on clique
+  -Affichage des niveaux pour choisir
+  -Affichage a la fin d'un niveau
+
+
+
+  Plus tard :
+    - Plus de couleurs en background
+    - import d'images pour les blocks, animaux, boosters ...
