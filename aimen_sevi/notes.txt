@@ -1,18 +1,27 @@
 -regeneration de vie dans la gameLoop
+
 -éléments immobiles
+
 -boosters
+
 -reorganisation des packages
--séparation des Environment en fonction des joueurs
+
+-séparation des Environnement en fonction des joueurs
+-Meilleure sauvegarde des niveaux verrouillés + lastScore + nbEtoiles
 
 
 
 -GUI :
+  -Meilleur ffichage des niveaux pour choisir
   -afficher le niveau qu'on doit jouer
-  -recuperer la case du tableau en fct de la case sur laquelle on clique
-  -Affichage des niveaux pour choisir
+  -Jouer et afficher l'update a chaque move
+  -Méthode qui définit la fin de jeu (win or lose)
   -Affichage a la fin d'un niveau
+  -Retour vers le menu des niveaux
+  -Enregistrer ou charger le pseudo
 
-
+-Rapport
+-Générer la doc
 
   Plus tard :
     - Plus de couleurs en background
