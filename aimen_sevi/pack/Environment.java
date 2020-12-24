@@ -172,12 +172,14 @@ public class Environment
   /**
    * Méthode permettant de jouer un niveau
    * @method play
-   * @param  i    le numéro du niveau que l'on souhaite jouer
+   * @param  i    le numéro du niveau que l'on souhaite jouerVoulez-vous jouer
    */
   public void play(int i)
   {
     String rep;
     Scanner reponse = new Scanner(System.in);
+
+    System.out.println("Niveau " + (i+1) + "!\nNombre d'étoiles : " + this.levels[i].getStars() + "\nDernier score : " + this.levels[i].getLastScore() + "\n");
     do
     {
       System.out.print("Voulez-vous jouer le niveau " + (i + 1) + " ? (o/n) ");

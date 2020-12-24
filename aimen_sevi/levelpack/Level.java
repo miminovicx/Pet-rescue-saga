@@ -76,6 +76,21 @@ public class Level implements java.io.Serializable
     return (this.unlocked);
   }
 
+  public int getLastScore()
+  {
+    return (this.lastScore);
+  }
+
+  public int getStars()
+  {
+    return (this.stars);
+  }
+
+  public void setStars(int stars)
+  {
+    this.stars = stars;
+  }
+
  /**
   * Cette methode permet de verouiller ou de deverouiller un niveau
   * @param unlocked true si on veut deverouiller et false si on veut verouiller
@@ -123,6 +138,18 @@ public class Level implements java.io.Serializable
         this.win();
         toSave.field.animalsSaved = 0 ;
         toSave.lastScore = this.score;
+        // if(this.score < this.palier[1])
+        // {
+        //   this.stars = 1;
+        // }
+        // else if(this.score <= this.palier[1])
+        // {
+        //   this.stars = 2;
+        // }
+        // else
+        // {
+        //   this.stars = 3
+        // }
         toSave.save();
       }
 
