@@ -10,7 +10,7 @@ import pack.Player;
 */
 public class Level implements java.io.Serializable
 {
-  private static final long serialVersionUID = 42l;
+  private static final long serialVersionUID = 1L;
   private static int id=1;
   private final int num;
   private int stars;

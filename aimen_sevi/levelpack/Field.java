@@ -9,6 +9,7 @@ import java.lang.Math;
 public class Field implements java.io.Serializable
 {
   //private static final long serialVersionUID = 51335434354l;
+  private static final long serialVersionUID = 1L;
   private int width;
   private int height;
   private FieldElement [][] elements;

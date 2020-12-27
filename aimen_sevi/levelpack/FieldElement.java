@@ -4,6 +4,7 @@ package levelpack;
  */
 public abstract class FieldElement implements java.io.Serializable
 {
+  private static final long serialVersionUID = 1L;
   private int x;
   private int y;
   public boolean del = false;
