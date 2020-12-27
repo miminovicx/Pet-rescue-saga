@@ -459,4 +459,39 @@ public class Field implements java.io.Serializable
     return i;
   }
 
+  public void useRocket(int a)
+  {
+    for(int i = this.firstLineToDisplay() ; i < (this.firstLineToDisplay() + this.intervalle) ; i ++)
+    {
+      removeElement(i,a);
+    }
+  }
+
+  public void useSpring(int a)
+  {
+    for(int i = 0 ; i < this.height ; i ++)
+    {
+      removeElement(a,i);
+    }
+  }
+
+  public void usePickaxe(int a, int b)
+  {
+    removeElement(a,b);
+  }
+
+  public void useBallon(int a, int b)
+  {
+    int color = this.elements[a][b].getColor();
+    for(int i = this.firstLineToDisplay() ; i < (this.firstLineToDisplay() + this.intervalle) ; i ++)
+    {
+      for(int j = 0 ; j < this.height ; j ++)
+      {
+        if(this.elements[i][j].getColor() == color)
+        {
+          removeElement(i,j);  
+        }
+      }
+    }
+  }
 }

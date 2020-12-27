@@ -48,7 +48,7 @@ public class Launcher
   public static void choose(String pseudo)
   {
     char answer;
-    System.out.println("Que-faire ?");
+    System.out.print("Que souhaitez-vous faire ? ");
     answer = ans.nextLine().charAt(0);
     switch(answer)
     {
@@ -147,6 +147,48 @@ public class Launcher
 
   }
 
+  // private int chooseBooster(String pseudo)
+  // {
+  //   char rep;
+  //   do {
+  //     System.out.println("Voulez vous utiliser un booster ? (o/n) ");
+  //     rep = sc.nextLine().charAt(0);
+  //   } while (rep != 'o' && rep != 'n');
+  //   if(rep == 'o')
+  //   {
+  //     Environment env = new Environment();
+  //     Player player = env.createPlayer(pseudo);
+  //     play.displayBoosters();
+  //     int a;
+  //     do {
+  //       System.out.println(" Quel booster voulez-vous utiliser ? (1/2/3/4) ");
+  //       a = ans.nextInt();
+  //     } while ((a < 0) && (a > 4));
+  //     return a;
+  //     // int x;
+  //     // switch(a)
+  //     // {
+  //     //   case '1' :
+  //     //   System.out.println()
+  //     //   useRocket(x);
+  //     //   break;
+  //     //
+  //     //   case '2' :
+  //     //   play.useSpring();
+  //     //   break;
+  //     //
+  //     //   case '3' :
+  //     //   play.usePickaxe();
+  //     //   break;
+  //     //
+  //     //   case '4' :
+  //     //   play.useBallon();
+  //     //   break;
+  //     //
+  //     // }
+  //   }
+  }
+
   // public static void lifeRegenerator(Environment env)
   // {
   //   Date date = new Date();
@@ -167,4 +209,3 @@ public class Launcher
   //     }
   //   } , date, 199000);  //toutes les 30s
   // }
-}

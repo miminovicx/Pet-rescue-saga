@@ -3,6 +3,8 @@ import java.io.*;
 import java.util.Scanner;
 import levelpack.Field;
 import pack.Environment;
+import pack.Player;
+
 /**
 * Classe représentant un niveau
 */
@@ -21,6 +23,8 @@ public class Level implements java.io.Serializable
   private int animalsToRescue;
   private transient Scanner sc;
   private boolean unlocked;
+
+  private Player player;
 
   /**
   * Consructeur d'un niveau
@@ -113,7 +117,7 @@ public class Level implements java.io.Serializable
       int[] coordonnees;
       do
       {
-
+        this.chooseBooster();
         coordonnees = this.react();
         this.field.updateFinal(coordonnees[0], coordonnees[1]);
         this.score += field.scoreComputation(field.nbBlockSuppr);
@@ -159,6 +163,8 @@ public class Level implements java.io.Serializable
       System.out.println("Indisponible");
     }
   }
+
+
   /**
   * Cette méthode permet de demander les coordonnees de la case à jouer
   * @method react
@@ -170,14 +176,14 @@ public class Level implements java.io.Serializable
     int a;
     int b;
     do {
-      System.out.format("veuillez donner un x entre %d et %d : ", this.field.firstLineToDisplay() , ( this.field.firstLineToDisplay() + this.field.getIntervalle() - 1  ) );
+      System.out.format("veuillez donner un x entre 0 et %d : ",this.field.getHeight() - 1);
       a = sc.nextInt();
-      System.out.format("veuillez donner un y entre 0 et %d : ",this.field.getHeight() - 1);
+      System.out.format("veuillez donner un y entre %d et %d : ", this.field.firstLineToDisplay() , ( this.field.firstLineToDisplay() + this.field.getIntervalle() - 1  ) );
       b = sc.nextInt();
-    } while ((a < this.field.firstLineToDisplay() ) || (a > (this.field.firstLineToDisplay() + this.field.getIntervalle() -1) ) || (b < 0) || (b > this.field.getHeight() - 1));
+    } while ((b < this.field.firstLineToDisplay() ) || (b > (this.field.firstLineToDisplay() + this.field.getIntervalle() -1) ) || (a < 0) || (a > this.field.getHeight() - 1));
       System.out.println(""); //laisse une ligne vide
-    coordonnees[0] = a;
-    coordonnees[1] = b;
+    coordonnees[0] = b;
+    coordonnees[1] = a;
     return (coordonnees);
   }
   /**
@@ -188,7 +194,7 @@ public class Level implements java.io.Serializable
   {
     String res = "";
     res += "*********************\n";
-    res += "*\tPERDU\t    *\n*Score  : " + this.score + "       *\n*Animaux sauvé : " + this.field.animalsSaved + "/" +this.animalsToRescue;
+    res += "\u001B[31m *\tPERDU\t    * \u001B[0m \n*Score  : " + this.score + "       *\n*Animaux sauvé : " + this.field.animalsSaved + "/" +this.animalsToRescue;
     res += "*\n*********************";
     System.out.println(res);
   }
@@ -200,7 +206,7 @@ public class Level implements java.io.Serializable
   {
     String res = "";
     res += "*********************\n";
-    res += "*\tGAGNÉ\t    *\n*Score  : " + this.score + "       *\n*Animaux sauvé : " + this.field.animalsSaved + "/" +this.animalsToRescue;
+    res += "\u001B[32m *\tGAGNÉ\t    * \u001B[0m \n*Score  : " + this.score + "       *\n*Animaux sauvé : " + this.field.animalsSaved + "/" +this.animalsToRescue;
     res += "*\n*********************";
     System.out.println(res);
   }
@@ -336,5 +342,123 @@ public class Level implements java.io.Serializable
     this.score = s;
   }
 
+  private void chooseBooster()
+  {
+    //
+    // this.player = new Player("ac",5);
+    // this.player.boost[0] = 5;
+    // this.player.boost[1] = 3; //pour les ressors qui suppr les lignes
+    // this.player.boost[2] = 3; //pour les marteaux qui suppr un seul bloc
+    // this.player.boost[3] = 3;
 
-}
+
+    //
+
+    // char rep ;
+    // do {
+      System.out.print("Voulez vous utiliser un booster ? (o/n) ");
+    //   rep = sc.nextLine().charAt(0);
+    // } while (rep != 'o' && rep != 'n');
+    // if(rep == 'o')
+    // {
+      // this.player.displayBoosters();
+      // displayBoosters();
+      int answer;
+      do {
+        System.out.print("Quel booster voulez-vous utiliser ? (1/2/3/4) ");
+        answer = sc.nextInt();
+      } while ((answer < 0) || (answer > 4));
+
+      switch(answer)
+      {
+
+        case '1' :
+          if(this.player.getBoost()[0] > 0)
+          {
+            int a;
+            do {
+            System.out.println("Sur quelle colonne voulez vous utiliser ? ");
+            System.out.println("Veuillez entrer un x : ");
+            a = sc.nextInt();
+          } while (a < 0 || a > this.field.getHeight() - 1);
+            this.player.removeRocket();
+            this.field.useRocket(a);
+          }
+          else
+          {
+            System.out.println("Vous n'avez pas assez de fusées");
+          }
+        break;
+        //
+        case '2' :
+          if(this.player.getBoost()[1] > 0)
+          {
+              int a;
+              do {
+              System.out.println("Sur quelle ligne voulez vous utiliser ? ");
+              a = sc.nextInt();
+            } while (a < this.field.firstLineToDisplay() - 1 || a > this.field.firstLineToDisplay() + this.field.getIntervalle() -1);
+              this.player.removeSpring();
+              this.field.useSpring(a);
+          }
+          else
+          {
+            System.out.println("Vous n'avez pas assez de ressors");
+          }
+        break;
+        //
+        case '3' :
+          if(this.player.getBoost()[2] > 0)
+          {
+            int a;
+            int b;
+            do {
+            System.out.println("Quel bloc voulez-vous supprimer ?");
+            System.out.println("Veuillez entrer un x : ");
+            a = sc.nextInt();
+            System.out.println("Veuillez entrer un y : ");
+            b = sc.nextInt();
+          } while ( (a < 0) || (a > this.field.getHeight()) || (b < this.field.firstLineToDisplay() ) || (b > (this.field.firstLineToDisplay() + this.field.getIntervalle() -1) ));
+            this.player.removePickaxe();
+            this.field.usePickaxe(a,b);
+          }
+          else
+          {
+            System.out.println("Vous n'avez pas assez de marteaux");
+          }
+        break;
+
+        case '4' :
+          if(this.player.getBoost()[3] > 0)
+          {
+            int a;
+            int b;
+            do {
+            System.out.println("Quel bloc voulez-vous supprimer ?");
+            System.out.println("Veuillez entrer un x : ");
+            a = sc.nextInt();
+            System.out.println("Veuillez entrer un y : ");
+            b = sc.nextInt();
+          } while ( (a < 0) || (a > this.field.getHeight()) || (b < this.field.firstLineToDisplay() ) || (b > (this.field.firstLineToDisplay() + this.field.getIntervalle() -1) ));
+            this.player.removeBallons();
+            this.field.useBallon(a,b);
+          }
+          else
+          {
+            System.out.println("Vous n'avez pas assez de ballons");
+          }
+        break;
+
+      }
+    }
+  }
+
+  // public void displayBoosters()
+  // {
+  //   System.out.println("1- Fusées : " + this.player.getBoost()[0]);
+  //   System.out.println("2- Ressors : " + this.player.getBoost()[1]);
+  //   System.out.println("3- Marteau : " + this.player.getBoost()[2]);
+  //   System.out.println("4- Ballons : " + this.player.getBoost()[3]);
+  // }
+
+// }

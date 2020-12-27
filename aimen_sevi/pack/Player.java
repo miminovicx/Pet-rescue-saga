@@ -9,6 +9,7 @@ public class Player implements java.io.Serializable
   //private static final long serialVersionUID = 544354344438484l;
   private String nickName;
   private int lifePoints;
+  public int[] boost;
 
 
   private transient Scanner scan;
@@ -58,7 +59,10 @@ public class Player implements java.io.Serializable
     this.lifePoints = lifePoints;
   }
 
-
+  public int[] getBoost()
+  {
+    return this.boost;
+  }
 
 
 /**
@@ -71,6 +75,11 @@ public class Player implements java.io.Serializable
     this.nickName = nickName;
     this.lifePoints = lifePoints;
     this.scan = new Scanner(System.in);
+    this.boost = new int[4];
+    this.boost[0] = 3; //pour les fusées càd les suppression de colonnes
+    this.boost[1] = 3; //pour les ressors qui suppr les lignes
+    this.boost[2] = 3; //pour les marteaux qui suppr un seul bloc
+    this.boost[3] = 3; //ballons
   }
   /**
    * Cette méthode permet de récuperer les points de vie
@@ -139,5 +148,34 @@ public class Player implements java.io.Serializable
     }
     player.scan = new Scanner(System.in);
     return (player);
+  }
+
+
+  // public void displayBoosters()
+  // {
+  //   System.out.println("1- Fusées : " + this.boost[0]);
+  //   System.out.println("2- Ressors : " + this.boost[1]);
+  //   System.out.println("3- Marteau : " + this.boost[2]);
+  //   System.out.println("4- Ballons : " + this.boost[3]);
+  // }
+
+  public void removeRocket()
+  {
+    this.boost[0]--;
+  }
+
+  public void removeSpring()
+  {
+    this.boost[1]--;
+  }
+
+  public void removePickaxe()
+  {
+    this.boost[2]--;
+  }
+
+  public void removeBallons()
+  {
+    this.boost[3]--;
   }
 }

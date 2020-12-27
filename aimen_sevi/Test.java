@@ -30,7 +30,7 @@ public class Test
     // FieldElement element6  = new Block(2,0,3);
     // FieldElement element7  = new Block(2,1,2);
     // FieldElement element8 = new Block(2,2,2);
-    // Field field1 = new Field(4,4);
+    // Field field1 = new Field(3,3);
     // field1.putElement(element0);             //ajout des elements au tableau
     // field1.putElement(element1);
     // field1.putElement(element2);
@@ -108,12 +108,17 @@ public class Test
     //   }
     // } , 0, 10000);
     //System.out.println(playerTst);
+
     Launcher.gameLoop();
+
     // System.out.println(field2);
     // System.out.println(field2.nbBlocksASuppr(1,2));
     //     System.out.println(field2);
     // System.out.println(field1.affichage());
 
+    // System.out.println(field1);
+    // field1.useBallon(0,0);
+    // field1.update();
     // System.out.println(field1);
     // System.out.println(field1.getWidth());
     // System.out.println(field1.getHeight());
