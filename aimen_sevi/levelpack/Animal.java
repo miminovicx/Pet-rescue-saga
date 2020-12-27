@@ -8,7 +8,7 @@ public class Animal extends Block
   {
     super(x, y, -1);
   }
-  
+
   /**
    * Cette méthode supprime un animal
    * @method removeAnimal
@@ -19,5 +19,10 @@ public class Animal extends Block
   public Block removeAnimal(int x,int y)
   {
     return ( new Block (x,y,0));
+  }
+
+  public Block transform()
+  {
+      return (this);
   }
 }

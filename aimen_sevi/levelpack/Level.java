@@ -31,25 +31,19 @@ public class Level implements java.io.Serializable
   * @method Level
   * @param  stars           nobre d'étoiles (entre 0 et 3)
   * @param  score           score du niveau
-  * @param  lastScore       dérnier score (si le niveau n'a jamais été joué cette attribut vaut 0)
   * @param  field           plateau de jeu du niveau
-  * @param  succeded        booléen permetant de savoir si on a déjà gagné le niveau
   * @param  palier          tableau de trois entiers représentant chacun un objectif à atteindre pour avoir des étoiles
   * @param  animalsToRescue le nombre d'animaux qui doivent être sauvé pour réussir le niveau
   */
-  public Level(int stars, int score, int lastScore, Field field, boolean succeded, int[] palier, int animalsToRescue)
+  public Level(int score, Field field, int[] palier, int animalsToRescue)
   {
     this.num = id;
-    this.stars = stars;
+    this.stars = 0;
     this.score = score;
-    this.lastScore = lastScore;
     this.field = field;
-    //this.playingField = field;
-    this.succeded = succeded;
     this.palier = palier;
     this.animalsToRescue = animalsToRescue;
     this.sc = new Scanner(System.in);
-    this.unlocked = unlocked;
     id++;
   }
 
@@ -62,28 +56,6 @@ public class Level implements java.io.Serializable
     return (this.num) ;
   }
 
-  /**
-   * Cette methode permet de savoir si un niveau est gagné
-   * @return succeded
-   */
-  public boolean getSucceded()
-  {
-    return (this.succeded);
-  }
-
-  /**
-   * Cette methode permet de savoir si le niveau est deverouille
-   * @return unlocked
-   */
-  public boolean getUnlocked()
-  {
-    return (this.unlocked);
-  }
-
-  public int getLastScore()
-  {
-    return (this.lastScore);
-  }
 
   public int getStars()
   {
@@ -95,14 +67,7 @@ public class Level implements java.io.Serializable
     this.stars = stars;
   }
 
- /**
-  * Cette methode permet de verouiller ou de deverouiller un niveau
-  * @param unlocked true si on veut deverouiller et false si on veut verouiller
-  */
-  public void setUnlocked(boolean unlocked)
-  {
-    this.unlocked = unlocked;
-  }
+
 
   /**
   * Cette méthode permet de jouer un niveau
@@ -110,7 +75,7 @@ public class Level implements java.io.Serializable
   */
   public void play(Player player)
   {
-    if(this.unlocked)
+    if(player.getUnlocked()[this.id - 1])
     {
       System.out.println(this);
 
@@ -124,6 +89,9 @@ public class Level implements java.io.Serializable
 
         coordonnees = this.react();
         this.field.updateFinal(coordonnees[0], coordonnees[1]);
+        // this.field.remove(coordonnees[0],coordonnees[1]);
+        // System.out.println(this.field);
+        // this.field.updateSemiFinal();
         this.score += field.scoreComputation(field.nbBlockSuppr);
         System.out.println(this.field);
 
@@ -132,7 +100,6 @@ public class Level implements java.io.Serializable
       if(this.Lost0())
       {
         Level toSave = Level.use("../Data/Levels/level_" + this.id + ".ser");
-        toSave.lastScore = this.score;
         this.lost();
         toSave.field.animalsSaved = 0 ;
         toSave.save();
@@ -140,12 +107,10 @@ public class Level implements java.io.Serializable
       }
       if(this.Won0())
       {
+        player.setUnlocked(this.id);
         Level toSave = Level.use("../Data/Levels/level_" + this.id + ".ser");
-        this.succeded = true;
-        toSave.succeded = true;
         this.win();
         toSave.field.animalsSaved = 0 ;
-        toSave.lastScore = this.score;
         toSave.save();
       }
 
@@ -211,7 +176,7 @@ public class Level implements java.io.Serializable
   {
     String res = "";
     //if(succeded)
-    res += "Level : " + this.num + "\nStars :" + this.stars + "\nObjectif : " + this.score + "\nLast score : " + this.lastScore + "\n\n";
+    res += "Level : " + this.num + "\nStars :" + this.stars + "\nObjectif : " + this.score + "\n\n";
     // else
     // res += "Level : " + this.num + "\nStars :" + this.stars + "\nObjectif : " + this.score + "\n\n";
     res += this.field.toString();

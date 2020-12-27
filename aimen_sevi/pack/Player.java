@@ -8,8 +8,8 @@ public class Player implements java.io.Serializable
 {
   //private static final long serialVersionUID = 544354344438484l;
   private String nickName;
-  private int lifePoints;
   private int[] boost;
+  private boolean[] unlocked;
 
 
   private transient Scanner scan;
@@ -23,14 +23,6 @@ public class Player implements java.io.Serializable
     return (this.nickName);
   }
 
-  /**
-   * Cette methode permet de recuperer le nombre de vies du joueur
-   * @return nombre de vies du joueur
-   */
-  public int getLifePoints()
-  {
-    return (this.lifePoints);
-  }
 
   /**
    * Cette methode permet de recuperer le scanner
@@ -50,14 +42,6 @@ public class Player implements java.io.Serializable
     this.nickName = nickName;
   }
 
-  /**
-   * Cette methode permet d'initialiser le nombre de vies du joueur
-   * @param lifePoints le nombre de vies
-   */
-  public void setLifePoints(int lifePoints)
-  {
-    this.lifePoints = lifePoints;
-  }
 
   public int[] getBoost()
   {
@@ -70,37 +54,34 @@ public class Player implements java.io.Serializable
  * @param nickName   pseudo du joueur
  * @param lifePoints nombre de vies du joueur
  */
-  public Player(String nickName, int lifePoints)
+  public Player(String nickName)
   {
     this.nickName = nickName;
-    this.lifePoints = lifePoints;
     this.scan = new Scanner(System.in);
     this.boost = new int[4];
     this.boost[0] = 3; //pour les fusées càd les suppression de colonnes
     this.boost[1] = 3; //pour les ressors qui suppr les lignes
     this.boost[2] = 3; //pour les marteaux qui suppr un seul bloc
     this.boost[3] = 3; //ballons
+
+    this.unlocked = new boolean[5];
+    this.unlocked[0] = true;
+    this.unlocked[1] = false;
+    this.unlocked[2] = false;
+    this.unlocked[3] = false;
+    this.unlocked[4] = false;
   }
-  /**
-   * Cette méthode permet de récuperer les points de vie
-   * @method heal
-   */
-  public void heal()
-  {
-    if(this.lifePoints < 5)
-    {
-      this.lifePoints++;
-    }
-  }
+
   /**
    * Cette methode permet d'afficher le joueur
    * @return le pseudo et le nombre de points de vies du joueur
    */
   public String toString()
   {
-    return ("Pseudo : " + this.nickName + "\n" +
-            "Points de vie : " + this.lifePoints + "\n");
+    return ("Pseudo : " + this.nickName + "\n");
   }
+
+
   /**
    * Cette méthode permet de rendre le joueur persistant
    * @method save
@@ -121,6 +102,8 @@ public class Player implements java.io.Serializable
       i.printStackTrace();
     }
   }
+
+
   /**
    * Cette méthode permet d'utiliser un joueur savegardé dans le disque
    * @method use
@@ -178,5 +161,18 @@ public class Player implements java.io.Serializable
   public void removeBallons()
   {
     this.boost[3]--;
+  }
+
+  public boolean[] getUnlocked()
+  {
+    return this.unlocked;
+  }
+
+  public void setUnlocked(int a)
+  {
+    if(a >= 0 && a < 5)
+    {
+      this.unlocked[a] = true;
+    }
   }
 }

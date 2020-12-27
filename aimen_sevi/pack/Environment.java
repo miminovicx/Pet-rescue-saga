@@ -92,7 +92,7 @@ public class Environment
     }
     else
     {
-      this.player = new Player(nickName, 5);
+      this.player = new Player(nickName);
     }
 
   }
@@ -111,14 +111,10 @@ public class Environment
       {
         File [] savedLevels = dataDirectory.listFiles();
         levels = new Level[savedLevels.length];
-        // System.out.println(Arrays.toString(levels));
         for (int i = 0; i < savedLevels.length;i++)
         {
           levels[i] = Level.use(dataDirectoryPath + savedLevels[i].getName());
-          // System.out.println(savedLevels[i]);
-          // System.out.println(Arrays.toString(levels));
         }
-        // System.out.println(Arrays.toString(levels));
         this.levels = levels;
         for(int i=0; i < levels.length ; i++)
         {
@@ -149,6 +145,7 @@ public class Environment
 
 
   }
+
   /**
    * Cette méthode permet d'afficher l'ensemble des niveaux
    * @method displayLevels
@@ -159,17 +156,19 @@ public class Environment
     String s = "";
     for(int i = 0; i < levels.length ; i++)
     {
-      if(levels[i].getUnlocked())
+      if(this.player.getUnlocked()[i])
       {
-        s += levels[i].getNum() + " ";
+        s += "\u001B[32m      Niveau " + levels[i].getNum() + "\u001B[0m" + "\n"; //en vert
       }
       else
       {
-        s += levels[i].getNum() + "*";
+        s += "\u001B[31m      Niveau " + levels[i].getNum() + "\u001B[0m"; //en rouge
       }
     }
     return s;
   }
+
+
   /**
    * Méthode permettant de jouer un niveau
    * @method play
@@ -180,7 +179,7 @@ public class Environment
     String rep;
     Scanner reponse = new Scanner(System.in);
 
-    System.out.println("Niveau " + (i+1) + "!\nNombre d'étoiles : " + this.levels[i].getStars() + "\nDernier score : " + this.levels[i].getLastScore() + "\n");
+    System.out.println("Niveau " + (i+1) + "!\nNombre d'étoiles : " + this.levels[i].getStars() + "\n");
     do
     {
       System.out.print("Voulez-vous jouer le niveau " + (i + 1) + " ? (o/n) ");
@@ -189,29 +188,23 @@ public class Environment
     while (rep.charAt(0) != 'o' && rep.charAt(0) != 'n');
     if(rep.charAt(0) == 'o')
     {
-      if (this.player.getLifePoints() > 0 && this.levels[i].getUnlocked())
+      if (this.player.getUnlocked()[i])
       {
         this.levels[i].play(this.player);
-        if(this.levels[i].getSucceded())
-        {
-          unlock(i + 1);
-        }
-        else
-        {
-          this.player.setLifePoints(this.player.getLifePoints() - 1);
+
+        // if(this.levels[i].getSucceded())  //a voir
+        // {
+        //   unlock(i + 1);
+        // }
+        // else
+        // {
+        //   this.player.setLifePoints(this.player.getLifePoints() - 1);
           this.player.save();
-        }
+        // }
       }
       else
       {
-        if (this.player.getLifePoints() == 0)
-        {
-          System.out.println("Vous n'avez pas assez de vie pour jouer");
-        }
-        if(!this.levels[i].getUnlocked())
-        {
-          System.out.println("Niveau verrouillé");
-        }
+        System.out.println("Niveau verrouillé");
       }
 
     }
@@ -221,20 +214,7 @@ public class Environment
     }
 
   }
-  /**
-   * Cette méthode permet de déverrouiller un niveau
-   * @method unlock
-   * @param  a      numéro du niveau à déverrouiller
-   */
-  public static void unlock(int a)
-  {
-    if(a < levels.length)
-    {
 
-      levels[a].setUnlocked(true);
-      levels[a].save();
-    }
-  }
   /**
    * Cette méhode permet de choisir le niveau que l'on veut jouer elle permet de gérer le décalage par rappot aux indices du tableau
    * @method chooseLevel
