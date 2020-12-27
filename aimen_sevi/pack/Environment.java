@@ -75,6 +75,7 @@ public class Environment
   {
     return (this.player.toString() + displayLevels());
   }
+
   /**
   * Cette méthode recupère le joueur sauvegardé ou en crée un nouveau
   * @method createPlayer
@@ -190,7 +191,7 @@ public class Environment
     {
       if (this.player.getLifePoints() > 0 && this.levels[i].getUnlocked())
       {
-        this.levels[i].play();
+        this.levels[i].play(this.player);
         if(this.levels[i].getSucceded())
         {
           unlock(i + 1);

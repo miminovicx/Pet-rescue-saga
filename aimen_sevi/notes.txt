@@ -1,15 +1,15 @@
--regeneration de vie dans la gameLoop
+-regeneration de vie dans la gameLoop "IMPOSSIBLE -> SUPPRESSION TOTALE DES VIES"
 
--éléments immobiles
+-éléments immobiles  URGENT A FAIRE
 
--boosters
+-boosters DONE
 
 -reorganisation des packages
 
 -séparation des Environnement en fonction des joueurs
 -Meilleure sauvegarde des niveaux verrouillés + lastScore + nbEtoiles
 
-
+- Meilleur affichage des niveaux à choisir en console { couleurs , description }
 
 -GUI :
   -Meilleur affichage des niveaux pour choisir

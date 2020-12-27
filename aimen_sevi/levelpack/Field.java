@@ -373,6 +373,17 @@ public class Field implements java.io.Serializable
     this.moveColumns();
     this.saveAnimal();
   }
+
+  /**
+   * Cette methode permet de mettre a jour le plateau sans supprimer de block
+   * A utiliser après les boosters par exemple
+   */
+  public void updateSemiFinal()
+  {
+    this.update();
+    this.moveColumns();
+    this.saveAnimal();
+  }
   /**
    * Cette méthode enlève les animaux de la dernière ligne et les ajoute au nombre d'animaux sauvés
    * @method saveAnimal
@@ -489,7 +500,7 @@ public class Field implements java.io.Serializable
       {
         if(this.elements[i][j].getColor() == color)
         {
-          removeElement(i,j);  
+          removeElement(i,j);
         }
       }
     }

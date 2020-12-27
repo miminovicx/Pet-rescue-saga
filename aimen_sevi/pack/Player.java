@@ -9,7 +9,7 @@ public class Player implements java.io.Serializable
   //private static final long serialVersionUID = 544354344438484l;
   private String nickName;
   private int lifePoints;
-  public int[] boost;
+  private int[] boost;
 
 
   private transient Scanner scan;
@@ -151,13 +151,14 @@ public class Player implements java.io.Serializable
   }
 
 
-  // public void displayBoosters()
-  // {
-  //   System.out.println("1- Fusées : " + this.boost[0]);
-  //   System.out.println("2- Ressors : " + this.boost[1]);
-  //   System.out.println("3- Marteau : " + this.boost[2]);
-  //   System.out.println("4- Ballons : " + this.boost[3]);
-  // }
+  public void displayBoosters()
+  {
+    System.out.println("1- Fusées : " + this.boost[0]);
+    System.out.println("2- Ressors : " + this.boost[1]);
+    System.out.println("3- Marteau : " + this.boost[2]);
+    System.out.println("4- Ballons : " + this.boost[3]);
+    System.out.println("0- Aucun ");
+  }
 
   public void removeRocket()
   {
