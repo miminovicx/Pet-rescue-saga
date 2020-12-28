@@ -10,6 +10,7 @@ public class Player implements java.io.Serializable
   private String nickName;
   private int[] boost;
   private boolean[] unlocked;
+  private int[] bestScore;
 
 
   private transient Scanner scan;
@@ -70,6 +71,13 @@ public class Player implements java.io.Serializable
     this.unlocked[2] = false;
     this.unlocked[3] = false;
     this.unlocked[4] = false;
+
+    this.bestScore = new int[5];
+    this.bestScore[0] = 0;
+    this.bestScore[1] = 0;
+    this.bestScore[2] = 0;
+    this.bestScore[3] = 0;
+    this.bestScore[4] = 0;
   }
 
   /**
@@ -174,5 +182,15 @@ public class Player implements java.io.Serializable
     {
       this.unlocked[a] = true;
     }
+  }
+
+  public int[] getBestScore()
+  {
+    return this.bestScore;
+  }
+
+  public void setBestScore(int a, int b)
+  {
+    this.bestScore[b] = a;
   }
 }

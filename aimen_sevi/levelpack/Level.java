@@ -38,7 +38,6 @@ public class Level implements java.io.Serializable
   public Level(int score, Field field, int[] palier, int animalsToRescue)
   {
     this.num = id;
-    this.stars = 0;
     this.score = score;
     this.field = field;
     this.palier = palier;
@@ -77,7 +76,7 @@ public class Level implements java.io.Serializable
   {
     if(player.getUnlocked()[this.id - 1])
     {
-      System.out.println(this);
+      displayPreLevel(player);
 
       int[] coordonnees;
       do
@@ -107,9 +106,17 @@ public class Level implements java.io.Serializable
       }
       if(this.Won0())
       {
-        player.setUnlocked(this.id);
+        if(this.id < player.getUnlocked().length)
+        {
+          player.setUnlocked(this.id);
+        }
         Level toSave = Level.use("../Data/Levels/level_" + this.id + ".ser");
         this.win();
+        if(this.score > player.getBestScore()[this.num - 1])
+        {
+          player.setBestScore(this.score, this.num - 1);
+          System.out.println("Nouveau meilleur score : " + this.score);
+        }
         toSave.field.animalsSaved = 0 ;
         toSave.save();
       }
@@ -151,7 +158,7 @@ public class Level implements java.io.Serializable
   {
     String res = "";
     res += "*********************\n";
-    res += "\u001B[31m *\tPERDU\t    * \u001B[0m \n*Score  : " + this.score + "       *\n*Animaux sauvé : " + this.field.animalsSaved + "/" +this.animalsToRescue;
+    res += "*\u001B[31m\tPERDU\t    \u001B[0m*\n*Score  : " + this.score + "       *\n*Animaux sauvé : " + this.field.animalsSaved + "/" +this.animalsToRescue;
     res += "*\n*********************";
     System.out.println(res);
   }
@@ -162,9 +169,23 @@ public class Level implements java.io.Serializable
   public void win()
   {
     String res = "";
-    res += "*********************\n";
-    res += "\u001B[32m *\tGAGNÉ\t    * \u001B[0m \n*Score  : " + this.score + "       *\n*Animaux sauvé : " + this.field.animalsSaved + "/" +this.animalsToRescue;
-    res += "*\n*********************";
+    // res += "*********************\n";
+    res += "\u001B[32m\tGAGNÉ\t    \u001B[0m \nScore  : " + this.score + "       \nAnimaux sauvé : " + this.field.animalsSaved + "/" +this.animalsToRescue;
+    int s = 0;
+    if(this.score > this.palier[0])
+    {
+      s = 1;
+    }
+    else if(this.score > this.palier[1])
+    {
+      s = 2;
+    }
+    else
+    {
+      s = 3;
+    }
+    res += "\nEtoiles : " + s + "\n";
+    // res += "*\n*********************";
     System.out.println(res);
   }
   /**
@@ -175,12 +196,32 @@ public class Level implements java.io.Serializable
   public String toString()
   {
     String res = "";
-    //if(succeded)
-    res += "Level : " + this.num + "\nStars :" + this.stars + "\nObjectif : " + this.score + "\n\n";
-    // else
-    // res += "Level : " + this.num + "\nStars :" + this.stars + "\nObjectif : " + this.score + "\n\n";
+    res += "Niveau : " + this.num + "\nObjectif : " + this.score + "\n\n";
     res += this.field.toString();
     return (res);
+  }
+
+  public void displayPreLevel(Player player)
+  {
+    System.out.println("Niveau : " + this.num);
+    System.out.println("Objectif : " + this.score);
+    int bestScore = player.getBestScore()[this.num - 1];
+    System.out.println("Meilleur score : " + bestScore);
+    int s = 0;
+    if(bestScore > this.palier[0])
+    {
+      s = 1;
+    }
+    else if(bestScore > this.palier[1])
+    {
+      s = 2;
+    }
+    else if(bestScore > this.palier[3])
+    {
+      s = 3;
+    }
+    System.out.println("Etoiles : " + s);
+    System.out.println(this.field);
   }
   /**
   * Cette méthode permet de rendre les niveaux persistants

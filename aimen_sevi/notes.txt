@@ -1,15 +1,10 @@
--regeneration de vie dans la gameLoop "IMPOSSIBLE -> SUPPRESSION TOTALE DES VIES"
-
 -éléments immobiles  URGENT A FAIRE
-
--boosters DONE
 
 -reorganisation des packages
 
--séparation des Environnement en fonction des joueurs
--Meilleure sauvegarde des niveaux verrouillés + lastScore + nbEtoiles
+-séparation des Environnement en fonction des joueurs //je crois que c'est bon
 
-- Meilleur affichage des niveaux à choisir en console { couleurs , description }
+
 
 -GUI :
   -Meilleur affichage des niveaux pour choisir
@@ -26,3 +21,6 @@
   Plus tard :
     - Plus de couleurs en background
     - import d'images pour les blocks, animaux, boosters ...
+
+
+play de Environment a voir
