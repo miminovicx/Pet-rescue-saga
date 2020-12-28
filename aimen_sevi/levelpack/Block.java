@@ -55,7 +55,7 @@ public class Block extends FieldElement
     {
       case -1:
       {
-        return ("A");
+        return ("\uD83D\uDC3B");
       }
       case 0:
       {

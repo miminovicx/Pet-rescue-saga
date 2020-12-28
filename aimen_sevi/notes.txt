@@ -2,7 +2,6 @@
 
 -reorganisation des packages
 
--séparation des Environnement en fonction des joueurs //je crois que c'est bon
 
 
 

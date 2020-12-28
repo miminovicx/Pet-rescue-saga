@@ -186,10 +186,11 @@ public class Environment
     String rep;
     Scanner reponse = new Scanner(System.in);
 
-    System.out.println("Niveau " + (i+1) + " !\nNombre d'étoiles : " + this.player.getBestScore()[i] + "\n"); // a modifier
+    System.out.println("Niveau " + (i+1) + " !\n");
+    this.levels[i].displayStars(this.player.getBestScore()[i]);
     do
     {
-      System.out.print("Voulez-vous jouer le niveau " + (i + 1) + " ? (o/n) "); //confirmation a supprimer
+      System.out.print("Voulez-vous vraiment jouer le niveau " + (i + 1) + " ? (o/n) "); //confirmation a supprimer
       rep = reponse.nextLine();
     }
     while (rep.charAt(0) != 'o' && rep.charAt(0) != 'n');
@@ -198,16 +199,7 @@ public class Environment
       if (this.player.getUnlocked()[i])
       {
         this.levels[i].play(this.player);
-
-        // if(this.levels[i].getSucceded())  //a voir
-        // {
-        //   unlock(i + 1);
-        // }
-        // else
-        // {
-        //   this.player.setLifePoints(this.player.getLifePoints() - 1);
-          this.player.save();
-        // }
+        this.player.save();
       }
       else
       {

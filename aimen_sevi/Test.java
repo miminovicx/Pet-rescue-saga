@@ -68,7 +68,6 @@ public class Test
     //
     // Level level2 = new Level(0, field2, paliers, 1);
     // level2.save();
-
     Launcher.gameLoop();
 
     // Level niveau1 = Level.use("../Data/Levels/level_1.ser");

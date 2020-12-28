@@ -19,7 +19,7 @@ public class Launcher
    */
   public static void gameLoop()
   {
-    System.out.print("BONJOUR !\nPseudo : ");
+    System.out.print("BONJOUR ! \uD83D\uDE04\nPseudo : ");
     String pseudo;
     pseudo = ans.nextLine();
     menu(pseudo);
@@ -34,7 +34,7 @@ public class Launcher
    */
   public static void menu(String pseudo)
   {
-    System.out.println("*******MENU********");
+    System.out.println("\tMENU");
     System.out.println("1- Jouer");
     System.out.println("2- Aide");
     System.out.println("3- Quitter");
@@ -75,7 +75,7 @@ public class Launcher
       } while (rep != 'o' && rep != 'n');
       if(rep == 'o')
       {
-        System.out.println("A bientot ;)");
+        System.out.println("A bientot \uD83E\uDD0D");
         System.exit(0);
       }
       else
@@ -147,65 +147,4 @@ public class Launcher
 
   }
 
-  // private int chooseBooster(String pseudo)
-  // {
-  //   char rep;
-  //   do {
-  //     System.out.println("Voulez vous utiliser un booster ? (o/n) ");
-  //     rep = sc.nextLine().charAt(0);
-  //   } while (rep != 'o' && rep != 'n');
-  //   if(rep == 'o')
-  //   {
-  //     Environment env = new Environment();
-  //     Player player = env.createPlayer(pseudo);
-  //     play.displayBoosters();
-  //     int a;
-  //     do {
-  //       System.out.println(" Quel booster voulez-vous utiliser ? (1/2/3/4) ");
-  //       a = ans.nextInt();
-  //     } while ((a < 0) && (a > 4));
-  //     return a;
-  //     // int x;
-  //     // switch(a)
-  //     // {
-  //     //   case '1' :
-  //     //   System.out.println()
-  //     //   useRocket(x);
-  //     //   break;
-  //     //
-  //     //   case '2' :
-  //     //   play.useSpring();
-  //     //   break;
-  //     //
-  //     //   case '3' :
-  //     //   play.usePickaxe();
-  //     //   break;
-  //     //
-  //     //   case '4' :
-  //     //   play.useBallon();
-  //     //   break;
-  //     //
-  //     // }
-  //   }
   }
-
-  // public static void lifeRegenerator(Environment env)
-  // {
-  //   Date date = new Date();
-  //   Timer t = new Timer();
-  //   t.schedule(new TimerTask()
-  //   {
-  //     @Override
-  //     public void run()
-  //     {
-  //       // env.getPlayer().heal();
-  //       // System.out.println(env.getPlayer().getLifePoints());
-  //       if(env.getPlayer().getLifePoints() < 5)
-  //       {
-  //         env.getPlayer().setLifePoints(env.getPlayer().getLifePoints() + 1);
-  //         // System.out.println("Vie ajoutée" + env.getPlayer().getLifePoints());
-  //       }
-  //
-  //     }
-  //   } , date, 199000);  //toutes les 30s
-  // }

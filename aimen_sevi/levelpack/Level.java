@@ -21,7 +21,6 @@ public class Level implements java.io.Serializable
   private boolean succeded = true;
   private int[] palier;
   private int animalsToRescue;
-  // private transient Scanner sc;
   static Scanner sc;
   private boolean unlocked;
 
@@ -66,7 +65,10 @@ public class Level implements java.io.Serializable
     this.stars = stars;
   }
 
-
+  public int[] getPalier()
+  {
+    return this.palier;
+  }
 
   /**
   * Cette méthode permet de jouer un niveau
@@ -171,22 +173,10 @@ public class Level implements java.io.Serializable
     String res = "";
     // res += "*********************\n";
     res += "\u001B[32m\tGAGNÉ\t    \u001B[0m \nScore  : " + this.score + "       \nAnimaux sauvé : " + this.field.animalsSaved + "/" +this.animalsToRescue;
-    int s = 0;
-    if(this.score > this.palier[0])
-    {
-      s = 1;
-    }
-    else if(this.score > this.palier[1])
-    {
-      s = 2;
-    }
-    else
-    {
-      s = 3;
-    }
-    res += "\nEtoiles : " + s + "\n";
+    this.displayStars(this.score);
+
     // res += "*\n*********************";
-    System.out.println(res);
+
   }
   /**
   * Cette méthode permet d'afficher un niveau
@@ -207,21 +197,27 @@ public class Level implements java.io.Serializable
     System.out.println("Objectif : " + this.score);
     int bestScore = player.getBestScore()[this.num - 1];
     System.out.println("Meilleur score : " + bestScore);
-    int s = 0;
-    if(bestScore > this.palier[0])
-    {
-      s = 1;
-    }
-    else if(bestScore > this.palier[1])
-    {
-      s = 2;
-    }
-    else if(bestScore > this.palier[3])
-    {
-      s = 3;
-    }
-    System.out.println("Etoiles : " + s);
-    System.out.println(this.field);
+    this.displayStars(bestScore);
+    // int s = 0;
+    // if(bestScore > this.palier[0])
+    // {
+    //   s = 1;
+    // }
+    // else if(bestScore > this.palier[1])
+    // {
+    //   s = 2;
+    // }
+    // else if(bestScore > this.palier[2])
+    // {
+    //   s = 3;
+    // }
+    // String res = "";
+    // for(int i = 0; i < s; i++)
+    // {
+    //   res += "\u2B50 ";
+    // }
+    // System.out.println("Etoiles : " + res);
+    // System.out.println(this.field);
   }
   /**
   * Cette méthode permet de rendre les niveaux persistants
@@ -458,6 +454,30 @@ public class Level implements java.io.Serializable
       }
       System.out.println(this.field);
       this.field.updateSemiFinal();
+      System.out.println(this.field);
+    }
+
+    public void displayStars(int score)
+    {
+      int s = 0;
+      if(score > this.palier[0])
+      {
+        s = 1;
+      }
+      else if(score > this.palier[1])
+      {
+        s = 2;
+      }
+      else if(score > this.palier[2])
+      {
+        s = 3;
+      }
+      String res = "";
+      for(int i = 0; i < s; i++)
+      {
+        res += "\u2B50 \n";
+      }
+      System.out.println("Etoiles : " + res);
       System.out.println(this.field);
     }
   }
