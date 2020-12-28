@@ -53,6 +53,10 @@ public class Block extends FieldElement
   {
     switch(this.color)
     {
+      case -2:
+      {
+        return("II");
+      }
       case -1:
       {
         return ("\uD83D\uDC3B");

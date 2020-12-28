@@ -1,8 +1,8 @@
 package levelpack;
 /**
-* Cette classe représente un bloc de bois (imobile et impossible à supprimmer)
+* Cette classe représente un bloc de bois (immobile et impossible à supprimmer)
 */
-class WoodBlock extends FieldElement
+public class WoodBlock extends Block
 {
   /**
   * Constructeur d'un WoodBlock
@@ -12,15 +12,12 @@ class WoodBlock extends FieldElement
   */
   public WoodBlock(int x, int y)
   {
-    super(x, y);
+    super(x, y, -2);
   }
-  /**
-  * Cette méthode permet d'afficher un WoodBlock
-  * @method toString
-  * @return chaîne qui sera affiché
-  */
-  public String toString()
+
+
+  public Block transform()
   {
-    return ("\\");
+      return (this);
   }
 }

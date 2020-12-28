@@ -4,6 +4,7 @@ import levelpack.FieldElement;
 import pack.Player;
 import levelpack.Block;
 import levelpack.SquaredBlock;
+import levelpack.WoodBlock;
 import levelpack.Animal;
 import levelpack.Level;
 import levelpack.Field;
@@ -21,15 +22,15 @@ public class Test
   public static void main(String[] args)
   {
 
-    // FieldElement element0  = new Block(0,0,1);       //creation des elements du field
+    // FieldElement element0  = new Block(0,0,-1);       //creation des elements du field
     // FieldElement element1  = new Block(0,1,1);
     // FieldElement element2  = new Block(0,2,1);
     // FieldElement element3  = new Block(1,0,2);
-    // FieldElement element4  = new Block(1,1,1);
+    // FieldElement element4  = new WoodBlock(1,1);
     // FieldElement element5  = new Block(1,2,3);
-    // FieldElement element6  = new Block(2,0,3);
+    // FieldElement element6  = new Block(2,0,2);
     // FieldElement element7  = new Block(2,1,2);
-    // FieldElement element8 = new Block(2,2,2);
+    // FieldElement element8 = new Block(2,2,-2);
     // Field field1 = new Field(3,3);
     // field1.putElement(element0);             //ajout des elements au tableau
     // field1.putElement(element1);
@@ -42,7 +43,7 @@ public class Test
     // field1.putElement(element8);
     // int[] paliers = {20,300,400};
     //
-    // FieldElement elementa  = new Block(0,0,2);       //creation des elements du field
+    // FieldElement elementa  = new Block(0,0,-2);       //creation des elements du field
     // FieldElement elementb  = new Block(0,1,2);
     // FieldElement elementc  = new Animal(0,2);
     // FieldElement elementd  = new Block(1,0,2);
@@ -63,7 +64,7 @@ public class Test
     // field2.putElement(elementh);
     // field2.putElement(elementi);
     //
-    //  Level level1 = new Level(0, field1, paliers, 0);
+    //  Level level1 = new Level(0, field1, paliers, 1);
     // level1.save();
     //
     // Level level2 = new Level(0, field2, paliers, 1);

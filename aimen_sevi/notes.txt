@@ -1,14 +1,6 @@
--éléments immobiles  URGENT A FAIRE
-
--reorganisation des packages
-
-
-
 
 -GUI :
   -Meilleur affichage des niveaux pour choisir
-  -afficher le niveau qu'on doit jouer DONE
-  -Jouer et afficher l'update a chaque move DONE
   -Méthode qui définit la fin de jeu (win or lose)
   -Affichage a la fin d'un niveau
   -Retour vers le menu des niveaux

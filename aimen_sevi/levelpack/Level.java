@@ -112,8 +112,9 @@ public class Level implements java.io.Serializable
         {
           player.setUnlocked(this.id);
         }
-        Level toSave = Level.use("../Data/Levels/level_" + this.id + ".ser");
         this.win();
+        Level toSave = Level.use("../Data/Levels/level_" + this.id + ".ser");
+        System.out.println("apres serial test debug");
         if(this.score > player.getBestScore()[this.num - 1])
         {
           player.setBestScore(this.score, this.num - 1);
@@ -172,7 +173,8 @@ public class Level implements java.io.Serializable
   {
     String res = "";
     // res += "*********************\n";
-    res += "\u001B[32m\tGAGNÉ\t    \u001B[0m \nScore  : " + this.score + "       \nAnimaux sauvé : " + this.field.animalsSaved + "/" +this.animalsToRescue;
+    res += "\u001B[32m GAGNÉ     \u001B[0m \nScore  : " + this.score + "       \nAnimaux sauvé : " + this.field.animalsSaved + "/" +this.animalsToRescue;
+    System.out.println(res);
     this.displayStars(this.score);
 
     // res += "*\n*********************";

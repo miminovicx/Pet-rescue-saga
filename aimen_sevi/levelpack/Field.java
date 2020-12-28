@@ -13,9 +13,9 @@ public class Field implements java.io.Serializable
   private int width;
   private int height;
   private FieldElement [][] elements;
-  public static int nbBlockSuppr; //=0
+  public static int nbBlockSuppr;
   public static int animalsSaved = 0;
-  private int intervalle = 2;  //represente le nombre de lignes a afficher
+  private int intervalle = 3;  //represente le nombre de lignes a afficher
 
 /**
 *Méthode pour obtenir la largeur du plateau
@@ -107,31 +107,11 @@ public class Field implements java.io.Serializable
    */
   public void removeElement(int x, int y)
   {
+    if(this.elements[x][y].getColor()!= -1 && this.elements[x][y].getColor() != -2)
     this.elements[x][y] = this.elements[x][y].transform();
   }
-  /**
-   * Méthode qui affiche un plateau
-   * @method toString
-   * @return la chaîne affiché
-   */
-  // public String toString()
-  // {
-  //   int i = 0;
-  //   int j = 0;
-  //   String res = "";
-  //   res += "*".repeat(this.width * 4) + "\n" ;
-  //
-  //   for(i=0;i<this.width;i++)
-  //   {
-  //     for(j=0;j<this.height;j++)
-  //     {
-  //       res += this.elements[i][j].toString() + " " ;
-  //     }
-  //     res+="\n";
-  //   }
-  //   res += "*".repeat(this.width * 3) + "\n";
-  //   return (res);
-  // }
+
+
   /**
    * Cette méthode permet d'échanger deux éléments
    * @method swap
@@ -169,7 +149,7 @@ public class Field implements java.io.Serializable
       {
         for (int i = 0 ; i < height; i++) //etait width
         {
-          if(this.elements[j][i].getColor() == 0)
+          if(this.elements[j-1][i].getColor () != -2 && this.elements[j][i].getColor() == 0)  //Changé
           {
             this.getDown(j - 1, i);
           }
@@ -181,20 +161,28 @@ public class Field implements java.io.Serializable
   }
   /**
    * Cette méthode permet savoir si une colonne est vide
-   * @method isEmpty
+   * @method columnIsEmpty
    * @param  k       coordonnees de la colonne
    * @return         vrai si la colonne est vide
    */
-  public boolean isEmpty(int k)
+  public boolean columnIsEmpty(int k)
   {
-      if(this.elements[width - 1][k].getColor() == 0) //si le dernier element de la colonne est vide apres update
+      // if(this.elements[width - 1][k].getColor() == 0) //si le dernier element de la colonne est vide apres update
+      // {
+      //   return true;                                //donc toute la colonne est vide
+      // }
+      // else
+      // {
+      //   return false;                               //sinon il y a un element au moins donc n'est pas vide
+      // }
+      for(int i=0; i < this.width; i++)
       {
-        return true;                                //donc toute la colonne est vide
+        if(this.elements[i][k].getColor() != 0 || this.elements[i][k].getColor() != -2)
+        {
+          return false;
+        }
       }
-      else
-      {
-        return false;                               //sinon il y a un element au moins donc n'est pas vide
-      }
+      return true;
   }
   /**
    * Cette methode permet d'échanger deux colonnes
@@ -205,7 +193,7 @@ public class Field implements java.io.Serializable
   public void swapColumn(int a, int b)
   {
     int temp;
-    for(int i = 0 ; i<width ; i++)                 //parcours chaque ligne
+    for(int i = 0 ; i < width ; i++)                 //parcours chaque ligne
     {
       temp = this.elements[i][a].getColor();
       this.elements[i][a].setColor(this.elements[i][b].getColor());
@@ -222,7 +210,7 @@ public class Field implements java.io.Serializable
     {
       for(int j = 0 ; j < width - 1 ; j++)           //doit parcourir chaque colonne
       {
-        if(this.isEmpty(j))                          //si la colonne est vide on la decale a droite
+        if(this.columnIsEmpty(j))                          //si la colonne est vide on la decale a droite
         {
           swapColumn(j,j+1);
         }
@@ -238,7 +226,7 @@ public class Field implements java.io.Serializable
    */
   public boolean deletable(int x , int y)
   {
-    if ( this.elements[x][y] instanceof SquaredBlock || this.elements[x][y].getColor() == 0) //SquaredBlock
+    if (this.elements[x][y].getColor() == -2 || this.elements[x][y] instanceof SquaredBlock || this.elements[x][y].getColor() == 0) //WoodBlock or SquaredBlock or empty
     {
       return false;
     }
@@ -289,7 +277,7 @@ public class Field implements java.io.Serializable
     }
     else
     {
-      if(this.elements[x][y] instanceof SquaredBlock) //a defaut d'avoir une classe SimpleBlock
+      if(this.elements[x][y].getColor() == -1 || this.elements[x][y].getColor() == -2 || this.elements[x][y] instanceof SquaredBlock) //a defaut d'avoir une classe SimpleBlock
       {
         return;
       }
@@ -448,7 +436,7 @@ public class Field implements java.io.Serializable
   {
     for(int i=0; i < this.height; i++)
     {
-      if(this.elements[a][i].getColor() != 0)
+      if(this.elements[a][i].getColor() != 0 || this.elements[a][i].getColor() != -2)
       {
         return false;
       }
