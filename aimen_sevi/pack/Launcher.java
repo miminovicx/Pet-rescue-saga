@@ -12,6 +12,16 @@ import java.util.Date;
 public class Launcher
 {
   static Scanner ans = new Scanner(System.in);
+  // public static final reset;
+  public static final String CYAN = "\033[0;36m";
+  public static final String RESET = "\033[0m";
+  public static final String WHITE_BOLD_BRIGHT = "\033[1;97m";
+  public static final String bearEmoji = "\uD83D\uDC3B";
+  public static final String CYAN_BOLD_BRIGHT = "\033[1;96m";
+  public static final String RED_BOLD = "\033[1;31m";
+  public static final String GREEN_BOLD = "\033[1;32m";
+  public static final String YELLOW_BOLD = "\033[1;33m";
+  public static final String WHITE_UNDERLINED = "\033[4;37m";
 
   /**
    * Cette méthode représente la gameLoop (boucle pricipale du jeu)
@@ -19,7 +29,7 @@ public class Launcher
    */
   public static void gameLoop()
   {
-    System.out.print("BONJOUR ! \uD83D\uDE04\nPseudo : ");
+    System.out.print("\n\t" + CYAN_BOLD_BRIGHT + "Pet Rescue Saga 2.0 " + bearEmoji + RESET + "\n- Pseudo : ");
     String pseudo;
     pseudo = ans.nextLine();
     menu(pseudo);
@@ -34,10 +44,10 @@ public class Launcher
    */
   public static void menu(String pseudo)
   {
-    System.out.println("\tMENU");
-    System.out.println("1- Jouer");
-    System.out.println("2- Aide");
-    System.out.println("3- Quitter");
+    System.out.println(WHITE_UNDERLINED + "\tMENU" + RESET);
+    System.out.println("1- " + GREEN_BOLD + "Jouer" + RESET);
+    System.out.println("2- " + YELLOW_BOLD + "Aide" + RESET);
+    System.out.println("3- " + RED_BOLD + "Quitter" + RESET);
     choose(pseudo);
   }
 
@@ -53,39 +63,39 @@ public class Launcher
     switch(answer)
     {
       case '1' :
-      play(pseudo);
+        play(pseudo);
       break;
 
       case '2' :
-      System.out.println("\033[1mRégles du jeu :\033[0m\nVous devez \033[1msauver les animaux ! \033[0mPour cela il faut faire exploser les blocs \033[1men dessous\033[0m");
-      System.out.println("Vous pouvez faire exploser \033[1mun ou plusieurs blocs\033[0m de la \033[1mmême couleur\033[0m s'ils sont deux ou plus à être voisins.");
-      System.out.println("Vous avez \033[1mgagné\033[0m si vous avez \033[1msauvé tous les animaux\033[0m et avez atteint le \033[1mscore objectif.\033[0m");
-      System.out.println("Le jeu \033[1ms'arrête\033[0m si vous avez \033[1mgagné\033[0m ou s'il n'y a \033[1mplus de blocs à exploser\033[0m");
-      System.out.println("A chaque niveau gagné, vous \033[1mdéverrouiller le suivant\033[0m");
-      System.out.println("Vous avez un nombre d'\033[1métoiles\033[0m pour chaque niveau gagné \033[1mselon votre score\033[0m");
-      System.out.println("Une vie vous est otée à chaque fois que vous perdez");
-      choose(pseudo);
+        System.out.println("\033[1mRégles du jeu :\033[0m\nVous devez \033[1msauver les animaux ! \033[0mPour cela il faut faire exploser les blocs \033[1men dessous\033[0m");
+        System.out.println("Vous pouvez faire exploser \033[1mun ou plusieurs blocs\033[0m de la \033[1mmême couleur\033[0m s'ils sont deux ou plus à être voisins.");
+        System.out.println("Vous avez \033[1mgagné\033[0m si vous avez \033[1msauvé tous les animaux\033[0m et avez atteint le \033[1mscore objectif.\033[0m");
+        System.out.println("Le jeu \033[1ms'arrête\033[0m si vous avez \033[1mgagné\033[0m ou s'il n'y a \033[1mplus de blocs à exploser\033[0m");
+        System.out.println("A chaque niveau gagné, vous \033[1mdéverrouiller le suivant\033[0m");
+        System.out.println("Vous avez un nombre d'\033[1métoiles\033[0m pour chaque niveau gagné \033[1mselon votre score\033[0m");
+        System.out.println("Une vie vous est otée à chaque fois que vous perdez");
+        choose(pseudo);
       break;
 
       case '3' :
-      char rep;
-      do {
-        System.out.print("Voulez-vous vraiment quitter ? (o/n) ");
-        rep = ans.nextLine().charAt(0);
-      } while (rep != 'o' && rep != 'n');
-      if(rep == 'o')
-      {
-        System.out.println("A bientot \uD83E\uDD0D");
-        System.exit(0);
-      }
-      else
-      {
-        choose(pseudo);
-      }
+        char rep;
+        do {
+          System.out.print("Voulez-vous vraiment quitter ? (o/n) ");
+          rep = ans.nextLine().charAt(0);
+        } while (rep != 'o' && rep != 'n');
+        if(rep == 'o')
+        {
+          System.out.println("A bientot \uD83E\uDD0D");
+          System.exit(0);
+        }
+        else
+        {
+          choose(pseudo);
+        }
       break;
 
       default :
-      choose(pseudo);
+        choose(pseudo);
       break;
     }
   }
@@ -98,12 +108,8 @@ public class Launcher
   public static Environment initialiseEnv(String pseudo)
   {
     Environment env = new Environment();
-    // System.out.print("Pseudo : ");
-    // String answer;
-    // answer = ans.nextLine();
     env.createPlayer(pseudo);
     env.fillLevelTab();
-    // lifeRegenerator(env);
     return (env);
   }
 
@@ -114,37 +120,43 @@ public class Launcher
   public static void play(String pseudo)
   {
     Environment env = initialiseEnv(pseudo);
-    // System.out.println()
-    System.out.println(env);
-    env.chooseLevel();
+    System.out.println(env.displayLevels());
+    int choice = env.chooseLevel();
+    if(choice ==  0)
+    {
+      menu(pseudo);
+    }
+    else
+    {
+      env.play(choice - 1);
+    }
     System.out.println(env.getPlayer());
-    menuContinuer(pseudo);
-    // menu();
+    play(pseudo);
   }
 
   /**
    * Cette methode permet de demander si on veut continuer de jouer
    * @param pseudo pseudo du joueur qui joue
    */
-  public static void menuContinuer(String pseudo)
-  {
-    char answer;
-    do
-    {
-      System.out.print("Voulez vous continuer à jouer ? (o/n) ");
-      answer = ans.nextLine().charAt(0);
-    }
-    while(answer != 'o' && answer != 'n');
+  // public static void menuContinuer(String pseudo)
+  // {
+  //   char answer;
+  //   do
+  //   {
+  //     System.out.print("Voulez vous continuer à jouer ? (o/n) ");
+  //     answer = ans.nextLine().charAt(0);
+  //   }
+  //   while(answer != 'o' && answer != 'n');
+  //
+  //   if(answer == 'o')
+  //   {
+  //     play(pseudo);
+  //   }
+  //   else
+  //   {
+  //     menu(pseudo);
+  //   }
 
-    if(answer == 'o')
-    {
-      play(pseudo);
-    }
-    else
-    {
-      menu(pseudo);
-    }
+  // }
 
-  }
-
-  }
+}

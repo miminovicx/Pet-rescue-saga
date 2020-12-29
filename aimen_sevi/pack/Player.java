@@ -144,11 +144,11 @@ public class Player implements java.io.Serializable
 
   public void displayBoosters()
   {
-    System.out.println("1- Fusées : " + this.boost[0]);
-    System.out.println("2- Ressors : " + this.boost[1]);
-    System.out.println("3- Marteau : " + this.boost[2]);
-    System.out.println("4- Ballons : " + this.boost[3]);
-    System.out.println("0- Aucun ");
+    System.out.println("1- Fusées    \uD83D\uDE80 : " + this.boost[0]);
+    System.out.println("2- Boomerang \uD83E\uDE83 : " + this.boost[1]);
+    System.out.println("3- Marteau   \uD83D\uDD28 : " + this.boost[2]);
+    System.out.println("4- Ballons   \uD83C\uDF88 : " + this.boost[3]);
+    System.out.println("0- Aucun \n");
   }
 
   public void removeRocket()
@@ -156,7 +156,7 @@ public class Player implements java.io.Serializable
     this.boost[0]--;
   }
 
-  public void removeSpring()
+  public void removeBoomerang()
   {
     this.boost[1]--;
   }

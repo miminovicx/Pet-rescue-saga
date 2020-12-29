@@ -5,6 +5,7 @@ package levelpack;
 public class Block extends FieldElement
 {
   private int color;
+  private int emoji;
   public static final String ANSI_RESET = "\u001B[0m";
   public static final String ANSI_BLACK = "\u001B[30m";
   public static final String ANSI_RED = "\u001B[31m";
@@ -14,6 +15,11 @@ public class Block extends FieldElement
   public static final String ANSI_PURPLE = "\u001B[35m";
   public static final String ANSI_CYAN = "\u001B[36m";
   public static final String ANSI_WHITE = "\u001B[37m";
+  public static final String bearEmoji = "\uD83D\uDC3B";
+  public static final String rabbitEmoji = "\uD83D\uDC30";
+  public static final String koalaEmoji = "\uD83D\uDC28";
+  public static final String pandaEmoji = "\uD83D\uDC3C";
+  public static final String babyChickEmoji = "\uD83D\uDC25";
   /**
    * Cette méthode permet d'obtenir la couleur d'un bloc
    * @method getColor
@@ -43,6 +49,10 @@ public class Block extends FieldElement
   {
     super(x, y);
     this.color = color;
+    if(this instanceof Animal)
+    {
+      emoji = (int)(1 + (Math.random()*5));
+    }
   }
   /**
    * Cette méthode permet de produire un affichage pour un bloc
@@ -55,35 +65,61 @@ public class Block extends FieldElement
     {
       case -2:
       {
-        return("II");
+        return("\u274C"); //croix qui indique que c'est un element immobile
       }
       case -1:
       {
-        return ("\uD83D\uDC3B");
+        // return ("\uD83D\uDC3B");
+        if(this.emoji == 1)
+        {
+          return(this.bearEmoji); //animal representé par un ours
+        }
+        else if(this.emoji == 2)
+        {
+          return(this.rabbitEmoji); //animal representé par un lapin
+        }
+        else if(this.emoji == 3)
+        {
+          return(this.koalaEmoji);
+        }
+        else if(this.emoji == 4)
+        {
+          return(this.pandaEmoji);
+        }
+        else if(this.emoji == 5)
+        {
+          return(this.babyChickEmoji);
+        }
+        return(this.babyChickEmoji);
       }
       case 0:
       {
-        return ("-");
+        return (" -");
       }
       case 1:
       {
-        return (ANSI_RED + "r" + ANSI_RESET);
+        // return (ANSI_RED + "r" + ANSI_RESET);
+        return ("\uD83D\uDFE5");
       }
       case 2:
       {
-        return (ANSI_BLUE + "b" + ANSI_RESET);
+        // return (ANSI_BLUE + "b" + ANSI_RESET);
+        return("\uD83D\uDFE6");
       }
       case 3:
       {
-        return (ANSI_YELLOW + "y" + ANSI_RESET);
+        // return (ANSI_YELLOW + "y" + ANSI_RESET);
+        return("\uD83D\uDFE8");
       }
       case 4:
       {
-        return (ANSI_GREEN + "g" + ANSI_RESET);
+        // return (ANSI_GREEN + "g" + ANSI_RESET);
+        return("\uD83D\uDFE9");
       }
       case 5:
       {
-        return (ANSI_PURPLE + "p" + ANSI_RESET);
+        // return (ANSI_PURPLE + "p" + ANSI_RESET);
+        return("\uD83D\uDFEA");
       }
       default:
         return ("");

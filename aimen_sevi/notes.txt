@@ -9,9 +9,9 @@
 -Rapport
 -Générer la doc
 
-  Plus tard :
+ Plus tard :
     - Plus de couleurs en background
     - import d'images pour les blocks, animaux, boosters ...
 
-
-play de Environment a voir
+ Sauvegarde du dernier niveau
+ Fin du jeu même après utilisation du booster

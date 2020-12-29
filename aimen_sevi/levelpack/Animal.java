@@ -4,9 +4,12 @@ package levelpack;
  */
 public class Animal extends Block
 {
+  // private int a;
+  public static final String bearEmoji = "\uD83D\uDC3B";
   public Animal(int x, int y)
   {
     super(x, y, -1);
+    // this.a = 1 + (int)Math.random()*(1);
   }
 
   /**
@@ -25,4 +28,17 @@ public class Animal extends Block
   {
       return (this);
   }
+
+  // public String toString()
+  // {
+    // if(this.a == 1)
+    // {
+    //   return(this.bearEmoji);
+    // }
+    // else if(this.a == 2)
+    // {
+    //   return(" A ");
+    // }
+    // return("");
+  // }
 }

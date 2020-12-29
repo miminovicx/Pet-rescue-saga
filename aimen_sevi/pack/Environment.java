@@ -169,9 +169,10 @@ public class Environment
       }
       else
       {
-        s += "\u001B[31m      Niveau " + levels[i].getNum() + "\u001B[0m"; //en rouge
+        s += "\u001B[31m      Niveau " + levels[i].getNum() + "\u001B[0m\n"; //en rouge
       }
     }
+    s += Launcher.WHITE_BOLD_BRIGHT + "      Retour(0)" + Launcher.RESET;
     return s;
   }
 
@@ -186,16 +187,7 @@ public class Environment
     String rep;
     Scanner reponse = new Scanner(System.in);
 
-    System.out.println("Niveau " + (i+1) + " !\n");
-    this.levels[i].displayStars(this.player.getBestScore()[i]);
-    do
-    {
-      System.out.print("Voulez-vous vraiment jouer le niveau " + (i + 1) + " ? (o/n) "); //confirmation a supprimer
-      rep = reponse.nextLine();
-    }
-    while (rep.charAt(0) != 'o' && rep.charAt(0) != 'n');
-    if(rep.charAt(0) == 'o')
-    {
+    System.out.println("\n- Niveau " + (i+1) + " !\n");
       if (this.player.getUnlocked()[i])
       {
         this.levels[i].play(this.player);
@@ -203,14 +195,8 @@ public class Environment
       }
       else
       {
-        System.out.println("Niveau verrouillé");
+        System.out.println("Niveau verrouillé ");
       }
-
-    }
-    else
-    {
-      this.chooseLevel();
-    }
 
   }
 
@@ -218,21 +204,17 @@ public class Environment
    * Cette méhode permet de choisir le niveau que l'on veut jouer elle permet de gérer le décalage par rappot aux indices du tableau
    * @method chooseLevel
    */
-  // public void chooseLevel()
-  // {
-  //   System.out.print("veuillez choisir un niveau à jouer : ");
-  //   this.play(player.getScanner().nextInt() - 1);
-  // }
-  public void chooseLevel()
+  public int chooseLevel()
   {
     int n = 0;
-    System.out.print("veuillez choisir un niveau à jouer : ");
+    System.out.print("Veuillez choisir un niveau à jouer : ");
     n = player.getScanner().nextInt();
-    while ((n <= 0) || (n > 5)) //5 correspond au nombre de niveaux
+    while ((n < 0) || (n > this.levels.length)) //5 correspond au nombre de niveaux
     {
       System.out.print("Niveau indisponible\nVeuillez choisir un autre niveau à jouer : ");
       n = player.getScanner().nextInt();
     }
-    this.play(n - 1);
+    return n;
+    // this.play(n - 1);
   }
 }

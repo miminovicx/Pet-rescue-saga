@@ -79,7 +79,7 @@ public class Level implements java.io.Serializable
     if(player.getUnlocked()[this.id - 1])
     {
       displayPreLevel(player);
-
+      System.out.println(this.field);
       int[] coordonnees;
       do
       {
@@ -88,13 +88,13 @@ public class Level implements java.io.Serializable
           this.chooseBooster(player);
         }
 
-        coordonnees = this.react();
-        this.field.updateFinal(coordonnees[0], coordonnees[1]);
-        // this.field.remove(coordonnees[0],coordonnees[1]);
-        // System.out.println(this.field);
-        // this.field.updateSemiFinal();
-        this.score += field.scoreComputation(field.nbBlockSuppr);
-        System.out.println(this.field);
+        if(!this.Lost0() && !this.Won0())
+        {
+          coordonnees = this.react();
+          this.field.updateFinal(coordonnees[0], coordonnees[1]);
+          this.score += field.scoreComputation(field.nbBlockSuppr);
+          System.out.println(this.field);
+        }
 
       }
       while(!this.Lost0() && !this.Won0());
@@ -114,7 +114,6 @@ public class Level implements java.io.Serializable
         }
         this.win();
         Level toSave = Level.use("../Data/Levels/level_" + this.id + ".ser");
-        System.out.println("apres serial test debug");
         if(this.score > player.getBestScore()[this.num - 1])
         {
           player.setBestScore(this.score, this.num - 1);
@@ -142,10 +141,11 @@ public class Level implements java.io.Serializable
     int [] coordonnees = new int[2];
     int a;
     int b;
+    System.out.println("Quel bloc voulez-vous supprimer ?");
     do {
-      System.out.format("veuillez donner un x entre 0 et %d : ",this.field.getHeight() - 1);
+      System.out.format("Veuillez donner un x entre 0 et %d : ",this.field.getHeight() - 1);
       a = sc.nextInt();
-      System.out.format("veuillez donner un y entre %d et %d : ", this.field.firstLineToDisplay() , ( this.field.firstLineToDisplay() + this.field.getIntervalle() - 1  ) );
+      System.out.format("Veuillez donner un y entre %d et %d : ", this.field.firstLineToDisplay() , ( this.field.firstLineToDisplay() + this.field.getIntervalle() - 1  ) );
       b = sc.nextInt();
     } while ((b < this.field.firstLineToDisplay() ) || (b > (this.field.firstLineToDisplay() + this.field.getIntervalle() -1) ) || (a < 0) || (a > this.field.getHeight() - 1));
       System.out.println(""); //laisse une ligne vide
@@ -160,9 +160,9 @@ public class Level implements java.io.Serializable
   public void lost()
   {
     String res = "";
-    res += "*********************\n";
-    res += "*\u001B[31m\tPERDU\t    \u001B[0m*\n*Score  : " + this.score + "       *\n*Animaux sauvé : " + this.field.animalsSaved + "/" +this.animalsToRescue;
-    res += "*\n*********************";
+    // res += "*********************\n";
+    res += "\u001B[31m      PERDU     \u001B[0m*\n*Score  : " + this.score + "       *\n*Animaux sauvé : " + this.field.animalsSaved + "/" +this.animalsToRescue;
+    // res += "\n;
     System.out.println(res);
   }
   /**
@@ -173,7 +173,7 @@ public class Level implements java.io.Serializable
   {
     String res = "";
     // res += "*********************\n";
-    res += "\u001B[32m GAGNÉ     \u001B[0m \nScore  : " + this.score + "       \nAnimaux sauvé : " + this.field.animalsSaved + "/" +this.animalsToRescue;
+    res += "\u001B[32m      GAGNÉ     \u001B[0m \nScore  : " + this.score + "       \nAnimaux sauvé : " + this.field.animalsSaved + "/" +this.animalsToRescue;
     System.out.println(res);
     this.displayStars(this.score);
 
@@ -195,32 +195,12 @@ public class Level implements java.io.Serializable
 
   public void displayPreLevel(Player player)
   {
-    System.out.println("Niveau : " + this.num);
-    System.out.println("Objectif : " + this.score);
+    System.out.println("Objectif : " + this.palier[0]);
     int bestScore = player.getBestScore()[this.num - 1];
     System.out.println("Meilleur score : " + bestScore);
     this.displayStars(bestScore);
-    // int s = 0;
-    // if(bestScore > this.palier[0])
-    // {
-    //   s = 1;
-    // }
-    // else if(bestScore > this.palier[1])
-    // {
-    //   s = 2;
-    // }
-    // else if(bestScore > this.palier[2])
-    // {
-    //   s = 3;
-    // }
-    // String res = "";
-    // for(int i = 0; i < s; i++)
-    // {
-    //   res += "\u2B50 ";
-    // }
-    // System.out.println("Etoiles : " + res);
-    // System.out.println(this.field);
   }
+
   /**
   * Cette méthode permet de rendre les niveaux persistants
   * @method save
@@ -241,6 +221,7 @@ public class Level implements java.io.Serializable
       i.printStackTrace();
     }
   }
+
   /**
   * Cette methode permet de recuperer un niveau depuis le disque
   * @method use
@@ -269,6 +250,7 @@ public class Level implements java.io.Serializable
     level.sc= new Scanner(System.in);
     return (level);
   }
+
   /**
   * Cette methode permet de savoir si on a encore des combinaisons possibles
   * @return vrai si il n'y a plus d'élément que l'on peut supprimé
@@ -338,6 +320,7 @@ public class Level implements java.io.Serializable
     this.score = s;
   }
 
+
   private boolean useBooster()
   {
     char rep;
@@ -374,7 +357,7 @@ public class Level implements java.io.Serializable
             int a;
             do
             {
-            System.out.println("Sur quelle colonne voulez vous utiliser ? ");
+            System.out.println("Sur quelle colonne voulez vous utiliser \uD83D\uDE80 ? ");
             System.out.print("Veuillez entrer un x : ");
             a = sc.nextInt();
             } while (a < 0 || a > this.field.getHeight() - 1);
@@ -383,7 +366,7 @@ public class Level implements java.io.Serializable
           }
           else
           {
-            System.out.println("Vous n'avez pas assez de fusées");
+            System.out.println("Vous n'avez pas assez de fusées \uD83D\uDE80");
             chooseBooster(player);
           }
         break;
@@ -396,12 +379,12 @@ public class Level implements java.io.Serializable
               System.out.print("Sur quelle ligne voulez vous utiliser ? ");
               a = sc.nextInt();
             } while (a < this.field.firstLineToDisplay() - 1 || a > this.field.firstLineToDisplay() + this.field.getIntervalle() -1);
-              player.removeSpring();
-              this.field.useSpring(a);
+              player.removeBoomerang();
+              this.field.useBoomerang(a);
           }
           else
           {
-            System.out.println("Vous n'avez pas assez de ressors");
+            System.out.println("Vous n'avez pas assez de ressorts");
             chooseBooster(player);
           }
         break;
@@ -412,7 +395,7 @@ public class Level implements java.io.Serializable
             int a;
             int b;
             do {
-            System.out.println("Quel bloc voulez-vous supprimer ?");
+            System.out.println("Quel bloc voulez-vous supprimer ? \uD83D\uDD28");
             System.out.print("Veuillez entrer un x : ");
             a = sc.nextInt();
             System.out.print("Veuillez entrer un y : ");
@@ -454,13 +437,13 @@ public class Level implements java.io.Serializable
         break;
 
       }
-      System.out.println(this.field);
+      // System.out.println(this.field);
       this.field.updateSemiFinal();
       System.out.println(this.field);
     }
 
-    public void displayStars(int score)
-    {
+  public void displayStars(int score)
+  {
       int s = 0;
       if(score > this.palier[0])
       {
@@ -477,9 +460,15 @@ public class Level implements java.io.Serializable
       String res = "";
       for(int i = 0; i < s; i++)
       {
-        res += "\u2B50 \n";
+        res += "\u2B50 ";
       }
+      if(s == 0)
+      {
+        res = "0";
+      }
+      res += "\n";
       System.out.println("Etoiles : " + res);
-      System.out.println(this.field);
+      // System.out.println(this.field);
     }
+
   }

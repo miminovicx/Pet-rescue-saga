@@ -206,7 +206,7 @@ public class Field implements java.io.Serializable
    */
   public void moveColumns()
   {
-    for (int k = 0 ; k < height ; k++ )  //c'etait width
+    for (int k = 0 ; k < height ; k++ )
     {
       for(int j = 0 ; j < width - 1 ; j++)           //doit parcourir chaque colonne
       {
@@ -384,8 +384,10 @@ public class Field implements java.io.Serializable
       if(this.elements[width - 1][j].getColor() == -1)
       {
         // removeAnimal(width - 1,j);
+        System.out.println(this);
         this.elements[width-1][j] = new Block(width-1,j,0);
         animalsSaved ++;
+        System.out.println("\tANIMAL SAUVE ! \n");
       }
     }
   }
@@ -407,16 +409,16 @@ public class Field implements java.io.Serializable
    */
   public String toString()
   {
-    String res = " ";
+    String res = "  ";
     for(int i = 0; i < this.height; i++)
     {
-      res += " " + String.valueOf(i);
+      res += "  " + String.valueOf(i);
     }
     res += "\n" ;
     int min = this.firstLineToDisplay();
     for(int i = min; i < (min + this.intervalle);i++)
     {
-        res += String.valueOf(i) + " ";
+        res += " " + String.valueOf(i) + " ";
         for(int j=0; j<this.height ; j++)
         {
           res += this.elements[i][j].toString() + " " ;
@@ -467,7 +469,7 @@ public class Field implements java.io.Serializable
     }
   }
 
-  public void useSpring(int a)
+  public void useBoomerang(int a)
   {
     for(int i = 0 ; i < this.height ; i ++)
     {

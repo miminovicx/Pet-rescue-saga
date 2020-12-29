@@ -22,7 +22,7 @@ public class Test
   public static void main(String[] args)
   {
 
-    // FieldElement element0  = new Block(0,0,-1);       //creation des elements du field
+    // FieldElement element0  = new Animal(0,0);       //creation des elements du field
     // FieldElement element1  = new Block(0,1,1);
     // FieldElement element2  = new Block(0,2,1);
     // FieldElement element3  = new Block(1,0,2);
@@ -41,7 +41,7 @@ public class Test
     // field1.putElement(element6);
     // field1.putElement(element7);
     // field1.putElement(element8);
-    // int[] paliers = {20,300,400};
+    // int[] paliers = {0,300,400};
     //
     // FieldElement elementa  = new Block(0,0,-2);       //creation des elements du field
     // FieldElement elementb  = new Block(0,1,2);
@@ -70,6 +70,8 @@ public class Test
     // Level level2 = new Level(0, field2, paliers, 1);
     // level2.save();
     Launcher.gameLoop();
+    // int b = (int)(1 + (Math.random()*3));
+    // System.out.println(b);
 
     // Level niveau1 = Level.use("../Data/Levels/level_1.ser");
     // Level niveau2 = Level.use("../Data/Levels/level_2.ser");
