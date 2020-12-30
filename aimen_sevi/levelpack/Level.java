@@ -54,6 +54,16 @@ public class Level implements java.io.Serializable
     return (this.num) ;
   }
 
+  public int getScore()
+  {
+    return this.score;
+  }
+
+  public Field getField()
+  {
+    return this.field;
+  }
+
 
   public int getStars()
   {

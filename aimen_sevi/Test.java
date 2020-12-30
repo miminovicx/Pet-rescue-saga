@@ -10,6 +10,7 @@ import levelpack.Level;
 import levelpack.Field;
 import java.util.TimerTask;
 import java.util.Timer;
+import gui.*;
 public class Test
 {
   public static void squaredString(String str)
@@ -69,7 +70,8 @@ public class Test
     //
     // Level level2 = new Level(0, field2, paliers, 1);
     // level2.save();
-    Launcher.gameLoop();
+    // Launcher.gameLoop();
+    FirstView app = new FirstView();
     // int b = (int)(1 + (Math.random()*3));
     // System.out.println(b);
 
