@@ -141,11 +141,11 @@ public class Level implements java.io.Serializable
     int [] coordonnees = new int[2];
     int a;
     int b;
-    System.out.println("Quel bloc voulez-vous supprimer ?");
+    System.out.println("\nQuel bloc voulez-vous supprimer ?");
     do {
-      System.out.format("Veuillez donner un x entre 0 et %d : ",this.field.getHeight() - 1);
+      System.out.format("Veuillez choisir une colonne entre 0 et %d : ",this.field.getHeight() - 1);
       a = sc.nextInt();
-      System.out.format("Veuillez donner un y entre %d et %d : ", this.field.firstLineToDisplay() , ( this.field.firstLineToDisplay() + this.field.getIntervalle() - 1  ) );
+      System.out.format("Veuillez choisir une ligne entre %d et %d : ", this.field.firstLineToDisplay() , ( this.field.firstLineToDisplay() + this.field.getIntervalle() - 1  ) );
       b = sc.nextInt();
     } while ((b < this.field.firstLineToDisplay() ) || (b > (this.field.firstLineToDisplay() + this.field.getIntervalle() -1) ) || (a < 0) || (a > this.field.getHeight() - 1));
       System.out.println(""); //laisse une ligne vide
@@ -357,7 +357,7 @@ public class Level implements java.io.Serializable
             int a;
             do
             {
-            System.out.println("Sur quelle colonne voulez vous utiliser \uD83D\uDE80 ? ");
+            System.out.println("Sur quelle colonne voulez vous l'utiliser ? \uD83D\uDE80");
             System.out.print("Veuillez entrer un x : ");
             a = sc.nextInt();
             } while (a < 0 || a > this.field.getHeight() - 1);
@@ -376,7 +376,7 @@ public class Level implements java.io.Serializable
           {
               int a;
               do {
-              System.out.print("Sur quelle ligne voulez vous utiliser ? ");
+              System.out.print("Sur quelle ligne voulez vous l'utiliser ? \uD83E\uDE83");
               a = sc.nextInt();
             } while (a < this.field.firstLineToDisplay() - 1 || a > this.field.firstLineToDisplay() + this.field.getIntervalle() -1);
               player.removeBoomerang();
@@ -384,7 +384,7 @@ public class Level implements java.io.Serializable
           }
           else
           {
-            System.out.println("Vous n'avez pas assez de ressorts");
+            System.out.println("Vous n'avez pas assez de boomerangs \uD83E\uDE83");
             chooseBooster(player);
           }
         break;
@@ -396,9 +396,9 @@ public class Level implements java.io.Serializable
             int b;
             do {
             System.out.println("Quel bloc voulez-vous supprimer ? \uD83D\uDD28");
-            System.out.print("Veuillez entrer un x : ");
+            System.out.print("Veuillez choisir une colonne : ");
             a = sc.nextInt();
-            System.out.print("Veuillez entrer un y : ");
+            System.out.print("Veuillez choisir une ligne : ");
             b = sc.nextInt();
           } while ( (a < 0) || (a > this.field.getHeight()) || (b < this.field.firstLineToDisplay() ) || (b > (this.field.firstLineToDisplay() + this.field.getIntervalle() -1) ));
             player.removePickaxe();
@@ -409,7 +409,7 @@ public class Level implements java.io.Serializable
           }
           else
           {
-            System.out.println("Vous n'avez pas assez de marteaux");
+            System.out.println("Vous n'avez pas assez de marteaux \uD83D\uDD28");
             chooseBooster(player);
           }
         break;
@@ -420,10 +420,10 @@ public class Level implements java.io.Serializable
             int a;
             int b;
             do {
-            System.out.println("Quel bloc voulez-vous supprimer ?");
-            System.out.print("Veuillez entrer un x : ");
+            System.out.println("Quel bloc voulez-vous supprimer ? \uD83C\uDF88");
+            System.out.print("Veuillez choisir une colonne : ");
             a = sc.nextInt();
-            System.out.print("Veuillez entrer un y : ");
+            System.out.print("Veuillez entrer une ligne : ");
             b = sc.nextInt();
           } while ( (a < 0) || (a > this.field.getHeight()) || (b < this.field.firstLineToDisplay() ) || (b > (this.field.firstLineToDisplay() + this.field.getIntervalle() -1) ));
             player.removeBallons();
@@ -431,7 +431,7 @@ public class Level implements java.io.Serializable
           }
           else
           {
-            System.out.println("Vous n'avez pas assez de ballons");
+            System.out.println("Vous n'avez pas assez de ballons \uD83C\uDF88");
             chooseBooster(player);
           }
         break;

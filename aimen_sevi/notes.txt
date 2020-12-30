@@ -14,4 +14,3 @@
     - import d'images pour les blocks, animaux, boosters ...
 
  Sauvegarde du dernier niveau
- Fin du jeu même après utilisation du booster

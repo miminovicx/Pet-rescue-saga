@@ -172,7 +172,7 @@ public class Environment
         s += "\u001B[31m      Niveau " + levels[i].getNum() + "\u001B[0m\n"; //en rouge
       }
     }
-    s += Launcher.WHITE_BOLD_BRIGHT + "      Retour(0)" + Launcher.RESET;
+    s += Launcher.WHITE_BOLD_BRIGHT + "      Retour(0)\n" + Launcher.RESET;
     return s;
   }
 

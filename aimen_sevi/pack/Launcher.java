@@ -44,10 +44,10 @@ public class Launcher
    */
   public static void menu(String pseudo)
   {
-    System.out.println(WHITE_UNDERLINED + "\tMENU" + RESET);
+    System.out.println(WHITE_UNDERLINED + "\n\tMENU" + RESET);
     System.out.println("1- " + GREEN_BOLD + "Jouer" + RESET);
     System.out.println("2- " + YELLOW_BOLD + "Aide" + RESET);
-    System.out.println("3- " + RED_BOLD + "Quitter" + RESET);
+    System.out.println("3- " + RED_BOLD + "Quitter\n" + RESET);
     choose(pseudo);
   }
 
@@ -60,6 +60,7 @@ public class Launcher
     char answer;
     System.out.print("Que souhaitez-vous faire ? ");
     answer = ans.nextLine().charAt(0);
+    System.out.println("");
     switch(answer)
     {
       case '1' :
@@ -67,14 +68,17 @@ public class Launcher
       break;
 
       case '2' :
-        System.out.println("\033[1mRégles du jeu :\033[0m\nVous devez \033[1msauver les animaux ! \033[0mPour cela il faut faire exploser les blocs \033[1men dessous\033[0m");
+        System.out.println(WHITE_UNDERLINED + "\n\tRégles du jeu" + RESET + "\033[0m\nVous devez \033[1msauver les animaux ! \033[0mPour cela il faut faire exploser les blocs \033[1men dessous\033[0m");
         System.out.println("Vous pouvez faire exploser \033[1mun ou plusieurs blocs\033[0m de la \033[1mmême couleur\033[0m s'ils sont deux ou plus à être voisins.");
         System.out.println("Vous avez \033[1mgagné\033[0m si vous avez \033[1msauvé tous les animaux\033[0m et avez atteint le \033[1mscore objectif.\033[0m");
         System.out.println("Le jeu \033[1ms'arrête\033[0m si vous avez \033[1mgagné\033[0m ou s'il n'y a \033[1mplus de blocs à exploser\033[0m");
+        System.out.println("Les niveaux gagnés sont affichés"+ GREEN_BOLD + " en vert" + RESET);
+        System.out.println("Les niveaux déverouillés mais pas encore gagnés sont affichés" + YELLOW_BOLD + " en jaune" + RESET);
+        System.out.println("Les niveaux verrouillés sont affichés" + RED_BOLD + " en rouge" + RESET);
         System.out.println("A chaque niveau gagné, vous \033[1mdéverrouiller le suivant\033[0m");
-        System.out.println("Vous avez un nombre d'\033[1métoiles\033[0m pour chaque niveau gagné \033[1mselon votre score\033[0m");
-        System.out.println("Une vie vous est otée à chaque fois que vous perdez");
-        choose(pseudo);
+        System.out.println("Vous avez un nombre d'\033[1métoiles\033[0m pour chaque niveau gagné \033[1mselon votre score\033[0m\n");
+        // choose(pseudo);
+        menu(pseudo);
       break;
 
       case '3' :
@@ -85,7 +89,7 @@ public class Launcher
         } while (rep != 'o' && rep != 'n');
         if(rep == 'o')
         {
-          System.out.println("A bientot \uD83E\uDD0D");
+          System.out.println("\nA bientot \uD83E\uDD0D");
           System.exit(0);
         }
         else
