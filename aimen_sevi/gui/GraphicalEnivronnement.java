@@ -36,7 +36,6 @@ public  class GraphicalEnivronnement extends JPanel
     Font font = new Font("Arial",Font.BOLD,40);
     this.back = new MenuItem("Retour", true, font);
     playerPane.add(playerNickName);
-    // playerPane.add(playerLifePoints);
     int i = 0;
     for(i = 0; i < levelsLabels.length; i++)
     {
@@ -58,5 +57,10 @@ public  class GraphicalEnivronnement extends JPanel
     this.add(titleLevelPane, BorderLayout.NORTH);
     this.add(levelsMenuPane, BorderLayout.CENTER);
     this.add(playerPane, BorderLayout.SOUTH);
+  }
+
+  public Environment getEnvironment()
+  {
+    return (this.environnement) ;
   }
 }

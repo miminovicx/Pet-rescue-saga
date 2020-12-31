@@ -21,7 +21,7 @@ import java.io.FileInputStream;
 
 public class NickName extends JPanel
 {
-  JTextField nickName;
+  public  static JTextField nickName;
   MenuItem next;
   MenuItem back;
   public NickName ()

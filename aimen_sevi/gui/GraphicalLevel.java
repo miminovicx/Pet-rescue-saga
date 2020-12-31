@@ -44,6 +44,8 @@ public  class GraphicalLevel extends JPanel
           y = 51 * i;
           switch(GraphicalLevel.this.level.getField().getElements()[i][j].getColor())
           {
+            case -2: //WoodBlock
+            g2.setColor(Color.BLACK);
             case -1:
             try
             {
@@ -60,6 +62,7 @@ public  class GraphicalLevel extends JPanel
             case 0:
             g2.setColor(Color.GRAY);
             break;
+
             case 1:
             g2.setColor(Color.RED);
             // try
@@ -98,6 +101,7 @@ public  class GraphicalLevel extends JPanel
             break;
             case 5:
             g2.setColor(Color.MAGENTA);
+            break;
 
           }
           if(/*GraphicalLevel.this.level.getField().getElements()[i][j].getColor() != 4 && */GraphicalLevel.this.level.getField().getElements()[i][j].getColor() != -1)
@@ -140,46 +144,47 @@ public  class GraphicalLevel extends JPanel
           level.setScore(level.getScore() + level.getField().scoreComputation(level.getField().nbBlockSuppr));
           System.out.println("Score : " + level.getScore());
           GraphicalLevel.this.score.setText("Score : " + level.getScore());
-
-          if (level.getScore() >= level.getPalier()[0])
-          {
-            try
-            {
-                ImageIcon image = new ImageIcon("../ressources/images/yellow_star.png");
-                GraphicalLevel.this.star1.setIcon(image);
-             }
-             catch (Exception l_e)
-             {
-               l_e.printStackTrace();
-             }
-          }
-          if (level.getScore() >= level.getPalier()[1])
-          {
-            try
-            {
-                ImageIcon image = new ImageIcon("../ressources/images/yellow_star.png");
-                GraphicalLevel.this.star2.setIcon(image);
-             }
-             catch (Exception l_e)
-             {
-               l_e.printStackTrace();
-             }
-
-          }
-          if (level.getScore() >= level.getPalier()[2])
-          {
-            try
-            {
-                ImageIcon image = new ImageIcon("../ressources/images/yellow_star.png");
-                GraphicalLevel.this.star3.setIcon(image);
-             }
-             catch (Exception l_e)
-             {
-               l_e.printStackTrace();
-             }
-          }
-          fieldLevelPane.repaint();
-        }
+          GraphicalLevel.this.setStars(level.getScore());
+        //   if (level.getScore() > level.getPalier()[0])
+        //   {
+        //     try
+        //     {
+        //         ImageIcon image = new ImageIcon("../ressources/images/yellow_star.png");
+        //         GraphicalLevel.this.star1.setIcon(image);
+        //      }
+        //      catch (Exception l_e)
+        //      {
+        //        l_e.printStackTrace();
+        //      }
+        //   }
+        //   if (level.getScore() >= level.getPalier()[1])
+        //   {
+        //     try
+        //     {
+        //         ImageIcon image = new ImageIcon("../ressources/images/yellow_star.png");
+        //         GraphicalLevel.this.star2.setIcon(image);
+        //      }
+        //      catch (Exception l_e)
+        //      {
+        //        l_e.printStackTrace();
+        //      }
+        //
+        //   }
+        //
+        //   if (level.getScore() >= level.getPalier()[2])
+        //   {
+        //     try
+        //     {
+        //         ImageIcon image = new ImageIcon("../ressources/images/yellow_star.png");
+        //         GraphicalLevel.this.star3.setIcon(image);
+        //      }
+        //      catch (Exception l_e)
+        //      {
+        //        l_e.printStackTrace();
+        //      }
+        //   }
+        //   fieldLevelPane.repaint();
+        // }
       // if(level.Lost0())
       // {
       //   int dialogButton = JOptionPane.YES_NO_OPTION;
@@ -202,7 +207,7 @@ public  class GraphicalLevel extends JPanel
       //     fieldLevelPane.repaint();
       //
       //   }
-      // }
+      }
       }
 
 
@@ -262,4 +267,63 @@ public  class GraphicalLevel extends JPanel
     this.level = Level.use("../Data/Levels/level_" + num + ".ser");
 
   }
-}
+
+  public void setEmptyStars()
+  {
+    try
+    {
+      ImageIcon image = new ImageIcon("../ressources/images/star.png");
+      this.star1.setIcon(image);
+      this.star2.setIcon(image);
+      this.star3.setIcon(image);
+    }
+    catch (Exception l_e)
+    {
+      l_e.printStackTrace();
+    }
+  }
+
+  public void setStars(int score)
+  {
+    if (score > level.getPalier()[0])
+    {
+      try
+      {
+          ImageIcon image = new ImageIcon("../ressources/images/yellow_star.png");
+          GraphicalLevel.this.star1.setIcon(image);
+       }
+       catch (Exception l_e)
+       {
+         l_e.printStackTrace();
+       }
+    }
+    if (score >= level.getPalier()[1])
+    {
+      try
+      {
+          ImageIcon image = new ImageIcon("../ressources/images/yellow_star.png");
+          GraphicalLevel.this.star2.setIcon(image);
+       }
+       catch (Exception l_e)
+       {
+         l_e.printStackTrace();
+       }
+
+    }
+
+    if (score >= level.getPalier()[2])
+    {
+      try
+      {
+          ImageIcon image = new ImageIcon("../ressources/images/yellow_star.png");
+          GraphicalLevel.this.star3.setIcon(image);
+       }
+       catch (Exception l_e)
+       {
+         l_e.printStackTrace();
+       }
+    }
+    fieldLevelPane.repaint();
+  }
+  }
+// }

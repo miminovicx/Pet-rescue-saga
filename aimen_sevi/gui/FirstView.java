@@ -20,6 +20,7 @@ import java.util.Timer;
 import java.util.Date;
 public class FirstView extends JFrame //implements MouseAdapter
 {
+  static GraphicalEnivronnement levelsPane;
   public FirstView()
   {
     //mainPane
@@ -49,7 +50,7 @@ public class FirstView extends JFrame //implements MouseAdapter
 
     // JTextField userName = new JTextField(10);
     // userName.setFont(font);
-    GraphicalEnivronnement levelsPane = new GraphicalEnivronnement(/*userName.getText()*/ "");
+    /*GraphicalEnivronnement*/ levelsPane = new GraphicalEnivronnement(/*userName.getText()*/ "miminovicx");
     GraphicalLevel level_1_Pane = new GraphicalLevel(1);
     GraphicalLevel level_2_Pane = new GraphicalLevel(2);
     MenuItem start = new MenuItem("Commencer", true, font);
@@ -91,7 +92,7 @@ public class FirstView extends JFrame //implements MouseAdapter
     {
       public void mouseClicked(MouseEvent e)
       {
-        //GraphicalEnivronnement levelsPane = new GraphicalEnivronnement(userName.getText());
+        // GraphicalEnivronnement levelsPane = new GraphicalEnivronnement(userName.getText());
         c1.show(contains,"3");
       }
       public void mouseEntered(MouseEvent e)
@@ -127,6 +128,7 @@ public class FirstView extends JFrame //implements MouseAdapter
         if (!(nickNamePane.nickName.getText().equals("")))
         {
           //nickNamePane.next.setForeground(new Color(0,0,0));
+          // FirstView.this.levelsPane = new GraphicalEnivronnement(NickName.nickName.getText());
           c1.show(contains, "2");
         }
         else
@@ -194,13 +196,26 @@ level_1_Pane.fieldLevelPane.addMouseListener(new MouseAdapter()
   {
     if (level_1_Pane.level.Won0())
     {
+      if(level_1_Pane.level.getScore() > FirstView.levelsPane.getEnvironment().getPlayer().getBestScore()[0])
+      {
+        FirstView.levelsPane.getEnvironment().getPlayer().setBestScore(level_1_Pane.level.getScore(),0);
+        //afficher le nouveau best score
+        System.out.println("Nouveau meilleur score : " + level_1_Pane.level.getScore());
+      }
+      level_1_Pane.level.setScore(0);
+      level_2_Pane.level.getField().animalsSaved = 0;
+      level_1_Pane.setEmptyStars();
       level_1_Pane.save(1);
       c1.show(contains,"won");
+
+      FirstView.levelsPane.getEnvironment().getPlayer().save();
     }
     else if (level_1_Pane.level.Lost0())
     {
       c1.show(contains,"lost");
+      FirstView.levelsPane.getEnvironment().getPlayer().save();
     }
+    // FirstView.levelsPane.getEnvironment().getPlayer().save();
   }
   public void mouseEntered(MouseEvent e)
   {
@@ -220,14 +235,24 @@ level_2_Pane.fieldLevelPane.addMouseListener(new MouseAdapter()
     {
       //level_2_Pane = level_2_Pane.reset();
       //level_2_Pane.level.use("../Data/Levels/level_2.ser");
+      if(level_2_Pane.level.getScore() > FirstView.levelsPane.getEnvironment().getPlayer().getBestScore()[1])
+      {
+        FirstView.levelsPane.getEnvironment().getPlayer().setBestScore(level_2_Pane.level.getScore(),1);
+        //afficher le nouveau best score
+        System.out.println("Nouveau meilleur score : " + level_2_Pane.level.getScore());
+      }
       level_2_Pane.level.setScore(0);
       level_2_Pane.level.getField().animalsSaved = 0;
+      level_2_Pane.setEmptyStars();
       level_2_Pane.save(2);
+      FirstView.levelsPane.getEnvironment().getPlayer().save();  //la lgine qui sauvegarde le joueur après avoir joué
       c1.show(contains,"won");
+
     }
     else if (level_2_Pane.level.Lost0())
     {
       c1.show(contains,"lost");
+      FirstView.levelsPane.getEnvironment().getPlayer().save();
     }
   }
   public void mouseEntered(MouseEvent e)
