@@ -29,7 +29,7 @@ public  class GraphicalEnivronnement extends JPanel
     JLabel playerNickName = new JLabel(this.environnement.getPlayer().getNickName());
     playerPane.setLayout(new GridLayout(2,2));
     levelsMenuPane.setLayout(null);
-    JLabel titleLevel = new JLabel("Levels");
+    JLabel titleLevel = new JLabel("Niveaux");
     Font titleFont = new Font("Arial",Font.BOLD,100);
     titleLevel.setFont(titleFont);
     titleLevelPane.add(titleLevel);

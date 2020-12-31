@@ -50,45 +50,23 @@ public class FirstView extends JFrame //implements MouseAdapter
 
     // JTextField userName = new JTextField(10);
     // userName.setFont(font);
-    /*GraphicalEnivronnement*/ levelsPane = new GraphicalEnivronnement(/*userName.getText()*/ "miminovicx");
+    /*GraphicalEnivronnement*/ levelsPane = new GraphicalEnivronnement("test");
     GraphicalLevel level_1_Pane = new GraphicalLevel(1);
     GraphicalLevel level_2_Pane = new GraphicalLevel(2);
     MenuItem start = new MenuItem("Commencer", true, font);
-    MenuItem play = new MenuItem("Jouer", true, font);
-    MenuItem help = new MenuItem("Aide", true, font);
-    MenuItem quit = new MenuItem("Quitter", true, font);
+    GraphicalMenu menu = new GraphicalMenu();
     MenuItem firstViewQuit = new MenuItem("Quitter", true, font);
 
     start.setBounds(600/2 - 100, 600/2 - 50,280,60);
     start.setBorder(BorderFactory.createLineBorder(Color.BLACK, 2, true));
     start.setHorizontalAlignment(JLabel.CENTER);
-    quit.setVerticalAlignment(JLabel.CENTER);
-    // pseudo.setBounds(200, 0, 135, 50);
-    // userName.setBounds(200,60,100,30);
-    play.setBounds(210,110,200, 60);
-    play.setBorder(BorderFactory.createLineBorder(Color.BLACK, 2, true));
-    play.setHorizontalAlignment(JLabel.CENTER);
-    play.setVerticalAlignment(JLabel.CENTER);
-    help.setBounds(210,180,200, 60);
-    help.setBorder(BorderFactory.createLineBorder(Color.BLACK, 2, true));
-    help.setHorizontalAlignment(JLabel.CENTER);
-    help.setVerticalAlignment(JLabel.CENTER);
-    quit.setBounds(210,250,200, 60);
-    quit.setBorder(BorderFactory.createLineBorder(Color.BLACK, 2, true));
-    quit.setHorizontalAlignment(JLabel.CENTER);
-    quit.setVerticalAlignment(JLabel.CENTER);
     firstViewQuit.setBounds(600/2 - 100, 600/2 + 20,280,60);
     firstViewQuit.setBorder(BorderFactory.createLineBorder(Color.BLACK, 2, true));
     firstViewQuit.setHorizontalAlignment(JLabel.CENTER);
     firstViewQuit.setVerticalAlignment(JLabel.CENTER);
     firstViewMenuPane.add(start);
     firstViewMenuPane.add(firstViewQuit);
-    // menuPane.add(pseudo);
-    // menuPane.add(userName);
-    menuPane.add(play);
-    menuPane.add(help);
-    menuPane.add(quit);
-    play.addMouseListener(new MouseAdapter()
+    menu.play.addMouseListener(new MouseAdapter()
     {
       public void mouseClicked(MouseEvent e)
       {
@@ -97,15 +75,15 @@ public class FirstView extends JFrame //implements MouseAdapter
       }
       public void mouseEntered(MouseEvent e)
       {
-        play.setForeground(new Color(0,150,0));
+        menu.play.setForeground(new Color(0,150,0));
       }
       public void mouseExited(MouseEvent e)
       {
-        play.setForeground(new Color(0,0,0));
+        menu.play.setForeground(new Color(0,0,0));
       }
     });
 
-    help.addMouseListener(new MouseAdapter()
+    menu.help.addMouseListener(new MouseAdapter()
     {
       public void mouseClicked(MouseEvent e)
       {
@@ -113,12 +91,12 @@ public class FirstView extends JFrame //implements MouseAdapter
       }
       public void mouseEntered(MouseEvent e)
       {
-        help.setForeground(new Color(0,0,255));
+        menu.help.setForeground(new Color(0,0,255));
 
       }
       public void mouseExited(MouseEvent e)
       {
-        help.setForeground(new Color(0,0,0));
+        menu.help.setForeground(new Color(0,0,0));
       }
     });
     nickNamePane.next.addMouseListener(new MouseAdapter()
@@ -128,7 +106,7 @@ public class FirstView extends JFrame //implements MouseAdapter
         if (!(nickNamePane.nickName.getText().equals("")))
         {
           //nickNamePane.next.setForeground(new Color(0,0,0));
-          // FirstView.this.levelsPane = new GraphicalEnivronnement(NickName.nickName.getText());
+          //FirstView.this.levelsPane = new GraphicalEnivronnement(NickName.nickName.getText());
           c1.show(contains, "2");
         }
         else
@@ -148,7 +126,7 @@ public class FirstView extends JFrame //implements MouseAdapter
     });
     addListener(contains, c1,start,new Color(0,150,0),"nickname");
     addQuitListener(firstViewQuit, new Color(255,0,0));
-    addQuitListener(quit, new Color(255,0,0));
+    addQuitListener(menu.quit, new Color(255,0,0));
     //addListener(contains, c1,levelsPane.levelsLabels[0],new Color(0,150,0),"4");
     levelsPane.levelsLabels[0].addMouseListener(new MouseAdapter()
     {
@@ -268,7 +246,7 @@ level_2_Pane.fieldLevelPane.addMouseListener(new MouseAdapter()
     firstView.add(titlePane, BorderLayout.NORTH);
     firstView.add(firstViewMenuPane, BorderLayout.CENTER);
     homePane.add(titlePane, BorderLayout.NORTH);
-    homePane.add(menuPane,BorderLayout.CENTER);
+    homePane.add(menu,BorderLayout.CENTER);
     contains.add(firstView,"1");
     contains.add(nickNamePane,"nickname");
     contains.add(homePane,"2");
