@@ -50,7 +50,7 @@ public class FirstView extends JFrame //implements MouseAdapter
 
     // JTextField userName = new JTextField(10);
     // userName.setFont(font);
-    /*GraphicalEnivronnement*/ levelsPane = new GraphicalEnivronnement(GraphicalEnivronnement.getNickName());
+    /*GraphicalEnivronnement*/ levelsPane = new GraphicalEnivronnement("test");
     GraphicalLevel level_1_Pane = new GraphicalLevel(1);
     GraphicalLevel level_2_Pane = new GraphicalLevel(2);
     MenuItem start = new MenuItem("Commencer", true, font);
@@ -132,8 +132,8 @@ public class FirstView extends JFrame //implements MouseAdapter
     {
       public void mouseClicked(MouseEvent e)
       {
-        //level_1_Pane = new GraphicalLevel(1);
-        c1.show(contains, "4");
+        if(levelsPane.getEnvironment().getPlayer().getUnlocked()[0])//level_1_Pane = new GraphicalLevel(1);
+          c1.show(contains, "4");
       }
       public void mouseEntered(MouseEvent e)
       {
@@ -149,7 +149,7 @@ public class FirstView extends JFrame //implements MouseAdapter
     {
       public void mouseClicked(MouseEvent e)
       {
-        //level_2_Pane = new GraphicalLevel(2);
+        if(levelsPane.getEnvironment().getPlayer().getUnlocked()[1])//level_2_Pane = new GraphicalLevel(2);
         c1.show(contains, "5");
       }
       public void mouseEntered(MouseEvent e)

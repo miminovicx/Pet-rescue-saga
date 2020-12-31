@@ -25,21 +25,21 @@ public  class GraphicalResult extends JPanel
   JLabel result;
   public GraphicalResult (String result)
   {
-    this.removeAll();
-    repaint();
     JPanel mainPane = new JPanel();
-    mainPane.removeAll();
-    mainPane.setLayout(new GridLayout(2,1));
+    mainPane.setLayout(null);
     this.setLayout(new BorderLayout());
     this.result = new JLabel(result);
     Font titleFont = new Font("Arial",Font.BOLD,100);
     this.result.setFont(titleFont);
+    this.result.setBounds(50,30,400, 110);
     this.result.setHorizontalAlignment(JLabel.CENTER);
     this.result.setVerticalAlignment(JLabel.CENTER);
     if(result.equals("GAGNÉ")) this.result.setForeground(new Color (0,150,0));
     else this.result.setForeground(new Color (255,0,0));
-    Font font = new Font("Arial",Font.BOLD,20);
+    Font font = new Font("Arial",Font.BOLD,40);
     this.back = new MenuItem("Retour", true, font);
+    this.back.setBounds(200,140,280, 60);
+    this.back.setBorder(BorderFactory.createLineBorder(Color.BLACK, 2, true));
     this.back.setHorizontalAlignment(JLabel.CENTER);
     this.back.setVerticalAlignment(JLabel.CENTER);
     mainPane.add(this.result);
