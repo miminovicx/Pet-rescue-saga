@@ -93,7 +93,9 @@ public class Environment
     else
     {
       this.player = new Player(nickName);
+
     }
+    // this.player.save();
 
   }
   /**

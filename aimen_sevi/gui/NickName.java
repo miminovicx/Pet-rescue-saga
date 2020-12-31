@@ -49,9 +49,27 @@ public class NickName extends JPanel
     // mainPane.add(this.next);
     // mainPane.add(this.back);
     //this.add(mainPane, BorderLayout.CENTER);
+    next.addMouseListener(new MouseAdapter()
+    {
+      public void mouseClicked(MouseEvent e)
+      {
+        // GraphicalEnivronnement.this.levelsPane = new GraphicalEnivronnement(NickName.this.nickName.getText());
+        System.out.println(NickName.this.nickName.getText());
+      }
+      public void mouseEntered(MouseEvent e)
+      {
+
+      }
+      public void mouseExited(MouseEvent e)
+      {
+
+      }
+    });
   }
   public static String getNickName()
   {
     return (nickName.getText());
   }
+
+
 }

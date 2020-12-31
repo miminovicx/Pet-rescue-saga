@@ -15,9 +15,7 @@ import java.io.InputStream;
 import java.io.BufferedInputStream;
 import java.io.FileInputStream;
 import java.util.Scanner;
-import java.util.TimerTask;
-import java.util.Timer;
-import java.util.Date;
+
 public  class GraphicalLevel extends JPanel
 {
 

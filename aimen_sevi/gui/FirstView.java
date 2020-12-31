@@ -40,9 +40,10 @@ public class FirstView extends JFrame //implements MouseAdapter
     firstViewMenuPane.setLayout(null);
     menuPane.setLayout(null);
     JLabel title = new JLabel("PetRescue");
-    Font titleFont = new Font("Arial",Font.BOLD,100);
+    Font titleFont = new Font("Arial",Font.ITALIC,75);
     Font firstViewFont = new Font("Arial",Font.BOLD,25);
     title.setFont(titleFont);
+    title.setForeground(Color.GREEN);
     titlePane.add(title);
     Font font = new Font("Arial",Font.BOLD,40);
     MenuItem pseudo = new MenuItem("Pseudo : ", true, font);
@@ -50,7 +51,11 @@ public class FirstView extends JFrame //implements MouseAdapter
 
     // JTextField userName = new JTextField(10);
     // userName.setFont(font);
-    /*GraphicalEnivronnement*/ levelsPane = new GraphicalEnivronnement("test");
+    /*GraphicalEnivronnement*/
+    System.out.println("debug before");
+    System.out.println(nickNamePane.getNickName());
+    System.out.println("debug after");
+    levelsPane = new GraphicalEnivronnement("name");
     GraphicalLevel level_1_Pane = new GraphicalLevel(1);
     GraphicalLevel level_2_Pane = new GraphicalLevel(2);
     MenuItem start = new MenuItem("Commencer", true, font);
@@ -177,9 +182,11 @@ level_1_Pane.fieldLevelPane.addMouseListener(new MouseAdapter()
       if(level_1_Pane.level.getScore() > FirstView.levelsPane.getEnvironment().getPlayer().getBestScore()[0])
       {
         FirstView.levelsPane.getEnvironment().getPlayer().setBestScore(level_1_Pane.level.getScore(),0);
+
         //afficher le nouveau best score
         System.out.println("Nouveau meilleur score : " + level_1_Pane.level.getScore());
       }
+      levelsPane.getEnvironment().getPlayer().setUnlocked(1);
       level_1_Pane.level.setScore(0);
       level_2_Pane.level.getField().animalsSaved = 0;
       level_1_Pane.setEmptyStars();
