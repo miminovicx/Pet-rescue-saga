@@ -50,7 +50,7 @@ public class FirstView extends JFrame //implements MouseAdapter
 
     // JTextField userName = new JTextField(10);
     // userName.setFont(font);
-    /*GraphicalEnivronnement*/ levelsPane = new GraphicalEnivronnement("test");
+    /*GraphicalEnivronnement*/ levelsPane = new GraphicalEnivronnement(GraphicalEnivronnement.getNickName());
     GraphicalLevel level_1_Pane = new GraphicalLevel(1);
     GraphicalLevel level_2_Pane = new GraphicalLevel(2);
     MenuItem start = new MenuItem("Commencer", true, font);

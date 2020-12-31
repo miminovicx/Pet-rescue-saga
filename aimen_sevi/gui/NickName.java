@@ -50,4 +50,8 @@ public class NickName extends JPanel
     // mainPane.add(this.back);
     //this.add(mainPane, BorderLayout.CENTER);
   }
+  public static String getNickName()
+  {
+    return (nickName.getText());
+  }
 }
