@@ -49,6 +49,11 @@ public class Player implements java.io.Serializable
     return this.boost;
   }
 
+  public void setBoost(int a, int b)
+  {
+    this.boost[b] = a;
+  }
+
 
 /**
  * Constructeur de Player

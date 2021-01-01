@@ -16,17 +16,18 @@ public  class GraphicalEnivronnement extends JPanel
   private Environment environnement;
   MenuItem back;
   MenuItem [] levelsLabels;
-  public GraphicalEnivronnement (String nickName)
+  JLabel playerNickName;
+  public GraphicalEnivronnement (Environment environnement)
   {
-    this.environnement = new Environment();
-    this.environnement.fillLevelTab();
-    this.environnement.createPlayer(nickName);
+    this.environnement = environnement;
+    //this.environnement.fillLevelTab();
+    //this.environnement.createPlayer(nickName);
     this.levelsLabels = new MenuItem[this.environnement.getLevels().length];
     this.setLayout(new BorderLayout());
     JPanel titleLevelPane = new JPanel();
     JPanel levelsMenuPane = new JPanel();
     JPanel playerPane = new JPanel();
-    JLabel playerNickName = new JLabel(this.environnement.getPlayer().getNickName());
+    this.playerNickName = new JLabel(this.environnement.getPlayer().getNickName());
     playerPane.setLayout(new GridLayout(2,2));
     levelsMenuPane.setLayout(null);
     JLabel titleLevel = new JLabel("Niveaux");
@@ -35,7 +36,7 @@ public  class GraphicalEnivronnement extends JPanel
     titleLevelPane.add(titleLevel);
     Font font = new Font("Arial",Font.BOLD,40);
     this.back = new MenuItem("Retour", true, font);
-    playerPane.add(playerNickName);
+    playerPane.add(this.playerNickName);
     int i = 0;
     for(i = 0; i < levelsLabels.length; i++)
     {
@@ -58,7 +59,10 @@ public  class GraphicalEnivronnement extends JPanel
     this.add(levelsMenuPane, BorderLayout.CENTER);
     this.add(playerPane, BorderLayout.SOUTH);
   }
-
+  public void setNickName(String nickname)
+  {
+    this.playerNickName.setText(nickname);
+  }
   public Environment getEnvironment()
   {
     return (this.environnement) ;
