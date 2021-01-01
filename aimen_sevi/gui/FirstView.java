@@ -43,7 +43,7 @@ public class FirstView extends JFrame //implements MouseAdapter
     Font titleFont = new Font("Arial",Font.ITALIC,75);
     Font firstViewFont = new Font("Arial",Font.BOLD,25);
     title.setFont(titleFont);
-    title.setForeground(Color.GREEN);
+    title.setForeground(Color.WHITE);
     titlePane.add(title);
     Font font = new Font("Arial",Font.BOLD,40);
     MenuItem pseudo = new MenuItem("Pseudo : ", true, font);

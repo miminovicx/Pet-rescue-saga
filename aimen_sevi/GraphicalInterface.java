@@ -11,20 +11,11 @@ import levelpack.Field;
 import java.util.TimerTask;
 import java.util.Timer;
 import gui.*;
-public class Test
+
+public class GraphicalInterface
 {
-  // public static void squaredString(String str)
-  // {
-  //   String line = "=";
-  //   System.out.print("*" + line.repeat(str.length()) + "*\n");
-  //   System.out.print("*" + str + "*\n");
-  //   System.out.print("*" + line.repeat(str.length()) + "*\n");
-  // }
   public static void main(String[] args)
   {
-
-
-    // Launcher.gameLoop();
-    // FirstView app = new FirstView();
+    FirstView view = new FirstView();
   }
 }
