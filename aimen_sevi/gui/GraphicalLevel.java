@@ -127,6 +127,8 @@ public  class GraphicalLevel extends JPanel
           }
           if(GraphicalLevel.this.level.getField().getElements()[i][j].getColor() == 5 || GraphicalLevel.this.level.getField().getElements()[i][j].getColor() == 0)
           {
+            g2.fillRect(x,y,50,50);
+          }
             if (i == GraphicalLevel.this.level.getField().getWidth() - 1 && j == GraphicalLevel.this.level.getField().getHeight() - 1)
             {
               try
@@ -156,8 +158,6 @@ public  class GraphicalLevel extends JPanel
                 System.out.println("fichier introuvable");
               }
            }
-            g2.fillRect(x,y,50,50);
-          }
         }
       }
     }
