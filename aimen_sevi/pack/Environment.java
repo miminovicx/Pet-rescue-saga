@@ -219,4 +219,13 @@ public class Environment
     return n;
     // this.play(n - 1);
   }
+
+  public void playRobot(int i)
+  {
+    System.out.println("\n- Niveau " + (i+1) + " !\n");
+      if (this.player.getUnlocked()[i])
+      {
+        this.levels[i].playBot();
+      }
+  }
 }

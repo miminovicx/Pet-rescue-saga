@@ -481,4 +481,30 @@ public class Level implements java.io.Serializable
       // System.out.println(this.field);
     }
 
+    public void playBot()
+    {
+      int a;
+      int b;
+      do {
+        a = (int)(Math.random() * (this.field.getHeight()));
+        b = this.field.firstLineToDisplay() + (int)(Math.random() * ((this.field.getIntervalle())));
+        if(this.field.deletable(a,b))
+        {
+          this.field.updateFinal(a,b);
+          this.score += field.scoreComputation(field.nbBlockSuppr);
+          System.out.println(this.field);
+        }
+      } while(!this.Lost0() && !this.Won0());
+      if(this.Won0())
+      {
+        System.out.println("Le bot a gagné\nScore : "+ this.score +"\n");
+        this.displayStars(this.score);
+      }
+      else if(this.Lost0())
+      {
+        System.out.println("Le bot a perdu\nScore : " + this.score);
+
+      }
+    }
+
   }

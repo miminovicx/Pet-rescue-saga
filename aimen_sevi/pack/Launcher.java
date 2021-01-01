@@ -133,7 +133,22 @@ public class Launcher
     }
     else
     {
-      env.play(choice - 1);
+      System.out.println("1 - Regarder le BOT essayer ! ");
+      System.out.println("2 - Essayer vous-mêmes ! ");
+      System.out.print("Que souhaitez-vous faire : ");
+      Scanner scanner = new Scanner(System.in);
+      int a;
+      do {
+        a = scanner.nextInt();
+      } while (a != 1 && a != 2);
+      if(a == 1)
+      {
+        env.playRobot(choice-1);
+      }
+      else
+      {
+        env.play(choice - 1);
+      }
     }
     System.out.println(env.getPlayer());
     play(pseudo);
