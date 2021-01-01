@@ -43,7 +43,19 @@ public  class GraphicalLevel extends JPanel
           switch(GraphicalLevel.this.level.getField().getElements()[i][j].getColor())
           {
             case -2: //WoodBlock
-            g2.setColor(Color.BLACK);
+            try
+            {
+              String path = "../ressources/images/woodBlock.png";
+              InputStream is = new BufferedInputStream(new FileInputStream(path));
+              Image image = ImageIO.read(is);
+                g2.drawImage(image,x,y,null);
+             }
+             catch (Exception l_e)
+             {
+               System.out.println("fichier introuvable");
+             }
+             break;
+            //g2.setColor(Color.BLACK);
             case -1:
             try
             {
@@ -58,39 +70,50 @@ public  class GraphicalLevel extends JPanel
              }
             break;
             case 0:
-            g2.setColor(Color.GRAY);
+            g2.setColor(new Color(238,238,238));
             break;
 
             case 1:
-            g2.setColor(Color.RED);
-            // try
-            // {
-            //   String path = "../ressources/images/red.png";
-            //   InputStream is = new BufferedInputStream(new FileInputStream(path));
-            //   Image image = ImageIO.read(is);
-            //     g2.drawImage(image,x,y,null);
-            //  }
-            //  catch (Exception l_e)
-            //  {
-            //    System.out.println("fichier introuvable");
-            //  }
+            //g2.setColor(Color.RED);
+            try
+            {
+              String path = "../ressources/images/red.png";
+              InputStream is = new BufferedInputStream(new FileInputStream(path));
+              Image image = ImageIO.read(is);
+                g2.drawImage(image,x,y,null);
+             }
+             catch (Exception l_e)
+             {
+               System.out.println("fichier introuvable");
+             }
             break;
             case 2:
-            g2.setColor(Color.BLUE);
-            // try
-            // {
-            //   String path = "../ressources/images/blue.png";
-            //   InputStream is = new BufferedInputStream(new FileInputStream(path));
-            //   Image image = ImageIO.read(is);
-            //     g2.drawImage(image,x,y,null);
-            //  }
-            //  catch (Exception l_e)
-            //  {
-            //    System.out.println("fichier introuvable");
-            //  }
+            //g2.setColor(Color.BLUE);
+            try
+            {
+              String path = "../ressources/images/blue.png";
+              InputStream is = new BufferedInputStream(new FileInputStream(path));
+              Image image = ImageIO.read(is);
+                g2.drawImage(image,x,y,null);
+             }
+             catch (Exception l_e)
+             {
+               System.out.println("fichier introuvable");
+             }
             break;
             case 3:
-            g2.setColor(Color.YELLOW);
+            //g2.setColor(Color.YELLOW);
+            try
+            {
+              String path = "../ressources/images/yellow.png";
+              InputStream is = new BufferedInputStream(new FileInputStream(path));
+              Image image = ImageIO.read(is);
+                g2.drawImage(image,x,y,null);
+             }
+             catch (Exception l_e)
+             {
+               System.out.println("fichier introuvable");
+             }
 
             break;
             case 4:
@@ -102,9 +125,37 @@ public  class GraphicalLevel extends JPanel
             break;
 
           }
-          if(/*GraphicalLevel.this.level.getField().getElements()[i][j].getColor() != 4 && */GraphicalLevel.this.level.getField().getElements()[i][j].getColor() != -1)
+          if(GraphicalLevel.this.level.getField().getElements()[i][j].getColor() == 5 || GraphicalLevel.this.level.getField().getElements()[i][j].getColor() == 0)
           {
+            if (i == GraphicalLevel.this.level.getField().getWidth() - 1 && j == GraphicalLevel.this.level.getField().getHeight() - 1)
+            {
+              try
+              {
+                String ballonPath = "../ressources/images/ballon.png";
+                InputStream ballonStream = new BufferedInputStream(new FileInputStream(ballonPath));
+                Image ballon = ImageIO.read(ballonStream);
+                g2.drawImage(ballon,x - 45,y + 55,null);
 
+                String springPath = "../ressources/images/spring.png";
+                InputStream springStream = new BufferedInputStream(new FileInputStream(springPath));
+                Image spring = ImageIO.read(springStream);
+                g2.drawImage(spring,x + 10,y + 55,null);
+
+                String rocketPath = "../ressources/images/rocket.png";
+                InputStream rocketStream = new BufferedInputStream(new FileInputStream(rocketPath));
+                Image rocket = ImageIO.read(rocketStream);
+                g2.drawImage(rocket,x - 100,y + 55,null);
+
+                String pickaxePath = "../ressources/images/pickaxe.png";
+                InputStream pickaxeStream = new BufferedInputStream(new FileInputStream(pickaxePath));
+                Image pickaxe = ImageIO.read(pickaxeStream);
+                g2.drawImage(pickaxe,x - 45,y + 115,null);
+              }
+              catch (Exception ballon_e)
+              {
+                System.out.println("fichier introuvable");
+              }
+           }
             g2.fillRect(x,y,50,50);
           }
         }
@@ -115,8 +166,6 @@ public  class GraphicalLevel extends JPanel
   {
     super();
     this.level = Level.use("../Data/Levels/level_" + numero + ".ser");
-    // this.level = numero;
-    //this.save = Level.use("../Data/Levels/level_" + numero + ".ser");
    this.score.setText("Score : " + level.getScore());
     this.setLayout(/*new BorderLayout()*/null);
     this.fieldLevelPane.addMouseListener(new MouseAdapter()
@@ -143,69 +192,13 @@ public  class GraphicalLevel extends JPanel
           System.out.println("Score : " + level.getScore());
           GraphicalLevel.this.score.setText("Score : " + level.getScore());
           GraphicalLevel.this.setStars(level.getScore());
-        //   if (level.getScore() > level.getPalier()[0])
-        //   {
-        //     try
-        //     {
-        //         ImageIcon image = new ImageIcon("../ressources/images/yellow_star.png");
-        //         GraphicalLevel.this.star1.setIcon(image);
-        //      }
-        //      catch (Exception l_e)
-        //      {
-        //        l_e.printStackTrace();
-        //      }
-        //   }
-        //   if (level.getScore() >= level.getPalier()[1])
-        //   {
-        //     try
-        //     {
-        //         ImageIcon image = new ImageIcon("../ressources/images/yellow_star.png");
-        //         GraphicalLevel.this.star2.setIcon(image);
-        //      }
-        //      catch (Exception l_e)
-        //      {
-        //        l_e.printStackTrace();
-        //      }
-        //
-        //   }
-        //
-        //   if (level.getScore() >= level.getPalier()[2])
-        //   {
-        //     try
-        //     {
-        //         ImageIcon image = new ImageIcon("../ressources/images/yellow_star.png");
-        //         GraphicalLevel.this.star3.setIcon(image);
-        //      }
-        //      catch (Exception l_e)
-        //      {
-        //        l_e.printStackTrace();
-        //      }
-        //   }
-        //   fieldLevelPane.repaint();
-        // }
-      // if(level.Lost0())
-      // {
-      //   int dialogButton = JOptionPane.YES_NO_OPTION;
-      //   int dialogResult = JOptionPane.showConfirmDialog (null, "Voulez-vous rejouer le même niveau?","PERDU",dialogButton);
-      //   if(dialogResult == JOptionPane.YES_OPTION)
-      //   {
-      //     GraphicalLevel.this.level = GraphicalLevel.this.save;
-      //     GraphicalLevel.this.score.setText("Score : " + level.getScore());
-      //   }
-      // }
-      // System.out.println(level.Won0());
-      // if(level.Won0())
-      // {
-      //   int dialogButton = JOptionPane.YES_NO_OPTION;
-      //   int dialogResult = JOptionPane.showConfirmDialog (null, "Voulez-vous rejouer le même niveau?","GAGNÉ",dialogButton);
-      //   if(dialogResult == JOptionPane.YES_OPTION)
-      //   {
-      //     GraphicalLevel.this.level = GraphicalLevel.this.save;
-      //     GraphicalLevel.this.score.setText("Score : " + level.getScore());
-      //     fieldLevelPane.repaint();
-      //
-      //   }
       }
+
+      // if (((blockY >= level.getField().getWidth() * 51)  &&  ((blockY >= level.getField().getWidth() * 51 + 50)) && (blockX < level.getField().getHeight() *51 + 55))
+      // {
+      //
+      // }
+
       }
 
 
@@ -247,7 +240,7 @@ public  class GraphicalLevel extends JPanel
     northPane.add(starsLevelPane);
     southPane.add(levelMenuPane);
     northPane.setBounds(50, 0,500,200);
-    fieldLevelPane.setBounds(600/2 - 100, 200,200,200);
+    fieldLevelPane.setBounds(600/2 - 100, 200,400,400);
     // this.add(northPane, BorderLayout.NORTH);
     // this.add(fieldLevelPane, BorderLayout.CENTER);
     // this.add(southPane, BorderLayout.SOUTH);

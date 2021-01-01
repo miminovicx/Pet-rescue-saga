@@ -111,7 +111,7 @@ public class FirstView extends JFrame //implements MouseAdapter
         if (!(nickNamePane.nickName.getText().equals("")))
         {
           //nickNamePane.next.setForeground(new Color(0,0,0));
-          //FirstView.this.levelsPane = new GraphicalEnivronnement(NickName.nickName.getText());
+          FirstView.this.levelsPane = new GraphicalEnivronnement(nickNamePane.nickName.getText());
           c1.show(contains, "2");
         }
         else
