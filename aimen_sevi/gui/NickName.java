@@ -71,5 +71,13 @@ public class NickName extends JPanel
     return (nickName.getText());
   }
 
+  // public void paint(Graphics g) {
+	// 	super.paint(g);
+	// 	Color c = g.getColor();
+  //   g.setColor(Color.BLUE);
+	// 	// g.setColor(Color.RED);
+	// 	g.fillRect(0,0,2800,8000);
+	// }
+
 
 }

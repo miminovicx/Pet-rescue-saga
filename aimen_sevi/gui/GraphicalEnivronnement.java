@@ -65,4 +65,11 @@ public  class GraphicalEnivronnement extends JPanel
   {
     return (this.environnement) ;
   }
+  // public void paint(Graphics g) {
+	// 	super.paint(g);
+	// 	Color c = g.getColor();
+	// 	// g.setColor(Color.RED);
+  //   g.setColor(Color.BLUE);
+	// 	g.fillRect(0,0,2800,8000);
+	// }
 }

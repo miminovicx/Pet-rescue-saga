@@ -41,7 +41,7 @@ public class FirstView extends JFrame //implements MouseAdapter
     menuPane.setLayout(null);
     JLabel title = new JLabel("PetRescue");
     Font titleFont = new Font("Arial",Font.ITALIC,75);
-    Font firstViewFont = new Font("Arial",Font.BOLD,25);
+    Font firstViewFont = new Font("Arial",Font.ITALIC,25);
     title.setFont(titleFont);
     title.setForeground(Color.WHITE);
     titlePane.add(title);
@@ -338,6 +338,7 @@ public class FirstView extends JFrame //implements MouseAdapter
 //
 //   }
 // });
+
 //
 // level_2_Pane.fieldLevelPane.addMouseListener(new MouseAdapter()
 // {
@@ -450,4 +451,14 @@ public class FirstView extends JFrame //implements MouseAdapter
       }
     });
   }
+
+  // public void paint(Graphics g) {
+	// 	super.paint(g);
+	// 	Color c = g.getColor();
+	// 	g.setColor(Color.RED);
+	// 	g.fillRect(0,0,2800,8000);
+	// 	g.setColor(Color.BLUE);
+	// 	g.fillOval(150,50,80,80);
+	// 	g.setColor(c);
+	// }
 }

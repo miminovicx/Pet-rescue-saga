@@ -50,6 +50,8 @@ public  class GraphicalMenu extends JPanel
     this.add(quit);
   }
 
+
+
   // public void paint(Graphics g)
   // {
   //     // Appel de la méthode paintComponent de la classe mère

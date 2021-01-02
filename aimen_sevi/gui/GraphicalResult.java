@@ -39,6 +39,7 @@ public  class GraphicalResult extends JPanel
     Font font = new Font("Arial",Font.BOLD,40);
     this.back = new MenuItem("Retour", true, font);
     this.back.setBounds(200,140,280, 60);
+    this.back.setForeground(Color.BLACK);
     this.back.setBorder(BorderFactory.createLineBorder(Color.BLACK, 2, true));
     this.back.setHorizontalAlignment(JLabel.CENTER);
     this.back.setVerticalAlignment(JLabel.CENTER);
@@ -46,6 +47,14 @@ public  class GraphicalResult extends JPanel
     mainPane.add(this.back);
     this.add(mainPane, BorderLayout.CENTER);
   }
+
+  // public void paint(Graphics g) {
+	// 	super.paint(g);
+	// 	Color c = g.getColor();
+	// 	g.setColor(Color.RED);
+	// 	g.fillRect(0,0,2800,8000);
+	// 	g.setColor(Color.BLUE);
+	// }
 
   // public void paint(Graphics g)
   // {

@@ -20,7 +20,16 @@ public class MenuItem extends JLabel
     this.active = active;
     this.setOpaque(true);
     // this.setBorder(BorderFactory.createLineBorder(Color.BLACK, 2, true));
+    this.setForeground(Color.BLACK);
     this.setBackground(Color.GRAY);
     this.setFont(font);
   }
+
+  // public void paint(Graphics g) {
+	// 	super.paint(g);
+	// 	Color c = g.getColor();
+	// 	g.setColor(Color.RED);
+	// 	g.fillRect(0,0,2800,8000);
+	// 	g.setColor(Color.BLUE);
+	// }
 }

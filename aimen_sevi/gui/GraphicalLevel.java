@@ -375,7 +375,7 @@ public  class GraphicalLevel extends JPanel
     titleLevel.setFont(titleFont);
     titleLevelPane.add(titleLevel);
     Font font = new Font("Arial",Font.BOLD,20);
-    this.back = new MenuItem("Retour", true, font);
+    this.back = new MenuItem("Retour", false, font);
     levelMenuPane.add(back);
     northPane.add(titleLevelPane);
     northPane.add(starsLevelPane);
@@ -449,4 +449,13 @@ public  class GraphicalLevel extends JPanel
     }
     fieldLevelPane.repaint();
   }
+
+  //
+  // public void paint(Graphics g) {
+	// 	super.paint(g);
+	// 	Color c = g.getColor();
+	// 	// g.setColor(Color.RED);
+  //   g.setColor(Color.BLUE);
+	// 	g.fillRect(0,0,2800,8000);
+	// }
 }
