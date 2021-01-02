@@ -133,26 +133,6 @@ public  class GraphicalLevel extends JPanel
           {
             try
             {
-              // Icon ballon = new ImageIcon("../ressources/images/ballon.png");
-              // JButton ballonbtn = new JButton(ballon);
-              // ballonbtn.setBounds(x - 45,y + 55,50,50);
-              // this.add(ballonbtn);
-              //
-              // Icon spring = new ImageIcon("../ressources/images/spring.png");
-              // JButton springbtn = new JButton(spring);
-              // springbtn.setBounds(x + 10,y + 55,50,50);
-              // this.add(springbtn);
-              //
-              // Icon rocket = new ImageIcon("../ressources/images/rocket.png");
-              // JButton rocketbtn = new JButton(rocket);
-              // rocketbtn.setBounds(x - 100,y + 55,50,50);
-              // this.add(rocketbtn);
-              //
-              // Icon pickaxe = new ImageIcon("../ressources/images/pickaxe.png");
-              // JButton pickaxebtn = new JButton(pickaxe);
-              // pickaxebtn.setBounds(x - 45,y + 115,50,50);
-              // this.add(pickaxebtn);
-
               String ballonPath = "../ressources/images/ballon.png";
               InputStream ballonStream = new BufferedInputStream(new FileInputStream(ballonPath));
               Image ballon = ImageIO.read(ballonStream);
@@ -225,7 +205,12 @@ public  class GraphicalLevel extends JPanel
           if(player.getBoost()[0] > 0)
           {
             //tu recuperes la colonne sur laquelle tu veux qu'il utilise que j'appelerai a
-            int a = 1; //test
+            int a = 0; //test
+            do
+            {
+              a = Integer.parseInt(JOptionPane.showInputDialog(null, "x de la case :"));
+            }
+            while (a < 0 || a >= level.getField().getWidth());
             player.removeRocket();
             level.getField().useRocket(a);
             repaint();
@@ -257,8 +242,17 @@ public  class GraphicalLevel extends JPanel
         {
           if(player.getBoost()[3] > 0)
           {
-            int a = 1; //test
-            int b = 0;
+            int a = 0;
+            do
+            {
+              a = Integer.parseInt(JOptionPane.showInputDialog(null, "x de la case :"));
+            }
+            while (a < 0 || a >= level.getField().getWidth());
+              int b = 0;
+            do
+            {
+              b = Integer.parseInt(JOptionPane.showInputDialog(null, "y de la case :"));
+            } while (b < 0 || b >= level.getField().getHeight());
             player.removeBallons();
             level.getField().useBallon(a,b);
             repaint();
@@ -287,6 +281,11 @@ public  class GraphicalLevel extends JPanel
           if(player.getBoost()[1] > 0)
           {
             int a = 1; //test
+            do
+            {
+              a = Integer.parseInt(JOptionPane.showInputDialog(null, "y de la case :"));
+            }
+            while (a < 0 || a >= level.getField().getHeight());
             player.removeBoomerang();
             level.getField().useBoomerang(a);
             repaint();
@@ -314,8 +313,17 @@ public  class GraphicalLevel extends JPanel
         {
           if(player.getBoost()[2] > 0)
           {
-            int a = 1; //test
-            int b = 0;
+            int a = 0;
+            do
+            {
+              a = Integer.parseInt(JOptionPane.showInputDialog(null, "x de la case :"));
+            }
+            while (a < 0 || a >= level.getField().getWidth());
+              int b = 0;
+            do
+            {
+              b = Integer.parseInt(JOptionPane.showInputDialog(null, "y de la case :"));
+            } while (b < 0 || b >= level.getField().getHeight());
             player.removePickaxe();
             level.getField().usePickaxe(a,b);
             repaint();
