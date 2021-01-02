@@ -49,12 +49,6 @@ public class FirstView extends JFrame //implements MouseAdapter
     MenuItem pseudo = new MenuItem("Pseudo : ", true, font);
     MenuItem back = new MenuItem("Retour", true, font);
 
-    // JTextField userName = new JTextField(10);
-    // userName.setFont(font);
-    /*GraphicalEnivronnement*/
-    System.out.println("debug before");
-    System.out.println(nickNamePane.getNickName());
-    System.out.println("debug after");
     MenuItem start = new MenuItem("Commencer", true, font);
     GraphicalMenu menu = new GraphicalMenu();
     MenuItem firstViewQuit = new MenuItem("Quitter", true, font);

@@ -225,8 +225,10 @@ public  class GraphicalLevel extends JPanel
             int a = 1; //test
             player.removeRocket();
             level.getField().useRocket(a);
+            repaint();
             level.setScore(level.getScore() + level.getField().scoreComputation(level.getField().nbBlockSuppr));
             GraphicalLevel.this.setStars(level.getScore());
+            level.getField().updateSemiFinal();
 
             // level.
             try
@@ -256,8 +258,10 @@ public  class GraphicalLevel extends JPanel
             int b = 0;
             player.removeBallons();
             level.getField().useBallon(a,b);
+            repaint();
             level.setScore(level.getScore() + level.getField().scoreComputation(level.getField().nbBlockSuppr));
             GraphicalLevel.this.setStars(level.getScore());
+            level.getField().updateSemiFinal();
 
             // level.
             try
@@ -282,8 +286,10 @@ public  class GraphicalLevel extends JPanel
             int a = 1; //test
             player.removeBoomerang();
             level.getField().useBoomerang(a);
+            repaint();
             level.setScore(level.getScore() + level.getField().scoreComputation(level.getField().nbBlockSuppr));
             GraphicalLevel.this.setStars(level.getScore());
+            level.getField().updateSemiFinal();
 
             // level.
             try
@@ -309,8 +315,10 @@ public  class GraphicalLevel extends JPanel
             int b = 0;
             player.removePickaxe();
             level.getField().usePickaxe(a,b);
+            repaint();
             level.setScore(level.getScore() + level.getField().scoreComputation(level.getField().nbBlockSuppr));
             GraphicalLevel.this.setStars(level.getScore());
+            level.getField().updateSemiFinal();
 
             // level.
             try

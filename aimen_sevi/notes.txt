@@ -4,10 +4,11 @@
   -Affichage a la fin d'un niveau à améliorer :
     = ajouter le meilleur score et le nombre d'animaux sauvés
 
+-REFUCKTORING
 
-  -Enregistrer ou charger le pseudo  VRAIMENT URGENT A FAIRE (j'ai une idée, faut remettre la classe nickName en interne ou jsp, et recuperer le getText() après avoir cliqué sur
-  commencer psq après 2h de debug j'ai trouvé que le problème venait du fait que le getText qu'on utilisait dans le constructeur récupérait le texte avant d'avoir entré au clavier
-  donc chaineRecuperée = null)
+
+
+-mettre a jour le score apres utilisation d'un booster ou saveAnimal
 
 -Rapport
 
