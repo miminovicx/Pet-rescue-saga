@@ -199,7 +199,10 @@ public  class GraphicalLevel extends JPanel
 
           int b = blockX / 50;
           int a = blockY / 50;
-          level.getField().updateFinal(a,b);
+          if(level.getField().updateFinal(a,b))
+          {
+            System.out.println("Test");
+          }
           try
           {
             Thread.sleep(250);

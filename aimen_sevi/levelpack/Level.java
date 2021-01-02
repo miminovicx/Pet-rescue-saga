@@ -101,7 +101,10 @@ public class Level implements java.io.Serializable
         if(!this.Lost0() && !this.Won0())
         {
           coordonnees = this.react();
-          this.field.updateFinal(coordonnees[0], coordonnees[1]);
+          if(this.field.updateFinal(coordonnees[0], coordonnees[1]))
+          {
+            System.out.println("Animal sauvé !\n");
+          }
           this.score += field.scoreComputation(field.nbBlockSuppr);
           System.out.println(this.field);
         }
@@ -490,6 +493,7 @@ public class Level implements java.io.Serializable
         b = this.field.firstLineToDisplay() + (int)(Math.random() * ((this.field.getIntervalle())));
         if(this.field.deletable(a,b))
         {
+          System.out.println("Suppression du bloc : \nColonne : " + b + "\nLigne : " + a + "\n");
           this.field.updateFinal(a,b);
           this.score += field.scoreComputation(field.nbBlockSuppr);
           System.out.println(this.field);

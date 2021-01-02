@@ -355,12 +355,12 @@ public class Field implements java.io.Serializable
    * @param  x           [abscisse]
    * @param  y           [ordonnée]
    */
-  public void updateFinal(int x, int y)
+  public boolean updateFinal(int x, int y)
   {
     this.remove(x,y);
     this.update();
     this.moveColumns();
-    this.saveAnimal();
+    return this.saveAnimal();
   }
 
   /**
@@ -377,7 +377,7 @@ public class Field implements java.io.Serializable
    * Cette méthode enlève les animaux de la dernière ligne et les ajoute au nombre d'animaux sauvés
    * @method saveAnimal
    */
-  public void saveAnimal()
+  public boolean saveAnimal()
   {
     for(int j=0; j < height ; j++)
     {
@@ -387,9 +387,11 @@ public class Field implements java.io.Serializable
         System.out.println(this);
         this.elements[width-1][j] = new Block(width-1,j,0);
         animalsSaved ++;
-        System.out.println("\tANIMAL SAUVE ! \n");
+        // System.out.println("\tANIMAL SAUVE ! \n");
+        return true;
       }
     }
+    return false;
   }
   /**
    * Cette méthode permet de calculer le score à partir du nombre de blocs supprimmés

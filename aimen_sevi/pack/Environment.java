@@ -222,10 +222,14 @@ public class Environment
 
   public void playRobot(int i)
   {
-    System.out.println("\n- Niveau " + (i+1) + " !\n");
       if (this.player.getUnlocked()[i])
       {
+        System.out.println("\n- Niveau " + (i+1) + " !\n");
         this.levels[i].playBot();
+      }
+      else
+      {
+        System.out.println("Niveau verrouillé ");
       }
   }
 }
