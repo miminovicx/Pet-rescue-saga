@@ -157,6 +157,14 @@ public class FirstView extends JFrame //implements MouseAdapter
                 level_1_Pane.level.getField().animalsSaved = 0;
                 level_1_Pane.setEmptyStars();
                 level_1_Pane.save(1);
+                try
+                {
+                  Thread.sleep(250);
+                }
+                catch (InterruptedException exp)
+                {
+                  exp.printStackTrace();
+                }
                 c1.show(contains,"won");
 
                 FirstView.levelsPane.getEnvironment().getPlayer().save();
@@ -167,6 +175,14 @@ public class FirstView extends JFrame //implements MouseAdapter
                 level_1_Pane.level.getField().animalsSaved = 0;
                 level_1_Pane.setEmptyStars();
                 level_1_Pane.save(1);
+                try
+                {
+                  Thread.sleep(250);
+                }
+                catch (InterruptedException exp)
+                {
+                  exp.printStackTrace();
+                }
                 c1.show(contains,"lost");
                 // FirstView.levelsPane.getEnvironment().getPlayer().save();
               }
@@ -198,6 +214,14 @@ public class FirstView extends JFrame //implements MouseAdapter
                 level_2_Pane.level.getField().animalsSaved = 0;
                 level_2_Pane.setEmptyStars();
                 level_2_Pane.save(2);
+                try
+                {
+                  Thread.sleep(250);
+                }
+                catch (InterruptedException exp)
+                {
+                  exp.printStackTrace();
+                }
                 c1.show(contains,"won");
 
               }
@@ -207,6 +231,14 @@ public class FirstView extends JFrame //implements MouseAdapter
                 level_2_Pane.level.getField().animalsSaved = 0;
                 level_2_Pane.setEmptyStars();
                 level_2_Pane.save(1);
+                try
+                {
+                  Thread.sleep(250);
+                }
+                catch (InterruptedException exp)
+                {
+                  exp.printStackTrace();
+                }
                 c1.show(contains,"lost");
               }
               FirstView.levelsPane.getEnvironment().getPlayer().save();  //la lgine qui sauvegarde le joueur après avoir joué
