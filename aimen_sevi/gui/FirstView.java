@@ -28,7 +28,7 @@ public class FirstView extends JFrame
     GraphicalResult won = new GraphicalResult("GAGNÉ");
     GraphicalResult lost = new GraphicalResult("PERDU");
     NickName nickNamePane = new NickName();
-    
+
     homePane.setLayout(new BorderLayout());
     JPanel firstViewMenuPane = new JPanel();
     JPanel menuPane = new JPanel();
@@ -45,7 +45,7 @@ public class FirstView extends JFrame
 
 
 
-    GraphicalMenu menu = new GraphicalMenu();
+    PlayMenu menu = new PlayMenu();
 
 
     menu.play.addMouseListener(new MouseAdapter()
@@ -87,6 +87,7 @@ public class FirstView extends JFrame
         if (!(nickNamePane.nickName.getText().equals("")))
         {
           FirstView.this.levelsPane = new GraphicalEnivronnement(Launcher.initialiseEnv(nickNamePane.nickName.getText()));
+          menu.setNickName(nickNamePane.nickName.getText());
           GraphicalLevel level_1_Pane = new GraphicalLevel(1,FirstView.this.levelsPane.getEnvironment().getPlayer());
           GraphicalLevel level_2_Pane = new GraphicalLevel(2,FirstView.this.levelsPane.getEnvironment().getPlayer());
           contains.add(levelsPane,"3");

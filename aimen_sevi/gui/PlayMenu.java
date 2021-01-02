@@ -19,38 +19,52 @@ import java.io.InputStream;
 import java.io.BufferedInputStream;
 import java.io.FileInputStream;
 
-public  class GraphicalMenu extends JPanel
+public  class PlayMenu extends JPanel
 {
-
+  JLabel nickName;
   MenuItem play;
   MenuItem help;
   MenuItem quit;
-  public GraphicalMenu ()
+  public PlayMenu ()
   {
-    JPanel mainPane = new JPanel();
     this.setLayout(null);
+
     Font font = new Font("Arial",Font.BOLD,40);
+
     this.play = new MenuItem("Jouer", font);
-    this.help = new MenuItem("Aide", font);
-    this.quit = new MenuItem("Quitter", font);
-    this.play.setBounds(210,110,200, 60);
+    this.play.setBounds(190, 80,200, 60);
     this.play.setBorder(BorderFactory.createLineBorder(Color.BLACK, 2, true));
     this.play.setHorizontalAlignment(JLabel.CENTER);
     this.play.setVerticalAlignment(JLabel.CENTER);
-    this.help.setBounds(210,180,200, 60);
+
+    this.help = new MenuItem("Aide", font);
+    this.help.setBounds(190,150,200, 60);
     this.help.setBorder(BorderFactory.createLineBorder(Color.BLACK, 2, true));
     this.help.setHorizontalAlignment(JLabel.CENTER);
     this.help.setVerticalAlignment(JLabel.CENTER);
-    this.quit.setBounds(210,250,200, 60);
+
+    this.quit = new MenuItem("Quitter", font);
+    this.quit.setBounds(190,220,200, 60);
     this.quit.setBorder(BorderFactory.createLineBorder(Color.BLACK, 2, true));
     this.quit.setHorizontalAlignment(JLabel.CENTER);
     this.quit.setVerticalAlignment(JLabel.CENTER);
+
+
     this.add(play);
     this.add(help);
     this.add(quit);
   }
 
 
+  public void setNickName(String s)
+  {
+      this.nickName = new JLabel(s);
+      this.nickName.setFont(new Font("Arial", Font.ITALIC, 30));
+      this.nickName.setBounds(190, 410, 200, 45);
+      this.nickName.setHorizontalAlignment(JLabel.CENTER);
+      this.nickName.setVerticalAlignment(JLabel.CENTER);
+      this.add(nickName);
+  }
 
   // public void paint(Graphics g)
   // {

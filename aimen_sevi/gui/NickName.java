@@ -21,6 +21,7 @@ import java.io.FileInputStream;
 
 public class NickName extends JPanel
 {
+  JLabel nickNameAsk;
   JTextField nickName;
   MenuItem next;
   MenuItem back;
@@ -29,24 +30,35 @@ public class NickName extends JPanel
     this.setLayout(null);
 
     Font font = new Font("Arial",Font.BOLD,40);
+    Font font2 = new Font("Arial",Font.ITALIC,40);
+
+    this.nickNameAsk = new JLabel("Pseudo");
+    this.nickNameAsk.setFont(font2);
+
+    this.nickNameAsk.setBounds(160, 100, 280, 60);
+    this.nickNameAsk.setHorizontalAlignment(JLabel.CENTER);
+    this.nickNameAsk.setVerticalAlignment(JLabel.CENTER);
+
+    this.nickName = new JTextField(10);
+    this.nickName.setFont(font2);
+    this.nickName.setBorder(BorderFactory.createLineBorder(Color.BLACK, 2, true));
+    this.nickName.setBounds(160,160,280,60);
+    this.nickName.setHorizontalAlignment(JLabel.CENTER);
+
     this.next = new MenuItem("Continuer", font);
     this.back = new MenuItem("Retour", font);
 
     this.next.setHorizontalAlignment(JLabel.CENTER);
     this.next.setVerticalAlignment(JLabel.CENTER);
     this.next.setBorder(BorderFactory.createLineBorder(Color.BLACK, 2, true));
-    this.next.setBounds(180,250,280,60);
+    this.next.setBounds(160,250,280,60);
 
     this.back.setHorizontalAlignment(JLabel.CENTER);
     this.back.setVerticalAlignment(JLabel.CENTER);
     this.back.setBorder(BorderFactory.createLineBorder(Color.BLACK, 2, true));
-    this.back.setBounds(180,320,280,60);
+    this.back.setBounds(160,320,280,60);
 
-    this.nickName = new JTextField(10);
-    this.nickName.setFont(font);
-    this.nickName.setBorder(BorderFactory.createLineBorder(Color.BLACK, 2, true));
-    this.nickName.setBounds(180,160,280,60);
-
+    this.add(nickNameAsk);
     this.add(nickName);
     this.add(next);
     this.add(back);
