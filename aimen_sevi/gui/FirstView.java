@@ -167,7 +167,7 @@ public class FirstView extends JFrame //implements MouseAdapter
                 }
                 levelsPane.getEnvironment().getPlayer().setUnlocked(1);
                 level_1_Pane.level.setScore(0);
-                level_2_Pane.level.getField().animalsSaved = 0;
+                level_1_Pane.level.getField().animalsSaved = 0;
                 level_1_Pane.setEmptyStars();
                 level_1_Pane.save(1);
                 c1.show(contains,"won");
@@ -176,10 +176,14 @@ public class FirstView extends JFrame //implements MouseAdapter
               }
               else if (level_1_Pane.level.Lost0())
               {
+                level_1_Pane.level.setScore(0);
+                level_1_Pane.level.getField().animalsSaved = 0;
+                level_1_Pane.setEmptyStars();
+                level_1_Pane.save(1);
                 c1.show(contains,"lost");
-                FirstView.levelsPane.getEnvironment().getPlayer().save();
+                // FirstView.levelsPane.getEnvironment().getPlayer().save();
               }
-              // FirstView.levelsPane.getEnvironment().getPlayer().save();
+              FirstView.levelsPane.getEnvironment().getPlayer().save();
             }
             public void mouseEntered(MouseEvent e)
             {
@@ -209,15 +213,19 @@ public class FirstView extends JFrame //implements MouseAdapter
                 level_2_Pane.level.getField().animalsSaved = 0;
                 level_2_Pane.setEmptyStars();
                 level_2_Pane.save(2);
-                FirstView.levelsPane.getEnvironment().getPlayer().save();  //la lgine qui sauvegarde le joueur après avoir joué
                 c1.show(contains,"won");
 
               }
               else if (level_2_Pane.level.Lost0())
               {
+                level_2_Pane.level.setScore(0);
+                level_2_Pane.level.getField().animalsSaved = 0;
+                level_2_Pane.setEmptyStars();
+                level_2_Pane.save(1);
                 c1.show(contains,"lost");
-                FirstView.levelsPane.getEnvironment().getPlayer().save();
+                // FirstView.levelsPane.getEnvironment().getPlayer().save();
               }
+              FirstView.levelsPane.getEnvironment().getPlayer().save();  //la lgine qui sauvegarde le joueur après avoir joué
             }
             public void mouseEntered(MouseEvent e)
             {

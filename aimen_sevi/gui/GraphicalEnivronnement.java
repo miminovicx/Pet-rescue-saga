@@ -8,9 +8,7 @@ import pack.*;
 import java.util.Arrays;
 import java.io.File;
 import java.util.Scanner;
-import java.util.TimerTask;
-import java.util.Timer;
-import java.util.Date;
+
 public  class GraphicalEnivronnement extends JPanel
 {
   private Environment environnement;

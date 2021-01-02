@@ -214,36 +214,119 @@ public  class GraphicalLevel extends JPanel
           GraphicalLevel.this.setStars(level.getScore());
         }
 
-        if ((blockY > (level.getField().getWidth()) * 51 && blockY < (level.getField().getWidth()) * 51 + 50) && (blockX > 0 && blockX < 42))
+        if ((blockY > (level.getField().getWidth()) * 51 && blockY < (level.getField().getWidth()) * 51 + 50) && (blockX > 0 && blockX < 42)) //fusée
         {
-          player.setBoost(0,0);
-          System.out.println(player.getNickName());
-          if(player.getBoost()[level.getNum()] > 0)
+          // player.setBoost(0,0);
+
+          // System.out.println(player.getNickName());
+          if(player.getBoost()[0] > 0)
           {
-            System.out.println("use fusées");
+            //tu recuperes la colonne sur laquelle tu veux qu'il utilise que j'appelerai a
+            int a = 1; //test
+            player.removeRocket();
+            level.getField().useRocket(a);
+            level.setScore(level.getScore() + level.getField().scoreComputation(level.getField().nbBlockSuppr));
+            GraphicalLevel.this.setStars(level.getScore());
+
+            // level.
+            try
+            {
+              Thread.sleep(250);
+            }
+            catch (InterruptedException exp)
+            {
+              exp.printStackTrace();
+            }
+
           }
-          System.out.println("Fusées");
-          System.out.println(blockY);
-          System.out.println(blockX);
+          else
+          {
+            System.out.println("Pas assez de fusées");
+          }
+          // System.out.println("Fusées");
+          // System.out.println(blockY);
+          // System.out.println(blockX);
 
         }
-        else if ((blockY > (level.getField().getWidth()) * 51 && blockY < (level.getField().getWidth()) * 51 + 50) && (blockX > 60 && blockX < 100))
+        else if ((blockY > (level.getField().getWidth()) * 51 && blockY < (level.getField().getWidth()) * 51 + 50) && (blockX > 60 && blockX < 100)) //Ballons
         {
-          System.out.println("Ballons");
-          System.out.println(blockY);
-          System.out.println(blockX);
+          if(player.getBoost()[3] > 0)
+          {
+            int a = 1; //test
+            int b = 0;
+            player.removeBallons();
+            level.getField().useBallon(a,b);
+            level.setScore(level.getScore() + level.getField().scoreComputation(level.getField().nbBlockSuppr));
+            GraphicalLevel.this.setStars(level.getScore());
+
+            // level.
+            try
+            {
+              Thread.sleep(250);
+            }
+            catch (InterruptedException exp)
+            {
+              exp.printStackTrace();
+            }
+
+          }
+          else
+          {
+            System.out.println("Pas assez de ballons");
+          }
         }
-        else if ((blockY > (level.getField().getWidth()) * 51 && blockY < (level.getField().getWidth()) * 51 + 50) && (blockX > 116 && blockX < 158))
+        else if ((blockY > (level.getField().getWidth()) * 51 && blockY < (level.getField().getWidth()) * 51 + 50) && (blockX > 116 && blockX < 158)) //ressors
         {
-          System.out.println("Ressors");
-          System.out.println(blockY);
-          System.out.println(blockX);
+          if(player.getBoost()[1] > 0)
+          {
+            int a = 1; //test
+            player.removeBoomerang();
+            level.getField().useBoomerang(a);
+            level.setScore(level.getScore() + level.getField().scoreComputation(level.getField().nbBlockSuppr));
+            GraphicalLevel.this.setStars(level.getScore());
+
+            // level.
+            try
+            {
+              Thread.sleep(250);
+            }
+            catch (InterruptedException exp)
+            {
+              exp.printStackTrace();
+            }
+
+          }
+          else
+          {
+            System.out.println("Pas assez de ressors");
+          }
         }
-        else if ((blockY > (level.getField().getWidth()) * 51 + 68  && blockY < (level.getField().getWidth()) * 51 + 68 + 46) && (blockX > 60 && blockX < 100))
+        else if ((blockY > (level.getField().getWidth()) * 51 + 68  && blockY < (level.getField().getWidth()) * 51 + 68 + 46) && (blockX > 60 && blockX < 100)) //marteaux
         {
-          System.out.println("Marteau");
-          System.out.println(blockY);
-          System.out.println(blockX);
+          if(player.getBoost()[2] > 0)
+          {
+            int a = 1; //test
+            int b = 0;
+            player.removePickaxe();
+            level.getField().usePickaxe(a,b);
+            level.setScore(level.getScore() + level.getField().scoreComputation(level.getField().nbBlockSuppr));
+            GraphicalLevel.this.setStars(level.getScore());
+
+            // level.
+            try
+            {
+              Thread.sleep(250);
+            }
+            catch (InterruptedException exp)
+            {
+              exp.printStackTrace();
+            }
+
+          }
+          else
+          {
+            System.out.println("Pas assez de marteaux");
+          }
         }
 
       }

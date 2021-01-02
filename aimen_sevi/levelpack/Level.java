@@ -505,6 +505,7 @@ public class Level implements java.io.Serializable
         System.out.println("Le bot a perdu\nScore : " + this.score);
 
       }
+      this.field.animalsSaved = 0;
     }
 
   }
