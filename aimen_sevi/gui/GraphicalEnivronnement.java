@@ -36,8 +36,11 @@ public  class GraphicalEnivronnement extends JPanel
     JPanel playerPane = new JPanel();
 
     this.playerNickName = new JLabel(this.environnement.getPlayer().getNickName());
-    playerPane.setLayout(new GridLayout(2,2));
-
+    this.playerNickName.setFont(new Font("Arial", Font.ITALIC, 30));
+    this.playerNickName.setBounds(190, 410, 200, 45);
+    this.playerNickName.setHorizontalAlignment(JLabel.CENTER);
+    this.playerNickName.setVerticalAlignment(JLabel.CENTER);
+    this.add(playerNickName);
     Font font = new Font("Arial",Font.BOLD,40);
     this.back = new MenuItem("Retour", font);
     playerPane.add(this.playerNickName);

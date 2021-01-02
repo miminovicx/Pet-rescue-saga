@@ -208,7 +208,7 @@ public  class GraphicalLevel extends JPanel
             int a = 0; //test
             do
             {
-              a = Integer.parseInt(JOptionPane.showInputDialog(null, "x de la case :"));
+              a = Integer.parseInt(JOptionPane.showInputDialog(null, "Choisissez une colonne  entre 1 et " + level.getField().getWidth() + ":")) - 1;
             }
             while (a < 0 || a >= level.getField().getWidth());
             player.removeRocket();
@@ -379,7 +379,7 @@ public  class GraphicalLevel extends JPanel
     southPane.add(score);
     southPane.add(levelMenuPane);
     JLabel titleLevel = new JLabel("Niveau " + this.level.getNum());
-    Font titleFont = new Font("Arial",Font.BOLD,100);
+    Font titleFont = new Font("Arial",Font.ITALIC,75);
     titleLevel.setFont(titleFont);
     titleLevelPane.add(titleLevel);
     Font font = new Font("Arial",Font.BOLD,20);

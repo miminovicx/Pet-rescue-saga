@@ -1,4 +1,4 @@
 #!/usr/bin/env bash
-javac LevelGenerator.java && java LevelGenerator
+javac LevelCreator.java && java LevelCreator
 find . -name "*.class" -delete
 #javadoc -d ../doc levelpack pack

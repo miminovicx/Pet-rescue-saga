@@ -48,13 +48,13 @@ public  class GraphicalResult extends JPanel
     this.add(mainPane, BorderLayout.CENTER);
   }
 
-  public void paint(Graphics g) {
-		super.paint(g);
-		Color c = g.getColor();
-		g.setColor(Color.RED);
-		g.fillRect(0,0,2800,8000);
-		g.setColor(Color.BLUE);
-	}
+  // public void paint(Graphics g) {
+	// 	super.paint(g);
+	// 	Color c = g.getColor();
+	// 	g.setColor(Color.RED);
+	// 	g.fillRect(0,0,2800,8000);
+	// 	g.setColor(Color.BLUE);
+	// }
 
   // public void paint(Graphics g)
   // {

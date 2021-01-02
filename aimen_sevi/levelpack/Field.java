@@ -15,7 +15,7 @@ public class Field implements java.io.Serializable
   private FieldElement [][] elements;
   public static int nbBlockSuppr;
   public static int animalsSaved = 0;
-  private int intervalle = 3;  //represente le nombre de lignes a afficher
+  private int intervalle = 8;  //represente le nombre de lignes a afficher
 
 /**
 *Méthode pour obtenir la largeur du plateau
