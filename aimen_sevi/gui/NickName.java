@@ -21,27 +21,32 @@ import java.io.FileInputStream;
 
 public class NickName extends JPanel
 {
-  public  static JTextField nickName;
+  JTextField nickName;
   MenuItem next;
   MenuItem back;
   public NickName ()
   {
     this.setLayout(null);
+
     Font font = new Font("Arial",Font.BOLD,40);
-    this.next = new MenuItem("Continuer", true, font);
-    this.back = new MenuItem("Retour", true, font);
+    this.next = new MenuItem("Continuer", font);
+    this.back = new MenuItem("Retour", font);
+
     this.next.setHorizontalAlignment(JLabel.CENTER);
     this.next.setVerticalAlignment(JLabel.CENTER);
+    this.next.setBorder(BorderFactory.createLineBorder(Color.BLACK, 2, true));
+    this.next.setBounds(180,250,280,60);
+
     this.back.setHorizontalAlignment(JLabel.CENTER);
     this.back.setVerticalAlignment(JLabel.CENTER);
+    this.back.setBorder(BorderFactory.createLineBorder(Color.BLACK, 2, true));
+    this.back.setBounds(180,320,280,60);
+
     this.nickName = new JTextField(10);
     this.nickName.setFont(font);
     this.nickName.setBorder(BorderFactory.createLineBorder(Color.BLACK, 2, true));
-    this.next.setBorder(BorderFactory.createLineBorder(Color.BLACK, 2, true));
-    this.back.setBorder(BorderFactory.createLineBorder(Color.BLACK, 2, true));
     this.nickName.setBounds(180,160,280,60);
-    this.next.setBounds(180,250,280,60);
-    this.back.setBounds(180,320,280,60);
+
     this.add(nickName);
     this.add(next);
     this.add(back);
@@ -65,10 +70,6 @@ public class NickName extends JPanel
 
       }
     });
-  }
-  public static String getNickName()
-  {
-    return (nickName.getText());
   }
 
   // public void paint(Graphics g) {

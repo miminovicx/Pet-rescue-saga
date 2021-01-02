@@ -33,12 +33,12 @@ public  class GraphicalEnivronnement extends JPanel
     titleLevel.setFont(titleFont);
     titleLevelPane.add(titleLevel);
     Font font = new Font("Arial",Font.BOLD,40);
-    this.back = new MenuItem("Retour", true, font);
+    this.back = new MenuItem("Retour", font);
     playerPane.add(this.playerNickName);
     int i = 0;
     for(i = 0; i < levelsLabels.length; i++)
     {
-      levelsLabels[i] = new MenuItem("Niveau " + this.environnement.getLevels()[i].getNum(),true,font);
+      levelsLabels[i] = new MenuItem("Niveau " + this.environnement.getLevels()[i].getNum(),font);
       levelsLabels[i].setBounds(170,0 + (i + 1) * 65,280,60);
       levelsLabels[i].setBorder(BorderFactory.createLineBorder(Color.BLACK, 2, true));
       levelsLabels[i].setHorizontalAlignment(JLabel.CENTER);

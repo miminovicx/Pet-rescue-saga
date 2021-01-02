@@ -30,9 +30,9 @@ public  class GraphicalMenu extends JPanel
     JPanel mainPane = new JPanel();
     this.setLayout(null);
     Font font = new Font("Arial",Font.BOLD,40);
-    this.play = new MenuItem("Jouer", true, font);
-    this.help = new MenuItem("Aide", true, font);
-    this.quit = new MenuItem("Quitter", true, font);
+    this.play = new MenuItem("Jouer", font);
+    this.help = new MenuItem("Aide", font);
+    this.quit = new MenuItem("Quitter", font);
     this.play.setBounds(210,110,200, 60);
     this.play.setBorder(BorderFactory.createLineBorder(Color.BLACK, 2, true));
     this.play.setHorizontalAlignment(JLabel.CENTER);

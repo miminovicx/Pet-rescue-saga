@@ -19,42 +19,45 @@ import java.io.InputStream;
 import java.io.BufferedInputStream;
 import java.io.FileInputStream;
 
-public  class GraphicalResult extends JPanel
+public  class HomeMenu extends JPanel
 {
-  MenuItem back;
-  JLabel result;
-  public GraphicalResult (String result)
+
+  MenuItem start;
+  MenuItem quit;
+  public HomeMenu ()
   {
-    JPanel mainPane = new JPanel();
-    mainPane.setLayout(null);
     this.setLayout(new BorderLayout());
-    this.result = new JLabel(result);
-    Font titleFont = new Font("Arial",Font.BOLD,100);
-    this.result.setFont(titleFont);
-    this.result.setBounds(50,30,400, 110);
-    this.result.setHorizontalAlignment(JLabel.CENTER);
-    this.result.setVerticalAlignment(JLabel.CENTER);
-    if(result.equals("GAGNÉ")) this.result.setForeground(new Color (0,150,0));
-    else this.result.setForeground(new Color (255,0,0));
+
+
+    JLabel title = new JLabel("PetRescue");
+    Font titleFont = new Font("Arial",Font.ITALIC,75);
+    title.setFont(titleFont);
+    title.setForeground(Color.GRAY);
+    title.setHorizontalAlignment(JLabel.CENTER);
+
+    JPanel menu = new JPanel(null);
+
     Font font = new Font("Arial",Font.BOLD,40);
-    this.back = new MenuItem("Retour", font);
-    this.back.setBounds(200,140,280, 60);
-    this.back.setForeground(Color.BLACK);
-    this.back.setBorder(BorderFactory.createLineBorder(Color.BLACK, 2, true));
-    this.back.setHorizontalAlignment(JLabel.CENTER);
-    this.back.setVerticalAlignment(JLabel.CENTER);
-    mainPane.add(this.result);
-    mainPane.add(this.back);
-    this.add(mainPane, BorderLayout.CENTER);
+
+    this.start = new MenuItem("Commencer", font);
+    this.start.setBounds(165, 100, 280, 60);
+    this.start.setBorder(BorderFactory.createLineBorder(Color.BLACK, 2, true));
+    this.start.setHorizontalAlignment(JLabel.CENTER);
+
+    this.quit = new MenuItem("Quitter", font);
+    this.quit.setBounds(165, 175, 280, 60);
+    this.quit.setBorder(BorderFactory.createLineBorder(Color.BLACK, 2, true));
+    this.quit.setHorizontalAlignment(JLabel.CENTER);
+
+    menu.add(start);
+    menu.add(quit);
+
+    this.add(title,BorderLayout.NORTH);
+    this.add(menu,BorderLayout.CENTER);
+
   }
 
-  public void paint(Graphics g) {
-		super.paint(g);
-		Color c = g.getColor();
-		g.setColor(Color.RED);
-		g.fillRect(0,0,2800,8000);
-		g.setColor(Color.BLUE);
-	}
+
 
   // public void paint(Graphics g)
   // {

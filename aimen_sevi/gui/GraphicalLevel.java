@@ -383,7 +383,7 @@ public  class GraphicalLevel extends JPanel
     titleLevel.setFont(titleFont);
     titleLevelPane.add(titleLevel);
     Font font = new Font("Arial",Font.BOLD,20);
-    this.back = new MenuItem("Retour", false, font);
+    this.back = new MenuItem("Retour", font);
     levelMenuPane.add(back);
     northPane.add(titleLevelPane);
     northPane.add(starsLevelPane);

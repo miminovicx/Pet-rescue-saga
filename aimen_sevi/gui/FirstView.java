@@ -6,19 +6,14 @@ import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.awt.Image;
 import javax.imageio.ImageIO;
-import java.io.File;
 import java.io.InputStream;
 import java.io.BufferedInputStream;
 import java.io.FileInputStream;
 import levelpack.Level;
 import pack.*;
-import java.util.Arrays;
 import java.io.File;
-import java.util.Scanner;
-import java.util.TimerTask;
-import java.util.Timer;
-import java.util.Date;
-public class FirstView extends JFrame //implements MouseAdapter
+
+public class FirstView extends JFrame
 {
   static GraphicalEnivronnement levelsPane;
   public FirstView()
@@ -27,12 +22,13 @@ public class FirstView extends JFrame //implements MouseAdapter
     JPanel contains = new JPanel();
     CardLayout c1 = new CardLayout();
     contains.setLayout(c1);
-    JPanel firstView = new JPanel();
+    HomeMenu homeMenu = new HomeMenu();
+
     JPanel homePane = new JPanel();
     GraphicalResult won = new GraphicalResult("GAGNÉ");
     GraphicalResult lost = new GraphicalResult("PERDU");
     NickName nickNamePane = new NickName();
-    firstView.setLayout(new BorderLayout());
+    
     homePane.setLayout(new BorderLayout());
     JPanel firstViewMenuPane = new JPanel();
     JPanel menuPane = new JPanel();
@@ -43,25 +39,15 @@ public class FirstView extends JFrame //implements MouseAdapter
     Font titleFont = new Font("Arial",Font.ITALIC,75);
     Font firstViewFont = new Font("Arial",Font.ITALIC,25);
     title.setFont(titleFont);
-    title.setForeground(Color.WHITE);
+    title.setForeground(Color.GRAY);
     titlePane.add(title);
     Font font = new Font("Arial",Font.BOLD,40);
-    MenuItem pseudo = new MenuItem("Pseudo : ", true, font);
-    MenuItem back = new MenuItem("Retour", true, font);
 
-    MenuItem start = new MenuItem("Commencer", true, font);
+
+
     GraphicalMenu menu = new GraphicalMenu();
-    MenuItem firstViewQuit = new MenuItem("Quitter", true, font);
 
-    start.setBounds(600/2 - 100, 600/2 - 50,280,60);
-    start.setBorder(BorderFactory.createLineBorder(Color.BLACK, 2, true));
-    start.setHorizontalAlignment(JLabel.CENTER);
-    firstViewQuit.setBounds(600/2 - 100, 600/2 + 20,280,60);
-    firstViewQuit.setBorder(BorderFactory.createLineBorder(Color.BLACK, 2, true));
-    firstViewQuit.setHorizontalAlignment(JLabel.CENTER);
-    firstViewQuit.setVerticalAlignment(JLabel.CENTER);
-    firstViewMenuPane.add(start);
-    firstViewMenuPane.add(firstViewQuit);
+
     menu.play.addMouseListener(new MouseAdapter()
     {
       public void mouseClicked(MouseEvent e)
@@ -184,7 +170,6 @@ public class FirstView extends JFrame //implements MouseAdapter
                   exp.printStackTrace();
                 }
                 c1.show(contains,"lost");
-                // FirstView.levelsPane.getEnvironment().getPlayer().save();
               }
               FirstView.levelsPane.getEnvironment().getPlayer().save();
             }
@@ -274,23 +259,21 @@ public class FirstView extends JFrame //implements MouseAdapter
         nickNamePane.next.setForeground(Color.BLACK);
       }
     });
-    addListener(contains, c1,start,new Color(0,150,0),"nickname");
-    addQuitListener(firstViewQuit, new Color(255,0,0));
+
+
+    addListener(contains, c1,homeMenu.start,new Color(0,150,0),"nickname");
+    addQuitListener(homeMenu.quit, new Color(255,0,0));
     addQuitListener(menu.quit, new Color(255,0,0));
     addListener(contains, c1,nickNamePane.back,new Color(0,150,0),"1");
     addListener(contains, c1,won.back,new Color(0,150,0),"3");
     addListener(contains, c1,lost.back,new Color(0,150,0),"3");
 
-    firstView.add(titlePane, BorderLayout.NORTH);
-    firstView.add(firstViewMenuPane, BorderLayout.CENTER);
+
     homePane.add(titlePane, BorderLayout.NORTH);
     homePane.add(menu,BorderLayout.CENTER);
-    contains.add(firstView,"1");
+    contains.add(homeMenu,"1");
     contains.add(nickNamePane,"nickname");
     contains.add(homePane,"2");
-    // contains.add(levelsPane,"3");
-    // contains.add(level_1_Pane,"4");
-    // contains.add(level_2_Pane,"5");
     contains.add(won,"won");
     contains.add(lost,"lost");
 
