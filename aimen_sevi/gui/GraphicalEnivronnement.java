@@ -60,7 +60,6 @@ public  class GraphicalEnivronnement extends JPanel
     back.setVerticalAlignment(JLabel.CENTER);
     levelsMenuPane.add(back);
 
-    System.out.println("pseudo : " + this.environnement.getPlayer().getNickName());
     this.add(levelsMenuPane, BorderLayout.CENTER);
     this.add(playerPane, BorderLayout.SOUTH);
   }

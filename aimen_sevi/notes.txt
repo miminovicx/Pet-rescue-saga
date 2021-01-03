@@ -4,14 +4,11 @@
 
 -REFUCKTORING :
   - FirstView 89 to 251 mais sinon le reste je trouve ça clean
+    126 to 131
 
-- Affichage du score en direct en interface quand on joue au niveau
 
-- L'arrière plan d'un animal quand il descend, j'ai essayé un truc qui marche mais qui foire un peu le premier affichage du plateau (GraphicalLevel ligne 61)
 
 - GraphicalResult à améliorer = en cas gagné afficher le score + meilleur score + les étoiles
-  PS : j'ai essayé de commencer, j'ai commenté
-  PS 2 : la récupération du bestScore, du niveau suivant s'il est verrouillé ou pas, du score ou du niveau joué se fera dans les paramètres du constructeur
 
 - Mettre a jour le score après utilisation d'un booster ou saveAnimal
 
@@ -26,9 +23,6 @@
 -Séparation Modéle-Vue-Contrôleur
 
 -Création de tout les niveaux
-
-- A NOTER : Intervalle max a afficher est 5
-
 
 
 -Générer la doc :

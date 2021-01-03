@@ -88,7 +88,14 @@ public class Field implements java.io.Serializable
   {
     this.width = width;
     this.height = height;
-    this.interval = interval;
+    if(interval >= 5)
+    {
+      this.interval = 5;
+    }
+    else
+    {
+      this.interval = interval;
+    }
     this.elements = new FieldElement[width][height];
   }
   /**

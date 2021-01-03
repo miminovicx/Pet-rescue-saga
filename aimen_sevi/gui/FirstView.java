@@ -16,6 +16,8 @@ import java.io.File;
 public class FirstView extends JFrame
 {
   static GraphicalEnivronnement levelsPane;
+  GraphicalResult won;
+  GraphicalResult lost;
   public FirstView()
   {
     //mainPane
@@ -24,9 +26,10 @@ public class FirstView extends JFrame
     contains.setLayout(c1);
     HomeMenu homeMenu = new HomeMenu();
 
+    JLabel score = new JLabel();
     JPanel homePane = new JPanel();
-    GraphicalResult won = new GraphicalResult("GAGNÉ");
-    GraphicalResult lost = new GraphicalResult("PERDU");
+    // won = new GraphicalResult("GAGNÉ",new Player(""),0,1);
+    // lost = new GraphicalResult("PERDU",new Player(""),0,1);
     NickName nickNamePane = new NickName();
 
     homePane.setLayout(new BorderLayout());
@@ -56,7 +59,7 @@ public class FirstView extends JFrame
       }
       public void mouseEntered(MouseEvent e)
       {
-        menu.play.setForeground(new Color(0,150,0));
+        menu.play.setForeground(Color.GREEN);
       }
       public void mouseExited(MouseEvent e)
       {
@@ -80,6 +83,7 @@ public class FirstView extends JFrame
         menu.help.setForeground(new Color(0,0,0));
       }
     });
+
     nickNamePane.next.addMouseListener(new MouseAdapter()
     {
       public void mouseClicked(MouseEvent e)
@@ -87,6 +91,12 @@ public class FirstView extends JFrame
         if (!(nickNamePane.nickName.getText().equals("")))
         {
           FirstView.this.levelsPane = new GraphicalEnivronnement(Launcher.initialiseEnv(nickNamePane.nickName.getText()));
+          // FirstView.this.won = new GraphicalResult("GAGNÉ",FirstView.this.levelsPane.getEnvironment().getPlayer(),level_1_Pane.level.getScore(),1);
+          // FirstView.this.lost = new GraphicalResult("PERDU",FirstView.this.levelsPane.getEnvironment().getPlayer(),level_1_Pane.level.getScore(),1);
+          // addListener(contains, c1,FirstView.this.won.back,new Color(0,150,0),"3");
+          // addListener(contains, c1,FirstView.this.lost.back,new Color(0,150,0),"3");
+          // contains.add(FirstView.this.won,"won");
+          // contains.add(FirstView.this.lost,"lost");
           menu.setNickName(nickNamePane.nickName.getText());
           GraphicalLevel level_1_Pane = new GraphicalLevel(1,FirstView.this.levelsPane.getEnvironment().getPlayer());
           GraphicalLevel level_2_Pane = new GraphicalLevel(2,FirstView.this.levelsPane.getEnvironment().getPlayer());
@@ -95,22 +105,31 @@ public class FirstView extends JFrame
           contains.add(level_2_Pane,"5");
           // GraphicalLevel level_1_Pane = lvlGenerator(1,FirstView.this.levelsPane.getEnvironment().getPlayer(),contains,"4");
           // GraphicalLevel level_2_Pane = lvlGenerator(2,FirstView.this.levelsPane.getEnvironment().getPlayer(),contains,"5");
-          levelListener(0,FirstView.levelsPane.getEnvironment().getPlayer().getUnlocked()[0],contains,c1,"4");
-          levelListener(1,FirstView.levelsPane.getEnvironment().getPlayer().getUnlocked()[1],contains,c1,"5");
+          levelListener(0,FirstView.levelsPane.getEnvironment().getPlayer(),contains,c1,"4");
+          levelListener(1,FirstView.levelsPane.getEnvironment().getPlayer(),contains,c1,"5");
+
           level_1_Pane.fieldLevelPane.addMouseListener(new MouseAdapter()
           {
             public void mouseClicked(MouseEvent e)
             {
+
               if (level_1_Pane.level.Won0())
               {
+
                 if(level_1_Pane.level.getScore() > FirstView.levelsPane.getEnvironment().getPlayer().getBestScore()[0])
                 {
                   FirstView.levelsPane.getEnvironment().getPlayer().setBestScore(level_1_Pane.level.getScore(),0);
 
-                  //afficher le nouveau best score
-                  System.out.println("Nouveau meilleur score : " + level_1_Pane.level.getScore());
                 }
                 levelsPane.getEnvironment().getPlayer().setUnlocked(1);
+
+                FirstView.this.won = new GraphicalResult("GAGNÉ",FirstView.this.levelsPane.getEnvironment().getPlayer(),level_1_Pane.level.getScore(),FirstView.levelsPane.getEnvironment().getPlayer().getBestScore()[0]);
+                FirstView.this.lost = new GraphicalResult("PERDU",FirstView.this.levelsPane.getEnvironment().getPlayer(),level_1_Pane.level.getScore(),FirstView.levelsPane.getEnvironment().getPlayer().getBestScore()[0]);
+                addListener(contains, c1,FirstView.this.won.back,new Color(0,150,0),"3");
+                addListener(contains, c1,FirstView.this.lost.back,new Color(0,150,0),"3");
+                contains.add(FirstView.this.won,"won");
+                contains.add(FirstView.this.lost,"lost");
+
                 level_1_Pane.level.setScore(0);
                 level_1_Pane.level.getField().animalsSaved = 0;
                 level_1_Pane.setEmptyStars();
@@ -164,8 +183,6 @@ public class FirstView extends JFrame
                 if(level_2_Pane.level.getScore() > FirstView.levelsPane.getEnvironment().getPlayer().getBestScore()[1])
                 {
                   FirstView.levelsPane.getEnvironment().getPlayer().setBestScore(level_2_Pane.level.getScore(),1);
-                  //afficher le nouveau best score
-                  System.out.println("Nouveau meilleur score : " + level_2_Pane.level.getScore());
                 }
                 level_2_Pane.level.setScore(0);
                 level_2_Pane.level.getField().animalsSaved = 0;
@@ -210,10 +227,9 @@ public class FirstView extends JFrame
             }
           });
 
-          addListener(contains, c1,levelsPane.back,new Color(0,150,0),"2");
-          addListener(contains, c1,level_1_Pane.back,new Color(0,150,0),"3");
-          addListener(contains, c1,level_2_Pane.back,new Color(0,150,0),"3");
-          //
+          addListener(contains, c1,levelsPane.back,Color.WHITE,"2");
+          addListener(contains, c1,level_1_Pane.back,Color.WHITE,"3");
+          addListener(contains, c1,level_2_Pane.back,Color.WHITE,"3");
           c1.show(contains, "2");
         }
         else
@@ -233,12 +249,12 @@ public class FirstView extends JFrame
     });
 
 
-    addListener(contains, c1,homeMenu.start,new Color(0,150,0),"nickname");
+    addListener(contains, c1,homeMenu.start,Color.GREEN,"nickname");
     addQuitListener(homeMenu.quit, new Color(255,0,0));
     addQuitListener(menu.quit, new Color(255,0,0));
     addListener(contains, c1,nickNamePane.back,new Color(0,150,0),"1");
-    addListener(contains, c1,won.back,new Color(0,150,0),"3");
-    addListener(contains, c1,lost.back,new Color(0,150,0),"3");
+    // addListener(contains, c1,this.won.back,new Color(0,150,0),"3");
+    // addListener(contains, c1,this.lost.back,new Color(0,150,0),"3");
 
 
     homePane.add(titlePane, BorderLayout.NORTH);
@@ -246,8 +262,8 @@ public class FirstView extends JFrame
     contains.add(homeMenu,"1");
     contains.add(nickNamePane,"nickname");
     contains.add(homePane,"2");
-    contains.add(won,"won");
-    contains.add(lost,"lost");
+    // contains.add(this.won,"won");
+    // contains.add(this.lost,"lost");
 
     c1.show(contains,"1");
     this.setContentPane(contains);
@@ -318,18 +334,33 @@ public class FirstView extends JFrame
     return (lvl);
   }
 
-  public void levelListener(int num, boolean unlocked, JPanel contains, CardLayout c1, String destination)
+  public void levelListener(int num, Player player, JPanel contains, CardLayout c1, String destination)
   {
     FirstView.levelsPane.levelsLabels[num].addMouseListener(new MouseAdapter()
     {
       public void mouseClicked(MouseEvent e)
       {
-        if(unlocked)//level_1_Pane = new GraphicalLevel(1);
+
+        if(player.getUnlocked()[num])//level_1_Pane = new GraphicalLevel(1);
           c1.show(contains, destination);
       }
       public void mouseEntered(MouseEvent e)
       {
-        FirstView.levelsPane.levelsLabels[num].setForeground(Color.WHITE);
+        if(player.getUnlocked()[num])
+        {
+          if(player.getBestScore()[num] == 0)
+          {
+              FirstView.levelsPane.levelsLabels[num].setForeground(Color.YELLOW);
+          }
+          else
+          {
+            FirstView.levelsPane.levelsLabels[num].setForeground(Color.GREEN);
+          }
+        }
+        else
+        {
+          FirstView.levelsPane.levelsLabels[num].setForeground(Color.RED);
+        }
       }
       public void mouseExited(MouseEvent e)
       {

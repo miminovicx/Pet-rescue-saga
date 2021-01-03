@@ -31,6 +31,10 @@ public  class GraphicalLevel extends JPanel
   {
     public void paint(Graphics g)
     {
+      score.setFont(new Font("Arial",Font.ITALIC,20));
+      score.setBounds(15, 475,500,25);
+
+      GraphicalLevel.this.add(score);
       Graphics2D g2 = (Graphics2D) g;
       int x ;
       int y ;
@@ -252,13 +256,9 @@ public  class GraphicalLevel extends JPanel
         {
           int b = (blockX - c) / 50 ;
           int a = (blockY / 50) + GraphicalLevel.this.level.getField().firstLineToDisplay();
-          // x = a + (51 * j);  = x - a + 50j
-          // y = 51 * (i - GraphicalLevel.this.level.getField().firstLineToDisplay()) ; = y + 50i - 50fltd
           level.getField().updateFinal(a,b);
-          // if(level.getField().updateFinal(a,b))
-          // {
-          //   // System.out.println(GraphicalLevel.this.level.getField());
-          // }
+          repaint();
+
           try
           {
             Thread.sleep(250);
@@ -268,7 +268,6 @@ public  class GraphicalLevel extends JPanel
             exp.printStackTrace();
           }
           level.setScore(level.getScore() + level.getField().scoreComputation(level.getField().nbBlockSuppr));
-          System.out.println("Score : " + level.getScore());
           GraphicalLevel.this.score.setText("Score : " + level.getScore());
           GraphicalLevel.this.setStars(level.getScore());
         }
@@ -303,9 +302,6 @@ public  class GraphicalLevel extends JPanel
           {
             System.out.println("Pas assez de fusées");
           }
-          // System.out.println("Fusées");
-          // System.out.println(blockY);
-          // System.out.println(blockX);
 
         }
         else if ((blockY > k && blockY < k + 50) && (blockX > 275 && blockX < 315)) //Ballons
@@ -428,7 +424,7 @@ public  class GraphicalLevel extends JPanel
       }
     });
 
-    JPanel levelMenuPane = new JPanel();
+    // JPanel levelMenuPane = new JPanel();
     JPanel northPane = new JPanel(new GridLayout(2,1));
     JPanel titleLevelPane = new JPanel();
     JPanel starsLevelPane = new JPanel();
@@ -444,25 +440,29 @@ public  class GraphicalLevel extends JPanel
     catch (Exception e) {
       System.out.println("image non trouvé");
     }
-    JPanel southPane = new JPanel(new GridLayout(1,2));
-    southPane.add(score);
-    southPane.add(levelMenuPane);
+    // score.setFont(new Font("Arial",Font.ITALIC,20));
+    // score.setBounds(15, 475,200,25);
+    // JPanel southPane = new JPanel(new FlowLayout());
+    // southPane.add(score);
+    // southPane.add(levelMenuPane);
     JLabel titleLevel = new JLabel("Niveau " + this.level.getNum());
     Font titleFont = new Font("Arial",Font.ITALIC,75);
     titleLevel.setFont(titleFont);
     titleLevelPane.add(titleLevel);
     Font font = new Font("Arial",Font.BOLD,20);
     this.back = new MenuItem("Retour", font);
-    levelMenuPane.add(back);
+    // levelMenuPane.add(back);
     northPane.add(titleLevelPane);
     northPane.add(starsLevelPane);
-    southPane.add(levelMenuPane);
+    // southPane.add(levelMenuPane);
     northPane.setBounds(50, 0,500,200);
     // fieldLevelPane.setBounds(75, 200,600,400);
     fieldLevelPane.setBounds(0, 200,600,400);
     this.add(northPane);
     this.add(fieldLevelPane);
-    this.add(southPane);
+    this.add(score);
+    // this.add(southPane);
+    // this.add(levelMenuPane);
 
   }
   public void save (int num)

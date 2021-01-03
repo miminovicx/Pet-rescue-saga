@@ -8,9 +8,6 @@ import pack.*;
 import java.util.Arrays;
 import java.io.File;
 import java.util.Scanner;
-import java.util.TimerTask;
-import java.util.Timer;
-import java.util.Date;
 import java.awt.image.BufferedImage;
 import java.awt.Image;
 import javax.imageio.ImageIO;
@@ -23,19 +20,24 @@ public  class GraphicalResult extends JPanel
 {
   MenuItem back;
   JLabel result;
-  public GraphicalResult (String result)
+  JLabel score;
+  JLabel bestScore;
+  JPanel mainPane;
+  public GraphicalResult (String result, Player player, int score, int bestScore)
   {
-    JPanel mainPane = new JPanel();
-    mainPane.setLayout(null);
+    this.mainPane = new JPanel();
+    this.mainPane.setLayout(null);
     this.setLayout(new BorderLayout());
     this.result = new JLabel(result);
+    this.score = new JLabel("Score : " + score);
+    this.bestScore = new JLabel("Meilleur score : " + bestScore);
     Font titleFont = new Font("Arial",Font.BOLD,75);
     this.result.setFont(titleFont);
     // this.result.setBounds(150,120,300, 110);
     // this.result.setHorizontalAlignment(JLabel.CENTER);
     // this.result.setVerticalAlignment(JLabel.CENTER);
-    if(result.equals("GAGNÉ")) this.wonPane(); //this.result.setForeground(new Color (0,150,0));
-    else this.lostPane();//this.result.setForeground(new Color (255,0,0));
+    if(result.equals("GAGNÉ")) this.wonPane(player,score,true); //this.result.setForeground(new Color (0,150,0));
+    else this.lostPane(player,score,true);//this.result.setForeground(new Color (255,0,0));
     Font font = new Font("Arial",Font.BOLD,40);
     this.back = new MenuItem("Retour", font);
     this.back.setBounds(160,440,280, 60);
@@ -43,29 +45,45 @@ public  class GraphicalResult extends JPanel
     this.back.setBorder(BorderFactory.createLineBorder(Color.BLACK, 2, true));
     this.back.setHorizontalAlignment(JLabel.CENTER);
     this.back.setVerticalAlignment(JLabel.CENTER);
-    mainPane.add(this.result);
-    mainPane.add(this.back);
+    // this.mainPane.add(this.result);
+    this.mainPane.add(this.back);
     this.add(mainPane, BorderLayout.CENTER);
   }
 
-  public void wonPane()
+  public void wonPane(Player player, int score, boolean b)
   {
-    this.result.setBounds(90,120,300, 110);
+    Font font = new Font("Arial",Font.ITALIC,15);
+    this.result.setBounds(150,30,300, 110);
     this.result.setHorizontalAlignment(JLabel.CENTER);
     this.result.setVerticalAlignment(JLabel.CENTER);
-    this.result.setForeground(new Color(0,150,0));
+    this.result.setForeground(Color.GREEN);
+    this.mainPane.add(this.result);
+
+    this.score.setFont(font);
+    this.score.setBounds(150,150,300, 110);
+    this.score.setHorizontalAlignment(JLabel.CENTER);
+    this.score.setVerticalAlignment(JLabel.CENTER);
+    this.score.setForeground(Color.BLACK);
+    this.mainPane.add(this.score);
+
+    this.bestScore.setFont(font);
+    this.bestScore.setBounds(150,180,300, 110);
+    this.bestScore.setHorizontalAlignment(JLabel.CENTER);
+    this.bestScore.setVerticalAlignment(JLabel.CENTER);
+    this.bestScore.setForeground(Color.BLACK);
+    this.mainPane.add(this.bestScore);
     //affichage du score du niveau
     //affichage du nombre d'etoiles
     //affichage du meilleur score du joueur pour ce niveau
     //si le niveau suivant était verouillé alors afficher 'niveau suivant déverouillé'
   }
 
-  public void lostPane()
+  public void lostPane( Player player, int score, boolean b)
   {
-    this.result.setBounds(90,120,300, 110);
+    this.result.setBounds(150,30,300, 110);
     this.result.setHorizontalAlignment(JLabel.CENTER);
     this.result.setVerticalAlignment(JLabel.CENTER);
-    this.result.setForeground(new Color (255,0,0));
+    this.result.setForeground(Color.RED);
     //affichage du score et de l'objectif
     //affichage du nb d'animaux sauvés et du nb d'animaux qu'il fallait sauver
   }

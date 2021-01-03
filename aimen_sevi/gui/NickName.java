@@ -62,16 +62,11 @@ public class NickName extends JPanel
     this.add(nickName);
     this.add(next);
     this.add(back);
-    // mainPane.add(this.nickName);
-    // mainPane.add(this.next);
-    // mainPane.add(this.back);
-    //this.add(mainPane, BorderLayout.CENTER);
     next.addMouseListener(new MouseAdapter()
     {
       public void mouseClicked(MouseEvent e)
       {
-        // GraphicalEnivronnement.this.levelsPane = new GraphicalEnivronnement(NickName.this.nickName.getText());
-        System.out.println(NickName.this.nickName.getText());
+
       }
       public void mouseEntered(MouseEvent e)
       {
