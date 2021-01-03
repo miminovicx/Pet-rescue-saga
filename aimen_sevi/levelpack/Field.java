@@ -15,7 +15,7 @@ public class Field implements java.io.Serializable
   private FieldElement [][] elements;
   public static int nbBlockSuppr;
   public static int animalsSaved = 0;
-  private int intervalle = 8;  //represente le nombre de lignes a afficher
+  private int interval;  //represente le nombre de lignes a afficher
 
 /**
 *Méthode pour obtenir la largeur du plateau
@@ -43,12 +43,12 @@ public class Field implements java.io.Serializable
   }
 
   /**
-   * Méthode pour obtenir la valeur de l'intervalle
-   * @return la valeur de l'intervalle
+   * Méthode pour obtenir la valeur de l'interval
+   * @return la valeur de l'interval
    */
-  public int getIntervalle()
+  public int getinterval()
   {
-    return this.intervalle;
+    return this.interval;
   }
   /**
    * Met à jour la longueur du plateau
@@ -84,10 +84,11 @@ public class Field implements java.io.Serializable
    * @param  width  hauteur
    * @param  height largeur
    */
-  public Field(int width, int height)
+  public Field(int width, int height, int interval)
   {
     this.width = width;
     this.height = height;
+    this.interval = interval;
     this.elements = new FieldElement[width][height];
   }
   /**
@@ -232,7 +233,7 @@ public class Field implements java.io.Serializable
     }
           //SimpleBlock
 
-      if( x + 1 < (this.firstLineToDisplay() + this.intervalle))   //les conditions sont ici pour ne pas sortir des limites du tableau
+      if( x + 1 < (this.firstLineToDisplay() + this.interval))   //les conditions sont ici pour ne pas sortir des limites du tableau
       {
         if( this.elements[x][y].getColor() == this.elements[x + 1][y].getColor() )
         {
@@ -286,7 +287,7 @@ public class Field implements java.io.Serializable
         int col = this.elements[x][y].getColor();
         removeElement(x,y);
         nbBlockSuppr++;
-        if( (x+1 < (this.firstLineToDisplay() + this.intervalle) ) && (col == this.elements[x+1][y].getColor()) )
+        if( (x+1 < (this.firstLineToDisplay() + this.interval) ) && (col == this.elements[x+1][y].getColor()) )
         {
           move(x+1,y,true);
         }
@@ -332,7 +333,7 @@ public class Field implements java.io.Serializable
    */
   public void simplifySquared(int x,int y)
   {
-    if( (x+1 < (this.firstLineToDisplay() + this.intervalle)) && (this.elements[x+1][y] instanceof SquaredBlock ))
+    if( (x+1 < (this.firstLineToDisplay() + this.interval)) && (this.elements[x+1][y] instanceof SquaredBlock ))
     {
       this.removeElement(x+1,y);
     }
@@ -379,6 +380,7 @@ public class Field implements java.io.Serializable
    */
   public boolean saveAnimal()
   {
+    boolean b = false;
     for(int j=0; j < height ; j++)
     {
       if(this.elements[width - 1][j].getColor() == -1)
@@ -388,10 +390,10 @@ public class Field implements java.io.Serializable
         this.elements[width-1][j] = new Block(width-1,j,0);
         animalsSaved ++;
         // System.out.println("\tANIMAL SAUVE ! \n");
-        return true;
+        b = true;
       }
     }
-    return false;
+    return b;
   }
   /**
    * Cette méthode permet de calculer le score à partir du nombre de blocs supprimmés
@@ -418,7 +420,7 @@ public class Field implements java.io.Serializable
     }
     res += "\n" ;
     int min = this.firstLineToDisplay();
-    for(int i = min; i < (min + this.intervalle);i++)
+    for(int i = min; i < (min + this.interval);i++)
     {
         res += " " + String.valueOf(i) + " ";
         for(int j=0; j<this.height ; j++)
@@ -440,7 +442,7 @@ public class Field implements java.io.Serializable
   {
     for(int i=0; i < this.height; i++)
     {
-      if(this.elements[a][i].getColor() != 0 || this.elements[a][i].getColor() != -2)
+      if(this.elements[a][i].getColor() != 0 && this.elements[a][i].getColor() != -2)
       {
         return false;
       }
@@ -456,7 +458,7 @@ public class Field implements java.io.Serializable
   {
     int i = 0;
     boolean empty = true;
-    while(i < this.width - intervalle && this.lineIsEmpty(i))
+    while(i < this.width - interval && this.lineIsEmpty(i))
     {
       i++;
     }
@@ -465,7 +467,7 @@ public class Field implements java.io.Serializable
 
   public void useRocket(int a)
   {
-    for(int i = this.firstLineToDisplay() ; i < (this.firstLineToDisplay() + this.intervalle) ; i ++)
+    for(int i = this.firstLineToDisplay() ; i < (this.firstLineToDisplay() + this.interval) ; i ++)
     {
       removeElement(i,a);
     }
@@ -487,7 +489,7 @@ public class Field implements java.io.Serializable
   public void useBallon(int a, int b)
   {
     int color = this.elements[a][b].getColor();
-    for(int i = this.firstLineToDisplay() ; i < (this.firstLineToDisplay() + this.intervalle) ; i ++)
+    for(int i = this.firstLineToDisplay() ; i < (this.firstLineToDisplay() + this.interval) ; i ++)
     {
       for(int j = 0 ; j < this.height ; j ++)
       {

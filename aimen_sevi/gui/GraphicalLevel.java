@@ -34,11 +34,12 @@ public  class GraphicalLevel extends JPanel
       Graphics2D g2 = (Graphics2D) g;
       int x ;
       int y ;
-      for (int i = GraphicalLevel.this.level.getField().firstLineToDisplay(); i < GraphicalLevel.this.level.getField().firstLineToDisplay() + GraphicalLevel.this.level.getField().getIntervalle(); i++)
+      int a = (600 - GraphicalLevel.this.level.getField().getHeight()*51)/2;
+      for (int i = GraphicalLevel.this.level.getField().firstLineToDisplay(); i < GraphicalLevel.this.level.getField().firstLineToDisplay() + GraphicalLevel.this.level.getField().getinterval(); i++)
       {
         for (int j = 0; j < GraphicalLevel.this.level.getField().getHeight(); j++)
         {
-          x = 51 * j;
+          x = a + (51 * j);
           y = 51 * i;
           switch(GraphicalLevel.this.level.getField().getElements()[i][j].getColor())
           {
@@ -168,20 +169,23 @@ public  class GraphicalLevel extends JPanel
     this.level = Level.use("../Data/Levels/level_" + numero + ".ser");
     this.score.setText("Score : " + level.getScore());
     this.setLayout(/*new BorderLayout()*/null);
+    int c = (600 - GraphicalLevel.this.level.getField().getHeight()*51)/2;
+    System.out.println("c = " + c);
     this.fieldLevelPane.addMouseListener(new MouseAdapter()
     {
       public void mouseClicked(MouseEvent e)
       {
         int blockX = e.getX();
         int blockY = e.getY();
-        if ((blockY < level.getField().getWidth() * 51) && (blockX < level.getField().getHeight() *51))
+        // System.out.println()
+        if ((blockY < level.getField().getWidth() * 51) && (blockX > c) && (blockX < level.getField().getHeight() *51 + c) )
         {
-
-          int b = blockX / 50;
+          System.out.println("Test dans field ?");
+          int b = (blockX - c) / 50 ;
           int a = blockY / 50;
           if(level.getField().updateFinal(a,b))
           {
-            System.out.println("Test");
+            // System.out.println("Test");
           }
           try
           {
@@ -280,7 +284,7 @@ public  class GraphicalLevel extends JPanel
         {
           if(player.getBoost()[1] > 0)
           {
-            int a = 1; //test
+            int a ;
             do
             {
               a = Integer.parseInt(JOptionPane.showInputDialog(null, "y de la case :"));
@@ -389,7 +393,8 @@ public  class GraphicalLevel extends JPanel
     northPane.add(starsLevelPane);
     southPane.add(levelMenuPane);
     northPane.setBounds(50, 0,500,200);
-    fieldLevelPane.setBounds(600/2 - 100, 200,400,400);
+    // fieldLevelPane.setBounds(75, 200,600,400);
+    fieldLevelPane.setBounds(0, 200,600,400);
     this.add(northPane);
     this.add(fieldLevelPane);
 

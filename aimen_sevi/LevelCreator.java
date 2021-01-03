@@ -12,7 +12,7 @@ import java.util.TimerTask;
 import java.util.Timer;
 import gui.*;
 
-public class LevelGenerator
+public class LevelCreator
 {
   // public static Level createLevel()
   // {
@@ -51,6 +51,8 @@ public class LevelGenerator
   // }
   public static void main(String[] args)
   {
+    Field field1 = new Field(8,8,7);
+
     FieldElement element0  = new Animal(0,0);       //creation des elements du field
     FieldElement element1  = new Block(0,1,1);
     FieldElement element2  = new Animal(0,2);
@@ -60,37 +62,37 @@ public class LevelGenerator
     FieldElement element6  = new Animal(0,6);
     FieldElement element7  = new Animal(0,7);
     FieldElement element8  = new Block(1,0,2);
-    FieldElement element9  = new WoodBlock(1,1,-2);
-    FieldElement element10 = new Block(1,2,-2);
-    FieldElement element11 = new Block(1,3,-2);
-    FieldElement element12 = new Block(1,4,-2);
-    FieldElement element13 = new Block(1,5,-2);
-    FieldElement element14 = new Block(1,6,-2);
-    FieldElement element15 = new Block(1,7,-2);
-    FieldElement element16 = new Block(2,0,-2);
-    FieldElement element17 = new Block(2,1,-2);
-    FieldElement element18 = new Block(2,2,-2);
-    FieldElement element19 = new Block(2,3,-2);
-    FieldElement element20 = new Block(2,4,-2);
-    FieldElement element21 = new Block(2,5,-2);
-    FieldElement element22 = new Block(2,6,-2);
-    FieldElement element23 = new Block(2,7,-2);
-    FieldElement element24 = new Block(3,0,-2);
-    FieldElement element25 = new Block(3,1,-2);
-    FieldElement element26 = new Block(3,2,-2);
-    FieldElement element27 = new Block(3,3,-2);
-    FieldElement element28 = new Block(3,4,-2);
-    FieldElement element29 = new Block(3,5,-2);
-    FieldElement element30 = new Block(3,6,-2);
-    FieldElement element31 = new Block(3,7,-2);
-    FieldElement element32 = new Block(4,0,-2);
-    FieldElement element33 = new Block(4,1,-2);
-    FieldElement element34 = new Block(4,2,-2);
-    FieldElement element35 = new Block(4,3,-2);
-    FieldElement element36 = new Block(4,4,-2);
-    FieldElement element37 = new Block(4,5,-2);
-    FieldElement element38 = new Block(4,6,-2);
-    FieldElement element39 = new Block(4,7,-2);
+    FieldElement element9  = new Block(1,1,3);
+    FieldElement element10 = new Block(1,2,2);
+    FieldElement element11 = new Block(1,3,2);
+    FieldElement element12 = new Block(1,4,2);
+    FieldElement element13 = new Block(1,5,2);
+    FieldElement element14 = new Block(1,6,2);
+    FieldElement element15 = new Block(1,7,2);
+    FieldElement element16 = new Block(2,0,2);
+    FieldElement element17 = new Block(2,1,2);
+    FieldElement element18 = new Block(2,2,2);
+    FieldElement element19 = new Block(2,3,2);
+    FieldElement element20 = new Block(2,4,2);
+    FieldElement element21 = new Block(2,5,2);
+    FieldElement element22 = new Block(2,6,2);
+    FieldElement element23 = new Block(2,7,2);
+    FieldElement element24 = new Block(3,0,2);
+    FieldElement element25 = new Block(3,1,2);
+    FieldElement element26 = new Block(3,2,2);
+    FieldElement element27 = new Block(3,3,2);
+    FieldElement element28 = new Block(3,4,2);
+    FieldElement element29 = new Block(3,5,2);
+    FieldElement element30 = new Block(3,6,2);
+    FieldElement element31 = new Block(3,7,2);
+    FieldElement element32 = new Block(4,0,2);
+    FieldElement element33 = new Block(4,1,2);
+    FieldElement element34 = new Block(4,2,2);
+    FieldElement element35 = new Block(4,3,2);
+    FieldElement element36 = new Block(4,4,2);
+    FieldElement element37 = new Block(4,5,2);
+    FieldElement element38 = new Block(4,6,2);
+    FieldElement element39 = new Block(4,7,2);
     FieldElement element40 = new Block(5,0,1);
     FieldElement element41 = new Block(5,1,1);
     FieldElement element42 = new Block(5,2,2);
@@ -98,24 +100,23 @@ public class LevelGenerator
     FieldElement element44 = new Block(5,4,3);
     FieldElement element45 = new Block(5,5,2);
     FieldElement element46 = new Block(5,6,2);
-    FieldElement element47 = new Block(5,7,-2);
-    FieldElement element48 = new Block(6,0,-2);
-    FieldElement element49 = new Block(6,1,-2);
-    FieldElement element50 = new Block(6,2,-2);
-    FieldElement element51 = new Block(6,3,-2);
-    FieldElement element52 = new Block(6,4,-2);
-    FieldElement element53 = new Block(6,5,-2);
-    FieldElement element54 = new Block(6,6,-2);
-    FieldElement element55 = new Block(6,7,-2);
-    FieldElement element56 = new Block(7,0,-2);
-    FieldElement element57 = new Block(7,1,-2);
-    FieldElement element58 = new Block(7,2,-2);
-    FieldElement element59 = new Block(7,3,-2);
-    FieldElement element60 = new Block(7,4,-2);
-    FieldElement element61 = new Block(7,5,-2);
-    FieldElement element62 = new Block(7,6,-2);
-    FieldElement element63 = new Block(7,7,-2);
-    Field field1 = new Field(8,8);
+    FieldElement element47 = new Block(5,7,2);
+    FieldElement element48 = new Block(6,0,2);
+    FieldElement element49 = new Block(6,1,2);
+    FieldElement element50 = new Block(6,2,2);
+    FieldElement element51 = new Block(6,3,2);
+    FieldElement element52 = new Block(6,4,2);
+    FieldElement element53 = new Block(6,5,2);
+    FieldElement element54 = new Block(6,6,2);
+    FieldElement element55 = new Block(6,7,2);
+    FieldElement element56 = new Block(7,0,2);
+    FieldElement element57 = new Block(7,1,2);
+    FieldElement element58 = new Block(7,2,2);
+    FieldElement element59 = new Block(7,3,2);
+    FieldElement element60 = new Block(7,4,2);
+    FieldElement element61 = new Block(7,5,2);
+    FieldElement element62 = new Block(7,6,2);
+    FieldElement element63 = new Block(7,7,2);
     field1.putElement(element0);             //ajout des elements au tableau
     field1.putElement(element1);
     field1.putElement(element2);
@@ -181,9 +182,9 @@ public class LevelGenerator
     field1.putElement(element61);
     field1.putElement(element62);
     field1.putElement(element63);
-    int[] paliers = {0,300,400};
+    int[] paliers = {100,300,600};
 
-    FieldElement elementa  = new Block(0,0,-2);       //creation des elements du field
+    FieldElement elementa  = new Block(0,0,2);       //creation des elements du field
     FieldElement elementb  = new Block(0,1,2);
     FieldElement elementc  = new Animal(0,2);
     FieldElement elementd  = new Block(1,0,2);
@@ -193,7 +194,7 @@ public class LevelGenerator
     FieldElement elementh  = new Block(2,1,2);
     FieldElement elementi  = new Block(2,2,2);
 
-    Field field2 = new Field(3,3);
+    Field field2 = new Field(3,3,3);
     field2.putElement(elementa);             //ajout des elements au tableau
     field2.putElement(elementb);
     field2.putElement(elementc);
@@ -204,10 +205,10 @@ public class LevelGenerator
     field2.putElement(elementh);
     field2.putElement(elementi);
 
-     Level level1 = new Level(0, field1, paliers, 1);
+     Level level1 = new Level(field1, paliers, 5);
     level1.save();
 
-    Level level2 = new Level(0, field2, paliers, 1);
+    Level level2 = new Level(field2, paliers, 1);
     level2.save();
   }
 }

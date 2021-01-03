@@ -13,33 +13,25 @@ public class Level implements java.io.Serializable
   private static final long serialVersionUID = 1L;
   private static int id=1;
   private final int num;
-  private int stars;
-  private int score;
-  private int lastScore;
-  private  Field field; //
-  private transient Field fieldCopy;
-  private boolean succeded = true;
+  private  Field field;
   private int[] palier;
+  private int score;
   private int animalsToRescue;
   static Scanner sc;
-  private boolean unlocked;
-
 
   /**
   * Consructeur d'un niveau
   * @method Level
-  * @param  stars           nobre d'étoiles (entre 0 et 3)
-  * @param  score           score du niveau
   * @param  field           plateau de jeu du niveau
   * @param  palier          tableau de trois entiers représentant chacun un objectif à atteindre pour avoir des étoiles
   * @param  animalsToRescue le nombre d'animaux qui doivent être sauvé pour réussir le niveau
   */
-  public Level(int score, Field field, int[] palier, int animalsToRescue)
+  public Level(Field field, int[] palier, int animalsToRescue)
   {
     this.num = id;
-    this.score = score;
     this.field = field;
     this.palier = palier;
+    this.score = 0;
     this.animalsToRescue = animalsToRescue;
     this.sc = new Scanner(System.in);
     id++;
@@ -62,17 +54,6 @@ public class Level implements java.io.Serializable
   public Field getField()
   {
     return this.field;
-  }
-
-
-  public int getStars()
-  {
-    return (this.stars);
-  }
-
-  public void setStars(int stars)
-  {
-    this.stars = stars;
   }
 
   public int[] getPalier()
@@ -158,9 +139,9 @@ public class Level implements java.io.Serializable
     do {
       System.out.format("Veuillez choisir une colonne entre 0 et %d : ",this.field.getHeight() - 1);
       a = sc.nextInt();
-      System.out.format("Veuillez choisir une ligne entre %d et %d : ", this.field.firstLineToDisplay() , ( this.field.firstLineToDisplay() + this.field.getIntervalle() - 1  ) );
+      System.out.format("Veuillez choisir une ligne entre %d et %d : ", this.field.firstLineToDisplay() , ( this.field.firstLineToDisplay() + this.field.getinterval() - 1  ) );
       b = sc.nextInt();
-    } while ((b < this.field.firstLineToDisplay() ) || (b > (this.field.firstLineToDisplay() + this.field.getIntervalle() -1) ) || (a < 0) || (a > this.field.getHeight() - 1));
+    } while ((b < this.field.firstLineToDisplay() ) || (b > (this.field.firstLineToDisplay() + this.field.getinterval() -1) ) || (a < 0) || (a > this.field.getHeight() - 1));
       System.out.println(""); //laisse une ligne vide
     coordonnees[0] = b;
     coordonnees[1] = a;
@@ -271,7 +252,7 @@ public class Level implements java.io.Serializable
   public boolean Lost1()     //end of game because there's no delete possible
   {
     boolean found = false;
-    for(int i = this.field.firstLineToDisplay(); i < this.field.firstLineToDisplay() + this.field.getIntervalle() && found!=true;i++)
+    for(int i = this.field.firstLineToDisplay(); i < this.field.firstLineToDisplay() + this.field.getinterval() && found!=true;i++)
     {
       for(int j = 0; j<this.field.getHeight() && found!=true;j++)
       {
@@ -391,7 +372,7 @@ public class Level implements java.io.Serializable
               do {
               System.out.print("Sur quelle ligne voulez vous l'utiliser ? \uD83E\uDE83");
               a = sc.nextInt();
-            } while (a < this.field.firstLineToDisplay() - 1 || a > this.field.firstLineToDisplay() + this.field.getIntervalle() -1);
+            } while (a < this.field.firstLineToDisplay() - 1 || a > this.field.firstLineToDisplay() + this.field.getinterval() -1);
               player.removeBoomerang();
               this.field.useBoomerang(a);
           }
@@ -413,7 +394,7 @@ public class Level implements java.io.Serializable
             a = sc.nextInt();
             System.out.print("Veuillez choisir une ligne : ");
             b = sc.nextInt();
-          } while ( (a < 0) || (a > this.field.getHeight()) || (b < this.field.firstLineToDisplay() ) || (b > (this.field.firstLineToDisplay() + this.field.getIntervalle() -1) ));
+          } while ( (a < 0) || (a > this.field.getHeight()) || (b < this.field.firstLineToDisplay() ) || (b > (this.field.firstLineToDisplay() + this.field.getinterval() -1) ));
             player.removePickaxe();
             this.field.usePickaxe(b,a);
             // System.out.println(this.field);
@@ -438,7 +419,7 @@ public class Level implements java.io.Serializable
             a = sc.nextInt();
             System.out.print("Veuillez entrer une ligne : ");
             b = sc.nextInt();
-          } while ( (a < 0) || (a > this.field.getHeight()) || (b < this.field.firstLineToDisplay() ) || (b > (this.field.firstLineToDisplay() + this.field.getIntervalle() -1) ));
+          } while ( (a < 0) || (a > this.field.getHeight()) || (b < this.field.firstLineToDisplay() ) || (b > (this.field.firstLineToDisplay() + this.field.getinterval() -1) ));
             player.removeBallons();
             this.field.useBallon(b,a);
           }
@@ -462,11 +443,11 @@ public class Level implements java.io.Serializable
       {
         s = 1;
       }
-      else if(score > this.palier[1])
+      if(score > this.palier[1])
       {
         s = 2;
       }
-      else if(score > this.palier[2])
+      if(score > this.palier[2])
       {
         s = 3;
       }
@@ -490,7 +471,7 @@ public class Level implements java.io.Serializable
       int b;
       do {
         a = (int)(Math.random() * (this.field.getHeight()));
-        b = this.field.firstLineToDisplay() + (int)(Math.random() * ((this.field.getIntervalle())));
+        b = this.field.firstLineToDisplay() + (int)(Math.random() * ((this.field.getinterval())));
         if(this.field.deletable(a,b))
         {
           System.out.println("Suppression du bloc : \nColonne : " + b + "\nLigne : " + a + "\n");
