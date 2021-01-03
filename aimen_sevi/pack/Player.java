@@ -15,6 +15,36 @@ public class Player implements java.io.Serializable
 
   private transient Scanner scan;
 
+  /**
+  * Constructeur de Player
+  * @param nickName   pseudo du joueur
+  */
+  public Player(String nickName)
+  {
+    this.nickName = nickName;
+    this.scan = new Scanner(System.in);
+    this.boost = new int[4];
+    this.boost[0] = 3; //pour les fusées càd les suppression de colonnes
+    this.boost[1] = 3; //pour les ressors qui suppr les lignes
+    this.boost[2] = 3; //pour les marteaux qui suppr un seul bloc
+    this.boost[3] = 3; //ballons
+
+    this.unlocked = new boolean[5];
+    this.unlocked[0] = true;
+    this.unlocked[1] = false;
+    this.unlocked[2] = false;
+    this.unlocked[3] = false;
+    this.unlocked[4] = false;
+
+    this.bestScore = new int[5];
+    this.bestScore[0] = 0;
+    this.bestScore[1] = 0;
+    this.bestScore[2] = 0;
+    this.bestScore[3] = 0;
+    this.bestScore[4] = 0;
+  }
+
+
 /**
  * Cette methode permet de recuperer le pseudo du joueur
  * @return le pseudo du joueur
@@ -43,47 +73,65 @@ public class Player implements java.io.Serializable
     this.nickName = nickName;
   }
 
-
+  /**
+   * Cette méthode permet de recuperer le tableau de boosters
+   * @return un tableau d'entiers
+   */
   public int[] getBoost()
   {
     return this.boost;
   }
 
+  /**
+   * Cette méthode permet d'initialiser le nombre de boosters
+   * @param a la quantité de boosters
+   * @param b le type de booster
+   */
   public void setBoost(int a, int b)
   {
     this.boost[b] = a;
   }
 
-
-/**
- * Constructeur de Player
- * @param nickName   pseudo du joueur
- * @param lifePoints nombre de vies du joueur
- */
-  public Player(String nickName)
+  /**
+   * Cette méthode permet de recuperer le tableau des etats des niveaux des joueurs
+   * @return un tableau de booleens
+   */
+  public boolean[] getUnlocked()
   {
-    this.nickName = nickName;
-    this.scan = new Scanner(System.in);
-    this.boost = new int[4];
-    this.boost[0] = 3; //pour les fusées càd les suppression de colonnes
-    this.boost[1] = 3; //pour les ressors qui suppr les lignes
-    this.boost[2] = 3; //pour les marteaux qui suppr un seul bloc
-    this.boost[3] = 3; //ballons
-
-    this.unlocked = new boolean[5];
-    this.unlocked[0] = true;
-    this.unlocked[1] = false;
-    this.unlocked[2] = false;
-    this.unlocked[3] = false;
-    this.unlocked[4] = false;
-
-    this.bestScore = new int[5];
-    this.bestScore[0] = 0;
-    this.bestScore[1] = 0;
-    this.bestScore[2] = 0;
-    this.bestScore[3] = 0;
-    this.bestScore[4] = 0;
+    return this.unlocked;
   }
+
+  /**
+   * Cette méthode permet de deverouiller un niveau
+   * @param a le niveau à deverouiller
+   */
+  public void setUnlocked(int a)
+  {
+    if(a >= 0 && a < 5)
+    {
+      this.unlocked[a] = true;
+    }
+  }
+
+  /**
+   * Cette méthode permet de recuperer le tableau des meilleurs scores du joueur
+   * @return un tableau d'entiers
+   */
+  public int[] getBestScore()
+  {
+    return this.bestScore;
+  }
+
+  /**
+   * Cette méthode permet de mettre à jour le best score
+   * @param a le score
+   * @param b le niveau
+   */
+  public void setBestScore(int a, int b)
+  {
+    this.bestScore[b] = a;
+  }
+
 
   /**
    * Cette methode permet d'afficher le joueur
@@ -146,7 +194,9 @@ public class Player implements java.io.Serializable
     return (player);
   }
 
-
+  /**
+   * Cette méthode permet d'afficher les boosters
+   */
   public void displayBoosters()
   {
     System.out.println("1- Fusées    \uD83D\uDE80 : " + this.boost[0]);
@@ -156,46 +206,36 @@ public class Player implements java.io.Serializable
     System.out.println("0- Aucun \n");
   }
 
+  /**
+   * Cette methode retire une fusée au joueur
+   */
   public void removeRocket()
   {
     this.boost[0]--;
   }
 
+  /**
+   * Cette methode retire un boomerang au joueur
+   */
   public void removeBoomerang()
   {
     this.boost[1]--;
   }
 
+  /**
+   * Cette methode retire un marteau au joueur
+   */
   public void removePickaxe()
   {
     this.boost[2]--;
   }
 
+  /**
+   * Cette methode retire un ballon au joueur
+   */
   public void removeBallons()
   {
     this.boost[3]--;
   }
 
-  public boolean[] getUnlocked()
-  {
-    return this.unlocked;
-  }
-
-  public void setUnlocked(int a)
-  {
-    if(a >= 0 && a < 5)
-    {
-      this.unlocked[a] = true;
-    }
-  }
-
-  public int[] getBestScore()
-  {
-    return this.bestScore;
-  }
-
-  public void setBestScore(int a, int b)
-  {
-    this.bestScore[b] = a;
-  }
 }

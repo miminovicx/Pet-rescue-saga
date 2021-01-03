@@ -35,7 +35,7 @@ public  class GraphicalLevel extends JPanel
       int x ;
       int y ;
       int a = (600 - GraphicalLevel.this.level.getField().getHeight()*51)/2;
-      for (int i = GraphicalLevel.this.level.getField().firstLineToDisplay(); i < GraphicalLevel.this.level.getField().firstLineToDisplay() + GraphicalLevel.this.level.getField().getinterval(); i++)
+      for (int i = GraphicalLevel.this.level.getField().firstLineToDisplay(); i < GraphicalLevel.this.level.getField().firstLineToDisplay() + GraphicalLevel.this.level.getField().getInterval(); i++)
       {
         for (int j = 0; j < GraphicalLevel.this.level.getField().getHeight(); j++)
         {
@@ -58,16 +58,81 @@ public  class GraphicalLevel extends JPanel
             break;
             //g2.setColor(Color.BLACK);
             case -1:
-            try
+            // g2.fillRect(x,y,50,50);
+            g2.setColor(new Color(238,238,238));
+            if(GraphicalLevel.this.level.getField().getElements()[i][j].getEmoji() == 1)
             {
-              String path = "../ressources/images/chien.png";
-              InputStream is = new BufferedInputStream(new FileInputStream(path));
-              Image image = ImageIO.read(is);
-              g2.drawImage(image,x,y,null);
+              try
+              {
+                String path = "../ressources/images/chien.png";
+                InputStream is = new BufferedInputStream(new FileInputStream(path));
+                Image image = ImageIO.read(is);
+                g2.drawImage(image,x,y,null);
+              }
+              catch (Exception l_e)
+              {
+                System.out.println("fichier introuvable");
+              }
             }
-            catch (Exception l_e)
+            else if(GraphicalLevel.this.level.getField().getElements()[i][j].getEmoji() == 2)
             {
-              System.out.println("fichier introuvable");
+              try
+              {
+                String path = "../ressources/images/Poule.png";
+                InputStream is = new BufferedInputStream(new FileInputStream(path));
+                Image image = ImageIO.read(is);
+                // g2.fillRect(x,y,50,50);
+                g2.drawImage(image,x,y,null);
+              }
+              catch (Exception l_e)
+              {
+                System.out.println("fichier introuvable");
+              }
+            }
+            else if(GraphicalLevel.this.level.getField().getElements()[i][j].getEmoji() == 3)
+            {
+              try
+              {
+                String path = "../ressources/images/Cochon.png";
+                InputStream is = new BufferedInputStream(new FileInputStream(path));
+                Image image = ImageIO.read(is);
+                // g2.fillRect(x,y,50,50);
+                g2.drawImage(image,x,y,null);
+              }
+              catch (Exception l_e)
+              {
+                System.out.println("fichier introuvable");
+              }
+            }
+            else if(GraphicalLevel.this.level.getField().getElements()[i][j].getEmoji() == 4)
+            {
+              try
+              {
+                String path = "../ressources/images/Mouton.png";
+                InputStream is = new BufferedInputStream(new FileInputStream(path));
+                Image image = ImageIO.read(is);
+                // g2.fillRect(x,y,50,50);
+                g2.drawImage(image,x,y,null);
+              }
+              catch (Exception l_e)
+              {
+                System.out.println("fichier introuvable");
+              }
+            }
+            else if(GraphicalLevel.this.level.getField().getElements()[i][j].getEmoji() == 5) //on verra
+            {
+              try
+              {
+                String path = "../ressources/images/chien.png"; //a changer
+                InputStream is = new BufferedInputStream(new FileInputStream(path));
+                Image image = ImageIO.read(is);
+                // g2.fillRect(x,y,50,50);
+                g2.drawImage(image,x,y,null);
+              }
+              catch (Exception l_e)
+              {
+                System.out.println("fichier introuvable");
+              }
             }
             break;
             case 0:
@@ -130,29 +195,36 @@ public  class GraphicalLevel extends JPanel
           {
             g2.fillRect(x,y,50,50);
           }
-          if (i == GraphicalLevel.this.level.getField().getWidth() - 1 && j == GraphicalLevel.this.level.getField().getHeight() - 1)
+          // if (i == GraphicalLevel.this.level.getField().getWidth() - 1 && j == GraphicalLevel.this.level.getField().getHeight() - 1)
+          if(i == GraphicalLevel.this.level.getField().firstLineToDisplay() + GraphicalLevel.this.level.getField().getInterval() - 1 && j == GraphicalLevel.this.level.getField().getHeight()  - 1)
           {
+            int k = GraphicalLevel.this.level.getField().getInterval() * 51;
             try
             {
               String ballonPath = "../ressources/images/ballon.png";
               InputStream ballonStream = new BufferedInputStream(new FileInputStream(ballonPath));
               Image ballon = ImageIO.read(ballonStream);
-              g2.drawImage(ballon,x - 45,y + 55,null);
+              // g2.drawImage(ballon,x - 45,y + 55,null);
+              g2.drawImage(ballon, 275, k + 10 ,null);
 
               String springPath = "../ressources/images/spring.png";
               InputStream springStream = new BufferedInputStream(new FileInputStream(springPath));
               Image spring = ImageIO.read(springStream);
-              g2.drawImage(spring,x + 10,y + 55,null);
+              // g2.drawImage(spring,x + 10,y + 55,null);
+              g2.drawImage(spring, 330 , k + 10 ,null);
+
 
               String rocketPath = "../ressources/images/rocket.png";
               InputStream rocketStream = new BufferedInputStream(new FileInputStream(rocketPath));
               Image rocket = ImageIO.read(rocketStream);
-              g2.drawImage(rocket,x - 100,y + 55,null);
+              // g2.drawImage(rocket,x - 100,y + 55,null);
+              g2.drawImage(rocket, 220, k + 10 ,null);
 
               String pickaxePath = "../ressources/images/pickaxe.png";
               InputStream pickaxeStream = new BufferedInputStream(new FileInputStream(pickaxePath));
               Image pickaxe = ImageIO.read(pickaxeStream);
-              g2.drawImage(pickaxe,x - 45,y + 115,null);
+              // g2.drawImage(pickaxe,x - 45,y + 115,null);
+              g2.drawImage(pickaxe, 275, k + 60 ,null);
             }
             catch (Exception ballon_e)
             {
@@ -170,25 +242,23 @@ public  class GraphicalLevel extends JPanel
     this.score.setText("Score : " + level.getScore());
     this.setLayout(/*new BorderLayout()*/null);
     int c = (600 - GraphicalLevel.this.level.getField().getHeight()*51)/2;
-    System.out.println("c = " + c);
     this.fieldLevelPane.addMouseListener(new MouseAdapter()
     {
       public void mouseClicked(MouseEvent e)
       {
         int blockX = e.getX();
         int blockY = e.getY();
-        // System.out.println()
-        if ((blockY < level.getField().getWidth() * 51) && (blockX > c) && (blockX < level.getField().getHeight() *51 + c) )
+        if ((blockY < GraphicalLevel.this.level.getField().getInterval() * 51) && (blockX > c) && (blockX < level.getField().getHeight() *51 + c) )
         {
-          // System.out.println("Test dans field ?");
           int b = (blockX - c) / 50 ;
           int a = (blockY / 50) + GraphicalLevel.this.level.getField().firstLineToDisplay();
           // x = a + (51 * j);  = x - a + 50j
           // y = 51 * (i - GraphicalLevel.this.level.getField().firstLineToDisplay()) ; = y + 50i - 50fltd
-          if(level.getField().updateFinal(a,b))
-          {
-            // System.out.println("Test");
-          }
+          level.getField().updateFinal(a,b);
+          // if(level.getField().updateFinal(a,b))
+          // {
+          //   // System.out.println(GraphicalLevel.this.level.getField());
+          // }
           try
           {
             Thread.sleep(250);
@@ -202,19 +272,15 @@ public  class GraphicalLevel extends JPanel
           GraphicalLevel.this.score.setText("Score : " + level.getScore());
           GraphicalLevel.this.setStars(level.getScore());
         }
-
-        if ((blockY > (level.getField().getWidth()) * 51 && blockY < (level.getField().getWidth()) * 51 + 50) && (blockX > 0 && blockX < 42)) //fusée
+        int k = GraphicalLevel.this.level.getField().getInterval() * 51 + 10;
+        if ((blockY > k && blockY < k + 50) && (blockX > 220   && blockX < 262))
         {
-          // player.setBoost(0,0);
-
-          // System.out.println(player.getNickName());
           if(player.getBoost()[0] > 0)
           {
-            //tu recuperes la colonne sur laquelle tu veux qu'il utilise que j'appelerai a
-            int a = 0; //test
+            int a;
             do
             {
-              a = Integer.parseInt(JOptionPane.showInputDialog(null, "Choisissez une colonne  entre 1 et " + level.getField().getWidth() + ":")) - 1;
+              a = Integer.parseInt(JOptionPane.showInputDialog(null, "Veuillez choisir une colonne entre 1 et " + level.getField().getWidth() + ":")) - 1;
             }
             while (a < 0 || a >= level.getField().getWidth());
             player.removeRocket();
@@ -223,8 +289,6 @@ public  class GraphicalLevel extends JPanel
             level.setScore(level.getScore() + level.getField().scoreComputation(level.getField().nbBlockSuppr));
             GraphicalLevel.this.setStars(level.getScore());
             level.getField().updateSemiFinal();
-
-            // level.
             try
             {
               Thread.sleep(250);
@@ -244,17 +308,17 @@ public  class GraphicalLevel extends JPanel
           // System.out.println(blockX);
 
         }
-        else if ((blockY > (level.getField().getWidth()) * 51 && blockY < (level.getField().getWidth()) * 51 + 50) && (blockX > 60 && blockX < 100)) //Ballons
+        else if ((blockY > k && blockY < k + 50) && (blockX > 275 && blockX < 315)) //Ballons
         {
           if(player.getBoost()[3] > 0)
           {
-            int a = 0;
+            int a;
             do
             {
               a = Integer.parseInt(JOptionPane.showInputDialog(null, "x de la case :"));
             }
             while (a < 0 || a >= level.getField().getWidth());
-              int b = 0;
+            int b ;
             do
             {
               b = Integer.parseInt(JOptionPane.showInputDialog(null, "y de la case :"));
@@ -265,8 +329,6 @@ public  class GraphicalLevel extends JPanel
             level.setScore(level.getScore() + level.getField().scoreComputation(level.getField().nbBlockSuppr));
             GraphicalLevel.this.setStars(level.getScore());
             level.getField().updateSemiFinal();
-
-            // level.
             try
             {
               Thread.sleep(250);
@@ -282,7 +344,7 @@ public  class GraphicalLevel extends JPanel
             System.out.println("Pas assez de ballons");
           }
         }
-        else if ((blockY > (level.getField().getWidth()) * 51 && blockY < (level.getField().getWidth()) * 51 + 50) && (blockX > 116 && blockX < 158)) //ressors
+        else if ((blockY > k && blockY < k + 50) && (blockX > 330 && blockX < 372)) //ressors
         {
           if(player.getBoost()[1] > 0)
           {
@@ -315,7 +377,8 @@ public  class GraphicalLevel extends JPanel
             System.out.println("Pas assez de ressors");
           }
         }
-        else if ((blockY > (level.getField().getWidth()) * 51 + 68  && blockY < (level.getField().getWidth()) * 51 + 68 + 46) && (blockX > 60 && blockX < 100)) //marteaux
+        // g2.drawImage(pickaxe, 275, k + 60 ,null);
+        else if ((blockY > k + 55  && blockY < k + 55 + 46) && (blockX > 275 && blockX < 315)) //marteaux
         {
           if(player.getBoost()[2] > 0)
           {

@@ -3,9 +3,7 @@ import levelpack.Level;
 import java.util.Arrays;
 import java.io.File;
 import java.util.Scanner;
-import java.util.TimerTask;
-import java.util.Timer;
-import java.util.Date;
+
 /**
  * Classe permettant de démarrer le programme
  */
@@ -157,38 +155,15 @@ public class Launcher
     play(pseudo);
   }
 
-  public void menuAide()
-  {
 
-  }
-
+  /**
+   * Cette méthode permet d'afficher l'aide
+   * @return une chaine représentant l'aide à afficher
+   */
   public static String helpDisplay()
   {
     return "AIDEAIDEAIDEAIDEAIDEAIDEAIDEAIDE";
   }
-  /**
-   * Cette methode permet de demander si on veut continuer de jouer
-   * @param pseudo pseudo du joueur qui joue
-   */
-  // public static void menuContinuer(String pseudo)
-  // {
-  //   char answer;
-  //   do
-  //   {
-  //     System.out.print("Voulez vous continuer à jouer ? (o/n) ");
-  //     answer = ans.nextLine().charAt(0);
-  //   }
-  //   while(answer != 'o' && answer != 'n');
-  //
-  //   if(answer == 'o')
-  //   {
-  //     play(pseudo);
-  //   }
-  //   else
-  //   {
-  //     menu(pseudo);
-  //   }
 
-  // }
 
 }

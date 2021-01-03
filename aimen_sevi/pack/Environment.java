@@ -10,17 +10,19 @@ public class Environment
 {
   private Player player;
   private static Level[] levels;
+
   /**
    * Constructeur d'un Environment
    * @method Environment
-   * @param  player      joueur qui evolue dans l'environnement
-   * @param  levels      ensemble des niveaux constituant l'environnement
+   * @param  player      Joueur qui evolue dans l'environnement
+   * @param  levels      Ensemble des niveaux constituant l'environnement
    */
   public Environment (Player player , Level [] levels)
   {
     this.levels = levels;
     this.player = player;
   }
+
   /**
    * Constructeur par défaut d'un environnement
    * @method Environment
@@ -30,6 +32,7 @@ public class Environment
     this.levels = null;
     this.player = null;
   }
+
   /**
    * Getteur qui permet d'obtenir l'ensemble des niveaux
    * @method getLevels
@@ -39,6 +42,7 @@ public class Environment
   {
     return (levels);
   }
+
   /**
    * Getteur qui permet d'obtenir le joueur lié à l'environnement
    * @method getPlayer
@@ -48,8 +52,9 @@ public class Environment
   {
     return (this.player);
   }
+
   /**
-   * Setteur qui permet de spécifier un tableau de niveaux qui constiuera l'environnement
+   * Setteur qui permet de spécifier un tableau de niveaux qui constituera l'environnement
    * @method setLevels
    * @param  levels    le nouveau tableau de niveaux
    */
@@ -57,6 +62,7 @@ public class Environment
   {
     this.levels = levels;
   }
+
   /**
    * Setteur qui permet de spécifier un joueur qui évoluera dans l'environnement
    * @method setPlayer
@@ -66,6 +72,7 @@ public class Environment
   {
     this.player = player;
   }
+
   /**
    * Méthode permettant d'afficher l'environnement
    * @method toString
@@ -77,7 +84,7 @@ public class Environment
   }
 
   /**
-  * Cette méthode recupère le joueur sauvegardé ou en crée un nouveau
+  * Cette méthode recupère le joueur sauvegardé ou en crée un nouveau s'il nexiste pas
   * @method createPlayer
   * @param  nickName     pseudo du joueur
   */
@@ -96,8 +103,8 @@ public class Environment
 
     }
     // this.player.save();
-
   }
+
   /**
   * Cette méthode initialise le tableau des niveaux
   * @method fillLevelTab
@@ -144,7 +151,6 @@ public class Environment
       System.err.println("Le repertoire de savegarde n'existe pas");
       System.exit(1);
     }
-
 
   }
 

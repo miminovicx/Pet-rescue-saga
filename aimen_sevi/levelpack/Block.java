@@ -135,4 +135,13 @@ public class Block extends FieldElement
   {
       return ( new Block ( this.getX() , this.getY() ,0));
   }
+
+  /**
+   * Cette méthode permet de récuperer l'emoji ou l'image à afficher
+   * @return le num de l'emoji
+   */
+  public int getEmoji()
+  {
+    return this.emoji;
+  }
 }

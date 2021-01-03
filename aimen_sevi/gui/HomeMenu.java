@@ -40,12 +40,12 @@ public  class HomeMenu extends JPanel
     Font font = new Font("Arial",Font.BOLD,40);
 
     this.start = new MenuItem("Commencer", font);
-    this.start.setBounds(165, 100, 280, 60);
+    this.start.setBounds(160, 100, 280, 60);
     this.start.setBorder(BorderFactory.createLineBorder(Color.BLACK, 2, true));
     this.start.setHorizontalAlignment(JLabel.CENTER);
 
     this.quit = new MenuItem("Quitter", font);
-    this.quit.setBounds(165, 175, 280, 60);
+    this.quit.setBounds(160, 175, 280, 60);
     this.quit.setBorder(BorderFactory.createLineBorder(Color.BLACK, 2, true));
     this.quit.setHorizontalAlignment(JLabel.CENTER);
 

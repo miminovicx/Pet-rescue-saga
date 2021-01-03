@@ -55,4 +55,6 @@ public abstract class FieldElement implements java.io.Serializable
    * @return [-1]
    */
   public int getColor(){return -1;}
+
+  public int getEmoji(){return 2;}
 }

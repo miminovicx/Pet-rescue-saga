@@ -37,7 +37,7 @@ public  class GraphicalEnivronnement extends JPanel
 
     this.playerNickName = new JLabel(this.environnement.getPlayer().getNickName());
     this.playerNickName.setFont(new Font("Arial", Font.ITALIC, 30));
-    this.playerNickName.setBounds(190, 410, 200, 45);
+    this.playerNickName.setBounds(200, 410, 200, 45);
     this.playerNickName.setHorizontalAlignment(JLabel.CENTER);
     this.playerNickName.setVerticalAlignment(JLabel.CENTER);
     this.add(playerNickName);
@@ -48,13 +48,13 @@ public  class GraphicalEnivronnement extends JPanel
     for(i = 0; i < levelsLabels.length; i++)
     {
       levelsLabels[i] = new MenuItem("Niveau " + this.environnement.getLevels()[i].getNum(),font);
-      levelsLabels[i].setBounds(170,0 + (i + 1) * 65,280,60);
+      levelsLabels[i].setBounds(160,0 + (i + 1) * 65,280,60);
       levelsLabels[i].setBorder(BorderFactory.createLineBorder(Color.BLACK, 2, true));
       levelsLabels[i].setHorizontalAlignment(JLabel.CENTER);
       levelsLabels[i].setVerticalAlignment(JLabel.CENTER);
       levelsMenuPane.add(levelsLabels[i]);
     }
-    back.setBounds(170,20 + (i + 1) * 65,280, 60);
+    back.setBounds(160,20 + (i + 1) * 65,280, 60);
     back.setBorder(BorderFactory.createLineBorder(Color.BLACK, 2, true));
     back.setHorizontalAlignment(JLabel.CENTER);
     back.setVerticalAlignment(JLabel.CENTER);

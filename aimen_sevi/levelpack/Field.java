@@ -46,7 +46,7 @@ public class Field implements java.io.Serializable
    * Méthode pour obtenir la valeur de l'interval
    * @return la valeur de l'interval
    */
-  public int getinterval()
+  public int getInterval()
   {
     return this.interval;
   }

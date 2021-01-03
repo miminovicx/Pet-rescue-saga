@@ -1,23 +1,35 @@
 
 -GUI :
 
-  -Affichage a la fin d'un niveau à améliorer :
-    = ajouter le meilleur score et le nombre d'animaux sauvés
 
--REFUCKTORING
+-REFUCKTORING :
+  - FirstView 89 to 251 mais sinon le reste je trouve ça clean
 
+- Affichage du score en direct en interface quand on joue au niveau
 
+- L'arrière plan d'un animal quand il descend, j'ai essayé un truc qui marche mais qui foire un peu le premier affichage du plateau (GraphicalLevel ligne 61)
 
--mettre a jour le score apres utilisation d'un booster ou saveAnimal
+- GraphicalResult à améliorer = en cas gagné afficher le score + meilleur score + les étoiles
+  PS : j'ai essayé de commencer, j'ai commenté
+  PS 2 : la récupération du bestScore, du niveau suivant s'il est verrouillé ou pas, du score ou du niveau joué se fera dans les paramètres du constructeur
 
--Rapport
+- Mettre a jour le score après utilisation d'un booster ou saveAnimal
 
--Générer la doc
+- Transformer tout les enivromment en environment xD
+
+-Rapport + diagramme
+
+-Renommer les packages
+
+-Suppression des imports inutiles
+
+-Séparation Modéle-Vue-Contrôleur
 
 -Création de tout les niveaux
 
--Bot qui peut jouer un niveau seul
+- A NOTER : Intervalle max a afficher est 5
 
- Plus tard :
-    - Plus de couleurs en background
-    - import d'images pour les blocks, animaux, boosters ...
+
+
+-Générer la doc :
+ - DONE : Player + Launcher + Environment (juste écrite mais pas encore générée) (mais à revoir)

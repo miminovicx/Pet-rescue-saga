@@ -29,16 +29,16 @@ public  class GraphicalResult extends JPanel
     mainPane.setLayout(null);
     this.setLayout(new BorderLayout());
     this.result = new JLabel(result);
-    Font titleFont = new Font("Arial",Font.BOLD,100);
+    Font titleFont = new Font("Arial",Font.BOLD,75);
     this.result.setFont(titleFont);
-    this.result.setBounds(50,30,400, 110);
-    this.result.setHorizontalAlignment(JLabel.CENTER);
-    this.result.setVerticalAlignment(JLabel.CENTER);
-    if(result.equals("GAGNÉ")) this.result.setForeground(new Color (0,150,0));
-    else this.result.setForeground(new Color (255,0,0));
+    // this.result.setBounds(150,120,300, 110);
+    // this.result.setHorizontalAlignment(JLabel.CENTER);
+    // this.result.setVerticalAlignment(JLabel.CENTER);
+    if(result.equals("GAGNÉ")) this.wonPane(); //this.result.setForeground(new Color (0,150,0));
+    else this.lostPane();//this.result.setForeground(new Color (255,0,0));
     Font font = new Font("Arial",Font.BOLD,40);
     this.back = new MenuItem("Retour", font);
-    this.back.setBounds(200,140,280, 60);
+    this.back.setBounds(160,440,280, 60);
     this.back.setForeground(Color.BLACK);
     this.back.setBorder(BorderFactory.createLineBorder(Color.BLACK, 2, true));
     this.back.setHorizontalAlignment(JLabel.CENTER);
@@ -47,6 +47,29 @@ public  class GraphicalResult extends JPanel
     mainPane.add(this.back);
     this.add(mainPane, BorderLayout.CENTER);
   }
+
+  public void wonPane()
+  {
+    this.result.setBounds(90,120,300, 110);
+    this.result.setHorizontalAlignment(JLabel.CENTER);
+    this.result.setVerticalAlignment(JLabel.CENTER);
+    this.result.setForeground(new Color(0,150,0));
+    //affichage du score du niveau
+    //affichage du nombre d'etoiles
+    //affichage du meilleur score du joueur pour ce niveau
+    //si le niveau suivant était verouillé alors afficher 'niveau suivant déverouillé'
+  }
+
+  public void lostPane()
+  {
+    this.result.setBounds(90,120,300, 110);
+    this.result.setHorizontalAlignment(JLabel.CENTER);
+    this.result.setVerticalAlignment(JLabel.CENTER);
+    this.result.setForeground(new Color (255,0,0));
+    //affichage du score et de l'objectif
+    //affichage du nb d'animaux sauvés et du nb d'animaux qu'il fallait sauver
+  }
+
 
   // public void paint(Graphics g) {
 	// 	super.paint(g);

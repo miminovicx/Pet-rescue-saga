@@ -32,19 +32,19 @@ public  class PlayMenu extends JPanel
     Font font = new Font("Arial",Font.BOLD,40);
 
     this.play = new MenuItem("Jouer", font);
-    this.play.setBounds(190, 80,200, 60);
+    this.play.setBounds(200, 80 ,200, 60);
     this.play.setBorder(BorderFactory.createLineBorder(Color.BLACK, 2, true));
     this.play.setHorizontalAlignment(JLabel.CENTER);
     this.play.setVerticalAlignment(JLabel.CENTER);
 
     this.help = new MenuItem("Aide", font);
-    this.help.setBounds(190,150,200, 60);
+    this.help.setBounds(200,150,200, 60);
     this.help.setBorder(BorderFactory.createLineBorder(Color.BLACK, 2, true));
     this.help.setHorizontalAlignment(JLabel.CENTER);
     this.help.setVerticalAlignment(JLabel.CENTER);
 
     this.quit = new MenuItem("Quitter", font);
-    this.quit.setBounds(190,220,200, 60);
+    this.quit.setBounds(200,220,200, 60);
     this.quit.setBorder(BorderFactory.createLineBorder(Color.BLACK, 2, true));
     this.quit.setHorizontalAlignment(JLabel.CENTER);
     this.quit.setVerticalAlignment(JLabel.CENTER);
@@ -60,7 +60,7 @@ public  class PlayMenu extends JPanel
   {
       this.nickName = new JLabel(s);
       this.nickName.setFont(new Font("Arial", Font.ITALIC, 30));
-      this.nickName.setBounds(190, 410, 200, 45);
+      this.nickName.setBounds(200, 410, 200, 45);
       this.nickName.setHorizontalAlignment(JLabel.CENTER);
       this.nickName.setVerticalAlignment(JLabel.CENTER);
       this.add(nickName);

@@ -51,7 +51,7 @@ public class LevelCreator
   // }
   public static void main(String[] args)
   {
-    Field field1 = new Field(8,8,7);
+    Field field1 = new Field(8,8,5);
 
     FieldElement element0  = new Animal(0,0);       //creation des elements du field
     FieldElement element1  = new Block(0,1,1);
