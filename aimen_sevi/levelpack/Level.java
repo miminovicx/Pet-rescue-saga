@@ -61,6 +61,11 @@ public class Level implements java.io.Serializable
     return this.palier;
   }
 
+  public int getAnimalsToRescue()
+  {
+    return (this.animalsToRescue) ;
+  }
+
   /**
   * Cette méthode permet de jouer un niveau
   * @method play

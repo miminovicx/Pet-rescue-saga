@@ -23,42 +23,51 @@ public  class GraphicalResult extends JPanel
   JLabel score;
   JLabel bestScore;
   JPanel mainPane;
-  public GraphicalResult (String result, Player player, int score, int bestScore)
+  JLabel unlocked;
+  JPanel starsResult;
+  JLabel star1;
+  JLabel star2;
+  JLabel star3;
+  public GraphicalResult (String result, int score, int bestScore, boolean unlocked, int stars,int objectif, int animalsRescued, int animalsToRescue)
   {
     this.mainPane = new JPanel();
     this.mainPane.setLayout(null);
     this.setLayout(new BorderLayout());
     this.result = new JLabel(result);
-    this.score = new JLabel("Score : " + score);
-    this.bestScore = new JLabel("Meilleur score : " + bestScore);
     Font titleFont = new Font("Arial",Font.BOLD,75);
     this.result.setFont(titleFont);
-    // this.result.setBounds(150,120,300, 110);
-    // this.result.setHorizontalAlignment(JLabel.CENTER);
-    // this.result.setVerticalAlignment(JLabel.CENTER);
-    if(result.equals("GAGNÉ")) this.wonPane(player,score,true); //this.result.setForeground(new Color (0,150,0));
-    else this.lostPane(player,score,true);//this.result.setForeground(new Color (255,0,0));
-    Font font = new Font("Arial",Font.BOLD,40);
+    if(result.equals("GAGNÉ"))
+    {
+      this.wonPane(score,bestScore,unlocked,stars);
+    }
+    else
+    {
+      this.lostPane(score,objectif,animalsRescued,animalsToRescue);
+    }
+
+    Font font = new Font("Arial",Font.BOLD,60);
     this.back = new MenuItem("Retour", font);
     this.back.setBounds(160,440,280, 60);
     this.back.setForeground(Color.BLACK);
     this.back.setBorder(BorderFactory.createLineBorder(Color.BLACK, 2, true));
     this.back.setHorizontalAlignment(JLabel.CENTER);
     this.back.setVerticalAlignment(JLabel.CENTER);
-    // this.mainPane.add(this.result);
+
+
     this.mainPane.add(this.back);
     this.add(mainPane, BorderLayout.CENTER);
   }
 
-  public void wonPane(Player player, int score, boolean b)
+  public void wonPane(int score, int bestScore, boolean b, int stars)
   {
-    Font font = new Font("Arial",Font.ITALIC,15);
+    Font font = new Font("Arial",Font.ITALIC,20);
     this.result.setBounds(150,30,300, 110);
     this.result.setHorizontalAlignment(JLabel.CENTER);
     this.result.setVerticalAlignment(JLabel.CENTER);
     this.result.setForeground(Color.GREEN);
     this.mainPane.add(this.result);
 
+    this.score = new JLabel("Score : " + score);
     this.score.setFont(font);
     this.score.setBounds(150,150,300, 110);
     this.score.setHorizontalAlignment(JLabel.CENTER);
@@ -66,28 +75,115 @@ public  class GraphicalResult extends JPanel
     this.score.setForeground(Color.BLACK);
     this.mainPane.add(this.score);
 
+    this.bestScore = new JLabel("Meilleur score : " + bestScore);
     this.bestScore.setFont(font);
     this.bestScore.setBounds(150,180,300, 110);
     this.bestScore.setHorizontalAlignment(JLabel.CENTER);
     this.bestScore.setVerticalAlignment(JLabel.CENTER);
     this.bestScore.setForeground(Color.BLACK);
     this.mainPane.add(this.bestScore);
+
+    this.starsResult = new JPanel();
+    this.starsResult.setBounds(125,250,350,100);
+    this.displayStars(stars);
+
+    if(b)
+    {
+      this.unlocked = new JLabel("Vous avez dévérouillé le niveau suivant");
+      this.unlocked.setFont(font);
+      this.unlocked.setBounds(100,310,400, 110);
+      this.unlocked.setHorizontalAlignment(JLabel.CENTER);
+      this.unlocked.setVerticalAlignment(JLabel.CENTER);
+      this.unlocked.setForeground(Color.BLACK);
+      this.mainPane.add(this.unlocked);
+    }
     //affichage du score du niveau
     //affichage du nombre d'etoiles
     //affichage du meilleur score du joueur pour ce niveau
     //si le niveau suivant était verouillé alors afficher 'niveau suivant déverouillé'
   }
 
-  public void lostPane( Player player, int score, boolean b)
+  public void lostPane( int score, int objectif, int animalsRescued, int animalsToSave)
   {
+    Font font = new Font("Arial",Font.ITALIC,20);
     this.result.setBounds(150,30,300, 110);
     this.result.setHorizontalAlignment(JLabel.CENTER);
     this.result.setVerticalAlignment(JLabel.CENTER);
     this.result.setForeground(Color.RED);
-    //affichage du score et de l'objectif
-    //affichage du nb d'animaux sauvés et du nb d'animaux qu'il fallait sauver
+    this.mainPane.add(this.result);
+
+    this.score = new JLabel("Score : " + score + " / " + objectif);
+    this.score.setFont(font);
+    this.score.setBounds(150,150,300, 110);
+    this.score.setHorizontalAlignment(JLabel.CENTER);
+    this.score.setVerticalAlignment(JLabel.CENTER);
+    this.score.setForeground(Color.BLACK);
+    this.mainPane.add(this.score);
+
+    this.bestScore = new JLabel("Animaux sauvés : " + animalsRescued + " / " + animalsToSave);
+    this.bestScore.setFont(font);
+    this.bestScore.setBounds(150,180,300, 110);
+    this.bestScore.setHorizontalAlignment(JLabel.CENTER);
+    this.bestScore.setVerticalAlignment(JLabel.CENTER);
+    this.bestScore.setForeground(Color.BLACK);
+    this.mainPane.add(this.bestScore);
+
+    // this.starsResult = new JPanel();
+    // this.starsResult.setBounds(125,250,350,100);
+    // this.displayStars(stars);
   }
 
+  public void displayStars(int a)
+  {
+    ImageIcon greyStar = new ImageIcon("../ressources/images/star.png");
+    ImageIcon yellowStar = new ImageIcon("../ressources/images/yellow_star.png");
+
+    switch (a)
+    {
+      case 1:
+      try {
+        this.star1 = new JLabel(yellowStar);
+        this.star2 = new JLabel(greyStar);
+        this.star3 = new JLabel(greyStar);
+        this.starsResult.add(star1);
+        this.starsResult.add(star2);
+        this.starsResult.add(star3);
+      }
+      catch (Exception e) {
+        System.out.println("image non trouvé");
+      }
+      break;
+
+      case 2:
+      try {
+        this.star1 = new JLabel(yellowStar);
+        this.star2 = new JLabel(yellowStar);
+        this.star3 = new JLabel(greyStar);
+        this.starsResult.add(star1);
+        this.starsResult.add(star2);
+        this.starsResult.add(star3);
+      }
+      catch (Exception e) {
+        System.out.println("image non trouvé");
+      }
+      break;
+
+      case 3:
+      try {
+        this.star1 = new JLabel(yellowStar);
+        this.star2 = new JLabel(yellowStar);
+        this.star3 = new JLabel(yellowStar);
+        this.starsResult.add(star1);
+        this.starsResult.add(star2);
+        this.starsResult.add(star3);
+      }
+      catch (Exception e) {
+        System.out.println("image non trouvé");
+      }
+      break;
+    }
+    mainPane.add(starsResult);
+  }
 
   // public void paint(Graphics g) {
 	// 	super.paint(g);
