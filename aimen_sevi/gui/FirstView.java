@@ -93,39 +93,10 @@ public class FirstView extends JFrame
           contains.add(levelsPane,"3");
           contains.add(level_1_Pane,"4");
           contains.add(level_2_Pane,"5");
-          FirstView.levelsPane.levelsLabels[0].addMouseListener(new MouseAdapter()
-          {
-            public void mouseClicked(MouseEvent e)
-            {
-              if(FirstView.levelsPane.getEnvironment().getPlayer().getUnlocked()[0])//level_1_Pane = new GraphicalLevel(1);
-                c1.show(contains, "4");
-            }
-            public void mouseEntered(MouseEvent e)
-            {
-              FirstView.levelsPane.levelsLabels[0].setForeground(Color.WHITE);
-            }
-            public void mouseExited(MouseEvent e)
-            {
-              FirstView.levelsPane.levelsLabels[0].setForeground(new Color(0,0,0));
-            }
-          });
-
-          FirstView.levelsPane.levelsLabels[1].addMouseListener(new MouseAdapter()
-          {
-            public void mouseClicked(MouseEvent e)
-            {
-              if(FirstView.levelsPane.getEnvironment().getPlayer().getUnlocked()[1])//level_2_Pane = new GraphicalLevel(2);
-              c1.show(contains, "5");
-            }
-            public void mouseEntered(MouseEvent e)
-            {
-              FirstView.levelsPane.levelsLabels[1].setForeground(Color.WHITE);
-            }
-            public void mouseExited(MouseEvent e)
-            {
-              FirstView.levelsPane.levelsLabels[1].setForeground(new Color(0,0,0));
-            }
-          });
+          // GraphicalLevel level_1_Pane = lvlGenerator(1,FirstView.this.levelsPane.getEnvironment().getPlayer(),contains,"4");
+          // GraphicalLevel level_2_Pane = lvlGenerator(2,FirstView.this.levelsPane.getEnvironment().getPlayer(),contains,"5");
+          levelListener(0,FirstView.levelsPane.getEnvironment().getPlayer().getUnlocked()[0],contains,c1,"4");
+          levelListener(1,FirstView.levelsPane.getEnvironment().getPlayer().getUnlocked()[1],contains,c1,"5");
           level_1_Pane.fieldLevelPane.addMouseListener(new MouseAdapter()
           {
             public void mouseClicked(MouseEvent e)
@@ -335,6 +306,34 @@ public class FirstView extends JFrame
       public void mouseExited(MouseEvent e)
       {
         label.setForeground(new Color(0,0,0));
+      }
+    });
+  }
+
+  public GraphicalLevel lvlGenerator(int num, Player player, JPanel contains, String destination)
+  {
+    GraphicalLevel lvl = new GraphicalLevel(num, player);
+    contains.add(lvl,destination);
+    //contains.add(level_2_Pane,"5");
+    return (lvl);
+  }
+
+  public void levelListener(int num, boolean unlocked, JPanel contains, CardLayout c1, String destination)
+  {
+    FirstView.levelsPane.levelsLabels[num].addMouseListener(new MouseAdapter()
+    {
+      public void mouseClicked(MouseEvent e)
+      {
+        if(unlocked)//level_1_Pane = new GraphicalLevel(1);
+          c1.show(contains, destination);
+      }
+      public void mouseEntered(MouseEvent e)
+      {
+        FirstView.levelsPane.levelsLabels[num].setForeground(Color.WHITE);
+      }
+      public void mouseExited(MouseEvent e)
+      {
+        FirstView.levelsPane.levelsLabels[num].setForeground(new Color(0,0,0));
       }
     });
   }
