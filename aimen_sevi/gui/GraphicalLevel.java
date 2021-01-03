@@ -40,7 +40,7 @@ public  class GraphicalLevel extends JPanel
         for (int j = 0; j < GraphicalLevel.this.level.getField().getHeight(); j++)
         {
           x = a + (51 * j);
-          y = 51 * i;
+          y = 51 * (i - GraphicalLevel.this.level.getField().firstLineToDisplay()) ;
           switch(GraphicalLevel.this.level.getField().getElements()[i][j].getColor())
           {
             case -2: //WoodBlock
@@ -180,9 +180,11 @@ public  class GraphicalLevel extends JPanel
         // System.out.println()
         if ((blockY < level.getField().getWidth() * 51) && (blockX > c) && (blockX < level.getField().getHeight() *51 + c) )
         {
-          System.out.println("Test dans field ?");
+          // System.out.println("Test dans field ?");
           int b = (blockX - c) / 50 ;
-          int a = blockY / 50;
+          int a = (blockY / 50) + GraphicalLevel.this.level.getField().firstLineToDisplay();
+          // x = a + (51 * j);  = x - a + 50j
+          // y = 51 * (i - GraphicalLevel.this.level.getField().firstLineToDisplay()) ; = y + 50i - 50fltd
           if(level.getField().updateFinal(a,b))
           {
             // System.out.println("Test");
