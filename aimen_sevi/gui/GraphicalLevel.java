@@ -462,6 +462,7 @@ public  class GraphicalLevel extends JPanel
     fieldLevelPane.setBounds(0, 200,600,400);
     this.add(northPane);
     this.add(fieldLevelPane);
+    this.add(southPane);
 
   }
   public void save (int num)
