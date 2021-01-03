@@ -8,14 +8,21 @@ import pack.*;
 import java.util.Arrays;
 import java.io.File;
 import java.util.Scanner;
-
-public  class GraphicalEnivronnement extends JPanel
+/**
+ * Clase représentant l'environnement graphique
+ */
+public  class GraphicalEnvironment extends JPanel
 {
   private Environment environnement;
   MenuItem back;
   MenuItem [] levelsLabels;
   JLabel playerNickName;
-  public GraphicalEnivronnement (Environment environnement)
+  /**
+   * Constructeur de l'environnement graphique
+   * @method GraphicalEnvironment
+   * @param  environnement        l'environnement représentant le modèle
+   */
+  public GraphicalEnvironment (Environment environnement)
   {
     this.environnement = environnement;
     this.levelsLabels = new MenuItem[this.environnement.getLevels().length];
@@ -63,10 +70,20 @@ public  class GraphicalEnivronnement extends JPanel
     this.add(levelsMenuPane, BorderLayout.CENTER);
     this.add(playerPane, BorderLayout.SOUTH);
   }
+  /**
+   * Cette méthode permet de spécifier le pseudo du joueur
+   * @method setNickName
+   * @param  nickname    chaîne représentant le pseudo
+   */
   public void setNickName(String nickname)
   {
     this.playerNickName.setText(nickname);
   }
+  /**
+   * Cette méthode permet de récuperer le modèle
+   * @method getEnvironment
+   * @return le modèle
+   */
   public Environment getEnvironment()
   {
     return (this.environnement) ;

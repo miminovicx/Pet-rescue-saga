@@ -15,7 +15,9 @@ import java.io.File;
 import java.io.InputStream;
 import java.io.BufferedInputStream;
 import java.io.FileInputStream;
-
+/**
+ * Classe représentant le panel à la fin d'un niveau
+ */
 public  class GraphicalResult extends JPanel
 {
   MenuItem back;
@@ -28,6 +30,18 @@ public  class GraphicalResult extends JPanel
   JLabel star1;
   JLabel star2;
   JLabel star3;
+  /**
+   * Constructeur du panel à la fin d'un niveau
+   * @method GraphicalResult
+   * @param  result          la chaîne permettant de savoir si on a gangé ou perdu
+   * @param  score           le score obtenu à la fin du niveau
+   * @param  bestScore       le meilleur score qu'on a pour ce niveau
+   * @param  unlocked        savoir si on a déverouillé le prochain niveau
+   * @param  stars           le nombre d'étoiles remportées
+   * @param  objectif        l'objectif qu'il fallait atteindre (utile en cas de perte)
+   * @param  animalsRescued  le nombre d'animeaux qu'on a sauvé (utile en cas de perte)
+   * @param  animalsToRescue le nombre d'animeaux qu'il fallait sauver (utile en cas de perte)
+   */
   public GraphicalResult (String result, int score, int bestScore, boolean unlocked, int stars,int objectif, int animalsRescued, int animalsToRescue)
   {
     this.mainPane = new JPanel();
@@ -57,7 +71,14 @@ public  class GraphicalResult extends JPanel
     this.mainPane.add(this.back);
     this.add(mainPane, BorderLayout.CENTER);
   }
-
+  /**
+   * Cette méthode construit l'affichage si on gagne le niveau
+   * @method wonPane
+   * @param  score     le score qu'on a atteint
+   * @param  bestScore le meilleur socre qu'on a pour ce niveau
+   * @param  b         boolean permettant de savoir si on a dévérrouillé le prochain niveau
+   * @param  stars     le nombre d'etoiles remportées
+   */
   public void wonPane(int score, int bestScore, boolean b, int stars)
   {
     Font font = new Font("Arial",Font.ITALIC,20);
@@ -102,7 +123,14 @@ public  class GraphicalResult extends JPanel
     //affichage du meilleur score du joueur pour ce niveau
     //si le niveau suivant était verouillé alors afficher 'niveau suivant déverouillé'
   }
-
+  /**
+   * Cette méthode construit l'affichage si on perd le niveau
+   * @method lostPane
+   * @param  score          le score obtenu
+   * @param  objectif       l'objectif à atteindre
+   * @param  animalsRescued le nombre d'animeaux sauvés
+   * @param  animalsToSave  le nombre d'animeaux qu'il fallait sauver
+   */
   public void lostPane( int score, int objectif, int animalsRescued, int animalsToSave)
   {
     Font font = new Font("Arial",Font.ITALIC,20);
@@ -132,7 +160,11 @@ public  class GraphicalResult extends JPanel
     // this.starsResult.setBounds(125,250,350,100);
     // this.displayStars(stars);
   }
-
+  /**
+   * Cette méthode permet l'affichage des étoiles
+   * @method displayStars
+   * @param  a            le nombre d'étoiles à afficher
+   */
   public void displayStars(int a)
   {
     ImageIcon greyStar = new ImageIcon("../ressources/images/star.png");

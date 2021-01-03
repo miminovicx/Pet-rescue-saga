@@ -11,8 +11,17 @@ import java.util.Scanner;
 import java.util.TimerTask;
 import java.util.Timer;
 import java.util.Date;
+/**
+ * Classe représentant un bouton du menu
+ */
 public class MenuItem extends JLabel
 {
+  /**
+   * Constructeur pour les boutons du menu
+   * @method MenuItem
+   * @param  label    le contenu du bouton
+   * @param  font     la police du contenu
+   */
   MenuItem(String label,Font font)
   {
     super(label);

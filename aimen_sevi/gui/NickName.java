@@ -18,13 +18,19 @@ import java.io.File;
 import java.io.InputStream;
 import java.io.BufferedInputStream;
 import java.io.FileInputStream;
-
+/**
+ * Classe représentant le panel qui demande le pseudo
+ */
 public class NickName extends JPanel
 {
   JLabel nickNameAsk;
   JTextField nickName;
   MenuItem next;
   MenuItem back;
+  /**
+   * Constructeur du panel qui demande le pseudo
+   * @method NickName
+   */
   public NickName ()
   {
     this.setLayout(null);

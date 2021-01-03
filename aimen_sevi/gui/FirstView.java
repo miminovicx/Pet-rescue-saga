@@ -12,17 +12,25 @@ import java.io.FileInputStream;
 import levelpack.Level;
 import pack.*;
 import java.io.File;
-
+/**
+ * Classe représentant la première fenêtre affichée
+ */
 public class FirstView extends JFrame
 {
-  static GraphicalEnivronnement levelsPane;
-  GraphicalResult won;
-  GraphicalResult lost;
+  static GraphicalEnvironment levelsPane;
+  GraphicalResult[] won;
+  GraphicalResult[] lost;
   GraphicalLevel[] level_Pane;
   JPanel contains;
   CardLayout c1;
+  /**
+   * Constructeur de la première fenêtre affiché
+   * @method FirstView
+   */
   public FirstView()
   {
+    this.won = new GraphicalResult[5];
+    this.lost = new GraphicalResult[5];
     level_Pane = new GraphicalLevel[5];
     contains = new JPanel();
     this.c1 = new CardLayout();
@@ -91,7 +99,7 @@ public class FirstView extends JFrame
       {
         if (!(nickNamePane.nickName.getText().equals("")))
         {
-          FirstView.this.levelsPane = new GraphicalEnivronnement(Launcher.initialiseEnv(nickNamePane.nickName.getText()));
+          FirstView.this.levelsPane = new GraphicalEnvironment(Launcher.initialiseEnv(nickNamePane.nickName.getText()));
           menu.setNickName(nickNamePane.nickName.getText());
 
           contains.add(levelsPane,"3");
@@ -200,7 +208,15 @@ public class FirstView extends JFrame
       }
     });
   }
-
+  /**
+   * Cette méthode génère les niveaux graphiques
+   * @method lvlGenerator
+   * @param  num          le numero du niveau
+   * @param  player       le joueur
+   * @param  contains     le ContentPane de la fenêtre
+   * @param  destination  le panel à afficher
+   * @return              le niveau généré
+   */
   public GraphicalLevel lvlGenerator(int num, Player player, JPanel contains, String destination)
   {
     GraphicalLevel lvl = new GraphicalLevel(num, player);
@@ -272,7 +288,6 @@ public class FirstView extends JFrame
     {
       public void mouseClicked(MouseEvent e)
       {
-
         if (level_Pane[i].level.Won0())
         {
           boolean b = false;
@@ -300,16 +315,18 @@ public class FirstView extends JFrame
           {
             stars = 3;
           }
-          FirstView.this.won = new GraphicalResult("GAGNÉ",FirstView.this.level_Pane[i].level.getScore(),FirstView.this.levelsPane.getEnvironment().getPlayer().getBestScore()[i], b, stars ,0,0,0);
-          FirstView.this.lost = new GraphicalResult("PERDU",FirstView.this.level_Pane[i].level.getScore(),0, false, 0, level_Pane[i].level.getPalier()[0], FirstView.this.level_Pane[i].level.getField().animalsSaved, level_Pane[i].level.getAnimalsToRescue() );
-          addListener(contains, FirstView.this.c1,FirstView.this.won.back,Color.WHITE,"3");
-          addListener(contains, FirstView.this.c1,FirstView.this.lost.back,Color.WHITE,"3");
+
+          FirstView.this.won[i] = new GraphicalResult("GAGNÉ",FirstView.this.level_Pane[i].level.getScore(),FirstView.this.levelsPane.getEnvironment().getPlayer().getBestScore()[i], b, stars ,0,0,0);
+          // FirstView.this.lost[i] = new GraphicalResult("PERDU",FirstView.this.level_Pane[i].level.getScore(),0, false, 0, level_Pane[i].level.getPalier()[0], FirstView.this.level_Pane[i].level.getField().animalsSaved, level_Pane[i].level.getAnimalsToRescue() );
           level_Pane[i].level.setScore(0);
+          level_Pane[i].score.setText("Score : 0");
+          addListener(contains, FirstView.this.c1,FirstView.this.won[i].back,Color.WHITE,"3");
+          // addListener(contains, FirstView.this.c1,FirstView.this.lost[i].back,Color.WHITE,"3");
           level_Pane[i].level.getField().animalsSaved = 0;
           level_Pane[i].setEmptyStars();
           level_Pane[i].save(i+1);
-          contains.add(FirstView.this.won,"won");
-          contains.add(FirstView.this.lost,"lost");
+          contains.add(FirstView.this.won[i],"won");
+          // contains.add(FirstView.this.lost[i],"lost");
 
           try
           {
@@ -325,8 +342,14 @@ public class FirstView extends JFrame
         }
         else if (level_Pane[i].level.Lost0())
         {
-          level_Pane[i].level.setScore(i);
-          level_Pane[i].level.getField().animalsSaved = i;
+          // FirstView.this.won[i] = new GraphicalResult("GAGNÉ",FirstView.this.level_Pane[i].level.getScore(),FirstView.this.levelsPane.getEnvironment().getPlayer().getBestScore()[i], false, 0 ,0,0,0);
+          // addListener(contains, FirstView.this.c1,FirstView.this.won[i].back,Color.WHITE,"3");
+          FirstView.this.lost[i] = new GraphicalResult("PERDU",FirstView.this.level_Pane[i].level.getScore(),0, false, 0, level_Pane[i].level.getPalier()[0], FirstView.this.level_Pane[i].level.getField().animalsSaved, level_Pane[i].level.getAnimalsToRescue() );
+          addListener(contains, FirstView.this.c1,FirstView.this.lost[i].back,Color.WHITE,"3");
+          contains.add(FirstView.this.lost[i],"lost");
+          // contains.add(FirstView.this.won[i],"won");
+          level_Pane[i].level.setScore(0);
+          level_Pane[i].level.getField().animalsSaved = 0;
           level_Pane[i].setEmptyStars();
           level_Pane[i].save(i+1);
           try

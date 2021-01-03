@@ -18,13 +18,19 @@ import java.io.File;
 import java.io.InputStream;
 import java.io.BufferedInputStream;
 import java.io.FileInputStream;
-
+/**
+ * Classe représentant le menu jouer comportant les boutons jouer aide et quitter
+ */
 public  class PlayMenu extends JPanel
 {
   JLabel nickName;
   MenuItem play;
   MenuItem help;
   MenuItem quit;
+  /**
+   * Constructeur du menu jouer
+   * @method PlayMenu
+   */
   public PlayMenu ()
   {
     this.setLayout(null);
@@ -54,8 +60,11 @@ public  class PlayMenu extends JPanel
     this.add(help);
     this.add(quit);
   }
-
-
+  /**
+   * Méthode permettant d'ajouter le pseudo au panel
+   * @method setNickName
+   * @param  s           le pseudo à ajouter
+   */
   public void setNickName(String s)
   {
       this.nickName = new JLabel(s);

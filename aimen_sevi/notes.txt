@@ -1,29 +1,16 @@
 
 -GUI :
+  - chooseBooster inverser x et y
 
+- Mettre a jour le score après utilisation d'un booster ou saveAnimal A FAIRE
 
--REFUCKTORING :
-  - FirstView 89 to 251 mais sinon le reste je trouve ça clean
-    126 to 131
+- Rapport + diagramme
 
+- Renommer les packages
 
+- Suppression des imports inutiles
 
-- GraphicalResult à améliorer = en cas gagné afficher le score + meilleur score + les étoiles
-
-- Mettre a jour le score après utilisation d'un booster ou saveAnimal
-
-- Transformer tout les enivromment en environment xD
-
--Rapport + diagramme
-
--Renommer les packages
-
--Suppression des imports inutiles
-
--Séparation Modéle-Vue-Contrôleur
-
--Création de tout les niveaux
-
+- Création de tout les niveaux
 
 -Générer la doc :
  - DONE : Player + Launcher + Environment (juste écrite mais pas encore générée) (mais à revoir)

@@ -15,7 +15,9 @@ import java.io.InputStream;
 import java.io.BufferedInputStream;
 import java.io.FileInputStream;
 import java.util.Scanner;
-
+/**
+ * Classe représentant un niveau graphique
+ */
 public  class GraphicalLevel extends JPanel
 {
 
@@ -27,8 +29,16 @@ public  class GraphicalLevel extends JPanel
   JLabel star2;
   JLabel star3;
   JLabel score = new JLabel("Score : 0");
+  /**
+   * Classe interne représentant le plateau de jeu
+   */
   public  class FieldLevelPane extends JPanel
   {
+    /**
+     * Cette méthode permet de dessiner le plateau
+     * @method paint
+     * @param  g     l'objet permettant d'éffectuer les dessins
+     */
     public void paint(Graphics g)
     {
       score.setFont(new Font("Arial",Font.ITALIC,20));
@@ -239,6 +249,12 @@ public  class GraphicalLevel extends JPanel
       }
     }
   }
+  /**
+   * Constructeur d'un niveau graphique
+   * @method GraphicalLevel
+   * @param  numero         le numero du niveau
+   * @param  player         le joueur qui joue le niveau
+   */
   public GraphicalLevel (int numero, Player player)
   {
     super();
@@ -250,6 +266,7 @@ public  class GraphicalLevel extends JPanel
     {
       public void mouseClicked(MouseEvent e)
       {
+        repaint();
         int blockX = e.getX();
         int blockY = e.getY();
         if ((blockY < GraphicalLevel.this.level.getField().getInterval() * 51) && (blockX > c) && (blockX < level.getField().getHeight() *51 + c) )
@@ -465,12 +482,20 @@ public  class GraphicalLevel extends JPanel
     // this.add(levelMenuPane);
 
   }
+  /**
+   * Cette méthode permet de sauvegarder le niveau
+   * @method save
+   * @param  num  le numéro du niveau à sauvegarder
+   */
   public void save (int num)
   {
     this.level = Level.use("../Data/Levels/level_" + num + ".ser");
 
   }
-
+  /**
+   * Cette méthode permet l'affichage des étoiles vides
+   * @method setEmptyStars
+   */
   public void setEmptyStars()
   {
     try
@@ -485,7 +510,11 @@ public  class GraphicalLevel extends JPanel
       l_e.printStackTrace();
     }
   }
-
+  /**
+   * Cette méthode permt d'afficher le bon nombre d'étoile en fonction du score actuel
+   * @method setStars
+   * @param  score    le score actuel
+   */
   public void setStars(int score)
   {
     if (score > level.getPalier()[0])

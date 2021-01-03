@@ -18,12 +18,18 @@ import java.io.File;
 import java.io.InputStream;
 import java.io.BufferedInputStream;
 import java.io.FileInputStream;
-
+/**
+ * Classe représentant le premier menu affiché
+ */
 public  class HomeMenu extends JPanel
 {
 
   MenuItem start;
   MenuItem quit;
+  /**
+   * Constructeur du premier menu affiché
+   * @method HomeMenu
+   */
   public HomeMenu ()
   {
     this.setLayout(new BorderLayout());
