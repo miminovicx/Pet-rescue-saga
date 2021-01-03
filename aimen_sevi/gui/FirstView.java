@@ -368,4 +368,14 @@ public class FirstView extends JFrame
       }
     });
   }
+
+  public void result (GraphicalLevel lvl)
+  {
+    FirstView.this.won = new GraphicalResult("GAGNÉ",FirstView.this.levelsPane.getEnvironment().getPlayer(),level_1_Pane.level.getScore(),FirstView.levelsPane.getEnvironment().getPlayer().getBestScore()[0]);
+    FirstView.this.lost = new GraphicalResult("PERDU",FirstView.this.levelsPane.getEnvironment().getPlayer(),level_1_Pane.level.getScore(),FirstView.levelsPane.getEnvironment().getPlayer().getBestScore()[0]);
+    addListener(contains, c1,FirstView.this.won.back,new Color(0,150,0),"3");
+    addListener(contains, c1,FirstView.this.lost.back,new Color(0,150,0),"3");
+    contains.add(FirstView.this.won,"won");
+    contains.add(FirstView.this.lost,"lost");
+  }
 }
