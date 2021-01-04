@@ -1,4 +1,4 @@
-package pack;
+package environment_player_pack;
 import java.io.*;
 import java.util.Scanner;
 /**

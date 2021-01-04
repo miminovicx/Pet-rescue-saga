@@ -1,7 +1,7 @@
-import pack.Environment;
-import pack.Launcher;
+import environment_player_pack.Environment;
+import environment_player_pack.Launcher;
 import levelpack.FieldElement;
-import pack.Player;
+import environment_player_pack.Player;
 import levelpack.Block;
 import levelpack.SquaredBlock;
 import levelpack.WoodBlock;

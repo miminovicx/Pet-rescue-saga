@@ -4,7 +4,7 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.*;
 import java.awt.*;
 import levelpack.Level;
-import pack.*;
+import environment_player_pack.*;
 import java.util.Scanner;
 /**
  * Classe représentant le menu jouer comportant les boutons jouer aide et quitter

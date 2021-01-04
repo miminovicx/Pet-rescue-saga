@@ -4,7 +4,7 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.*;
 import java.awt.*;
 import java.util.Scanner;
-import pack.*;
+import environment_player_pack.*;
 import levelpack.Level;
 /**
  * Classe représentant le premier menu affiché

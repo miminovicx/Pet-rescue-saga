@@ -9,7 +9,7 @@ import java.io.InputStream;
 import java.io.BufferedInputStream;
 import java.io.FileInputStream;
 import java.util.Scanner;
-import pack.*;
+import environment_player_pack.*;
 import levelpack.*;
 // import levelpack.Level;
 /**

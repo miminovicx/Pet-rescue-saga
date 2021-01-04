@@ -4,7 +4,9 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.*;
 import java.awt.*;
 import java.awt.image.BufferedImage;
-import pack.*;
+import environment_player_pack.Environment;
+import environment_player_pack.Player;
+import environment_player_pack.Launcher;
 import levelpack.Level;
 // import java.io.File;
 /**

@@ -1,5 +1,5 @@
-import pack.Environment;
-import pack.Launcher;
+import environment_player_pack.Environment;
+import environment_player_pack.Launcher;
 import levelpack.FieldElement;
 import pack.Player;
 import levelpack.Block;

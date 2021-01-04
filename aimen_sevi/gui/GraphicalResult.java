@@ -6,7 +6,7 @@ import java.awt.*;
 import java.util.Arrays;
 import java.io.File;
 import java.util.Scanner;
-import pack.*;
+import environment_player_pack.*;
 import levelpack.Level;
 /**
  * Classe représentant le panel à la fin d'un niveau

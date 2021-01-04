@@ -2,8 +2,8 @@ package levelpack;
 import java.io.*;
 import java.util.Scanner;
 import levelpack.Field;
-import pack.Environment;
-import pack.Player;
+import environment_player_pack.Environment;
+import environment_player_pack.Player;
 
 /**
 * Classe représentant un niveau
