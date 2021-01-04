@@ -297,10 +297,15 @@ public  class GraphicalLevel extends JPanel
             }
             while (a < 0 || a >= level.getField().getWidth());
             player.removeRocket();
+            repaint();
             level.getField().useRocket(a);
+            repaint();
             level.setScore(level.getScore() + 300);
+            repaint();
             GraphicalLevel.this.score.setText("Score : " + level.getScore());
+            repaint();
             GraphicalLevel.this.setStars(level.getScore());
+            repaint();
             level.getField().updateSemiFinal();
             repaint();
             try
