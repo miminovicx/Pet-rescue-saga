@@ -8,8 +8,6 @@ import levelpack.WoodBlock;
 import levelpack.Animal;
 import levelpack.Level;
 import levelpack.Field;
-import java.util.TimerTask;
-import java.util.Timer;
 import gui.*;
 
 public class LevelCreator

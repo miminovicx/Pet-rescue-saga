@@ -9,8 +9,6 @@
 
 - display the help
 
-- Suppression des imports inutiles
-
 - Création de tout les niveaux
 
 -Générer la doc :
