@@ -73,6 +73,12 @@ public class Launcher
         System.out.println("Les niveaux verrouillés sont affichés" + RED_BOLD + " en rouge" + RESET);
         System.out.println("A chaque niveau gagné, vous \033[1mdéverrouiller le suivant\033[0m");
         System.out.println("Vous avez un nombre d'\033[1métoiles\033[0m pour chaque niveau gagné \033[1mselon votre score\033[0m\n");
+        System.out.println("Vous disposez dun certain nombre de boosters qui pourront vous aider lorsque vous vous retrouverez en difficulté");
+        System.out.println("Les fusées vous permettent de supprimer une colonne \uD83D\uDE80");
+        System.out.println("Les boomerangs vous permettent de supprimer une ligne \uD83E\uDE83");
+        System.out.println("Les marteaux vous permettent de supprimer un bloc \uD83D\uDD28");
+        System.out.println("Les ballons vous permettent de supprimer les blocs de la même couleur que le bloc choisi \uD83C\uDF88");
+
         // choose(pseudo);
         menu(pseudo);
       break;

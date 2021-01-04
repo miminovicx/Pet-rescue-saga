@@ -48,6 +48,7 @@ public  class GraphicalLevel extends JPanel
       int a = (600 - GraphicalLevel.this.level.getField().getHeight()*51)/2;
       for (int i = GraphicalLevel.this.level.getField().firstLineToDisplay(); i < GraphicalLevel.this.level.getField().firstLineToDisplay() + GraphicalLevel.this.level.getField().getInterval(); i++)
       {
+        //c'est la qu'on affiche le numéro de ligne qui correspond a firstLineToDisplay
         for (int j = 0; j < GraphicalLevel.this.level.getField().getHeight(); j++)
         {
           x = a + (51 * j);
