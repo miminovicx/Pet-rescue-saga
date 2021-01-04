@@ -53,6 +53,7 @@ public  class GraphicalLevel extends JPanel
         {
           x = a + (51 * j);
           y = 51 * (i - GraphicalLevel.this.level.getField().firstLineToDisplay()) ;
+          if( j == 0) g2.drawString(String.valueOf(i),x,y);
           switch(GraphicalLevel.this.level.getField().getElements()[i][j].getColor())
           {
             case -2: //WoodBlock
@@ -235,6 +236,7 @@ public  class GraphicalLevel extends JPanel
             }
           }
         }
+        //if( i == 0) g2.drawString(String.valueOf(i),x,y);
       }
     }
   }
