@@ -1,54 +1,7 @@
-import pack.Environment;
-import pack.Launcher;
-import levelpack.FieldElement;
-import pack.Player;
-import levelpack.Block;
-import levelpack.SquaredBlock;
-import levelpack.WoodBlock;
-import levelpack.Animal;
-import levelpack.Level;
-import levelpack.Field;
-import java.util.TimerTask;
-import java.util.Timer;
-import gui.*;
+import levelpack.*;
 
 public class LevelCreator
 {
-  // public static Level createLevel()
-  // {
-  //   Scanner sc = new Scanner(System.in);
-  //   System.out.print("Veuiilez donner la largeur du plateau : ");
-  //   int width = sc.nextInt();
-  //   System.out.print("Veuiilez donner la longueur du plateau : ");
-  //   int height = sc.nextInt();
-  //   Field field = new Field(width, height);
-  //   for(int i = 0; i < width;i++)
-  //   {
-  //     for(int j = 0 ; j < height; j++)
-  //     {
-  //       System.out.println("1 - Block");
-  //       System.out.println("2 - Obstacle");
-  //       System.out.println("3 - Animal");
-  //       System.out.println("4 - Block Cadrillé");
-  //       int ans = sc.nextInt();
-  //       switch(ans)
-  //       {
-  //         case 1:
-  //         int color = sc.nextInt();
-  //         Block block = new Block(i,j,color);
-  //         field.putElement(i,j)
-  //           break;
-  //         case 2:
-  //           break;
-  //         case 3:
-  //           break;
-  //         case 4:
-  //           break;
-  //       }
-  //     }
-  //   }
-  //
-  // }
   public static void main(String[] args)
   {
     Field field1 = new Field(8,8,5);

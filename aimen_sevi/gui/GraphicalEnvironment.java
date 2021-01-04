@@ -1,13 +1,9 @@
 package gui;
 import javax.swing.*;
-import java.awt.event.MouseAdapter;
 import java.awt.event.*;
 import java.awt.*;
 import levelpack.Level;
 import pack.*;
-import java.util.Arrays;
-import java.io.File;
-import java.util.Scanner;
 /**
  * Clase représentant l'environnement graphique
  */

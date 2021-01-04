@@ -1,17 +1,11 @@
 package gui;
 import javax.swing.*;
-import java.awt.event.MouseAdapter;
 import java.awt.event.*;
 import java.awt.*;
-import java.awt.image.BufferedImage;
-import java.awt.Image;
 import javax.imageio.ImageIO;
 import java.io.InputStream;
 import java.io.BufferedInputStream;
-import java.io.FileInputStream;
-import levelpack.Level;
 import pack.*;
-import java.io.File;
 /**
  * Classe représentant la première fenêtre affichée
  */

@@ -1,7 +1,5 @@
 package levelpack;
-import java.util.LinkedList;
-import levelpack.Level;
-import levelpack.Animal;
+import levelpack.*;
 import java.lang.Math;
 /**
  * Classe représentant le plateau de jeu

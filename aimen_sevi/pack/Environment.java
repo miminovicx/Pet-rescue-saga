@@ -1,6 +1,5 @@
 package pack;
 import levelpack.Level;
-import java.util.Arrays;
 import java.io.File;
 import java.util.Scanner;
 /**
