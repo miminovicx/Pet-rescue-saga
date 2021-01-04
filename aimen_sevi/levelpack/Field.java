@@ -363,7 +363,7 @@ public class Field implements java.io.Serializable
    * @param  x           [abscisse]
    * @param  y           [ordonnée]
    */
-  public boolean updateFinal(int x, int y)
+  public int updateFinal(int x, int y)
   {
     this.remove(x,y);
     this.update();
@@ -372,7 +372,7 @@ public class Field implements java.io.Serializable
   }
 
   /**
-   * Cette methode permet de mettre a jour le plateau sans supprimer de block
+   * Cette methode permet de mettre a jour le plateau sans supprimer de blocks
    * A utiliser après les boosters par exemple
    */
   public void updateSemiFinal()
@@ -385,22 +385,19 @@ public class Field implements java.io.Serializable
    * Cette méthode enlève les animaux de la dernière ligne et les ajoute au nombre d'animaux sauvés
    * @method saveAnimal
    */
-  public boolean saveAnimal()
+  public int saveAnimal()
   {
-    boolean b = false;
+    int a = 0;
     for(int j=0; j < height ; j++)
     {
       if(this.elements[width - 1][j].getColor() == -1)
       {
-        // removeAnimal(width - 1,j);
-        System.out.println(this);
         this.elements[width-1][j] = new Block(width-1,j,0);
         animalsSaved ++;
-        // System.out.println("\tANIMAL SAUVE ! \n");
-        b = true;
+        a++;
       }
     }
-    return b;
+    return a;
   }
   /**
    * Cette méthode permet de calculer le score à partir du nombre de blocs supprimmés
