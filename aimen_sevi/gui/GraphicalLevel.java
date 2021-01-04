@@ -295,7 +295,7 @@ public  class GraphicalLevel extends JPanel
             int a;
             do
             {
-              a = Integer.parseInt(JOptionPane.showInputDialog(null, "Veuillez choisir une colonne entre 1 et " + level.getField().getHeight() + ":")) - 1;
+              a = Integer.parseInt(JOptionPane.showInputDialog(null, "Vous avec encore " + player.getBoost()[0] + " fusées.\nVeuillez choisir une colonne entre 0 et " + (level.getField().getHeight() - 1) + " :       "));
             }
             while (a < 0 || a >= level.getField().getWidth());
             player.removeRocket();
@@ -312,12 +312,10 @@ public  class GraphicalLevel extends JPanel
             {
               exp.printStackTrace();
             }
-            // repaint();
-
           }
           else
           {
-            System.out.println("Pas assez de fusées");
+            noBoosters("fusées");
           }
 
         }
@@ -328,20 +326,19 @@ public  class GraphicalLevel extends JPanel
             int a;
             do
             {
-              a = Integer.parseInt(JOptionPane.showInputDialog(null, "Veuillez choisir une ligne entre " + level.getField().firstLineToDisplay() + " et " + level.getField().firstLineToDisplay() + level.getField().getInterval() + " : "));
+              a = Integer.parseInt(JOptionPane.showInputDialog(null, "Vous avec encore " + player.getBoost()[3] + " ballons.\nVeuillez choisir une ligne entre " + level.getField().firstLineToDisplay() + " et " + (level.getField().firstLineToDisplay() + level.getField().getInterval() - 1) + " : "));
             }
             while (a < level.getField().firstLineToDisplay() || a >= level.getField().firstLineToDisplay() + level.getField().getInterval());
             int b ;
             do
             {
-              b = Integer.parseInt(JOptionPane.showInputDialog(null, "Veuillez choisir une colonne  :"));
+              b = Integer.parseInt(JOptionPane.showInputDialog(null, "Veuillez choisir une colonne entre 0 et " + (level.getField().getHeight() - 1)  + " :       "));
             } while (b < 0 || b >= level.getField().getHeight());
             player.removeBallons();
             level.getField().useBallon(a,b);
             level.setScore(level.getScore() + 600);
             GraphicalLevel.this.setStars(level.getScore());
             level.getField().updateSemiFinal();
-            level.getField().moveColumns();
 
             repaint();
             try
@@ -355,7 +352,7 @@ public  class GraphicalLevel extends JPanel
           }
           else
           {
-            System.out.println("Pas assez de ballons");
+            noBoosters("ballons");
           }
         }
         else if ((blockY > k && blockY < k + 50) && (blockX > 330 && blockX < 372)) //ressors
@@ -365,7 +362,7 @@ public  class GraphicalLevel extends JPanel
             int a ;
             do
             {
-              a = Integer.parseInt(JOptionPane.showInputDialog(null, "y de la case :"));
+              a = Integer.parseInt(JOptionPane.showInputDialog(null, "Vous avez encore " + player.getBoost()[1] + " ressors.\nVeuillez choisir une ligne entre " + level.getField().firstLineToDisplay() + " et " + (level.getField().firstLineToDisplay() + level.getField().getInterval() - 1) + " : "));
             }
             while (a < 0 || a >= level.getField().getHeight());
             player.removeBoomerang();
@@ -386,10 +383,10 @@ public  class GraphicalLevel extends JPanel
           }
           else
           {
-            System.out.println("Pas assez de ressors");
+            noBoosters("ressors");
           }
         }
-        // g2.drawImage(pickaxe, 275, k + 60 ,null);
+
         else if ((blockY > k + 55  && blockY < k + 55 + 46) && (blockX > 275 && blockX < 315)) //marteaux
         {
           if(player.getBoost()[2] > 0)
@@ -397,13 +394,13 @@ public  class GraphicalLevel extends JPanel
             int a = 0;
             do
             {
-              a = Integer.parseInt(JOptionPane.showInputDialog(null, "x de la case :"));
+              a = Integer.parseInt(JOptionPane.showInputDialog(null, "Vous avez encore " + player.getBoost()[2] + " marteaux.\nVeuillez choisir une ligne entre " + level.getField().firstLineToDisplay() + " et " + (level.getField().firstLineToDisplay() + level.getField().getInterval() - 1) + " : "));
             }
             while (a < 0 || a >= level.getField().getWidth());
               int b = 0;
             do
             {
-              b = Integer.parseInt(JOptionPane.showInputDialog(null, "y de la case :"));
+              b = Integer.parseInt(JOptionPane.showInputDialog(null, "Veuillez choisir une colonne entre 0 et " + (level.getField().getHeight() - 1) + " :   "));
             } while (b < 0 || b >= level.getField().getHeight());
             player.removePickaxe();
             level.getField().usePickaxe(a,b);
@@ -412,7 +409,6 @@ public  class GraphicalLevel extends JPanel
             level.getField().updateSemiFinal();
             repaint();
 
-            // level.
             try
             {
               Thread.sleep(250);
@@ -425,7 +421,7 @@ public  class GraphicalLevel extends JPanel
           }
           else
           {
-            System.out.println("Pas assez de marteaux");
+            noBoosters("marteaux");
           }
         }
         repaint();
@@ -555,6 +551,11 @@ public  class GraphicalLevel extends JPanel
       }
     }
     fieldLevelPane.repaint();
+  }
+
+  public void noBoosters(String s)
+  {
+    JOptionPane.showMessageDialog(null,"Vous n'avez plus de " + s ,"Boosters", JOptionPane.DEFAULT_OPTION);
   }
 
   //

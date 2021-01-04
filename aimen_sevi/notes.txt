@@ -1,12 +1,12 @@
 
 -GUI :
-  - chooseBooster inverser x et y
-
-  - réafficher les animaux après utilisation d'un booster
+  - réafficher les animaux et le score après utilisation d'un booster 
 
 - Rapport + diagramme
 
 - Renommer les packages
+
+- display the help
 
 - Suppression des imports inutiles
 
