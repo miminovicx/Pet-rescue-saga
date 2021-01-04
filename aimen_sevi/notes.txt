@@ -1,4 +1,6 @@
 
+-CONSOLE:
+  -jetter un oeil au decalage des colonnes (j'ai l'impression que les colonnes ne se décalent plus)
 -GUI :
   - chooseBooster inverser x et y NORMALLY DONE
 
