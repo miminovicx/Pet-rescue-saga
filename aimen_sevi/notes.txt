@@ -1,16 +1,17 @@
 
 -GUI :
-  - chooseBooster inverser x et y
+  - chooseBooster inverser x et y NORMALLY DONE
 
-- Mettre a jour le score après utilisation d'un booster ou saveAnimal A FAIRE
+  - Mettre a jour le score après utilisation d'un booster ou saveAnimal A FAIRE
 
-- Rapport + diagramme
+  - Renommer les packages
 
-- Renommer les packages
+  - Suppression des imports inutiles DONE
 
-- Suppression des imports inutiles DONE
+  - Création de tout les niveaux
 
-- Création de tout les niveaux
+-DOCUMERNTATION
 
--Générer la doc :
- - DONE : Player + Launcher + Environment + GUI (juste écrite mais pas encore générée) (mais à revoir)
+  -Générer la doc :
+    - DONE : Player + Launcher + Environment + GUI (juste écrite mais pas encore générée) (mais à revoir)
+  - Rapport + diagramme
