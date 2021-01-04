@@ -11,7 +11,7 @@ import pack.Player;
 public class Level implements java.io.Serializable
 {
   private static final long serialVersionUID = 1L;
-  private static int id=1;
+  private static int id = 1;
   private final int num;
   private  Field field;
   private int[] palier;

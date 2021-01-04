@@ -167,6 +167,17 @@ public class Field implements java.io.Serializable
 
      this.moveColumns();
   }
+  public boolean coloumnContainsWood(int a)
+  {
+    for(int i = 0; i < this.width; i++)
+    {
+      if(this.elements[i][a].getColor() == -2)
+      {
+        return true;
+      }
+    }
+    return false;
+  }
   /**
    * Cette méthode permet savoir si une colonne est vide
    * @method columnIsEmpty
@@ -175,22 +186,22 @@ public class Field implements java.io.Serializable
    */
   public boolean columnIsEmpty(int k)
   {
-      // if(this.elements[width - 1][k].getColor() == 0) //si le dernier element de la colonne est vide apres update
-      // {
-      //   return true;                                //donc toute la colonne est vide
-      // }
-      // else
-      // {
-      //   return false;                               //sinon il y a un element au moins donc n'est pas vide
-      // }
-      for(int i=0; i < this.width; i++)
+      if(this.elements[width - 1][k].getColor() == 0) //si le dernier element de la colonne est vide apres update
       {
-        if(this.elements[i][k].getColor() != 0 || this.elements[i][k].getColor() != -2)
-        {
-          return false;
-        }
+        return true;                                //donc toute la colonne est vide
       }
-      return true;
+      else
+      {
+        return false;                               //sinon il y a un element au moins donc n'est pas vide
+      }
+      // for(int i=0; i < this.width; i++)
+      // {
+      //   if(this.elements[i][k].getColor() != 0 || this.elements[i][k].getColor() != -2)
+      //   {
+      //     return false;
+      //   }
+      // }
+      // return true;
   }
   /**
    * Cette methode permet d'échanger deux colonnes
@@ -203,9 +214,12 @@ public class Field implements java.io.Serializable
     int temp;
     for(int i = 0 ; i < width ; i++)                 //parcours chaque ligne
     {
-      temp = this.elements[i][a].getColor();
-      this.elements[i][a].setColor(this.elements[i][b].getColor());
-      this.elements[i][b].setColor(temp);
+      if(!coloumnContainsWood(a) && !coloumnContainsWood(b))
+      {
+        temp = this.elements[i][a].getColor();
+        this.elements[i][a].setColor(this.elements[i][b].getColor());
+        this.elements[i][b].setColor(temp);
+      }
     }
   }
   /**
@@ -218,7 +232,7 @@ public class Field implements java.io.Serializable
     {
       for(int j = 0 ; j < width - 1 ; j++)           //doit parcourir chaque colonne
       {
-        if(this.columnIsEmpty(j))                          //si la colonne est vide on la decale a droite
+        if(this.columnIsEmpty(j) && !coloumnContainsWood(j+1))                          //si la colonne est vide on la decale a droite
         {
           swapColumn(j,j+1);
         }
