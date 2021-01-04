@@ -224,7 +224,15 @@ public class FirstView extends JFrame
     //contains.add(level_Pane[1],"5");
     return (lvl);
   }
-
+  /**
+   * Cette méthode ajoute les addMouseListener aux boutons des niveau
+   * @method levelListener
+   * @param  num           numéro du niveau
+   * @param  player        le joueur
+   * @param  contains      le contentPane de la fenêtre
+   * @param  c1            le CardLayout qui gère les différentes vues à afficher
+   * @param  destination   la vue à afficher
+   */
   public void levelListener(int num, Player player, JPanel contains, CardLayout c1, String destination)
   {
     FirstView.levelsPane.levelsLabels[num].addMouseListener(new MouseAdapter()
@@ -269,7 +277,10 @@ public class FirstView extends JFrame
   //   contains.add(FirstView.this.won,"won");
   //   contains.add(FirstView.this.lost,"lost");
   // }
-
+  /**
+   * Cette méthode remplit le tableau qui gére les boutons des niveaux
+   * @method graphicalLevelsInitialize
+   */
   public void graphicalLevelsInitialize()
   {
     int b = 4;
@@ -281,7 +292,11 @@ public class FirstView extends JFrame
     }
 
   }
-
+  /**
+   * Cette méthode ajoute les listeners au plateau des niveau pour savoir si le niveau est terminé
+   * @method levelsPaneAddListener
+   * @param  i                     le numéro du niveau
+   */
   public void levelsPaneAddListener(int i)
   {
     level_Pane[i].fieldLevelPane.addMouseListener(new MouseAdapter()
