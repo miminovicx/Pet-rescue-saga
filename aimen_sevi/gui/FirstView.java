@@ -47,7 +47,7 @@ public class FirstView extends JFrame
     JPanel titlePane = new JPanel();
     firstViewMenuPane.setLayout(null);
     menuPane.setLayout(null);
-    JLabel title = new JLabel("PetRescue");
+    JLabel title = new JLabel("Pet Rescue Data");
     Font titleFont = new Font("Arial",Font.ITALIC,75);
     Font firstViewFont = new Font("Arial",Font.ITALIC,25);
     title.setFont(titleFont);
@@ -150,7 +150,7 @@ public class FirstView extends JFrame
 
     this.c1.show(contains,"1");
     this.setContentPane(contains);
-    this.setTitle("PetRescue");
+    this.setTitle("Pet Rescue Data");
     this.setDefaultCloseOperation(EXIT_ON_CLOSE);
     this.setSize(600,600);
     this.setResizable(false);

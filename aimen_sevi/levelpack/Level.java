@@ -87,11 +87,14 @@ public class Level implements java.io.Serializable
         if(!this.Lost0() && !this.Won0())
         {
           coordonnees = this.react();
-          if(this.field.updateFinal(coordonnees[0], coordonnees[1]))
+          int a = this.field.updateFinal(coordonnees[0], coordonnees[1]);
+          if(a >= 1)
           {
             System.out.println("Animal sauvé !\n");
+            this.score += 1000*a;
           }
           this.score += field.scoreComputation(field.nbBlockSuppr);
+          System.out.println("Score : " + this.score + "\n");
           System.out.println(this.field);
         }
 
@@ -362,6 +365,7 @@ public class Level implements java.io.Serializable
             } while (a < 0 || a > this.field.getHeight() - 1);
             player.removeRocket();
             this.field.useRocket(a);
+            this.score += 300;
           }
           else
           {
@@ -380,6 +384,7 @@ public class Level implements java.io.Serializable
             } while (a < this.field.firstLineToDisplay() - 1 || a > this.field.firstLineToDisplay() + this.field.getInterval() -1);
               player.removeBoomerang();
               this.field.useBoomerang(a);
+              this.score += 300;
           }
           else
           {
@@ -402,6 +407,7 @@ public class Level implements java.io.Serializable
           } while ( (a < 0) || (a > this.field.getHeight()) || (b < this.field.firstLineToDisplay() ) || (b > (this.field.firstLineToDisplay() + this.field.getInterval() -1) ));
             player.removePickaxe();
             this.field.usePickaxe(b,a);
+            this.score += 50;
             // System.out.println(this.field);
             // this.field.updateSemiFinal();
             // System.out.println(this.field);
@@ -427,6 +433,7 @@ public class Level implements java.io.Serializable
           } while ( (a < 0) || (a > this.field.getHeight()) || (b < this.field.firstLineToDisplay() ) || (b > (this.field.firstLineToDisplay() + this.field.getInterval() -1) ));
             player.removeBallons();
             this.field.useBallon(b,a);
+            this.score += 600;
           }
           else
           {
@@ -436,7 +443,6 @@ public class Level implements java.io.Serializable
         break;
 
       }
-      // System.out.println(this.field);
       this.field.updateSemiFinal();
       System.out.println(this.field);
     }

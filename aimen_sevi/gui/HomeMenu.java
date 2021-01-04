@@ -35,7 +35,7 @@ public  class HomeMenu extends JPanel
     this.setLayout(new BorderLayout());
 
 
-    JLabel title = new JLabel("PetRescue");
+    JLabel title = new JLabel("Pet Rescue Data");
     Font titleFont = new Font("Arial",Font.ITALIC,75);
     title.setFont(titleFont);
     title.setForeground(Color.GRAY);

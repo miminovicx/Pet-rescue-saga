@@ -209,7 +209,6 @@ public  class GraphicalLevel extends JPanel
           {
             g2.fillRect(x,y,50,50);
           }
-          // if (i == GraphicalLevel.this.level.getField().getWidth() - 1 && j == GraphicalLevel.this.level.getField().getHeight() - 1)
           if(i == GraphicalLevel.this.level.getField().firstLineToDisplay() + GraphicalLevel.this.level.getField().getInterval() - 1 && j == GraphicalLevel.this.level.getField().getHeight()  - 1)
           {
             int k = GraphicalLevel.this.level.getField().getInterval() * 51;
@@ -218,26 +217,22 @@ public  class GraphicalLevel extends JPanel
               String ballonPath = "../ressources/images/ballon.png";
               InputStream ballonStream = new BufferedInputStream(new FileInputStream(ballonPath));
               Image ballon = ImageIO.read(ballonStream);
-              // g2.drawImage(ballon,x - 45,y + 55,null);
               g2.drawImage(ballon, 275, k + 10 ,null);
 
               String springPath = "../ressources/images/spring.png";
               InputStream springStream = new BufferedInputStream(new FileInputStream(springPath));
               Image spring = ImageIO.read(springStream);
-              // g2.drawImage(spring,x + 10,y + 55,null);
               g2.drawImage(spring, 330 , k + 10 ,null);
 
 
               String rocketPath = "../ressources/images/rocket.png";
               InputStream rocketStream = new BufferedInputStream(new FileInputStream(rocketPath));
               Image rocket = ImageIO.read(rocketStream);
-              // g2.drawImage(rocket,x - 100,y + 55,null);
               g2.drawImage(rocket, 220, k + 10 ,null);
 
               String pickaxePath = "../ressources/images/pickaxe.png";
               InputStream pickaxeStream = new BufferedInputStream(new FileInputStream(pickaxePath));
               Image pickaxe = ImageIO.read(pickaxeStream);
-              // g2.drawImage(pickaxe,x - 45,y + 115,null);
               g2.drawImage(pickaxe, 275, k + 60 ,null);
             }
             catch (Exception ballon_e)
