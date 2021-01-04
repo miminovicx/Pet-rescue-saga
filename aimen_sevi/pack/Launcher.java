@@ -9,7 +9,6 @@ import java.util.Scanner;
 public class Launcher
 {
   static Scanner ans = new Scanner(System.in);
-  // public static final reset;
   public static final String CYAN = "\033[0;36m";
   public static final String RESET = "\033[0m";
   public static final String WHITE_BOLD_BRIGHT = "\033[1;97m";
