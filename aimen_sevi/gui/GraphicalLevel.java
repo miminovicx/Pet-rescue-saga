@@ -266,9 +266,13 @@ public  class GraphicalLevel extends JPanel
         int blockY = e.getY();
         if ((blockY < GraphicalLevel.this.level.getField().getInterval() * 51) && (blockX > c) && (blockX < level.getField().getHeight() *51 + c) )
         {
-          int b = (blockX - c) / 50 ;
-          int a = (blockY / 50) + GraphicalLevel.this.level.getField().firstLineToDisplay();
-          level.getField().updateFinal(a,b);
+          int b = (blockX - c) / 51 ;
+          int a = (blockY / 51) + GraphicalLevel.this.level.getField().firstLineToDisplay();
+          int c = level.getField().updateFinal(a,b);
+          if(c >= 1)
+          {
+            level.setScore(level.getScore() + c*1000);
+          }
           repaint();
 
           try
@@ -291,15 +295,15 @@ public  class GraphicalLevel extends JPanel
             int a;
             do
             {
-              a = Integer.parseInt(JOptionPane.showInputDialog(null, "Veuillez choisir une colonne entre 1 et " + level.getField().getWidth() + ":")) - 1;
+              a = Integer.parseInt(JOptionPane.showInputDialog(null, "Veuillez choisir une colonne entre 1 et " + level.getField().getHeight() + ":")) - 1;
             }
             while (a < 0 || a >= level.getField().getWidth());
             player.removeRocket();
             level.getField().useRocket(a);
-            repaint();
-            level.setScore(level.getScore() + level.getField().scoreComputation(level.getField().nbBlockSuppr));
+            level.setScore(level.getScore() + 300);
             GraphicalLevel.this.setStars(level.getScore());
             level.getField().updateSemiFinal();
+            repaint();
             try
             {
               Thread.sleep(250);
@@ -308,6 +312,7 @@ public  class GraphicalLevel extends JPanel
             {
               exp.printStackTrace();
             }
+            // repaint();
 
           }
           else
@@ -323,20 +328,22 @@ public  class GraphicalLevel extends JPanel
             int a;
             do
             {
-              a = Integer.parseInt(JOptionPane.showInputDialog(null, "x de la case :"));
+              a = Integer.parseInt(JOptionPane.showInputDialog(null, "Veuillez choisir une ligne entre " + level.getField().firstLineToDisplay() + " et " + level.getField().firstLineToDisplay() + level.getField().getInterval() + " : "));
             }
-            while (a < 0 || a >= level.getField().getWidth());
+            while (a < level.getField().firstLineToDisplay() || a >= level.getField().firstLineToDisplay() + level.getField().getInterval());
             int b ;
             do
             {
-              b = Integer.parseInt(JOptionPane.showInputDialog(null, "y de la case :"));
+              b = Integer.parseInt(JOptionPane.showInputDialog(null, "Veuillez choisir une colonne  :"));
             } while (b < 0 || b >= level.getField().getHeight());
             player.removeBallons();
             level.getField().useBallon(a,b);
-            repaint();
-            level.setScore(level.getScore() + level.getField().scoreComputation(level.getField().nbBlockSuppr));
+            level.setScore(level.getScore() + 600);
             GraphicalLevel.this.setStars(level.getScore());
             level.getField().updateSemiFinal();
+            level.getField().moveColumns();
+
+            repaint();
             try
             {
               Thread.sleep(250);
@@ -345,7 +352,6 @@ public  class GraphicalLevel extends JPanel
             {
               exp.printStackTrace();
             }
-
           }
           else
           {
@@ -364,12 +370,10 @@ public  class GraphicalLevel extends JPanel
             while (a < 0 || a >= level.getField().getHeight());
             player.removeBoomerang();
             level.getField().useBoomerang(a);
-            repaint();
-            level.setScore(level.getScore() + level.getField().scoreComputation(level.getField().nbBlockSuppr));
+            level.setScore(level.getScore() + 300);
             GraphicalLevel.this.setStars(level.getScore());
             level.getField().updateSemiFinal();
-
-            // level.
+            repaint();
             try
             {
               Thread.sleep(250);
@@ -403,10 +407,10 @@ public  class GraphicalLevel extends JPanel
             } while (b < 0 || b >= level.getField().getHeight());
             player.removePickaxe();
             level.getField().usePickaxe(a,b);
-            repaint();
-            level.setScore(level.getScore() + level.getField().scoreComputation(level.getField().nbBlockSuppr));
+            level.setScore(level.getScore() + 50);
             GraphicalLevel.this.setStars(level.getScore());
             level.getField().updateSemiFinal();
+            repaint();
 
             // level.
             try
@@ -424,7 +428,7 @@ public  class GraphicalLevel extends JPanel
             System.out.println("Pas assez de marteaux");
           }
         }
-
+        repaint();
       }
 
 

@@ -2,7 +2,7 @@
 -GUI :
   - chooseBooster inverser x et y
 
-- Mettre a jour le score après utilisation d'un booster ou saveAnimal A FAIRE
+  - réafficher les animaux après utilisation d'un booster
 
 - Rapport + diagramme
 

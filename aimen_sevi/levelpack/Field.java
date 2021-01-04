@@ -382,7 +382,9 @@ public class Field implements java.io.Serializable
     this.remove(x,y);
     this.update();
     this.moveColumns();
-    return this.saveAnimal();
+    int a = this.saveAnimal();
+    this.moveColumns();
+    return a;
   }
 
   /**
@@ -394,6 +396,7 @@ public class Field implements java.io.Serializable
     this.update();
     this.moveColumns();
     this.saveAnimal();
+    this.moveColumns();
   }
   /**
    * Cette méthode enlève les animaux de la dernière ligne et les ajoute au nombre d'animaux sauvés
