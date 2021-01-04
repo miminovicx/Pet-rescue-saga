@@ -5,3 +5,15 @@
 - Rapport + diagramme
 
 - Création de tout les niveaux
+
+Pour le rapport :
+  Presentation du jeu
+  Choix du langage
+  Presentation de l'environnement de developpement et le langage
+  Partie console
+  Partie interface graphique
+  Les etapes du developpement
+  Les fonctionnalités
+  Les difficultés rencontrés
+  Comment ça a été réglé et résolu
+  Les futurs améliorations à apporter au jeu
