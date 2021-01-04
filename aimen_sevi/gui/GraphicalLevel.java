@@ -269,6 +269,7 @@ public  class GraphicalLevel extends JPanel
           if(c >= 1)
           {
             level.setScore(level.getScore() + c*1000);
+            GraphicalLevel.this.score.setText("Score : " + level.getScore());
           }
           repaint();
 
@@ -298,6 +299,7 @@ public  class GraphicalLevel extends JPanel
             player.removeRocket();
             level.getField().useRocket(a);
             level.setScore(level.getScore() + 300);
+            GraphicalLevel.this.score.setText("Score : " + level.getScore());
             GraphicalLevel.this.setStars(level.getScore());
             level.getField().updateSemiFinal();
             repaint();
@@ -334,6 +336,7 @@ public  class GraphicalLevel extends JPanel
             player.removeBallons();
             level.getField().useBallon(a,b);
             level.setScore(level.getScore() + 600);
+            GraphicalLevel.this.score.setText("Score : " + level.getScore());
             GraphicalLevel.this.setStars(level.getScore());
             level.getField().updateSemiFinal();
 
@@ -365,6 +368,7 @@ public  class GraphicalLevel extends JPanel
             player.removeBoomerang();
             level.getField().useBoomerang(a);
             level.setScore(level.getScore() + 300);
+            GraphicalLevel.this.score.setText("Score : " + level.getScore());
             GraphicalLevel.this.setStars(level.getScore());
             level.getField().updateSemiFinal();
             repaint();
@@ -402,6 +406,7 @@ public  class GraphicalLevel extends JPanel
             player.removePickaxe();
             level.getField().usePickaxe(a,b);
             level.setScore(level.getScore() + 50);
+            GraphicalLevel.this.score.setText("Score : " + level.getScore());
             GraphicalLevel.this.setStars(level.getScore());
             level.getField().updateSemiFinal();
             repaint();
