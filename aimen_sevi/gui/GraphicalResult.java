@@ -3,18 +3,11 @@ import javax.swing.*;
 import java.awt.event.MouseAdapter;
 import java.awt.event.*;
 import java.awt.*;
-import levelpack.Level;
-import pack.*;
 import java.util.Arrays;
 import java.io.File;
 import java.util.Scanner;
-import java.awt.image.BufferedImage;
-import java.awt.Image;
-import javax.imageio.ImageIO;
-import java.io.File;
-import java.io.InputStream;
-import java.io.BufferedInputStream;
-import java.io.FileInputStream;
+import pack.*;
+import levelpack.Level;
 /**
  * Classe représentant le panel à la fin d'un niveau
  */

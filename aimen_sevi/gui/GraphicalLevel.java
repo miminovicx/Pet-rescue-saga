@@ -3,18 +3,15 @@ import javax.swing.*;
 import java.awt.event.MouseAdapter;
 import java.awt.event.*;
 import java.awt.*;
-import java.awt.image.BufferedImage;
 import java.awt.Image;
 import javax.imageio.ImageIO;
-import levelpack.Level;
-import pack.*;
-import levelpack.*;
-import java.util.Arrays;
-import java.io.File;
 import java.io.InputStream;
 import java.io.BufferedInputStream;
 import java.io.FileInputStream;
 import java.util.Scanner;
+import pack.*;
+import levelpack.*;
+// import levelpack.Level;
 /**
  * Classe représentant un niveau graphique
  */

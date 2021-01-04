@@ -1,6 +1,7 @@
 
 -GUI :
-  - réafficher les animaux et le score après utilisation d'un booster 
+  - réafficher les animaux et le score après utilisation d'un booster
+  - numéroter les lignes du field
 
 - Rapport + diagramme
 

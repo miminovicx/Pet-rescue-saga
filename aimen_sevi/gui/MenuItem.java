@@ -5,12 +5,7 @@ import java.awt.event.*;
 import java.awt.*;
 import levelpack.Level;
 import pack.*;
-import java.util.Arrays;
-import java.io.File;
 import java.util.Scanner;
-import java.util.TimerTask;
-import java.util.Timer;
-import java.util.Date;
 /**
  * Classe représentant un bouton du menu
  */
@@ -26,7 +21,6 @@ public class MenuItem extends JLabel
   {
     super(label);
     this.setOpaque(true);
-    // this.setBorder(BorderFactory.createLineBorder(Color.BLACK, 2, true));
     this.setForeground(Color.BLACK);
     this.setBackground(Color.GRAY);
     this.setFont(font);
