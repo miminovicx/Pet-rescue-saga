@@ -1,15 +1,8 @@
 
 -GUI :
-  - réafficher les animaux et le score après utilisation d'un booster
+  - réafficher les animaux et le score après decalage des colonnes //a oublier
   - numéroter les lignes du field
 
 - Rapport + diagramme
 
-- Renommer les packages
-
-- display the help
-
 - Création de tout les niveaux
-
--Générer la doc :
- - DONE : Player + Launcher + Environment (juste écrite mais pas encore générée) (mais à revoir)

@@ -23,7 +23,7 @@ public class Block extends FieldElement
   /**
    * Cette méthode permet d'obtenir la couleur d'un bloc
    * @method getColor
-   * @return entier entre 0 et 5 représentant une couleur
+   * @return entier représentant la couleur
    */
   public int getColor()
   {
@@ -32,7 +32,7 @@ public class Block extends FieldElement
   /**
    * Cette méthode permet de changer la couleur d'un bloc
    * @method setColor
-   * @param  color    nouvelle couleur entre 0 et 5
+   * @param  color    nouvelle couleur
    */
   public void setColor(int color)
   {
@@ -69,14 +69,13 @@ public class Block extends FieldElement
       }
       case -1:
       {
-        // return ("\uD83D\uDC3B");
         if(this.emoji == 1)
         {
-          return(this.bearEmoji); //animal representé par un ours
+          return(this.bearEmoji);
         }
         else if(this.emoji == 2)
         {
-          return(this.rabbitEmoji); //animal representé par un lapin
+          return(this.rabbitEmoji);
         }
         else if(this.emoji == 3)
         {
@@ -98,27 +97,22 @@ public class Block extends FieldElement
       }
       case 1:
       {
-        // return (ANSI_RED + "r" + ANSI_RESET);
         return ("\uD83D\uDFE5");
       }
       case 2:
       {
-        // return (ANSI_BLUE + "b" + ANSI_RESET);
         return("\uD83D\uDFE6");
       }
       case 3:
       {
-        // return (ANSI_YELLOW + "y" + ANSI_RESET);
         return("\uD83D\uDFE8");
       }
       case 4:
       {
-        // return (ANSI_GREEN + "g" + ANSI_RESET);
         return("\uD83D\uDFE9");
       }
       case 5:
       {
-        // return (ANSI_PURPLE + "p" + ANSI_RESET);
         return("\uD83D\uDFEA");
       }
       default:
@@ -138,7 +132,7 @@ public class Block extends FieldElement
 
   /**
    * Cette méthode permet de récuperer l'emoji ou l'image à afficher
-   * @return le num de l'emoji
+   * @return un eniter représentant l'emoji
    */
   public int getEmoji()
   {

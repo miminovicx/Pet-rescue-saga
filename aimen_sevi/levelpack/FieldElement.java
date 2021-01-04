@@ -9,15 +9,6 @@ public abstract class FieldElement implements java.io.Serializable
   private int y;
   public boolean del = false;
 
-  public int getX()
-  {
-    return (this.x);
-  }
-
-  public int getY()
-  {
-    return (this.y);
-  }
   /**
    * Construit un objet de type FieldElement
    * @method FieldElement
@@ -30,11 +21,30 @@ public abstract class FieldElement implements java.io.Serializable
     this.y = y;
   }
   /**
+   * Cette méthode permet de récuperer l'abscisse d'un FieldElement
+   * @return un entier (l'abscisse)
+   */
+  public int getX()
+  {
+    return (this.x);
+  }
+
+  /**
+   * Cette méthode permet de récuperer la coordonnees d'un FieldElement
+   * @return un entier (la coordonnee)
+   */
+  public int getY()
+  {
+    return (this.y);
+  }
+
+  /**
    * Cette méthode permet de changer la couleur d'un FieldElement
    * @method setColor
    * @param  color    la nouvelle couleur
    */
   public void setColor(int color) {};
+
   /**
    * Cette méthode permet transformer un FieldElement
    * @method transform
@@ -56,5 +66,9 @@ public abstract class FieldElement implements java.io.Serializable
    */
   public int getColor(){return -1;}
 
+/**
+ * Cette méthode permet de connaitre l'emoji a afficher
+ * @return l'emoji 2 par défaut
+ */
   public int getEmoji(){return 2;}
 }

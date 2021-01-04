@@ -77,7 +77,7 @@ public class FirstView extends JFrame
     {
       public void mouseClicked(MouseEvent e)
       {
-        JOptionPane.showMessageDialog(FirstView.this,Launcher.helpDisplay(),"Aide", JOptionPane.DEFAULT_OPTION);
+        JOptionPane.showMessageDialog(FirstView.this,FirstView.this.helpDisplay(),"Aide", JOptionPane.DEFAULT_OPTION);
       }
       public void mouseEntered(MouseEvent e)
       {
@@ -385,5 +385,25 @@ public class FirstView extends JFrame
 
       }
     });
+  }
+
+  /**
+   * Cette méthode permet d'afficher l'aide
+   * @return une chaine représentant l'aide à afficher
+   */
+  public static String helpDisplay()
+  {
+    String s = "";
+    s += ("\n\tRégles du jeu\nVous devez sauver les animaux ! Pour cela il faut faire exploser les blocs en dessous\n");
+    s += ("Vous pouvez faire exploser un ou plusieurs blocs de la même couleur s'ils sont deux ou plus à être voisins.\n");
+    s += ("Vous avez gagné si vous avez sauvé tous les animaux et avez atteint le score objectif.\n");
+    s += ("Le jeu s'arrête si vous avezgagné ou s'il n'y a plus de blocs à exploser\n");
+    s += ("Les niveaux gagnés sont affichés en vert\n");
+    s += ("Les niveaux déverouillés mais pas encore gagnés sont affichés en jaune\n");
+    s += ("Les niveaux verrouillés sont affichés en rouge\n");
+    s += ("A chaque niveau gagné, vous déverrouiller le suivant\n");
+    s += ("Vous avez un nombre détoiles pour chaque niveau gagné selon votre score\n");
+    s += ("Vous disposez de certains boosters qui pourront vous aider lorsque vous vous retrouverez en difficulté");
+    return s;
   }
 }

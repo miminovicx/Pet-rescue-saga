@@ -15,7 +15,10 @@ public class WoodBlock extends Block
     super(x, y, -2);
   }
 
-
+/**
+ * Cette méthode permet de transformer un obstacle
+ * @return lui même
+ */
   public Block transform()
   {
       return (this);

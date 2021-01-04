@@ -94,7 +94,6 @@ public class Environment
     File donnee = new File(path);
     if (donnee.exists())
     {
-      // this.player = Player.use(path);
       this.setPlayer(Player.use(path));
     }
     else
@@ -102,7 +101,6 @@ public class Environment
       this.player = new Player(nickName);
 
     }
-    // this.player.save();
   }
 
   /**
@@ -223,9 +221,12 @@ public class Environment
       n = player.getScanner().nextInt();
     }
     return n;
-    // this.play(n - 1);
   }
 
+/**
+ * Cette méthode permet de faire jouer le bot
+ * @param i le niveau a jouer
+ */
   public void playRobot(int i)
   {
       if (this.player.getUnlocked()[i])

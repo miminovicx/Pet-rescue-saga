@@ -1,7 +1,7 @@
 import environment_player_pack.Environment;
 import environment_player_pack.Launcher;
+import environment_player_pack.Player;
 import levelpack.FieldElement;
-import pack.Player;
 import levelpack.Block;
 import levelpack.SquaredBlock;
 import levelpack.WoodBlock;
@@ -182,13 +182,13 @@ public class LevelCreator
     field1.putElement(element63);
     int[] paliers = {100,300,600};
 
-    FieldElement elementa  = new Block(0,0,2);       //creation des elements du field
+    FieldElement elementa  = new Block(0,0,1);       //creation des elements du field
     FieldElement elementb  = new Block(0,1,2);
     FieldElement elementc  = new Animal(0,2);
-    FieldElement elementd  = new Block(1,0,2);
+    FieldElement elementd  = new Block(1,0,1);
     FieldElement elemente  = new Block(1,1,2);
     FieldElement elementf  = new Block(1,2,2);
-    FieldElement elementg  = new Block(2,0,2);
+    FieldElement elementg  = new Block(2,0,1);
     FieldElement elementh  = new Block(2,1,2);
     FieldElement elementi  = new Block(2,2,2);
 

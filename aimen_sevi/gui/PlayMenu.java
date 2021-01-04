@@ -63,6 +63,7 @@ public  class PlayMenu extends JPanel
       this.add(nickName);
   }
 
+  
   // public void paint(Graphics g)
   // {
   //     // Appel de la méthode paintComponent de la classe mère

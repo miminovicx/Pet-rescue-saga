@@ -45,22 +45,37 @@ public class Level implements java.io.Serializable
   {
     return (this.num) ;
   }
-
+/**
+ * Cette méthode permet de recuperer le score
+ * @return score
+ */
   public int getScore()
   {
     return this.score;
   }
 
+/**
+ * Cette méthode permet de recuperer le plateau du niveau
+ * @return le plateau du niveau
+ */
   public Field getField()
   {
     return this.field;
   }
 
+/**
+ * Cette méthode permet de recuperer les paliers du niveau
+ * @return le tableau de paliers
+ */
   public int[] getPalier()
   {
     return this.palier;
   }
 
+/**
+ * Cette méthode permet de recuperer le nombre d'animaux qu'il faut sauver du niveua
+ * @return le nombre d'animaux
+ */
   public int getAnimalsToRescue()
   {
     return (this.animalsToRescue) ;
@@ -155,6 +170,7 @@ public class Level implements java.io.Serializable
     coordonnees[1] = a;
     return (coordonnees);
   }
+
   /**
   * Cette méthode affiche un message si le niveau est perdu
   * @method lost
@@ -167,6 +183,7 @@ public class Level implements java.io.Serializable
     // res += "\n;
     System.out.println(res);
   }
+
   /**
   * Cette méthode affiche un message si le niveau est gagné
   * @method win
@@ -182,6 +199,7 @@ public class Level implements java.io.Serializable
     // res += "*\n*********************";
 
   }
+
   /**
   * Cette méthode permet d'afficher un niveau
   * @method toString
@@ -195,6 +213,10 @@ public class Level implements java.io.Serializable
     return (res);
   }
 
+/**
+ * Cette méthode permet d'afficher l'objectif et le meilleur score
+ * @param player le joueur
+ */
   public void displayPreLevel(Player player)
   {
     System.out.println("Objectif : " + this.palier[0]);
@@ -322,7 +344,10 @@ public class Level implements java.io.Serializable
     this.score = s;
   }
 
-
+/**
+ * Cette méthode demande au joueur s'il veut utiliser un booster
+ * @return vrai si utilisation de booster, faux sinon
+ */
   private boolean useBooster()
   {
     char rep;
@@ -340,6 +365,10 @@ public class Level implements java.io.Serializable
     return false;
   }
 
+/**
+ * Cette méthode permet de choisir un booster
+ * @param player le joueur
+ */
   private void chooseBooster(Player player)
   {
 
@@ -447,6 +476,10 @@ public class Level implements java.io.Serializable
       System.out.println(this.field);
     }
 
+/**
+ * Cette méthode permet d'afficcher les étoiles en fonction du score
+ * @param score le score
+ */
   public void displayStars(int score)
   {
       int s = 0;
@@ -476,32 +509,33 @@ public class Level implements java.io.Serializable
       // System.out.println(this.field);
     }
 
-    public void playBot()
+/**
+ * Cette méthode permet de faire jouer un bot
+ */
+  public void playBot()
+  {
+    int a;
+    int b;
+    do {
+      a = (int)(Math.random() * (this.field.getHeight()));
+      b = this.field.firstLineToDisplay() + (int)(Math.random() * ((this.field.getInterval())));
+      if(this.field.deletable(a,b))
+      {
+        System.out.println("Suppression du bloc : \nColonne : " + b + "\nLigne : " + a + "\n");
+        this.field.updateFinal(a,b);
+        this.score += field.scoreComputation(field.nbBlockSuppr);
+        System.out.println(this.field);
+      }
+    } while(!this.Lost0() && !this.Won0());
+    if(this.Won0())
     {
-      int a;
-      int b;
-      do {
-        a = (int)(Math.random() * (this.field.getHeight()));
-        b = this.field.firstLineToDisplay() + (int)(Math.random() * ((this.field.getInterval())));
-        if(this.field.deletable(a,b))
-        {
-          System.out.println("Suppression du bloc : \nColonne : " + b + "\nLigne : " + a + "\n");
-          this.field.updateFinal(a,b);
-          this.score += field.scoreComputation(field.nbBlockSuppr);
-          System.out.println(this.field);
-        }
-      } while(!this.Lost0() && !this.Won0());
-      if(this.Won0())
-      {
-        System.out.println("Le bot a gagné\nScore : "+ this.score +"\n");
-        this.displayStars(this.score);
-      }
-      else if(this.Lost0())
-      {
-        System.out.println("Le bot a perdu\nScore : " + this.score);
-
-      }
-      this.field.animalsSaved = 0;
+      System.out.println("Le bot a gagné\nScore : "+ this.score +"\n");
+      this.displayStars(this.score);
     }
-
+    else if(this.Lost0())
+    {
+      System.out.println("Le bot a perdu\nScore : " + this.score);
+    }
+    this.field.animalsSaved = 0;
   }
+}

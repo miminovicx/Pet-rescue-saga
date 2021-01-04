@@ -8,14 +8,13 @@ import java.lang.Math;
  */
 public class Field implements java.io.Serializable
 {
-  //private static final long serialVersionUID = 51335434354l;
   private static final long serialVersionUID = 1L;
   private int width;
   private int height;
   private FieldElement [][] elements;
   public static int nbBlockSuppr;
   public static int animalsSaved = 0;
-  private int interval;  //represente le nombre de lignes a afficher
+  private int interval;
 
 /**
 *Méthode pour obtenir la largeur du plateau
@@ -53,7 +52,7 @@ public class Field implements java.io.Serializable
   /**
    * Met à jour la longueur du plateau
    * @method setWidth
-   * @param  width    nouvelle largeur
+   * @param  width    nouvelle longueur
    */
   public void setWidth(int width)
   {
@@ -142,7 +141,7 @@ public class Field implements java.io.Serializable
  */
   public void getDown(int x, int y)
   {
-    if (x + 1 < this.width) //c'etait height
+    if (x + 1 < this.width)
     this.swap(x,y,x + 1,y);
   }
   /**
@@ -151,13 +150,13 @@ public class Field implements java.io.Serializable
    */
   public void update()
   {
-    for (int k = 0 ; k < width ; k ++) //etait height
+    for (int k = 0 ; k < width ; k ++)
     {
-      for(int j = width - 1 ;j > 0; j--) //etait height
+      for(int j = width - 1 ;j > 0; j--)
       {
-        for (int i = 0 ; i < height; i++) //etait width
+        for (int i = 0 ; i < height; i++)
         {
-          if(this.elements[j-1][i].getColor () != -2 && this.elements[j][i].getColor() == 0)  //Changé
+          if(this.elements[j-1][i].getColor () != -2 && this.elements[j][i].getColor() == 0)
           {
             this.getDown(j - 1, i);
           }
@@ -167,6 +166,12 @@ public class Field implements java.io.Serializable
 
      this.moveColumns();
   }
+
+  /**
+   * Cette méthode permet de verifier si une colonne contient un obstacle
+   * @param  a la colonne
+   * @return   vrai si la colonne contient au moins un obstacle, faux sinon
+   */
   public boolean coloumnContainsWood(int a)
   {
     for(int i = 0; i < this.width; i++)
@@ -186,22 +191,14 @@ public class Field implements java.io.Serializable
    */
   public boolean columnIsEmpty(int k)
   {
-      if(this.elements[width - 1][k].getColor() == 0) //si le dernier element de la colonne est vide apres update
+      if(this.elements[width - 1][k].getColor() == 0)
       {
-        return true;                                //donc toute la colonne est vide
+        return true;
       }
       else
       {
-        return false;                               //sinon il y a un element au moins donc n'est pas vide
+        return false;
       }
-      // for(int i=0; i < this.width; i++)
-      // {
-      //   if(this.elements[i][k].getColor() != 0 || this.elements[i][k].getColor() != -2)
-      //   {
-      //     return false;
-      //   }
-      // }
-      // return true;
   }
   /**
    * Cette methode permet d'échanger deux colonnes
@@ -232,7 +229,7 @@ public class Field implements java.io.Serializable
     {
       for(int j = 0 ; j < width - 1 ; j++)           //doit parcourir chaque colonne
       {
-        if(this.columnIsEmpty(j) && !coloumnContainsWood(j+1))                          //si la colonne est vide on la decale a droite
+        if(this.columnIsEmpty(j) && !coloumnContainsWood(j+1))                          //si la colonne est vide on la decale a droite ou contient juste un obstacle
         {
           swapColumn(j,j+1);
         }
@@ -252,7 +249,6 @@ public class Field implements java.io.Serializable
     {
       return false;
     }
-          //SimpleBlock
 
       if( x + 1 < (this.firstLineToDisplay() + this.interval))   //les conditions sont ici pour ne pas sortir des limites du tableau
       {
@@ -381,7 +377,7 @@ public class Field implements java.io.Serializable
   {
     this.remove(x,y);
     this.update();
-    this.moveColumns();
+    // this.moveColumns();
     int a = this.saveAnimal();
     this.moveColumns();
     return a;
@@ -485,7 +481,10 @@ public class Field implements java.io.Serializable
     }
     return i;
   }
-
+/**
+ * Cette méthode permet d'utiliser le booster fusées
+ * @param a la colonne sur laquelle l'utiliser
+ */
   public void useRocket(int a)
   {
     for(int i = this.firstLineToDisplay() ; i < (this.firstLineToDisplay() + this.interval) ; i ++)
@@ -494,6 +493,10 @@ public class Field implements java.io.Serializable
     }
   }
 
+/**
+ * Cette méthode permet d'utiliser le booster boomerang (ressors)
+ * @param a la ligne sur laquelle l'utiliser
+ */
   public void useBoomerang(int a)
   {
     for(int i = 0 ; i < this.height ; i ++)
@@ -502,11 +505,21 @@ public class Field implements java.io.Serializable
     }
   }
 
+/**
+ * Cette méthode permet d'utiliser le booster marteau
+ * @param a l'abscisse du bloc sur lequel l'utiliser
+ * @param b la coordonné du bloc sur lequel l'utiliser
+ */
   public void usePickaxe(int a, int b)
   {
     removeElement(a,b);
   }
 
+/**
+ * Cette méthode permet d'utiliser le booster ballon
+ * @param a l'abscisse du bloc sur lequel l'utiliser
+ * @param b la coordonné du bloc sur lequel l'utiliser
+ */
   public void useBallon(int a, int b)
   {
     int color = this.elements[a][b].getColor();

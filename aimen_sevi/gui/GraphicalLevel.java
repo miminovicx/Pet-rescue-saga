@@ -67,10 +67,9 @@ public  class GraphicalLevel extends JPanel
               System.out.println("fichier introuvable");
             }
             break;
-            //g2.setColor(Color.BLACK);
+
             case -1:
-            // g2.fillRect(x,y,50,50);
-            g2.setColor(new Color(238,238,238));
+            // g2.setColor(new Color(238,238,238));
             if(GraphicalLevel.this.level.getField().getElements()[i][j].getEmoji() == 1)
             {
               try
@@ -151,7 +150,6 @@ public  class GraphicalLevel extends JPanel
             break;
 
             case 1:
-            //g2.setColor(Color.RED);
             try
             {
               String path = "../ressources/images/red.png";
@@ -165,7 +163,6 @@ public  class GraphicalLevel extends JPanel
             }
             break;
             case 2:
-            //g2.setColor(Color.BLUE);
             try
             {
               String path = "../ressources/images/blue.png";
@@ -179,7 +176,6 @@ public  class GraphicalLevel extends JPanel
             }
             break;
             case 3:
-            //g2.setColor(Color.YELLOW);
             try
             {
               String path = "../ressources/images/yellow.png";
@@ -431,7 +427,7 @@ public  class GraphicalLevel extends JPanel
             noBoosters("marteaux");
           }
         }
-        repaint();
+        // repaint();
       }
 
 
