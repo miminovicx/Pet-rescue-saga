@@ -46,14 +46,21 @@ public  class GraphicalLevel extends JPanel
       int x ;
       int y ;
       int a = (600 - GraphicalLevel.this.level.getField().getHeight()*51)/2;
+      for(int i = GraphicalLevel.this.level.getField().firstLineToDisplay(); i < GraphicalLevel.this.level.getField().firstLineToDisplay() + GraphicalLevel.this.level.getField().getInterval(); i++)
+      {
+        g2.drawString(String.valueOf(i), a - 25 , 51*(i - GraphicalLevel.this.level.getField().firstLineToDisplay()) + 25);
+      }
+      for (int j = 0; j < GraphicalLevel.this.level.getField().getHeight(); j++)
+      {
+        g2.drawString(String.valueOf(j), 51*j + a + 25,(GraphicalLevel.this.level.getField().getInterval())*51 + 10);
+      }
       for (int i = GraphicalLevel.this.level.getField().firstLineToDisplay(); i < GraphicalLevel.this.level.getField().firstLineToDisplay() + GraphicalLevel.this.level.getField().getInterval(); i++)
       {
-        //c'est la qu'on affiche le numéro de ligne qui correspond a firstLineToDisplay
         for (int j = 0; j < GraphicalLevel.this.level.getField().getHeight(); j++)
         {
+          g2.drawString(String.valueOf(i), a - 25 , 51*(i - GraphicalLevel.this.level.getField().firstLineToDisplay()) + 25);
           x = a + (51 * j);
-          y = 51 * (i - GraphicalLevel.this.level.getField().firstLineToDisplay()) ;
-          if( j == 0) g2.drawString(String.valueOf(i),x,y);
+          y = 51 * (i - GraphicalLevel.this.level.getField().firstLineToDisplay());
           switch(GraphicalLevel.this.level.getField().getElements()[i][j].getColor())
           {
             case -2: //WoodBlock

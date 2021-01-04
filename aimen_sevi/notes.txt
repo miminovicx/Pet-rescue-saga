@@ -1,7 +1,6 @@
 
 -GUI :
   - réafficher les animaux et le score après decalage des colonnes //a oublier
-  - numéroter les lignes du field
 
 - Rapport + diagramme
 
