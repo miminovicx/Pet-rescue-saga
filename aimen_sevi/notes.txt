@@ -1,19 +1,16 @@
 
--CONSOLE:
-  -jetter un oeil au decalage des colonnes (j'ai l'impression que les colonnes ne se décalent plus)
 -GUI :
-  - chooseBooster inverser x et y NORMALLY DONE
+  - chooseBooster inverser x et y
 
-  - Mettre a jour le score après utilisation d'un booster ou saveAnimal A FAIRE
+- Mettre a jour le score après utilisation d'un booster ou saveAnimal A FAIRE
 
-  - Renommer les packages
+- Rapport + diagramme
 
-  - Suppression des imports inutiles DONE
+- Renommer les packages
 
-  - Création de tout les niveaux
+- Suppression des imports inutiles
 
--DOCUMERNTATION
+- Création de tout les niveaux
 
-  -Générer la doc :
-    - DONE : Player + Launcher + Environment + GUI (juste écrite mais pas encore générée) (mais à revoir)
-  - Rapport + diagramme
+-Générer la doc :
+ - DONE : Player + Launcher + Environment (juste écrite mais pas encore générée) (mais à revoir)

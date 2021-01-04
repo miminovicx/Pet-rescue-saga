@@ -1,9 +1,23 @@
 package gui;
 import javax.swing.*;
+import java.awt.event.MouseAdapter;
 import java.awt.event.*;
 import java.awt.*;
 import levelpack.Level;
 import pack.*;
+import java.util.Arrays;
+import java.io.File;
+import java.util.Scanner;
+import java.util.TimerTask;
+import java.util.Timer;
+import java.util.Date;
+import java.awt.image.BufferedImage;
+import java.awt.Image;
+import javax.imageio.ImageIO;
+import java.io.File;
+import java.io.InputStream;
+import java.io.BufferedInputStream;
+import java.io.FileInputStream;
 /**
  * Classe représentant le premier menu affiché
  */

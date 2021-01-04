@@ -1,14 +1,20 @@
 package gui;
 import javax.swing.*;
+import java.awt.event.MouseAdapter;
 import java.awt.event.*;
 import java.awt.*;
+import java.awt.image.BufferedImage;
+import java.awt.Image;
 import javax.imageio.ImageIO;
 import levelpack.Level;
 import pack.*;
 import levelpack.*;
+import java.util.Arrays;
+import java.io.File;
 import java.io.InputStream;
 import java.io.BufferedInputStream;
 import java.io.FileInputStream;
+import java.util.Scanner;
 /**
  * Classe représentant un niveau graphique
  */
@@ -326,7 +332,7 @@ public  class GraphicalLevel extends JPanel
               b = Integer.parseInt(JOptionPane.showInputDialog(null, "y de la case :"));
             } while (b < 0 || b >= level.getField().getHeight());
             player.removeBallons();
-            level.getField().useBallon(b,a);
+            level.getField().useBallon(a,b);
             repaint();
             level.setScore(level.getScore() + level.getField().scoreComputation(level.getField().nbBlockSuppr));
             GraphicalLevel.this.setStars(level.getScore());
@@ -396,7 +402,7 @@ public  class GraphicalLevel extends JPanel
               b = Integer.parseInt(JOptionPane.showInputDialog(null, "y de la case :"));
             } while (b < 0 || b >= level.getField().getHeight());
             player.removePickaxe();
-            level.getField().usePickaxe(b,a);
+            level.getField().usePickaxe(a,b);
             repaint();
             level.setScore(level.getScore() + level.getField().scoreComputation(level.getField().nbBlockSuppr));
             GraphicalLevel.this.setStars(level.getScore());
