@@ -160,7 +160,6 @@ public  class GraphicalLevel extends JPanel
               System.out.println("fichier introuvable");
             }
             break;
-            
           }
           if(GraphicalLevel.this.level.getField().getElements()[i][j].getColor() == 0)
           {

@@ -73,7 +73,7 @@ public class LevelCreator
 
     int[] paliersLevel1 = {500,1500,3000};
 
-    Level level1 = new Level(field1, paliersLevel1, 2);
+    Level level1 = new Level(field1, paliersLevel1, 1);
     level1.save();
 
     //LEVEL 2
@@ -138,7 +138,6 @@ public class LevelCreator
     Level level2 = new Level(field2, paliersLevel2, 3);
     level2.save();
 
-
     //LEVEL 3
 
     Field field3 = new Field(5,6,5);
@@ -147,7 +146,7 @@ public class LevelCreator
     FieldElement level3element1  = new Animal(0,1);
     FieldElement level3element2  = new Animal(0,2);
     FieldElement level3element3  = new Block(0,3,5);
-    FieldElement level3element4  = new Animal(0,4);
+    FieldElement level3element4  = new Block(0,4,2);
     FieldElement level3element5  = new WoodBlock(0,5);
     FieldElement level3element8  = new Block(1,0,1);
     FieldElement level3element9  = new Block(1,1,4);
@@ -208,8 +207,95 @@ public class LevelCreator
 
     int[] paliersLevel3 = {1000,2500,3600};
 
-    Level level3 = new Level(field3, paliersLevel3, 3);
+    Level level3 = new Level(field3, paliersLevel3, 2);
     level3.save();
+
+
+    //LEVEL 4
+
+    Field field4 = new Field(6,6,5);
+
+    FieldElement element0  = new Animal(0,0);       //creation des elements du field
+    FieldElement element1  = new Block(0,1,1);
+    FieldElement element2  = new Animal(0,2);
+    FieldElement element3  = new Block(0,3,2);
+    FieldElement element4  = new Animal(0,4);
+    FieldElement element5  = new Block(0,5,3);
+    FieldElement element8  = new Block(1,0,2);
+    FieldElement element9  = new Block(1,1,3);
+    FieldElement element10 = new Block(1,2,2);
+    FieldElement element11 = new Block(1,3,2);
+    FieldElement element12 = new Block(1,4,2);
+    FieldElement element13 = new Block(1,5,2);
+    FieldElement element16 = new Block(2,0,2);
+    FieldElement element17 = new Block(2,1,2);
+    FieldElement element18 = new Block(2,2,2);
+    FieldElement element19 = new Block(2,3,2);
+    FieldElement element20 = new Block(2,4,2);
+    FieldElement element21 = new Block(2,5,2);
+    FieldElement element24 = new Block(3,0,2);
+    FieldElement element25 = new Block(3,1,2);
+    FieldElement element26 = new Block(3,2,2);
+    FieldElement element27 = new Block(3,3,2);
+    FieldElement element28 = new Block(3,4,2);
+    FieldElement element29 = new Block(3,5,2);
+    FieldElement element32 = new Block(4,0,2);
+    FieldElement element33 = new Block(4,1,2);
+    FieldElement element34 = new Block(4,2,2);
+    FieldElement element35 = new Block(4,3,2);
+    FieldElement element36 = new Block(4,4,2);
+    FieldElement element37 = new Block(4,5,2);
+    FieldElement element40 = new Block(5,0,1);
+    FieldElement element41 = new Block(5,1,1);
+    FieldElement element42 = new Block(5,2,2);
+    FieldElement element43 = new WoodBlock(5,3);
+    FieldElement element44 = new Block(5,4,3);
+    FieldElement element45 = new Block(5,5,2);
+    field1.putElement(element0);
+    field1.putElement(element1);
+    field1.putElement(element2);
+    field1.putElement(element3);
+    field1.putElement(element4);
+    field1.putElement(element5);
+    field1.putElement(element8);
+    field1.putElement(element9);
+    field1.putElement(element10);
+    field1.putElement(element11);
+    field1.putElement(element12);
+    field1.putElement(element13);
+    field1.putElement(element16);
+    field1.putElement(element17);
+    field1.putElement(element18);
+    field1.putElement(element19);
+    field1.putElement(element20);
+    field1.putElement(element21);
+    field1.putElement(element24);
+    field1.putElement(element25);
+    field1.putElement(element26);
+    field1.putElement(element27);
+    field1.putElement(element28);
+    field1.putElement(element29);
+    field1.putElement(element32);
+    field1.putElement(element33);
+    field1.putElement(element34);
+    field1.putElement(element35);
+    field1.putElement(element36);
+    field1.putElement(element37);
+    field1.putElement(element40);
+    field1.putElement(element41);
+    field1.putElement(element42);
+    field1.putElement(element43);
+    field1.putElement(element44);
+    field1.putElement(element45);
+
+
+
+
+    int[] paliersLevel4 = {1000,2500,3600};
+
+    Level level4 = new Level(field4, paliersLevel4, 2);
+    level4.save();
+
 
     // Field field1 = new Field(8,8,5);
     //

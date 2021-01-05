@@ -110,9 +110,9 @@ public class FirstView extends JFrame
           levelsPaneAddListener(2);
 
           addListener(contains, FirstView.this.c1,levelsPane.back,Color.WHITE,"2");
-          addListener(contains, FirstView.this.c1,level_Pane[0].back,Color.WHITE,"3");
-          addListener(contains, FirstView.this.c1,level_Pane[1].back,Color.WHITE,"3");
-          addListener(contains, FirstView.this.c1,level_Pane[2].back,Color.WHITE,"3");
+          // addListener(contains, FirstView.this.c1,level_Pane[0].back,Color.WHITE,"3");
+          // addListener(contains, FirstView.this.c1,level_Pane[1].back,Color.WHITE,"3");
+          // addListener(contains, FirstView.this.c1,level_Pane[2].back,Color.WHITE,"3");
           FirstView.this.c1.show(contains, "2");
         }
         else
@@ -345,6 +345,7 @@ public class FirstView extends JFrame
           addListener(contains, FirstView.this.c1,FirstView.this.lost[i].back,Color.WHITE,"3");
           contains.add(FirstView.this.lost[i],"lost");
           level_Pane[i].level.setScore(0);
+          level_Pane[i].score.setText("Score : 0");
           level_Pane[i].level.getField().animalsSaved = 0;
           level_Pane[i].setEmptyStars();
           level_Pane[i].save(i+1);
