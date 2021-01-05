@@ -104,12 +104,15 @@ public class FirstView extends JFrame
           graphicalLevelsInitialize();
           levelListener(0,FirstView.levelsPane.getEnvironment().getPlayer(),contains,FirstView.this.c1,"4");
           levelListener(1,FirstView.levelsPane.getEnvironment().getPlayer(),contains,FirstView.this.c1,"5");
+          levelListener(2,FirstView.levelsPane.getEnvironment().getPlayer(),contains,FirstView.this.c1,"6");
           levelsPaneAddListener(0);
           levelsPaneAddListener(1);
+          levelsPaneAddListener(2);
 
           addListener(contains, FirstView.this.c1,levelsPane.back,Color.WHITE,"2");
           addListener(contains, FirstView.this.c1,level_Pane[0].back,Color.WHITE,"3");
           addListener(contains, FirstView.this.c1,level_Pane[1].back,Color.WHITE,"3");
+          addListener(contains, FirstView.this.c1,level_Pane[2].back,Color.WHITE,"3");
           FirstView.this.c1.show(contains, "2");
         }
         else
@@ -267,7 +270,7 @@ public class FirstView extends JFrame
   public void graphicalLevelsInitialize()
   {
     int b = 4;
-    for(int i = 0; i < 2; i++)
+    for(int i = 0; i < 3; i++)
     {
       this.level_Pane[i] = new GraphicalLevel(i+1 , this.levelsPane.getEnvironment().getPlayer());
       contains.add(level_Pane[i], String.valueOf(b) );
