@@ -162,7 +162,7 @@ public  class GraphicalLevel extends JPanel
             break;
 
           }
-          if(GraphicalLevel.this.level.getField().getElements()[i][j].getColor() == 5 || GraphicalLevel.this.level.getField().getElements()[i][j].getColor() == 0)
+          if(GraphicalLevel.this.level.getField().getElements()[i][j].getColor() == 0)
           {
             g2.fillRect(x,y,50,50);
           }
