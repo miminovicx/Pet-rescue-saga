@@ -125,9 +125,10 @@ public class Level implements java.io.Serializable
       }
       if(this.Won0())
       {
-        if(this.id < player.getUnlocked().length)
+        if(this.num <= player.getUnlocked().length)
         {
-          player.setUnlocked(this.id);
+          player.setUnlocked(this.num);
+
         }
         this.win();
         Level toSave = Level.use("../Data/Levels/level_" + this.id + ".ser");
@@ -278,7 +279,7 @@ public class Level implements java.io.Serializable
   public boolean Lost1()     //end of game because there's no delete possible
   {
     boolean found = false;
-    for(int i = this.field.firstLineToDisplay(); i < this.field.firstLineToDisplay() + this.field.getInterval() && found!=true;i++)
+    for(int i = this.field.firstLineToDisplay(); i < this.field.firstLineToDisplay() + this.field.getInterval() && found!=true; i++)
     {
       for(int j = 0; j<this.field.getHeight() && found!=true;j++)
       {

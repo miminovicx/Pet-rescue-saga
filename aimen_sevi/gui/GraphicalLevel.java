@@ -254,7 +254,7 @@ public  class GraphicalLevel extends JPanel
             {
               a = Integer.parseInt(JOptionPane.showInputDialog(null, "Vous avec encore " + player.getBoost()[0] + " fusées.\nVeuillez choisir une colonne entre 0 et " + (level.getField().getHeight() - 1) + " :       "));
             }
-            while (a < 0 || a >= level.getField().getWidth());
+            while (a < 0 || a >= level.getField().getHeight());
             player.removeRocket();
             repaint();
             level.getField().useRocket(a);
@@ -361,7 +361,7 @@ public  class GraphicalLevel extends JPanel
             {
               a = Integer.parseInt(JOptionPane.showInputDialog(null, "Vous avez encore " + player.getBoost()[2] + " marteaux.\nVeuillez choisir une ligne entre " + level.getField().firstLineToDisplay() + " et " + (level.getField().firstLineToDisplay() + level.getField().getInterval() - 1) + " : "));
             }
-            while (a < 0 || a >= level.getField().getWidth());
+            while (a < level.getField().firstLineToDisplay() || a >= level.getField().firstLineToDisplay() + level.getField().getInterval();
               int b = 0;
             do
             {

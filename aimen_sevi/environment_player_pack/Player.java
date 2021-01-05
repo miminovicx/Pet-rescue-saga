@@ -34,14 +34,12 @@ public class Player implements java.io.Serializable
     this.unlocked[1] = false;
     this.unlocked[2] = false;
     this.unlocked[3] = false;
-    this.unlocked[4] = false;
 
     this.bestScore = new int[5];
     this.bestScore[0] = 0;
     this.bestScore[1] = 0;
     this.bestScore[2] = 0;
     this.bestScore[3] = 0;
-    this.bestScore[4] = 0;
   }
 
 
@@ -107,7 +105,7 @@ public class Player implements java.io.Serializable
    */
   public void setUnlocked(int a)
   {
-    if(a >= 0 && a < 5)
+    if(a >= 0 && a < 4)
     {
       this.unlocked[a] = true;
     }

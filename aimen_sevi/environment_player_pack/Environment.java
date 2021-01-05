@@ -215,7 +215,7 @@ public class Environment
     int n = 0;
     System.out.print("Veuillez choisir un niveau à jouer : ");
     n = player.getScanner().nextInt();
-    while ((n < 0) || (n > this.levels.length)) //5 correspond au nombre de niveaux
+    while ((n < 0) || (n > this.levels.length))
     {
       System.out.print("Niveau indisponible\nVeuillez choisir un autre niveau à jouer : ");
       n = player.getScanner().nextInt();

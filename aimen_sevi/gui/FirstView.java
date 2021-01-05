@@ -26,9 +26,9 @@ public class FirstView extends JFrame
    */
   public FirstView()
   {
-    this.won = new GraphicalResult[5];
-    this.lost = new GraphicalResult[5];
-    level_Pane = new GraphicalLevel[5];
+    this.won = new GraphicalResult[4];
+    this.lost = new GraphicalResult[4];
+    level_Pane = new GraphicalLevel[4];
     contains = new JPanel();
     this.c1 = new CardLayout();
     contains.setLayout(this.c1);
@@ -105,14 +105,13 @@ public class FirstView extends JFrame
           levelListener(0,FirstView.levelsPane.getEnvironment().getPlayer(),contains,FirstView.this.c1,"4");
           levelListener(1,FirstView.levelsPane.getEnvironment().getPlayer(),contains,FirstView.this.c1,"5");
           levelListener(2,FirstView.levelsPane.getEnvironment().getPlayer(),contains,FirstView.this.c1,"6");
+          levelListener(3,FirstView.levelsPane.getEnvironment().getPlayer(),contains,FirstView.this.c1,"7");
           levelsPaneAddListener(0);
           levelsPaneAddListener(1);
           levelsPaneAddListener(2);
+          levelsPaneAddListener(3);
 
           addListener(contains, FirstView.this.c1,levelsPane.back,Color.WHITE,"2");
-          // addListener(contains, FirstView.this.c1,level_Pane[0].back,Color.WHITE,"3");
-          // addListener(contains, FirstView.this.c1,level_Pane[1].back,Color.WHITE,"3");
-          // addListener(contains, FirstView.this.c1,level_Pane[2].back,Color.WHITE,"3");
           FirstView.this.c1.show(contains, "2");
         }
         else
@@ -270,7 +269,7 @@ public class FirstView extends JFrame
   public void graphicalLevelsInitialize()
   {
     int b = 4;
-    for(int i = 0; i < 3; i++)
+    for(int i = 0; i < 4; i++)
     {
       this.level_Pane[i] = new GraphicalLevel(i+1 , this.levelsPane.getEnvironment().getPlayer());
       contains.add(level_Pane[i], String.valueOf(b) );
@@ -298,7 +297,7 @@ public class FirstView extends JFrame
             FirstView.levelsPane.getEnvironment().getPlayer().setBestScore(level_Pane[i].level.getScore(),i);
 
           }
-          if(!levelsPane.getEnvironment().getPlayer().getUnlocked()[i+1] && i+1 <= 5)
+          if(!levelsPane.getEnvironment().getPlayer().getUnlocked()[i+1] && i+1 < 4)
           {
             levelsPane.getEnvironment().getPlayer().setUnlocked(i+1);
             b = true;
@@ -339,7 +338,7 @@ public class FirstView extends JFrame
 
           FirstView.levelsPane.getEnvironment().getPlayer().save();
         }
-        else if (level_Pane[i].level.Lost0())
+        if (level_Pane[i].level.Lost0())
         {
           FirstView.this.lost[i] = new GraphicalResult("PERDU",FirstView.this.level_Pane[i].level.getScore(),0, false, 0, level_Pane[i].level.getPalier()[0], FirstView.this.level_Pane[i].level.getField().animalsSaved, level_Pane[i].level.getAnimalsToRescue() );
           addListener(contains, FirstView.this.c1,FirstView.this.lost[i].back,Color.WHITE,"3");
