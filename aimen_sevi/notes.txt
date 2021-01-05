@@ -2,14 +2,15 @@
 -GUI :
   - réafficher les animaux et le score après decalage des colonnes //a oublier
 
-- Rapport + diagramme
+- diagramme
 
 - Création de tout les niveaux
+
 
 Pour le rapport :
   Presentation du jeu
   Choix du langage
-  Presentation de l'environnement de developpement et le langage
+  Presentation de l'environnement de developpement
   Partie console
   Partie interface graphique
   Les etapes du developpement
