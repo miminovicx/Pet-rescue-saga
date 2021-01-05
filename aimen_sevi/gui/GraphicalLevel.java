@@ -134,11 +134,31 @@ public  class GraphicalLevel extends JPanel
 
             break;
             case 4:
-            g2.setColor(Color.GREEN);
+            try
+            {
+              String path = "../ressources/images/green.png";
+              InputStream is = new BufferedInputStream(new FileInputStream(path));
+              Image image = ImageIO.read(is);
+              g2.drawImage(image,x,y,null);
+            }
+            catch (Exception l_e)
+            {
+              System.out.println("fichier introuvable");
+            }
 
             break;
             case 5:
-            g2.setColor(Color.MAGENTA);
+            try
+            {
+              String path = "../ressources/images/magenta.png";
+              InputStream is = new BufferedInputStream(new FileInputStream(path));
+              Image image = ImageIO.read(is);
+              g2.drawImage(image,x,y,null);
+            }
+            catch (Exception l_e)
+            {
+              System.out.println("fichier introuvable");
+            }
             break;
 
           }
