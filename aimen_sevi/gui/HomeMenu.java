@@ -23,7 +23,7 @@ public  class HomeMenu extends JPanel
     this.setLayout(new BorderLayout());
 
 
-    JLabel title = new JLabel("Pet Rescue Data");
+    JLabel title = new JLabel("Pet Rescue");
     Font titleFont = new Font("Arial",Font.ITALIC,50);
     title.setFont(titleFont);
     title.setForeground(Color.GRAY);
@@ -51,25 +51,4 @@ public  class HomeMenu extends JPanel
 
   }
 
-
-
-  // public void paint(Graphics g)
-  // {
-  //     // Appel de la méthode paintComponent de la classe mère
-  //     super.paintComponent(g);
-  //     // Conversion en un contexte 2D
-  //     Graphics2D g2 = (Graphics2D) g;
-  //     try
-  //     {
-  //       String path = "../ressources/images/bg.png";
-  //       InputStream is = new BufferedInputStream(new FileInputStream(path));
-  //       Image image = ImageIO.read(is);
-  //       g2.drawImage(image,0,0,null);
-  //     }
-  //     catch (Exception l_e)
-  //     {
-  //       System.out.println("fichier introuvable");
-  //     }
-  //     // Utilisation de g2
-  // }
 }

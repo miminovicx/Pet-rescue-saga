@@ -8,7 +8,7 @@ import environment_player_pack.Environment;
 import environment_player_pack.Player;
 import environment_player_pack.Launcher;
 import levelpack.Level;
-// import java.io.File;
+
 /**
  * Classe représentant la première fenêtre affichée
  */
@@ -44,7 +44,7 @@ public class FirstView extends JFrame
     JPanel titlePane = new JPanel();
     firstViewMenuPane.setLayout(null);
     menuPane.setLayout(null);
-    JLabel title = new JLabel("Pet Rescue Data");
+    JLabel title = new JLabel("Pet Rescue");
     Font titleFont = new Font("Arial",Font.ITALIC,75);
     Font firstViewFont = new Font("Arial",Font.ITALIC,25);
     title.setFont(titleFont);
@@ -133,8 +133,6 @@ public class FirstView extends JFrame
     addQuitListener(homeMenu.quit, new Color(255,0,0));
     addQuitListener(menu.quit, new Color(255,0,0));
     addListener(contains, this.c1,nickNamePane.back,Color.WHITE,"1");
-    // addListener(contains, c1,this.won.back,new Color(0,150,0),"3");
-    // addListener(contains, c1,this.lost.back,new Color(0,150,0),"3");
 
 
     homePane.add(titlePane, BorderLayout.NORTH);
@@ -142,8 +140,6 @@ public class FirstView extends JFrame
     contains.add(homeMenu,"1");
     contains.add(nickNamePane,"nickname");
     contains.add(homePane,"2");
-    // contains.add(this.won,"won");
-    // contains.add(this.lost,"lost");
 
     this.c1.show(contains,"1");
     this.setContentPane(contains);
@@ -218,7 +214,6 @@ public class FirstView extends JFrame
   {
     GraphicalLevel lvl = new GraphicalLevel(num, player);
     contains.add(lvl,destination);
-    //contains.add(level_Pane[1],"5");
     return (lvl);
   }
   /**
@@ -237,7 +232,7 @@ public class FirstView extends JFrame
       public void mouseClicked(MouseEvent e)
       {
 
-        if(player.getUnlocked()[num])//level_Pane[0] = new GraphicalLevel(1);
+        if(player.getUnlocked()[num])
           FirstView.this.c1.show(contains, destination);
       }
       public void mouseEntered(MouseEvent e)
@@ -265,15 +260,6 @@ public class FirstView extends JFrame
     });
   }
 
-  // public void result (GraphicalLevel lvl)
-  // {
-  //   FirstView.this.won = new GraphicalResult("GAGNÉ",FirstView.this.levelsPane.getEnvironment().getPlayer(),level_Pane[0].level.getScore(),FirstView.levelsPane.getEnvironment().getPlayer().getBestScore()[0]);
-  //   FirstView.this.lost = new GraphicalResult("PERDU",FirstView.this.levelsPane.getEnvironment().getPlayer(),level_Pane[0].level.getScore(),FirstView.levelsPane.getEnvironment().getPlayer().getBestScore()[0]);
-  //   addListener(contains, c1,FirstView.this.won.back,new Color(0,150,0),"3");
-  //   addListener(contains, c1,FirstView.this.lost.back,new Color(0,150,0),"3");
-  //   contains.add(FirstView.this.won,"won");
-  //   contains.add(FirstView.this.lost,"lost");
-  // }
   /**
    * Cette méthode remplit le tableau qui gére les boutons des niveaux
    * @method graphicalLevelsInitialize
@@ -289,6 +275,7 @@ public class FirstView extends JFrame
     }
 
   }
+
   /**
    * Cette méthode ajoute les listeners au plateau des niveau pour savoir si le niveau est terminé
    * @method levelsPaneAddListener
@@ -329,16 +316,13 @@ public class FirstView extends JFrame
           }
 
           FirstView.this.won[i] = new GraphicalResult("GAGNÉ",FirstView.this.level_Pane[i].level.getScore(),FirstView.this.levelsPane.getEnvironment().getPlayer().getBestScore()[i], b, stars ,0,0,0);
-          // FirstView.this.lost[i] = new GraphicalResult("PERDU",FirstView.this.level_Pane[i].level.getScore(),0, false, 0, level_Pane[i].level.getPalier()[0], FirstView.this.level_Pane[i].level.getField().animalsSaved, level_Pane[i].level.getAnimalsToRescue() );
           level_Pane[i].level.setScore(0);
           level_Pane[i].score.setText("Score : 0");
           addListener(contains, FirstView.this.c1,FirstView.this.won[i].back,Color.WHITE,"3");
-          // addListener(contains, FirstView.this.c1,FirstView.this.lost[i].back,Color.WHITE,"3");
           level_Pane[i].level.getField().animalsSaved = 0;
           level_Pane[i].setEmptyStars();
           level_Pane[i].save(i+1);
           contains.add(FirstView.this.won[i],"won");
-          // contains.add(FirstView.this.lost[i],"lost");
 
           try
           {
@@ -354,12 +338,9 @@ public class FirstView extends JFrame
         }
         else if (level_Pane[i].level.Lost0())
         {
-          // FirstView.this.won[i] = new GraphicalResult("GAGNÉ",FirstView.this.level_Pane[i].level.getScore(),FirstView.this.levelsPane.getEnvironment().getPlayer().getBestScore()[i], false, 0 ,0,0,0);
-          // addListener(contains, FirstView.this.c1,FirstView.this.won[i].back,Color.WHITE,"3");
           FirstView.this.lost[i] = new GraphicalResult("PERDU",FirstView.this.level_Pane[i].level.getScore(),0, false, 0, level_Pane[i].level.getPalier()[0], FirstView.this.level_Pane[i].level.getField().animalsSaved, level_Pane[i].level.getAnimalsToRescue() );
           addListener(contains, FirstView.this.c1,FirstView.this.lost[i].back,Color.WHITE,"3");
           contains.add(FirstView.this.lost[i],"lost");
-          // contains.add(FirstView.this.won[i],"won");
           level_Pane[i].level.setScore(0);
           level_Pane[i].level.getField().animalsSaved = 0;
           level_Pane[i].setEmptyStars();

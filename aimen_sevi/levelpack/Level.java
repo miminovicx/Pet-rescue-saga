@@ -191,13 +191,9 @@ public class Level implements java.io.Serializable
   public void win()
   {
     String res = "";
-    // res += "*********************\n";
     res += "\u001B[32m      GAGNÉ     \u001B[0m \nScore  : " + this.score + "       \nAnimaux sauvé : " + this.field.animalsSaved + "/" +this.animalsToRescue;
     System.out.println(res);
     this.displayStars(this.score);
-
-    // res += "*\n*********************";
-
   }
 
   /**
@@ -437,9 +433,6 @@ public class Level implements java.io.Serializable
             player.removePickaxe();
             this.field.usePickaxe(b,a);
             this.score += 50;
-            // System.out.println(this.field);
-            // this.field.updateSemiFinal();
-            // System.out.println(this.field);
           }
           else
           {
@@ -506,7 +499,6 @@ public class Level implements java.io.Serializable
       }
       res += "\n";
       System.out.println("Etoiles : " + res);
-      // System.out.println(this.field);
     }
 
 /**
@@ -516,17 +508,6 @@ public class Level implements java.io.Serializable
   {
     int a;
     int b;
-    // do {
-    //   a = (int)(Math.random() * (this.field.getHeight()));
-    //   b = this.field.firstLineToDisplay() + (int)(Math.random() * ((this.field.getInterval())));
-    //   if(this.field.deletable(a,b))
-    //   {
-    //     System.out.println("Suppression du bloc : \nColonne : " + b + "\nLigne : " + a + "\n");
-    //     this.field.updateFinal(a,b);
-    //     this.score += field.scoreComputation(field.nbBlockSuppr);
-    //     System.out.println(this.field);
-    //   }
-    // } while(!this.Lost0() && !this.Won0());
     do {
       b = 0;
       while(b < this.field.firstLineToDisplay() + this.field.getInterval())

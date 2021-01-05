@@ -111,11 +111,8 @@ public  class GraphicalResult extends JPanel
       this.unlocked.setForeground(Color.BLACK);
       this.mainPane.add(this.unlocked);
     }
-    //affichage du score du niveau
-    //affichage du nombre d'etoiles
-    //affichage du meilleur score du joueur pour ce niveau
-    //si le niveau suivant était verouillé alors afficher 'niveau suivant déverouillé'
   }
+
   /**
    * Cette méthode construit l'affichage si on perd le niveau
    * @method lostPane
@@ -149,10 +146,8 @@ public  class GraphicalResult extends JPanel
     this.bestScore.setForeground(Color.BLACK);
     this.mainPane.add(this.bestScore);
 
-    // this.starsResult = new JPanel();
-    // this.starsResult.setBounds(125,250,350,100);
-    // this.displayStars(stars);
   }
+
   /**
    * Cette méthode permet l'affichage des étoiles
    * @method displayStars
@@ -209,32 +204,4 @@ public  class GraphicalResult extends JPanel
     }
     mainPane.add(starsResult);
   }
-
-  // public void paint(Graphics g) {
-	// 	super.paint(g);
-	// 	Color c = g.getColor();
-	// 	g.setColor(Color.RED);
-	// 	g.fillRect(0,0,2800,8000);
-	// 	g.setColor(Color.BLUE);
-	// }
-
-  // public void paint(Graphics g)
-  // {
-  //     // Appel de la méthode paintComponent de la classe mère
-  //     super.paintComponent(g);
-  //     // Conversion en un contexte 2D
-  //     Graphics2D g2 = (Graphics2D) g;
-  //     try
-  //     {
-  //       String path = "../ressources/images/bg.png";
-  //       InputStream is = new BufferedInputStream(new FileInputStream(path));
-  //       Image image = ImageIO.read(is);
-  //       g2.drawImage(image,0,0,null);
-  //     }
-  //     catch (Exception l_e)
-  //     {
-  //       System.out.println("fichier introuvable");
-  //     }
-  //     // Utilisation de g2
-  // }
 }

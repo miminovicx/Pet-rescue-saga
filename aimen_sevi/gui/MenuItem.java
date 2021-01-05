@@ -26,11 +26,4 @@ public class MenuItem extends JLabel
     this.setFont(font);
   }
 
-  // public void paint(Graphics g) {
-	// 	super.paint(g);
-	// 	Color c = g.getColor();
-	// 	g.setColor(Color.RED);
-	// 	g.fillRect(0,0,2800,8000);
-	// 	g.setColor(Color.BLUE);
-	// }
 }

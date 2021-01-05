@@ -11,7 +11,6 @@ import java.io.FileInputStream;
 import java.util.Scanner;
 import environment_player_pack.*;
 import levelpack.*;
-// import levelpack.Level;
 /**
  * Classe représentant un niveau graphique
  */
@@ -46,6 +45,7 @@ public  class GraphicalLevel extends JPanel
       int x ;
       int y ;
       int a = (600 - GraphicalLevel.this.level.getField().getHeight()*51)/2;
+
       for(int i = GraphicalLevel.this.level.getField().firstLineToDisplay(); i < GraphicalLevel.this.level.getField().firstLineToDisplay() + GraphicalLevel.this.level.getField().getInterval(); i++)
       {
         g2.drawString(String.valueOf(i), a - 25 , 51*(i - GraphicalLevel.this.level.getField().firstLineToDisplay()) + 25);
@@ -58,7 +58,6 @@ public  class GraphicalLevel extends JPanel
       {
         for (int j = 0; j < GraphicalLevel.this.level.getField().getHeight(); j++)
         {
-          g2.drawString(String.valueOf(i), a - 25 , 51*(i - GraphicalLevel.this.level.getField().firstLineToDisplay()) + 25);
           x = a + (51 * j);
           y = 51 * (i - GraphicalLevel.this.level.getField().firstLineToDisplay());
           switch(GraphicalLevel.this.level.getField().getElements()[i][j].getColor())
@@ -78,9 +77,6 @@ public  class GraphicalLevel extends JPanel
             break;
 
             case -1:
-            // g2.setColor(new Color(238,238,238));
-            if(GraphicalLevel.this.level.getField().getElements()[i][j].getEmoji() == 1)
-            {
               try
               {
                 String path = "../ressources/images/chien.png";
@@ -92,68 +88,7 @@ public  class GraphicalLevel extends JPanel
               {
                 System.out.println("fichier introuvable");
               }
-            }
-            else if(GraphicalLevel.this.level.getField().getElements()[i][j].getEmoji() == 2)
-            {
-              try
-              {
-                String path = "../ressources/images/Poule.png";
-                InputStream is = new BufferedInputStream(new FileInputStream(path));
-                Image image = ImageIO.read(is);
-                // g2.fillRect(x,y,50,50);
-                g2.drawImage(image,x,y,null);
-              }
-              catch (Exception l_e)
-              {
-                System.out.println("fichier introuvable");
-              }
-            }
-            else if(GraphicalLevel.this.level.getField().getElements()[i][j].getEmoji() == 3)
-            {
-              try
-              {
-                String path = "../ressources/images/Cochon.png";
-                InputStream is = new BufferedInputStream(new FileInputStream(path));
-                Image image = ImageIO.read(is);
-                // g2.fillRect(x,y,50,50);
-                g2.drawImage(image,x,y,null);
-              }
-              catch (Exception l_e)
-              {
-                System.out.println("fichier introuvable");
-              }
-            }
-            else if(GraphicalLevel.this.level.getField().getElements()[i][j].getEmoji() == 4)
-            {
-              try
-              {
-                String path = "../ressources/images/Mouton.png";
-                InputStream is = new BufferedInputStream(new FileInputStream(path));
-                Image image = ImageIO.read(is);
-                // g2.fillRect(x,y,50,50);
-                g2.drawImage(image,x,y,null);
-              }
-              catch (Exception l_e)
-              {
-                System.out.println("fichier introuvable");
-              }
-            }
-            else if(GraphicalLevel.this.level.getField().getElements()[i][j].getEmoji() == 5) //on verra
-            {
-              try
-              {
-                String path = "../ressources/images/chien.png"; //a changer
-                InputStream is = new BufferedInputStream(new FileInputStream(path));
-                Image image = ImageIO.read(is);
-                // g2.fillRect(x,y,50,50);
-                g2.drawImage(image,x,y,null);
-              }
-              catch (Exception l_e)
-              {
-                System.out.println("fichier introuvable");
-              }
-            }
-            break;
+
             case 0:
             g2.setColor(new Color(238,238,238));
             break;
@@ -243,7 +178,6 @@ public  class GraphicalLevel extends JPanel
             }
           }
         }
-        //if( i == 0) g2.drawString(String.valueOf(i),x,y);
       }
     }
   }
@@ -437,7 +371,6 @@ public  class GraphicalLevel extends JPanel
             noBoosters("marteaux");
           }
         }
-        // repaint();
       }
 
 
@@ -449,7 +382,6 @@ public  class GraphicalLevel extends JPanel
       }
     });
 
-    // JPanel levelMenuPane = new JPanel();
     JPanel northPane = new JPanel(new GridLayout(2,1));
     JPanel titleLevelPane = new JPanel();
     JPanel starsLevelPane = new JPanel();
@@ -465,29 +397,20 @@ public  class GraphicalLevel extends JPanel
     catch (Exception e) {
       System.out.println("image non trouvé");
     }
-    // score.setFont(new Font("Arial",Font.ITALIC,20));
-    // score.setBounds(15, 475,200,25);
-    // JPanel southPane = new JPanel(new FlowLayout());
-    // southPane.add(score);
-    // southPane.add(levelMenuPane);
+
     JLabel titleLevel = new JLabel("Niveau " + this.level.getNum());
     Font titleFont = new Font("Arial",Font.ITALIC,75);
     titleLevel.setFont(titleFont);
     titleLevelPane.add(titleLevel);
     Font font = new Font("Arial",Font.BOLD,20);
     this.back = new MenuItem("Retour", font);
-    // levelMenuPane.add(back);
     northPane.add(titleLevelPane);
     northPane.add(starsLevelPane);
-    // southPane.add(levelMenuPane);
     northPane.setBounds(50, 0,500,200);
-    // fieldLevelPane.setBounds(75, 200,600,400);
     fieldLevelPane.setBounds(0, 200,600,400);
     this.add(northPane);
     this.add(fieldLevelPane);
     this.add(score);
-    // this.add(southPane);
-    // this.add(levelMenuPane);
 
   }
   /**
@@ -566,17 +489,13 @@ public  class GraphicalLevel extends JPanel
     fieldLevelPane.repaint();
   }
 
+/**
+ * Cette méthode permet d'afficher une boite de dialogue qui indique que le joueur n'a plus de boosters
+ * @param s le booster
+ */
   public void noBoosters(String s)
   {
     JOptionPane.showMessageDialog(null,"Vous n'avez plus de " + s ,"Boosters", JOptionPane.DEFAULT_OPTION);
   }
 
-  //
-  // public void paint(Graphics g) {
-	// 	super.paint(g);
-	// 	Color c = g.getColor();
-	// 	// g.setColor(Color.RED);
-  //   g.setColor(Color.BLUE);
-	// 	g.fillRect(0,0,2800,8000);
-	// }
 }

@@ -62,25 +62,4 @@ public  class PlayMenu extends JPanel
       this.nickName.setVerticalAlignment(JLabel.CENTER);
       this.add(nickName);
   }
-
-  
-  // public void paint(Graphics g)
-  // {
-  //     // Appel de la méthode paintComponent de la classe mère
-  //     super.paintComponent(g);
-  //     // Conversion en un contexte 2D
-  //     Graphics2D g2 = (Graphics2D) g;
-  //     try
-  //     {
-  //       String path = "../ressources/images/bg.png";
-  //       InputStream is = new BufferedInputStream(new FileInputStream(path));
-  //       Image image = ImageIO.read(is);
-  //       g2.drawImage(image,0,0,null);
-  //     }
-  //     catch (Exception l_e)
-  //     {
-  //       System.out.println("fichier introuvable");
-  //     }
-  //     // Utilisation de g2
-  // }
 }
