@@ -516,16 +516,36 @@ public class Level implements java.io.Serializable
   {
     int a;
     int b;
+    // do {
+    //   a = (int)(Math.random() * (this.field.getHeight()));
+    //   b = this.field.firstLineToDisplay() + (int)(Math.random() * ((this.field.getInterval())));
+    //   if(this.field.deletable(a,b))
+    //   {
+    //     System.out.println("Suppression du bloc : \nColonne : " + b + "\nLigne : " + a + "\n");
+    //     this.field.updateFinal(a,b);
+    //     this.score += field.scoreComputation(field.nbBlockSuppr);
+    //     System.out.println(this.field);
+    //   }
+    // } while(!this.Lost0() && !this.Won0());
     do {
-      a = (int)(Math.random() * (this.field.getHeight()));
-      b = this.field.firstLineToDisplay() + (int)(Math.random() * ((this.field.getInterval())));
-      if(this.field.deletable(a,b))
+      b = 0;
+      while(b < this.field.firstLineToDisplay() + this.field.getInterval())
       {
-        System.out.println("Suppression du bloc : \nColonne : " + b + "\nLigne : " + a + "\n");
-        this.field.updateFinal(a,b);
-        this.score += field.scoreComputation(field.nbBlockSuppr);
-        System.out.println(this.field);
+        a = 0;
+        while(a < (this.field.getHeight()))
+        {
+          if(this.field.deletable(a,b))
+          {
+            System.out.println("Suppression du bloc : \nColonne : " + b + "\nLigne : " + a + "\n");
+            this.field.updateFinal(a,b);
+            this.score += field.scoreComputation(field.nbBlockSuppr);
+            System.out.println(this.field);
+          }
+          a++;
+        }
+        b++;
       }
+
     } while(!this.Lost0() && !this.Won0());
     if(this.Won0())
     {
