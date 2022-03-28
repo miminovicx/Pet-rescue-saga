@@ -4,9 +4,14 @@
     Réimplémentation du jeu mobile Pet Rescue Saga disponible (Projet universitaire).
 
 ## Execution
-<p>Sur une machine unix afin d'executer le projet placez vous dans le repertoire src/ puis lancer :
-** pour la version console **
-<strong>./consoleLauncher.sh</strong></p>
-
-<p>** pour la version graphique **
-</strong>./GUILauncher.sh</strong></p>
+Sur une machine unix afin d'executer le projet placez vous dans le repertoire src/ puis lancer :
+<ul>
+<li>Pour la version console</li>
+<ul>
+<li><code>./consoleLauncher.sh</code></li>
+</ul>
+<li>Pour la version graphique</li>
+<ul>
+<li><code>./GUILauncher.sh</code></li>
+</ul>
+</ul>
