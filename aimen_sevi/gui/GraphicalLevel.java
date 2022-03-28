@@ -361,7 +361,7 @@ public  class GraphicalLevel extends JPanel
             {
               a = Integer.parseInt(JOptionPane.showInputDialog(null, "Vous avez encore " + player.getBoost()[2] + " marteaux.\nVeuillez choisir une ligne entre " + level.getField().firstLineToDisplay() + " et " + (level.getField().firstLineToDisplay() + level.getField().getInterval() - 1) + " : "));
             }
-            while (a < level.getField().firstLineToDisplay() || a >= level.getField().firstLineToDisplay() + level.getField().getInterval();
+            while (a < level.getField().firstLineToDisplay() || a >= level.getField().firstLineToDisplay() + level.getField().getInterval());
               int b = 0;
             do
             {
